@@ -1,6 +1,5 @@
-﻿var Name = require('../../components/componenta/ca.jsx');
-
-ReactDOM.render(
-  <Name/>,
-  document.getElementById('app')
-);
+﻿import Name from '../../components/componenta/ca.jsx';
+if(document.getElementById('app'))
+{
+ReactDOM.render(<Name></Name>,document.getElementById('app'));
+}

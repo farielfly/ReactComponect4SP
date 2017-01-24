@@ -8,6 +8,12 @@ module.exports = {
             'output': 'dist/webparts'
         },
         {
+            'name': 'slider',
+            'src': 'webparts/slider/index.jsx',
+            'style': 'webparts/slider/style.less',
+            'output': 'dist/webparts'
+        },
+        {
             'name': 'webpartb',
             'src': 'webparts/webpartb/index.jsx',
             'style': 'webparts/webpartb/style.less',
