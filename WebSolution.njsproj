@@ -40,6 +40,11 @@
     <Compile Include="gulp\tasks\Watch.js" />
     <Compile Include="jslibrary\Commonjs.js" />
     <Content Include=".babelrc" />
+    <Content Include="webparts\Slider\slider.less" />
+    <Content Include="components\slider\sliderArrows\sliderArrows.jsx" />
+    <Content Include="components\slider\sliderDots\sliderDots.jsx" />
+    <Content Include="components\slider\sliderPics\sliderPics.jsx" />
+    <Content Include="components\slider\slider.jsx" />
     <Content Include="layouts\layouta\layouta.html" />
     <Content Include="layouts\layouta\script.jsx" />
     <Content Include="layouts\layouta\style.less" />
@@ -49,6 +54,8 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="stylelibrary\CommonStyle.less" />
+    <Content Include="webparts\Slider\index.jsx" />
+    <Content Include="webparts\Slider\Slider.html" />
     <Content Include="webparts\webparta\index.jsx" />
     <Content Include="webparts\webparta\style.less" />
     <Content Include="webparts\webparta\webparta.html" />
@@ -58,6 +65,11 @@
   <ItemGroup>
     <Folder Include="components\" />
     <Folder Include="components\componenta\" />
+    <Folder Include="components\img\" />
+    <Folder Include="components\slider\" />
+    <Folder Include="components\slider\sliderArrows\" />
+    <Folder Include="components\slider\sliderDots\" />
+    <Folder Include="components\slider\sliderPics\" />
     <Folder Include="gulp\" />
     <Folder Include="gulp\tasks\" />
     <Folder Include="layouts\" />
@@ -69,6 +81,7 @@
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
     <Folder Include="typings\globals\node\" />
+    <Folder Include="webparts\Slider\" />
     <Folder Include="webparts\webpartb\" />
     <Folder Include="webparts\webparta\" />
   </ItemGroup>
