@@ -1,9 +1,9 @@
-export default class SliderArrows extends React.Component{
+export default class SliderArrows extends React.Component {
   constructor() {
     super();
     return "SliderArrows";
   }
-  render(){
+  render() {
     return (
       <div>SliderArrows</div>
     );

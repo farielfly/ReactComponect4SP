@@ -1,9 +1,9 @@
-class SliderPics extends React.Component{
+class SliderPics extends React.Component {
   constructor() {
     super();
     return "SliderPics";
   }
-  render(){
+  render() {
     return (
       <div>SliderPics</div>
     );

@@ -1,9 +1,9 @@
-export default class SliderDots extends React.Component{
+export default class SliderDots extends React.Component {
   constructor() {
     super();
     return "SliderDots";
   }
-  render(){
+  render() {
     return (
       <div>SliderDots</div>
     );
