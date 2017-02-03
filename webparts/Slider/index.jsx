@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
-import Slider from '../../components/slider/slider.jsx';
-import SliderPics from '../../components/slider/sliderPics/sliderPics.jsx';
+import Slider from '../../components/slider/sliderFrame.jsx';
+import SliderPics from '../../components/slider/sliderPics.jsx';
 
 
 const IMAGE_DATA = [{ 'src': '../../components/img/image1.jpg', 'alt': 'image1' },

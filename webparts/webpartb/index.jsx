@@ -1,5 +1,6 @@
 var Name = require('../../components/componenta/ca.jsx');
-
-ReactDOM.render(
-  document.getElementById('app')
-);
+if (document.getElementById('app')) {
+  ReactDOM.render(
+    document.getElementById('app')
+  );
+}
