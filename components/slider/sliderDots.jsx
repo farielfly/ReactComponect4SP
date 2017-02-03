@@ -15,13 +15,13 @@ export default class SliderDots extends React.Component {
             dotNodes[i] = (
                 <span
                     key={'dot' + i}
-                    className={"slider-dot" + (i === this.props.nowLocal ? " slider-dot-selected" : "")}
+                    className={"acs-slider-dot" + (i === this.props.nowLocal ? " acs-slider-dot-selected" : "")}
                     onClick={this.handleDotClick.bind(this, i)}>
                 </span>
             );
         }
         return (
-            <div className="u-slider-dots">
+            <div className="acs-slider-dots">
                 {dotNodes}
             </div>
         );

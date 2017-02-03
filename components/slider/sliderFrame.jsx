@@ -48,7 +48,7 @@ export default class Slider extends React.Component {
 
         return (
             <div
-                className="m-slider"
+                className="acs-sliderframe"
                 onMouseOver={this.props.pause ? this.pausePlay.bind(this) : null} onMouseOut={this.props.pause ? this.goPlay.bind(this) : null}>
                 {children}
                 {this.props.arrows ? arrowsNode : null}

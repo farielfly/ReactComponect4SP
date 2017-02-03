@@ -8,7 +8,7 @@ export default class SliderPics extends React.Component {
         let count = items.length;
         let width = 100 / count + '%';
         let itemNodes = this.props.items.map((item, idx) => {
-            return <li key={idx} className="u-slider-item" style={{ width: width }}>
+            return <li key={idx} className="acs-slider-pic" style={{ width: width }}>
                 <img src={item.src} alt={item.alt} />
             </li>;
         });
