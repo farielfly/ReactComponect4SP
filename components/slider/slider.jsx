@@ -1,12 +1,8 @@
-﻿import React, { Component } from 'react';
-
-//require('./slider.less');
-
-import SliderItem from './sliderPics/sliderPics.jsx';
+﻿import SliderPics from './sliderPics/sliderPics.jsx';
 import SliderDots from './sliderDots/sliderDots.jsx';
 import SliderArrows from './sliderArrows/sliderArrows.jsx';
 
-export default class Slider extends Component {
+export default class Slider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,28 +10,25 @@ export default class Slider extends Component {
         };
     }
 
-    // 向前向后多少
     turn(n) {
         var _n = this.state.nowLocal + n;
-        if(_n < 0) {
-            _n = _n + this.props.items.length;
+        if (_n < 0) {
+            _n = _n + this.props.itemCount;
         }
-        if(_n >= this.props.items.length) {
-            _n = _n - this.props.items.length;
+        if (_n >= this.props.itemCount) {
+            _n = _n - this.props.itemCount;
         }
-        this.setState({nowLocal: _n});
+        this.setState({ nowLocal: _n });
     }
 
-    // 开始自动轮播
     goPlay() {
-        if(this.props.autoplay) {
+        if (this.props.autoplay) {
             this.autoPlayFlag = setInterval(() => {
                 this.turn(1);
             }, this.props.delay * 1000);
         }
     }
 
-    // 暂停自动轮播
     pausePlay() {
         clearInterval(this.autoPlayFlag);
     }
@@ -45,32 +38,25 @@ export default class Slider extends Component {
     }
 
     render() {
-        let count = this.props.items.length;
-
-        let itemNodes = this.props.items.map((item, idx) => {
-            return <SliderItem item={item} count={count} key={'item' + idx} />;
-        });
-
-        let arrowsNode = <SliderArrows turn={this.turn.bind(this)}/>;
-
-        let dotsNode = <SliderDots turn={this.turn.bind(this)} count={count} nowLocal={this.state.nowLocal} />;
+        let arrowsNode = <SliderArrows turn={this.turn.bind(this)} />;
+        let dotsNode = <SliderDots turn={this.turn.bind(this)} count={this.props.itemCount} nowLocal={this.state.nowLocal} />;
+        let children = React.cloneElement(this.props.children,
+            {
+                left: this.props.left,
+                speed: this.props.speed,
+                nowLocal: this.state.nowLocal
+            });
 
         return (
-          <div
-            className="m-slider"
-            onMouseOver={this.props.pause?this.pausePlay.bind(this):null} onMouseOut={this.props.pause?this.goPlay.bind(this):null}>
-              <ul style={{
-                  left: -100 * this.state.nowLocal + "%",
-                  transitionDuration: this.props.speed + "s",
-                  width: this.props.items.length * 100 + "%"
-              }}>
-                {itemNodes}
-            </ul>
-                    {this.props.arrows?arrowsNode:null}
-{this.props.dots?dotsNode:null}
-</div>
-      );
-}
+            <div
+                className="m-slider"
+                onMouseOver={this.props.pause ? this.pausePlay.bind(this) : null} onMouseOut={this.props.pause ? this.goPlay.bind(this) : null}>
+                {children}
+                {this.props.arrows ? arrowsNode : null}
+                {this.props.dots ? dotsNode : null}
+            </div>
+        );
+    }
 }
 
 Slider.defaultProps = {
@@ -80,6 +66,6 @@ Slider.defaultProps = {
     autoplay: true,
     dots: true,
     arrows: true,
-    items: [],
+    itemCount: 0,
 };
 Slider.autoPlayFlag = null;
