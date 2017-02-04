@@ -19,6 +19,7 @@ gulp.task('buildless', function () {
 
 gulp.task('buildless-wp', function () {
     let srcs = new Set();
+
     for (let webpart of config.webparts) {
         srcs.add(path.join(config.rootpath, webpart.style));
     }
@@ -37,10 +38,16 @@ gulp.task('buildless-layout', function () {
 })
 
 function buildless(srcs, name, dest) {
+    var postcss = require('gulp-postcss');
+    var precss = require('precss');
+    var autoprefixer = require('autoprefixer');
+    var cssnano = require('cssnano');
+
     del(path.join(dest, name));
     gulp.src(srcs)
         .pipe(concat(name))
         .pipe(less())
+        .pipe(postcss([precss, autoprefixer]))
         .pipe(cssmin())
         .on('error', handlerError)
         .pipe(sourcemaps.write())
