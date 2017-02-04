@@ -8,7 +8,7 @@ export default class SliderLinks extends React.Component {
         let count = items.length;
         let width = 100 / count + '%';
 
-        let itemCollection = this.props.items.map((item,idx)=>{
+        let itemCollection = this.props.items.map((item, idx) => {
             return <a href={item.src} >
                 <span>{item.title}</span>
                 <span>{item.icon}</span>
@@ -17,10 +17,10 @@ export default class SliderLinks extends React.Component {
         })
 
 
-        let itemNodes = itemCollection.map((coll,idc)=>{
+        let itemNodes = itemCollection.map((coll, idc) => {
             let items = [];
             items.push(coll);
-            if(idc%9===0){
+            if (idc % 9 === 0) {
                 return <li>
                     {items}
                 </li>

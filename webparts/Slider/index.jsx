@@ -3,9 +3,9 @@ import SliderFrame from '../../components/slider/sliderFrame.jsx';
 import SliderPics from '../../components/slider/sliderPics.jsx';
 
 
-const IMAGE_DATA = [{ 'src': '../../components/img/image1.jpg', 'alt': 'image1' },
-{ 'src': '../../components/img/image2.jpg', 'alt': 'image2' },
-{ 'src': '../../components/img/image3.jpg', 'alt': 'image3' }];
+const IMAGE_DATA = [{ 'src': '../../components/img/image1.jpg', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' },
+{ 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
+{ 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
 render(
   <SliderFrame
