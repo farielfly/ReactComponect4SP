@@ -6,7 +6,7 @@ import React, { Component } from 'react';
     }
 
     render() {
-       let height =  100 /this.props.children.length+ '%';
+       let height =  100 /this.props.maxCount+ '%';
         
         return <div>
             {
@@ -28,12 +28,12 @@ export default class News extends Component{
     }
 
     render() {
-        let { items, left, speed, nowLocal  } = this.props;
+        let { items, left, speed, nowLocal, maxCount  } = this.props;
         let count = items.length;
-        let width = 100 / items.length + '%';
+        let width = 100 / items.length + '%';         
 
         let itemNodes = this.props.items.map((item, idx) => {  
-            return <li style={{width: width}} ><NewItem children={item.props.children} key={idx}/></li>;
+            return <li style={{width: width}} ><NewItem children={item.props.children} key={idx} maxCount={maxCount}/></li>;
         });
 
         return (

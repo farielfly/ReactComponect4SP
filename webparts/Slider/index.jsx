@@ -27,6 +27,7 @@ function sliderRender() {
   param.dots = true;
   param.arrows = true;
 
+if (document.getElementById('slider')) {
   render(
     <SliderFrame
       itemCount={IMAGE_DATA.length}
@@ -41,6 +42,7 @@ function sliderRender() {
     </SliderFrame>,
     document.getElementById('slider')
   );
+}
 }
 
 global.sliderRender = sliderRender;

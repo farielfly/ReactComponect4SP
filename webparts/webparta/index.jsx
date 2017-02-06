@@ -21,6 +21,7 @@ const LINK_DATA = [[{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa 
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' }]];
 
+if (document.getElementById('acclinks')) {
 render(
     <WebPartFrame
         title={"Frequently Accessed List"}
@@ -43,3 +44,4 @@ render(
     </WebPartFrame>,
     document.getElementById('acclinks')
 );
+}
