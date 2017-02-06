@@ -18,6 +18,12 @@ module.exports = {
             'src': 'webparts/webpartb/index.jsx',
             'style': 'webparts/webpartb/style.less',
             'output': 'dist/webparts'
+        },
+		{
+            'name': 'new',
+            'src': 'webparts/news/index.jsx',
+            'style': 'webparts/news/style.less',
+            'output': 'dist/webparts'
         }
     ],
     webpartStyleoutput: 'dist/webparts',
@@ -38,5 +44,25 @@ module.exports = {
         }
     ],
     layoutStyleoutput: 'dist/layouts',
+    common:[
+         {
+            'name': 'common',
+            'src': '',
+            'style': 'stylelibrary/commonstyle.less',
+            'bundlecss': 'common.css',
+            'output': 'dist/common'
+        },
+    ],
+    commonStyleoutput: 'dist/common',
+    images: [
+        {
+            'src': [],
+            output: 'dist/images'
+        },
+    ],
+    font: {
+        'src': ['stylelibrary/fonts/*'],
+        'output': 'dist/common/fonts'
+    }
 }
 

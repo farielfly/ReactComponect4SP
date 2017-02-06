@@ -5,6 +5,6 @@ var runSequence = require('run-sequence');
 requireDir('./gulp/tasks', { recurse: true });
 
 gulp.task('build-dev', function () {
-    gulp.start('buildjs', 'buildless');
+    gulp.start('buildjs', 'buildless', 'buildfile');
 });
 

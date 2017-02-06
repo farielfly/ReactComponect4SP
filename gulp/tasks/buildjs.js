@@ -43,7 +43,9 @@ gulp.task('buildjs-layout', function () {
 
 function bundleJs(name, srcs, des) {
     del(path.join(des, name));
-    var stream = browserify(srcs)
+    var stream = browserify(srcs, {
+        standalone: 'MyLibrary'
+    })
         .transform(babelify, {
             presets: ['es2015', 'react']
         })

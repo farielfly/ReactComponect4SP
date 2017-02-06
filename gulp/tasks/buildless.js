@@ -14,7 +14,7 @@ function handlerError(err) {
 }
 
 gulp.task('buildless', function () {
-    gulp.start('buildless-wp', 'buildless-layout');
+    gulp.start('buildless-wp', 'buildless-layout', 'buildless-common');
 })
 
 gulp.task('buildless-wp', function () {
@@ -34,6 +34,14 @@ gulp.task('buildless-layout', function () {
         buildless([path.join(config.rootpath, layout.style)],
             layout.bundlecss,
             path.join(config.rootpath, config.layoutStyleoutput, layout.name));
+    }
+})
+
+gulp.task('buildless-common', function(){
+    for (let common of config.common) {
+        buildless([path.join(config.rootpath, common.style)],
+            common.bundlecss,
+            path.join(config.rootpath, config.commonStyleoutput));
     }
 })
 
