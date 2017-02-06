@@ -8,15 +8,16 @@ export default class SliderLinks extends React.Component {
         let count = items.length;
         let width = 100 / count + '%';
 
-        let itemCollection = this.props.items.map((items,idx)=>{
-            if(items.length)
-            {let itemNodes = items.map((item,idn)=>{
-                return <a href={item.src} className="item-link">
-                   <span>{item.title}</span>
-                   <span>{item.icon}</span>
-               </a>
-            })
-           return <li className="slider-link" style={{ width: width }}>{itemNodes}</li>}
+        let itemCollection = this.props.items.map((items, idx) => {
+            if (items.length) {
+                let itemNodes = items.map((item, idn) => {
+                    return <a href={item.src} key={'link' + idn} className="item-link">
+                        <span>{item.title}</span>
+                        <span>{item.icon}</span>
+                    </a>
+                })
+                return <li className="slider-link" style={{ width: width }}>{itemNodes}</li>
+            }
         })
 
 

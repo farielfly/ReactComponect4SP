@@ -14,7 +14,7 @@ export default class SliderPics extends React.Component {
             if (item.title || item.description) {
                 panel = <TitleDescriptionPanel title={item.title} description={item.description} itemhref={item.itemhref} />
             }
-            return <li key={idx} className="acs-slider-pic" style={{ width: width }}>
+            return <li key={'pic' + idx} className="acs-slider-pic" style={{ width: width }}>
                 <a href={item.href}>
                     <img src={item.src} />
                 </a>
