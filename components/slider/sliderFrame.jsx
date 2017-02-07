@@ -1,7 +1,7 @@
 ﻿import SliderDots from './sliderDots.jsx';
 import SliderArrows from './sliderArrows.jsx';
 
-export default class Slider extends React.Component {
+export default class SliderFrame extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -60,7 +60,7 @@ export default class Slider extends React.Component {
     }
 }
 
-Slider.defaultProps = {
+SliderFrame.defaultProps = {
     speed: 1,
     delay: 2,
     pause: true,
@@ -69,4 +69,4 @@ Slider.defaultProps = {
     arrows: true,
     itemCount: 0,
 };
-Slider.autoPlayFlag = null;
+SliderFrame.autoPlayFlag = null;
