@@ -11,18 +11,18 @@ export default class SliderLinks extends React.Component {
         let itemCollection = this.props.items.map((items,idc) =>{
             if(typeof(items.length) === 'number'){
                 let itemNodes = items.map((item,idn) =>{
-                    return <a key={'link'+idn} href={item.itemhref} className="item-link link-bgcolor">
-                       <span>{item.title}</span>
-                       <span>{item.icon}</span>
+                    return <a key={'link'+idn} href={item.itemhref} className="acs-link-bgcolor">
+                       <span className="acs-linkitem-icon"></span>
+                       <span className="acs-linkitem-title">{item.title}</span>
                    </a>
                 });
-                return (<li className="slider-link" key={'coll'+idc} style={{width: width }}>{itemNodes}</li>);
-            }
+                return (<li key={'coll'+idc} style={{width: width }}>{itemNodes}</li>);
+                }
         })
 
 
         return (
-            <ul className="acs-slider-link" style={{
+            <ul style={{
                 left: -100 * nowLocal + "%",
                 transitionDuration: speed + "s",
                 width: count * 100 + "%"

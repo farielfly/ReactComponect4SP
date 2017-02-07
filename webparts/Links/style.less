@@ -1,34 +1,39 @@
-.asc-wpFrame{
-    padding:0 20px;
+.acs-webpartframe{
+    padding:0 10px;
     height:100%;
 
-    .head-part{
-        margin-top:10px;
-        color:#f57d30;
+    .acs-webpartframe-header{
         display:flex;
-        text-decoration:none;
+        margin-top:10px;
         align-items:center;
         justify-content:space-around;
+        text-decoration:none;
 
-        .logoicon{
-            width:36px;
-            height:36px;
+        .acs-header-icon{
+            width:40px;
+            height:40px;
             background-color:#f57d30;
         }
 
-        .headtitle{
-            margin-left:10px;
+        .acs-header-title, .acs-header-more{
+            color:#f57d30;
             text-transform:uppercase;
-            font-weight:800;
+        }
+
+        .acs-header-title{
+            margin-left:10px;
+            font-weight:bold;
+            font-size:16px;
             flex-grow:2;
         }
 
-        .headmore{
+        .acs-header-more{
             text-align:right;
             flex-grow:1;
         }
     }
 }
+
 
 #acclinks {
     .acs-sliderframe {
@@ -38,108 +43,127 @@
         overflow: hidden;
 
         ul {
+            display: flex;
             position: relative;
             left: 0;
+            margin: 15px 0 0 0 !important;
+            padding: 0px !important;
             height: 80%;
             overflow: hidden;
             transition: left 1s;
-            margin: 0px !important;
-            padding: 0px !important;
-        }
-
-        .acs-slider-link{
-            display: flex;
             flex-wrap:nowrap;
 
-            .slider-link{
+            > li{
                 display: flex;
                 height:auto;
                 width:100%;
-			    flex-wrap:wrap;
-			    align-items:stretch;
-			    justify-content:space-between;
+                flex-wrap:wrap;
+                align-items:stretch;
+                justify-content:space-between; 
 
-                 .item-link{
-                    margin:10px 0;
-			        width:30%;
-			        height:44%;
+                > a{
+                    margin:5px 0;
+			        width:130px;
+			        height:90px;
 			        text-decoration:none;
-			        border-radius:10px;
+			        border-radius:4px;
 			        flex-direction:column;
 			        display: flex;
   			        flex-wrap: wrap;
   			        justify-content: space-around;
  			        align-items: center;
-                }
 
-                .link-bgcolor:nth-child(6n+1){
+                     .acs-linkitem-icon{
+                         margin-top:10px;
+                         width:26px;
+                         height:26px;
+                         background-color:#fff;
+                     }
+
+                     .acs-linkitem-title{
+                         margin-bottom:10px;
+                         color:#fff;
+                     }
+                }  
+
+                .acs-link-bgcolor:nth-child(9n+1){
                     background-color:#449933;
                 }
-                .link-bgcolor:nth-child(6n+2){
-                    background-color:#4a66bb;
+                .acs-link-bgcolor:nth-child(9n+2){
+                    background-color:#3466bb;
                 }
-                .link-bgcolor:nth-child(6n+3){
+                .acs-link-bgcolor:nth-child(9n+3){
                     background-color:#f57d30;
                 }
-                .link-bgcolor:nth-child(6n+4){
+                .acs-link-bgcolor:nth-child(9n+4){
                     background-color:#dd3e3e;
                 }
-                .link-bgcolor:nth-child(6n+5){
+                .acs-link-bgcolor:nth-child(9n+5){
                     background-color:#22aa77;
                 }
-               .link-bgcolor:nth-child(6n+6){
-                   background-color:#aa66cc;
+                .acs-link-bgcolor:nth-child(9n+6){
+                    background-color:#aa66cc;
+                }
+                .acs-link-bgcolor:nth-child(9n+7){
+                    background-color:#6699ff;
+                }
+                .acs-link-bgcolor:nth-child(9n+8){
+                    background-color:#eebb00;
+                }
+                .acs-link-bgcolor:nth-child(9n+9){
+                    background-color:#2daacc;
+                }
+                .acs-link-bgcolor:hover{
+                    background-color:rgba(255,255,255,0.05);
                 }
             }
         }
 
-        .acs-slider-arrow {
-            display: inline-block;
-            position: absolute;
-            margin-top: 5px;
-            padding: 5px;
-            color: #000;
-            font-size: 20px;
-            font-weight: bold;
-            z-index: 100;
-            cursor: pointer;
-        }
+       .acs-slider-arrow-wrap{     
+             display: flex;
+             flex-direction: row;  
+             flex-wrap: nowrap;
+             justify-content: center;
 
-        .acs-slider-arrow-right {
-            right: 100px;
-        }
-
-        .acs-slider-arrow-left {
-            left: 100px;
-        }
-
-        .acs-slider-arrow:hover {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .acs-slider-dots {
-            margin-top:10px;
-            width: 100%;
-            text-align: center;
-            z-index: 99;
-
-            .acs-slider-dot {
-                display: inline-block;
-                margin: 6px;
-                width: 16px;
-                height: 16px;
-                background-color: #ccc;
+            .acs-slider-arrow {
+                width: 26px;
+                height: 26px;
+                color: #000;
+                background-color: #999;
+                font-size: 10px;
+                font-weight: bold;
+                z-index: 100;
                 cursor: pointer;
-                border-radius: 20px;
             }
 
-            .acs-slider-dot-selected {
-                background: #f57d30;
+            
+
+            .acs-slider-arrow:hover {
+                background: rgba(0, 0, 0, 0.2);
             }
 
-            /*.acs-slider-dot:hover {
-                border: 3px solid #868686;
-            }*/
-        }
+            .acs-slider-dots {
+                margin-bottom: 15px;
+                height: 26px;
+                text-align: center;
+                z-index: 99;
+               
+
+                .acs-slider-dot {
+                    display: inline-block;
+                    margin: 10px;
+                    width: 9px;
+                    height: 9px;
+                    background-color: #ccc;
+                    cursor: pointer;
+                    border-radius: 20px;
+                }
+
+                .acs-slider-dot-selected {
+                    background: #f57d30;
+                }
+            }
+
+       }
     }
 }

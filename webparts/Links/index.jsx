@@ -1,5 +1,5 @@
 import { render } from 'react-dom';
-import SliderFrame from '../../components/slider/sliderFrame.jsx';
+import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
 
 import SliderLinks from '../../components/slider/sliderLinks.jsx';
 import WebPartFrame from '../../components/Common/webPartFrame.jsx';
@@ -12,6 +12,8 @@ const LINK_DATA = [[{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa 
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
+{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
+{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' }],
 [{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
@@ -19,7 +21,10 @@ const LINK_DATA = [[{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa 
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
 { 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' }]];
+{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
+{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
+{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' }],
+[{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' }]];
 
 if (document.getElementById('acclinks')) {
 render(
