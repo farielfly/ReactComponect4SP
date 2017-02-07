@@ -1,6 +1,6 @@
-import React from 'react';
 import { render } from 'react-dom';
-import SliderFrame from '../../components/slider/sliderFrame.jsx';
+import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
+import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 import SliderItem from '../../components/slider/sliderNews.jsx';
 
 const data = [{'src':'../../components/img/image1.jpg','href':'www.baidu.com','date':'01/03/2017 10:00AM','value':'test'},
@@ -17,6 +17,12 @@ for(var i=0,len=data.length;i<len;i+=maxCount){
 
 if (document.getElementById('news')) {
 render(
+     <WebPartFrame
+        title={"NEWS & ANNOUNCEMENTS"}
+        hasMore={true}
+        link={"wwww.baidu.com"}
+        hasTopLine={true}
+    >
  <SliderFrame
       itemCount={itemNodes.length}
       speed={1.2}
@@ -24,10 +30,11 @@ render(
       pause={true}
       autoplay={false}
       dots={true}
-      arrows={false}
+      arrows={true}
     >
       <SliderItem items={itemNodes} maxCount={maxCount}/>
-    </SliderFrame>,
+    </SliderFrame>
+    </WebPartFrame>,
   document.getElementById('news')
 );
 }
