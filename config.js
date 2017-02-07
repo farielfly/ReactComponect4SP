@@ -2,9 +2,9 @@ module.exports = {
     rootpath: __dirname,
     webparts: [
         {
-            'name': 'webparta',
-            'src': 'webparts/webparta/index.jsx',
-            'style': 'webparts/webparta/style.less',
+            'name': 'links',
+            'src': 'webparts/links/index.jsx',
+            'style': 'webparts/links/style.less',
             'output': 'dist/webparts'
         },
         {
@@ -14,13 +14,13 @@ module.exports = {
             'output': 'dist/webparts'
         },
         {
-            'name': 'webpartb',
-            'src': 'webparts/webpartb/index.jsx',
-            'style': 'webparts/webpartb/style.less',
+            'name': 'Navigation',
+            'src': 'webparts/Navigation/index.jsx',
+            'style': 'webparts/Navigation/style.less',
             'output': 'dist/webparts'
         },
-		{
-            'name': 'new',
+        {
+            'name': 'news',
             'src': 'webparts/news/index.jsx',
             'style': 'webparts/news/style.less',
             'output': 'dist/webparts'
@@ -44,8 +44,8 @@ module.exports = {
         }
     ],
     layoutStyleoutput: 'dist/layouts',
-    common:[
-         {
+    common: [
+        {
             'name': 'common',
             'src': '',
             'style': 'stylelibrary/commonstyle.less',
