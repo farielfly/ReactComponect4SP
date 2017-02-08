@@ -56,8 +56,8 @@ module.exports = {
     commonStyleoutput: 'dist/common',
     images: [
         {
-            'src': [],
-            output: 'dist/images'
+            'src': ['stylelibrary/images/*'],
+            output: 'dist/common/images'
         },
     ],
     font: {

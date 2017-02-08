@@ -6,25 +6,25 @@ import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 
 
 
-const LINK_DATA = [[{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' }],
-[{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' },
-{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' }],
-[{ 'itemhref': 'www.baidu.com', 'icon': 'aaa', 'title': 'aaa description' }]];
+const LINK_DATA = [[{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
+{ 'itemhref': 'www.baidu.com',  'title': 'PRM' },
+{ 'itemhref': 'www.baidu.com',  'title': 'IRMS' },
+{ 'itemhref': 'www.baidu.com', 'title': 'eForms' },
+{ 'itemhref': 'www.baidu.com',  'title': 'I-innovate' },
+{ 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
+{ 'itemhref': 'www.baidu.com', 'title': 'App' },
+{ 'itemhref': 'www.baidu.com', 'title': 'App' },
+{ 'itemhref': 'www.baidu.com', 'title': 'App' }],
+[{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
+{ 'itemhref': 'www.baidu.com',  'title': 'PRM' },
+{ 'itemhref': 'www.baidu.com',  'title': 'IRMS' },
+{ 'itemhref': 'www.baidu.com', 'title': 'eForms' },
+{ 'itemhref': 'www.baidu.com',  'title': 'I-innovate' },
+{ 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
+{ 'itemhref': 'www.baidu.com', 'title': 'App' },
+{ 'itemhref': 'www.baidu.com', 'title': 'App' },
+{ 'itemhref': 'www.baidu.com', 'title': 'App' }],
+[{ 'itemhref': 'www.baidu.com', 'title': 'LMS' }]];
 
 if (document.getElementById('acclinks')) {
 render(

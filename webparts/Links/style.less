@@ -12,7 +12,8 @@
         .acs-header-icon{
             width:40px;
             height:40px;
-            background-color:#f57d30;
+            background-image: url('../../dist/common/images/image.png');
+            background-position: 0 0;
         }
 
         .acs-header-title, .acs-header-more{
@@ -77,7 +78,8 @@
                          margin-top:10px;
                          width:26px;
                          height:26px;
-                         background-color:#fff;
+                         background-image: url('../../dist/common/images/image.png');
+                         background-position: 0 -40px;
                      }
 
                      .acs-linkitem-title{
@@ -115,31 +117,31 @@
                 }
 
                 .acs-link-bgcolor:nth-child(9n+1):hover{
-                    background-color:rgba(68,153,51,0.6);
+                    background-color:rgba(68,153,51,0.5);
                 }
                 .acs-link-bgcolor:nth-child(9n+2):hover{
-                    background-color:rgba(52,102,187,0.6);
+                    background-color:rgba(52,102,187,0.5);
                 }
                 .acs-link-bgcolor:nth-child(9n+3):hover{
-                    background-color:rgba(245,125,48,0.6);
+                    background-color:rgba(245,125,48,0.5);
                 }
                 .acs-link-bgcolor:nth-child(9n+4):hover{
-                    background-color:rgba(221,62,62,0.6);
+                    background-color:rgba(221,62,62,0.5);
                 }
                 .acs-link-bgcolor:nth-child(9n+5):hover{
-                    background-color:rgba(34,170,119,0.6);
+                    background-color:rgba(34,170,119,0.5);
                 }
                 .acs-link-bgcolor:nth-child(9n+6):hover{
-                    background-color:rgba(170,102,204,0.6);
+                    background-color:rgba(170,102,204,0.5);
                 }
                 .acs-link-bgcolor:nth-child(9n+7):hover{
-                    background-color:rgba(102,153,255,0.6);
+                    background-color:rgba(102,153,255,0.5);
                 }
                 .acs-link-bgcolor:nth-child(9n+8):hover{
-                    background-color:rgba(238,187,0,0.6);
+                    background-color:rgba(238,187,0,0.5);
                 }
                 .acs-link-bgcolor:nth-child(9n+9):hover{
-                    background-color:rgba(45,170,204,0.6);
+                    background-color:rgba(45,170,204,0.5);
                 }
             }
         }
@@ -150,18 +152,20 @@
              flex-wrap: nowrap;
              justify-content: center;
 
-            .acs-slider-arrow {
+            .acs-slider-arrow-left, .acs-slider-arrow-right{
                 width: 26px;
                 height: 26px;
-                color: #000;
-                background-color: #999;
-                font-size: 10px;
-                font-weight: bold;
+                background-image: url('../../dist/common/images/image.png');
                 z-index: 100;
                 cursor: pointer;
             }
 
-            
+            .acs-slider-arrow-left{
+                background-position: -26px -40px;
+            }
+            .acs-slider-arrow-right{
+                background-position: -52px -40px;
+            }
 
             .acs-slider-arrow:hover {
                 background: rgba(0, 0, 0, 0.2);

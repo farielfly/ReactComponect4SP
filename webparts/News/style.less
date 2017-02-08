@@ -1,6 +1,7 @@
 #news{
-    width: 600px;
-    height: 450px;
+    width: 730px;
+    height: 430px;
+    padding: 15px 20px 20px 20px;
 
     .acs-sliderframe{        
         position:relative;
@@ -21,45 +22,45 @@
             > li{
                 display:inline-block;
                 height:auto;
+                height: 100%;
                 
                 > div{
                     display: flex;
                     flex-direction: column;
                     list-style: none;
-                    height: 100vh;
+                    height: 100%;
 
                     > div{
                         display: flex;
                         flex-direction:column;
                         flex-wrap: wrap;
                         border-bottom: 1px solid #e3e3e3;
-                        margin-top: 20px;
 
                         &:nth-last-child(1) {
                             border-bottom: 0px;
                         } 
 
                         .newContent{
-
                             &:nth-child(1){
                                 width: 100px;
-                                height: 70px;
+                                height: 110px;
                             }
                             &:nth-child(2){
                                 width: calc(~"100% - 120px");
                                 height: 35px;
-
+                                margin-top:20px;
                             }
                             &:nth-child(3){
                                 width: calc(~"100% - 120px");
-                                height: 50%;
+                                height: 35px;
                                 color: #888;
                                 font-family: 'Frutiger CE 45 Light',
                             }
 
                             img{
                                 width: 100px;
-                                height: 70px;                                  
+                                height: 70px;  
+                                margin-top:20px;                                
                                 border-radius: 4px;                              
                             }
 
