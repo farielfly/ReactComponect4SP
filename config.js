@@ -24,6 +24,12 @@ module.exports = {
             'src': 'webparts/news/index.jsx',
             'style': 'webparts/news/style.less',
             'output': 'dist/webparts'
+        },
+        {
+            'name': 'events',
+            'src': 'webparts/webpartc/index.jsx',
+            'style': 'webparts/webpartc/style.less',
+            'output': 'dist/webparts'
         }
     ],
     webpartStyleoutput: 'dist/webparts',
@@ -40,6 +46,12 @@ module.exports = {
             'src': 'layouts/layoutb/script.jsx',
             'style': 'layouts/layoutb/style.less',
             'bundlecss': 'layoutb.css',
+            'output': 'dist/layouts'
+        }, {
+            'name': 'layoutc',
+            'src': 'webparts/webpartc/index.jsx',
+            'style': 'layouts/layoutc/style.less',
+            'bundlecss': 'layoutc.css',
             'output': 'dist/layouts'
         }
     ],
