@@ -71,7 +71,7 @@ module.exports = {
     common: [
         {
             'name': 'common',
-            'src': '',
+            'src': ['node_modules/react/dist/react.js', 'node_modules/react-dom/dist/react-dom.js', 'node_modules/jquery/dist/jquery.js'],
             'style': 'stylelibrary/commonstyle.less',
             'bundlecss': 'common.css',
             'output': 'dist/common'

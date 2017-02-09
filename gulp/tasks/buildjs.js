@@ -20,7 +20,7 @@ gulp.task('buildjs', function () {
 });
 
 function build() {
-    gulp.start('buildjs-wp', 'buildjs-layout');
+    gulp.start('buildjs-wp', 'buildjs-layout', 'buildjs-common');
 }
 
 gulp.task('buildjs-wp', function () {
@@ -42,8 +42,17 @@ gulp.task('buildjs-layout', function () {
     }
 })
 
+gulp.task('buildjs-common', function(){
+    for (let common of config.common) {
+        if(!debug&&!common.prod_include) continue;
+        bundleJs(common.name + '.js',
+            common.src,
+           debug? path.join(config.rootpath, config.commonStyleoutput):path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+    }
+})
+
 function bundleJs(name, srcs, des) {
-    del(path.join(des, name));
+    del(path.join(des, name),{force:false});
     var stream = browserify(srcs, {
         standalone: 'MyLibrary'
     })

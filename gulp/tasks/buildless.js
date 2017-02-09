@@ -65,7 +65,7 @@ function buildless(srcs, name, dest) {
     var autoprefixer = require('autoprefixer');
     var cssnano = require('cssnano');
 
-    del(path.join(dest, name));
+    del(path.join(dest, name),{force:true});
     gulp.src(srcs)
         .pipe(concat(name))
         .pipe(less())

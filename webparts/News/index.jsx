@@ -2,7 +2,7 @@ import { render } from 'react-dom';
 import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
 import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 import SliderItem from '../../components/slider/sliderNews.jsx';
-
+import $ from 'jquery';
 
 function newsRender(config){
   const data = [{'src':'../../components/img/image1.jpg','href':'www.baidu.com','date':'01/03/2017 10:00AM','value':'test'},

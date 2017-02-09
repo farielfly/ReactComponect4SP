@@ -29,6 +29,7 @@
     "gulp-sourcemaps": "^2.4.0",
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^2.0.0",
+    "jquery": "^3.1.1",
     "minimist": "^1.2.0",
     "precss": "^1.4.0",
     "react": "^15.4.2",
@@ -42,7 +43,8 @@
   },
   "browserify-shim": {
     "react": "global:React",
-    "react-dom": "global:ReactDOM"
+    "react-dom": "global:ReactDOM",
+    "jquery": "global:$"
   },
   "babel": {
     "presets": [

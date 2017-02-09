@@ -1,4 +1,5 @@
 import { render } from 'react-dom';
+import $ from 'jQuery';
 import MenuList from '../../components/navigation/navbarMenu.jsx';
 
 function NavigationRender(config) {

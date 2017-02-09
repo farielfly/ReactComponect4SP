@@ -1,6 +1,7 @@
 import { render } from 'react-dom';
 import SliderFrame from '../../components/slider/sliderFrame.jsx';
 import SliderPics from '../../components/slider/sliderPics.jsx';
+import $ from 'jquery';
 
 function sliderRender(config) {
 
