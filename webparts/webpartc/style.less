@@ -82,19 +82,19 @@
             }
         }
     }
-    .evnet-container 
+    .acs-evnet-container 
     {
         display: flex;
         flex-direction: row;
         margin-bottom: 30px;
-        div.event-timePic
+        div.acs-event-timePic
         {
             width:40px;
             height:40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            .monthAndDate {
+            .acs-monthAndDate {
                 height:31px;
                 width:34px;
                 border-radius: @border_radius;
@@ -107,31 +107,28 @@
                 font-family: "frutiger ce 55 roman";
                 font-size: 9px;
                 text-transform: uppercase;
-                #date{
-                    color: #666;
-                    font-size: 14px;
-                }
-                .date {
+                .acs-date {
+                        color: #666;
+                        font-size: 14px;
                         height:66%;
                         margin-bottom: @margin_common;
                         margin-left: @margin_common;
                         margin-right: @margin_common;
                         background-color: @white;
-                        color: black;
                         display:flex;
                         justify-content: center;
                 }
             }
         }
     }
-    a.more{
+    a.acs-more{
         text-decoration: none;
         color: @title_color;
         font-family: @roman_font;
         font-size: 12px;
         text-transform: uppercase;
     }
-    span.eventTitle{   
+    span.acs-eventTitle{   
         margin-left: 10px;
         font-family: @roman_font;
         font-size: 16px;
@@ -139,58 +136,58 @@
         font-weight: bold;
         margin-right: auto;
     }
-    .corporate-events{
+    .acs-corporate-events{
         margin-bottom: 30px;
         color:@title_color;
         display: flex;
         align-items: center;
         flex-direction: row;
-        span#eventPic{
+        span.acs-eventPic{
                 height:40px;
                 width:40px ;
                 background-image: @background_pic;
                 background-position: -80px 0;
         }
     }
-    div.timeDes {
+    div.acs-timeDes {
         flex-direction: column;
         margin-left: 10px;
         width:66.66667%;
-        div.pic-clock{
+        div.acs-pic-clock{
             color: @detail_Font_color;
             height:18px;
             width: 18px;
             background-image: @background_pic;
             background-position: -90px -66px;
         };
-        div.pic-location{
+        div.acs-pic-location{
             color: @detail_Font_color;
             height:18px;
             width: 18px;
             background-image: @background_pic;
             background-position: -108px -66px;
         };
-        span.event-time,span.event-location{
+        span.acs-event-time,span.acs-event-location{
             color: @detail_Font_color;
             font-family: "frutiger ce 55 roman";
             font-size: 13px;
             text-align: left;
             margin-left: 5px;
         }
-        div.timeDes-title{
+        div.acs-timeDes-title{
             margin-bottom: 12px;
-            a.title{
+            a.acs-title{
                 color:#444;
                 font-family: "frutiger ce 45 light";
                 font-size:14px;
                 text-decoration: underline;
             }
         }
-        div.timeDes-time{
+        div.acs-timeDes-time{
             margin-bottom: 5px;
             display:flex;
         }
-        div.timeDes-location{
+        div.acs-timeDes-location{
             display:flex;
         }
     }

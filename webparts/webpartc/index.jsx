@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
 import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
-import SliderNews from '../../components/slider/slideEvents.jsx';
+import SliderEvents from '../../components/slider/slideEvents.jsx';
 
 function sliderRender() {
     const NewInformation = [{ title: 'AIC Family day', month: 'Jan', day: '03',href:'https://www.baidu.com/s',time:'10:00 AM',location:'Meeting Room A' },
@@ -39,7 +39,7 @@ function sliderRender() {
             dots={true}
             arrows={true}
         >
-            <SliderNews inputDate={IMAGE_DATA} />
+            <SliderEvents inputDate={IMAGE_DATA} />
         </SliderFrame>,
         document.getElementById('eventSlider')
     );
