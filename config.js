@@ -1,58 +1,70 @@
 module.exports = {
     rootpath: __dirname,
+    prod_root: '../APPSAICSolution/Layouts/APPSAICSolution',
     webparts: [
         {
             'name': 'links',
             'src': 'webparts/links/index.jsx',
             'style': 'webparts/links/style.less',
-            'output': 'dist/webparts'
+            'output': 'dist/webparts',
+            'prod_include': true       
         },
         {
             'name': 'slider',
             'src': 'webparts/slider/index.jsx',
             'style': 'webparts/slider/style.less',
-            'output': 'dist/webparts'
+            'output': 'dist/webparts',
+            'prod_include': true
         },
         {
             'name': 'Navigation',
             'src': 'webparts/Navigation/index.jsx',
             'style': 'webparts/Navigation/style.less',
-            'output': 'dist/webparts'
+            'output': 'dist/webparts',
+            'prod_include': true   
         },
         {
             'name': 'news',
             'src': 'webparts/news/index.jsx',
             'style': 'webparts/news/style.less',
-            'output': 'dist/webparts'
+            'output': 'dist/webparts',
+            'prod_include': true    
         },
         {
             'name': 'events',
-            'src': 'webparts/webpartc/index.jsx',
-            'style': 'webparts/webpartc/style.less',
-            'output': 'dist/webparts'
+            'src': 'webparts/events/index.jsx',
+            'style': 'webparts/events/style.less',
+            'output': 'dist/webparts',
+            'prod_include': true   
         }
     ],
     webpartStyleoutput: 'dist/webparts',
+    prod_webpartStyleoutput: 'CSS',
+    prod_webpartScriptoutput: 'JS',
     layouts: [
         {
             'name': 'layouta',
             'src': 'layouts/layouta/script.jsx',
             'style': 'layouts/layouta/style.less',
             'bundlecss': 'layouta.css',
-            'output': 'dist/layouts'
+            'output': 'dist/layouts',
+            'prod_include': false  
         },
         {
             'name': 'layoutb',
             'src': 'layouts/layoutb/script.jsx',
             'style': 'layouts/layoutb/style.less',
             'bundlecss': 'layoutb.css',
-            'output': 'dist/layouts'
-        }, {
-            'name': 'layoutc',
-            'src': 'webparts/webpartc/index.jsx',
-            'style': 'layouts/layoutc/style.less',
-            'bundlecss': 'layoutc.css',
-            'output': 'dist/layouts'
+            'output': 'dist/layouts',
+            'prod_include': false
+        },
+        {
+            'name': 'flexlayout',
+            'src': 'layouts/flexlayout/script.jsx',
+            'style': 'layouts/flexlayout/style.less',
+            'bundlecss': 'flexlayout.css',
+            'output': 'dist/layouts',
+            'prod_include': false
         }
     ],
     layoutStyleoutput: 'dist/layouts',
@@ -69,12 +81,17 @@ module.exports = {
     images: [
         {
             'src': ['stylelibrary/images/*'],
-            output: 'dist/common/images'
+            output: 'dist/common/images',
+            prod_output: 'Images',
+            'prod_include': true 
+
         },
     ],
     font: {
         'src': ['stylelibrary/fonts/*'],
-        'output': 'dist/common/fonts'
+        'output': 'dist/common/fonts',
+        prod_output: 'Fonts',
+        'prod_include': false 
     }
 }
 

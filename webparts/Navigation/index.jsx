@@ -1,9 +1,9 @@
 import { render } from 'react-dom';
 import MenuList from '../../components/navigation/navbarMenu.jsx';
 
-function NavigationRender() {
-
-   let data = [
+function NavigationRender(config) {
+    let param = {};
+    let data = [
     {
         name:"Home",itemHref:"",arr:[],hasChild:false,hasGrandChild:false,
     },
@@ -105,11 +105,32 @@ function NavigationRender() {
     }
     ];
 
-    render(
-        <MenuList data={data}>
-        </MenuList>,
-        document.getElementById('navigation')
-    );
+     function loadData(){
+        $.ajax({
+            type: "post",
+            url: config.url,
+            data: { },
+            datatype: "xml",
+            async: false,
+            success: function(data) {
+                data = data;
+            },
+            error: function(data){
+                
+            }
+        });
+    }
+
+    if(config && !config.debug){
+        loadData();
+    }
+    if (document.getElementById('navigation')) {
+        render(
+            <MenuList data={data}>
+            </MenuList>,
+            document.getElementById('navigation')
+        );
+    }
 }
 
 global.NavigationRender = NavigationRender;

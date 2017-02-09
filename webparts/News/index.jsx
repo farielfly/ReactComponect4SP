@@ -4,7 +4,7 @@ import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 import SliderItem from '../../components/slider/sliderNews.jsx';
 
 
-function newsRender(){
+function newsRender(config){
   const data = [{'src':'../../components/img/image1.jpg','href':'www.baidu.com','date':'01/03/2017 10:00AM','value':'test'},
                     {'src':'../../components/img/image2.jpg','href':'www.baidu.com','date':'01/03/2017 10:00AM','value':'test'},
                     {'src':'../../components/img/image3.jpg','href':'www.baidu.com','date':'01/03/2017 10:00AM','value':'test'},
@@ -13,9 +13,47 @@ function newsRender(){
 
   var maxCount = 3;
   var itemNodes = [];
+  let param = {};
+
+  function loadDate(){
+    $.ajax({
+        type: "post",
+        url: config.url,
+        data: { },
+        datatype: "xml",
+        async: false,
+        success: function(data) {
+            data = data;
+        },
+        error: function(data){
+            
+        }
+    });
+  }
+
+  if(config && !config.debug){
+        loadData();
+        param.speed = config.speed ? config.speed: 1;
+        param.delay = config.delay ? config.delay: 1;
+        param.pause = config.pause ? config.pause: true;
+        param.autoplay = config.autoplay ? config.autoplay : false;
+        param.dots = config.dots ? config.dots : true;
+        param.arrows = config.arrows ? config.arrows : true;
+  }
+  else{    
+    param.url = '';
+    param.speed = 1;
+    param.delay = 1;
+    param.pause = true;
+    param.autoplay = false;
+    param.dots = true;
+    param.arrows = true;
+  }
+
   for(var i=0,len=data.length;i<len;i+=maxCount){
     itemNodes.push(<SliderItem children={data.slice(i,i+maxCount)} count={Math.ceil(data.length/maxCount)} idx={i}/>);
   }
+  
 
   if (document.getElementById('news')) {
   render(
@@ -27,12 +65,12 @@ function newsRender(){
       >
         <SliderFrame
               itemCount={itemNodes.length}
-              speed={1.2}
-              delay={2.1}
-              pause={true}
-              autoplay={false}
-              dots={true}
-              arrows={true}
+              speed={param.speed}
+              delay={param.delay}
+              pause={param.pause}
+              autoplay={param.autoplay}
+              dots={param.dots}
+              arrows={param.arrows}
             >
           <SliderItem items={itemNodes} maxCount={maxCount}/>
         </SliderFrame>

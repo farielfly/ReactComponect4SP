@@ -26,18 +26,19 @@ function build() {
 gulp.task('buildjs-wp', function () {
     let srcs = new Set();
     for (let webpart of config.webparts) {
+        if(!debug&&!webpart.prod_include) continue;
         srcs.add(path.join(config.rootpath, webpart.src));
     }
     bundleJs("webparts.js", Array.from(srcs),
-        path.join(config.rootpath,
-            config.webpartStyleoutput));
+        debug?path.join(config.rootpath,config.webpartStyleoutput):path.join(config.rootpath,config.prod_root,config.prod_webpartScriptoutput));
 })
 
 gulp.task('buildjs-layout', function () {
     for (let layout of config.layouts) {
+        if(!debug&&!layout.prod_include) continue;
         bundleJs(layout.name + '.js',
             [path.join(config.rootpath, layout.src)],
-            path.join(config.rootpath, layout.output, layout.name));
+            debug?path.join(config.rootpath, layout.output, layout.name):path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
     }
 })
 
