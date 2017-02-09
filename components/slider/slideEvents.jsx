@@ -13,7 +13,7 @@ class Events extends React.Component {
         let count = NewInformation.length;
         for (let i = 0; i < count; i++) {
             Events[i] = (
-                <Event title={NewInformation[i].title} month={NewInformation[i].month} day={NewInformation[i].day} href={NewInformation[i].href} time={NewInformation[i].time} location={NewInformation[i].location} />
+                <Event key={'Event' + i} title={NewInformation[i].title} month={NewInformation[i].month} day={NewInformation[i].day} href={NewInformation[i].href} time={NewInformation[i].time} location={NewInformation[i].location} />
             )
         }
         return (
@@ -33,7 +33,7 @@ export default class SliderEvents extends React.Component {
         let SliderEvents = [];
         for (let i = 0; i < count; i++) {
             SliderEvents[i] = (
-                <li className="acs-slider-pic" style={{ width: width }} >
+                <li key={'Events' + i} className="acs-slider-pic" style={{ width: width }} >
                     <Events NewInformation={inputDate[i]} />
                 </li>
             );
