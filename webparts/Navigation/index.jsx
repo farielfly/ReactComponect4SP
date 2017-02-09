@@ -1,69 +1,113 @@
 import { render } from 'react-dom';
-import NavDropDown from '../../components/Navigation/NavDropDown.jsx';
+import MenuList from '../../components/navigation/navbarMenu.jsx';
 
 function NavigationRender() {
 
-    let TestData = [{ 'title': 'HOME', 'level': 'top', 'itemHref': 'http://www.baidu.com', 'items': [] },
+   let data = [
     {
-        'title': 'DIVISION', 'level': 'top', 'itemHref': '',
-        'items': [{ 'title': 'Care Integration', 'level': 'mid', 'itemHref': '', 'items': [] },
-        {
-            'title': 'Care Transition Divsion', 'level': 'mid', 'itemHref': '',
-            'items': [
-                { 'title': 'Action & Ops Support', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-                { 'title': 'Care Transition Office', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-                { 'title': 'CCMS & Comm CAT', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-                { 'title': 'Helpdesk Infosystem and Projects(HP)', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-                { 'title': 'Referral Management Team', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] }
-            ]
-        },
-        { 'title': 'CEO Office', 'level': 'mid', 'itemHref': '', 'items': [] },
-        { 'title': 'Community Mental Health Division', 'level': 'mid', 'itemHref': '', 'items': [] },
-        { 'title': 'Corporate Services & Srategy Division', 'level': 'mid', 'itemHref': '', 'items': [] },
-        { 'title': 'Home & Primary Care Division', 'level': 'mid', 'itemHref': '', 'items': [] },
-        { 'title': 'ILTC IT Enablement Office', 'level': 'mid', 'itemHref': '', 'items': [] },
-        { 'title': 'ILTC Manpower Dev & Resorcing Division', 'level': 'mid', 'itemHref': '', 'items': [] }
-
+        name:"Home",itemHref:"",arr:[],hasChild:false,hasGrandChild:false,
+    },
+    {
+        name : "Division",itemHref:"",hasChild:true,hasGrandChild:true,
+        arr : [ 
+            {
+                name:"Care Integration Division",itemHref:"",
+                arr:[
+                    {name:"Assessment & Co-ordination Services Devt",itemHref:""},
+                    {name:"Care Innovations & Integration Devt",itemHref:""},
+                    {name:"Palliative Care Services Development",itemHref:""}
+                ]
+            },
+            {
+                name:"Care Transition Division",itemHref:"",
+                arr:[
+                    {name:"ACTION & Ops Support",itemHref:""},
+                    {name:"Care Transition Office",itemHref:""},
+                    {name:"CCMS & Comm CAT",itemHref:""},
+                    {name:"Helpdesk Infosystem and Projects (HIP)",itemHref:""},
+                    {name:"Referral Management Teams",itemHref:""}
+                ]
+            },
+            {
+                name:"CEO Office",itemHref:"",arr:[]
+            },
+            {
+                name:"Community Mental Health Division",itemHref:"",
+                arr:[
+                        {name:"Capability Building & Sector Development",itemHref:""},
+                    {name:"Community Engagement & Development",itemHref:""},
+                    {name:"Community Support",itemHref:""},
+                    {name:"Resource Planning",itemHref:""},
+                    {name:"Service Implementation & Development",itemHref:""}
+                ]
+            },
+            {
+                name:"Corporate Services & Strategy Division",itemHref:"",
+                arr:[
+                    {name:"Corporate & Marketing Comm",itemHref:""},
+                    {name:"Corporate Development",itemHref:""},
+                    {name:"Finance",itemHref:""},
+                    {name:"Human Resource",itemHref:""},
+                    {name:"Office Administration",itemHref:""}
+                ]
+            },
+            {
+                name:"Grants Management Office",itemHref:"",
+                arr:[
+                    {name:"Grant Policy & Management",itemHref:""},
+                    {name:"Resource Management",itemHref:""}
+                ]
+            },
+            {
+                name:"Home & Primary Care Division",itemHref:"",
+                arr:[
+                    {name:"Home & Community Care",itemHref:""},
+                    {name:"Primary Care Development",itemHref:""}
+                ]
+            },
+            {
+                name:"ILTC IT Enablement Office",itemHref:"",
+                arr:[
+                    {name:"ILTC IT Development",itemHref:""}
+                ]
+            }
         ]
     },
     {
-        'title': 'APPLICATION', 'level': 'top', 'itemHref': '',
-        'items': [
-            { 'title': 'Create Conversations@PRM', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'Manage My Learning (LMS)', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'Manage Client Relations (IRMS)', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'Submit eForms', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'Check Webmail', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'Budget and Reporting System (B.A.R.S)', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'Vendor Performance Assessment (VPAS)', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'The Grant Information Factbook (VPAS)', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'Manage Leave/Claims (iHR)', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] },
-            { 'title': 'Manage Client Relations (IRMS)', 'level': 'end', 'itemHref': 'www.baidu.com', 'items': [] }
+        name : "APPLICATION",itemHref:"",hasChild:true,hasGrandChild:false,
+        arr : [
+            {name:"FAQ",itemHref:""},
+            {name:"AIC library",itemHref:""},
+            {name:"PRM Conversations",itemHref:""},
+            {name:"iHR",itemHref:""},
+            {name:"LMS",itemHref:""},
+            {name:"PRM",itemHref:""},
+            {name:"Integrated Referral Management System (IRMS)",itemHref:""},
+            {name:"eForms",itemHref:""},
+            {name:"I-innovate",itemHref:""},
+            {name:"Webmail",itemHref:""},
+            {name:"Grants Management System (GMS)",itemHref:""},
+            {name:"Budget and Reporting System (BARS)",itemHref:""}
         ]
     },
-    { 'title': 'CROSS DIVISIONS', 'level': 'top', 'itemHref': '', 'items': [] },
-    { 'title': 'ABOUT AIC', 'level': 'top', 'itemHref': '', 'items': [] }
+    {
+        name : "CROSS-DIVISIONS",itemHref:"",hasChild:false,hasGrandChild:false,arr:[]
+    }
+    ,
+    {
+        name : "ABOUT AIC",itemHref:"",hasChild:true,hasGrandChild:false,
+        arr:[
+            {name:"Org Structure",itemHref:""},
+            {name:"Staff Directory",itemHref:""},
+            {name:"Policies",itemHref:""},
+            {name:"SMM",itemHref:""}
+        ]
+    }
     ];
 
     render(
-        <ul className='acs-navigation-wrap'>
-            {TestData.map((item, index) => {
-                return <NavDropDown key={'navtop' + index} title={item.title} itemHref={item.itemHref}>
-                    {
-                        item.items.map((item, index) => {
-                            return <NavDropDown key={'navmid' + index} title={item.title} itemHref={item.itemHref}>
-                                {
-                                    item.items.map((item, index) => {
-                                        return <NavDropDown key={'navend' + index} title={item.title} itemHref={item.itemHref}>
-                                        </NavDropDown>;
-                                    })
-                                }
-                            </NavDropDown>;
-                        })
-                    }
-                </NavDropDown>;
-            })}
-        </ul>,
+        <MenuList data={data}>
+        </MenuList>,
         document.getElementById('navigation')
     );
 }

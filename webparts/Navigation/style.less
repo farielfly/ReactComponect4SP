@@ -1,0 +1,164 @@
+body{
+    margin:0;
+}
+#navigation{
+    .acs-navbar{
+        display:inline-flex;
+        width:100%;
+        flex-direction:row;
+        flex-wrap:nowrap;
+        justify-content:space-between;
+
+
+        .acs-navbar-item{
+            min-width:110px;
+            height:60px;
+
+            .acs-navbaritem-titlebtn{
+                height:60px;
+                position:relative;
+                z-index:1;
+                background-color:#fff;
+                cursor:pointer;
+
+                .acs-titlebtn-span{
+                    line-height:3;
+                    margin:0 20px;
+                }
+
+                /*.acs-titlebtn-down, .acs-titlebtn-right{
+                    display:inline-block;
+                    background-image:url(../../stylelibrary/image.png);
+                }
+                .acs-titlebtn-down{
+                     width:10px;
+                    height:10px;
+                }
+                .acs-titlebtn-down{
+                    background-position:0 -66px;
+                }
+
+                acs-titlebtn-right{
+                    float:right;
+                    right:20px;
+                    width:18px;
+                    height:18px;
+                }
+                .acs-titlebtn-right{
+                     background-position:-126px -66px;
+                }*/ 
+
+                .acs-titlebtn-up, .acs-titlebtn-down{
+                    display:inline-block;
+                    margin-left:5px;
+                     width:10px;
+                    height:10px;
+                    background-image:url(../../stylelibrary/images/image.png);
+                }
+                .acs-titlebtn-up{
+                    background-position:-18px -66px;
+                }
+                .acs-titlebtn-down{
+                    background-position:0 -66px;
+                }
+
+                
+
+            }
+            /*.acs-navbaritem-titlebtn:hover{
+
+                .acs-titlebtn-down{
+                    background-position:-18px -66px;
+                }
+                .acs-titlebtn-right{
+                     background-position:-144px -66px;
+                } 
+            }*/
+
+            .acs-navbaritem-secondO{
+                min-width:400px;
+                max-width:660px;
+                width:auto !important;
+            }
+
+
+            .acs-navbaritem-second{
+                padding:0;
+                margin:0;
+                position:absolute;
+                top:60px;
+                width:800px;
+                border:1px solid #fb4f14;
+                box-shadow:0 0 6px 0 rgba(193,73,0,0.5);
+
+                    .acs-secondnav-item{
+                        padding:10px 10px 10px 20px;
+                        width:370px;
+                        min-height:20px;
+                        background-color:#ffefe3;
+                        border-bottom:1px solid #fff;
+                        border-left:1px solid #fff;
+                        cursor:pointer;
+
+                        .acs-thirdnav-itemlist{
+                            padding:0;
+                            margin:0;
+                            position:absolute;
+                            left:400px;
+                            top:-1px;
+                        }
+
+                        .acs-titlebtn-right, .acs-titlebtn-rightw{
+                            float:right;
+                            right:20px;
+                            width:18px;
+                            height:18px;
+                            background-image:url(../../stylelibrary/images/image.png);
+                        }
+                        .acs-titlebtn-right{
+                             background-position:-126px -66px;
+                        } 
+                        .acs-titlebtn-rightw{
+                             background-position:-144px -66px;
+                        }
+                    }
+
+                    .acs-secondnav-item:hover{
+                         background-color:#ff8e3b;
+                    }
+            }
+
+            .acs-itemlink{
+                display:flex;
+                margin-top:20px;
+                margin-left:20px;
+                margin-right:25px;
+                min-width: 240px;
+                max-width: 330px;
+                align-items:center;
+                cursor:pointer;
+                font-size: 13px;
+                color:#444;
+
+                .acs-itemlink-icon{
+                    display:inline-block;
+                    margin-right:8px;
+                    width:18px;
+                    height:18px;
+                    background-image:url(../../stylelibrary/images/image.png);
+                    background-position:-162px -66px;
+                }
+            }
+
+            /*.acs-itemlink:nth-last-child(2){
+                margin-bottom:25px;
+            }*/
+
+            .acs-itemlink:last-child{
+                margin-bottom:25px;
+            }
+
+        }
+    }
+
+}
