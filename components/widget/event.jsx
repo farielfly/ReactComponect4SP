@@ -1,9 +1,8 @@
-const React = require('react');
-const ReactDom = require('react-dom');
-import { render } from 'react-dom';
-
-var Event = React.createClass({
-    render: function () {
+export default class Event extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         return (<div className="acs-evnet-container">
             <div className="acs-event-timePic">
                 <div className="acs-monthAndDate">
@@ -28,5 +27,3 @@ var Event = React.createClass({
         </div>);
     }
 }
-);
-module.exports = Event;
