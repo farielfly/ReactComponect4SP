@@ -11,7 +11,7 @@ import React, { Component } from 'react';
         return <div>
             {
                 this.props.children.map((item,idx)=>{
-                    return <div key={idx} style={{height: height}}>
+                    return <div key={'news'+idx} style={{height: height}}>
                     <div className='newContent'><img src={item.src} /></div>
                     <div className='newContent'><a href={item.href}>{item.value}</a></div>
                     <div className='newContent'><span className='icon-clock'></span>{item.date}</div>

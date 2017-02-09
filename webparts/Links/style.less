@@ -1,198 +1,118 @@
-.acs-webpartframe{
-    padding:0 10px;
-    height:100%;
-
-    .acs-webpartframe-header{
-        display:flex;
-        margin-top:10px;
-        align-items:center;
-        justify-content:space-around;
-        text-decoration:none;
-
-        .acs-header-icon{
-            width:40px;
-            height:40px;
-            background-image: url('../../dist/common/images/image.png');
-            background-position: 0 0;
-        }
-
-        .acs-header-title, .acs-header-more{
-            color:#f57d30;
-            text-transform:uppercase;
-        }
-
-        .acs-header-title{
-            margin-left:10px;
-            font-weight:bold;
-            font-size:16px;
-            flex-grow:2;
-        }
-
-        .acs-header-more{
-            text-align:right;
-            flex-grow:1;
-        }
-    }
-}
-
+@import "../../stylelibrary/webpartcommon";
 
 #acclinks {
-    .acs-sliderframe {
-        position: relative;
-        width: 100%;
-        height:100%;
-        overflow: hidden;
-
-        ul {
-            display: flex;
-            position: relative;
-            left: 0;
-            margin: 15px 0 0 0 !important;
-            padding: 0px !important;
-            height: 80%;
-            overflow: hidden;
-            transition: left 1s;
-            flex-wrap:nowrap;
-
-            > li{
-                display: flex;
-                height:auto;
-                width:100%;
-                flex-wrap:wrap;
-                align-items:stretch;
-                justify-content:space-between; 
-
-                > a{
-                    margin:5px 0;
-			        width:130px;
-			        height:90px;
-			        text-decoration:none;
-			        border-radius:4px;
-			        flex-direction:column;
-			        display: flex;
-  			        flex-wrap: wrap;
-  			        justify-content: space-around;
- 			        align-items: center;
-
-                     .acs-linkitem-icon{
-                         margin-top:10px;
-                         width:26px;
-                         height:26px;
-                         background-image: url('../../dist/common/images/image.png');
-                         background-position: 0 -40px;
-                     }
-
-                     .acs-linkitem-title{
-                         margin-bottom:10px;
-                         color:#fff;
-                     }
-                }  
-
-                .acs-link-bgcolor:nth-child(9n+1){
-                    background-color:#449933;
-                }
-                .acs-link-bgcolor:nth-child(9n+2){
-                    background-color:#3466bb;
-                }
-                .acs-link-bgcolor:nth-child(9n+3){
-                    background-color:#f57d30;
-                }
-                .acs-link-bgcolor:nth-child(9n+4){
-                    background-color:#dd3e3e;
-                }
-                .acs-link-bgcolor:nth-child(9n+5){
-                    background-color:#22aa77;
-                }
-                .acs-link-bgcolor:nth-child(9n+6){
-                    background-color:#aa66cc;
-                }
-                .acs-link-bgcolor:nth-child(9n+7){
-                    background-color:#6699ff;
-                }
-                .acs-link-bgcolor:nth-child(9n+8){
-                    background-color:#eebb00;
-                }
-                .acs-link-bgcolor:nth-child(9n+9){
-                    background-color:#2daacc;
-                }
-
-                .acs-link-bgcolor:nth-child(9n+1):hover{
-                    background-color:rgba(68,153,51,0.5);
-                }
-                .acs-link-bgcolor:nth-child(9n+2):hover{
-                    background-color:rgba(52,102,187,0.5);
-                }
-                .acs-link-bgcolor:nth-child(9n+3):hover{
-                    background-color:rgba(245,125,48,0.5);
-                }
-                .acs-link-bgcolor:nth-child(9n+4):hover{
-                    background-color:rgba(221,62,62,0.5);
-                }
-                .acs-link-bgcolor:nth-child(9n+5):hover{
-                    background-color:rgba(34,170,119,0.5);
-                }
-                .acs-link-bgcolor:nth-child(9n+6):hover{
-                    background-color:rgba(170,102,204,0.5);
-                }
-                .acs-link-bgcolor:nth-child(9n+7):hover{
-                    background-color:rgba(102,153,255,0.5);
-                }
-                .acs-link-bgcolor:nth-child(9n+8):hover{
-                    background-color:rgba(238,187,0,0.5);
-                }
-                .acs-link-bgcolor:nth-child(9n+9):hover{
-                    background-color:rgba(45,170,204,0.5);
-                }
+    
+    .acs-webpartframe{
+        .acs-webpartframe-header{
+            .acs-header-icon{
+                background-position: 0 0;
             }
         }
 
-       .acs-slider-arrow-wrap{     
-             display: flex;
-             flex-direction: row;  
-             flex-wrap: nowrap;
-             justify-content: center;
+         .acs-sliderframe {
+            ul {
+                display: flex;
+                position: relative;
+                left: 0;
+                margin: 15px 0 0 0 !important;
+                padding: 0px !important;
+                height: 80%;
+                overflow: hidden;
+                transition: left 1s;
+                flex-wrap:nowrap;
 
-            .acs-slider-arrow-left, .acs-slider-arrow-right{
-                width: 26px;
-                height: 26px;
-                background-image: url('../../dist/common/images/image.png');
-                z-index: 100;
-                cursor: pointer;
-            }
+                > li{
+                    display: flex;
+                    height:auto;
+                    width:100%;
+                    flex-wrap:wrap;
+                    align-items:stretch;
+                    justify-content:space-between; 
 
-            .acs-slider-arrow-left{
-                background-position: -26px -40px;
-            }
-            .acs-slider-arrow-right{
-                background-position: -52px -40px;
-            }
+                    > a{
+                        margin:5px 0;
+                        width:130px;
+                        height:90px;
+                        text-decoration:none;
+                        border-radius:4px;
+                        flex-direction:column;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                        align-items: center;
 
-            .acs-slider-arrow:hover {
-                background: rgba(0, 0, 0, 0.2);
-            }
+                        .acs-linkitem-icon{
+                            margin-top:10px;
+                            width:26px;
+                            height:26px;
+                            background-image: url('../../dist/common/images/image.png');
+                            background-position: 0 -40px;
+                        }
 
-            .acs-slider-dots {
-                margin-bottom: 15px;
-                height: 26px;
-                text-align: center;
-                z-index: 99;
-               
+                        .acs-linkitem-title{
+                            margin-bottom:10px;
+                            color:#fff;
+                        }
+                    }  
 
-                .acs-slider-dot {
-                    display: inline-block;
-                    margin: 10px;
-                    width: 9px;
-                    height: 9px;
-                    background-color: #ccc;
-                    cursor: pointer;
-                    border-radius: 20px;
+                    .acs-link-bgcolor:nth-child(9n+1){
+                        background-color:#449933;
+                    }
+                    .acs-link-bgcolor:nth-child(9n+2){
+                        background-color:#3466bb;
+                    }
+                    .acs-link-bgcolor:nth-child(9n+3){
+                        background-color:#f57d30;
+                    }
+                    .acs-link-bgcolor:nth-child(9n+4){
+                        background-color:#dd3e3e;
+                    }
+                    .acs-link-bgcolor:nth-child(9n+5){
+                        background-color:#22aa77;
+                    }
+                    .acs-link-bgcolor:nth-child(9n+6){
+                        background-color:#aa66cc;
+                    }
+                    .acs-link-bgcolor:nth-child(9n+7){
+                        background-color:#6699ff;
+                    }
+                    .acs-link-bgcolor:nth-child(9n+8){
+                        background-color:#eebb00;
+                    }
+                    .acs-link-bgcolor:nth-child(9n+9){
+                        background-color:#2daacc;
+                    }
+
+                    .acs-link-bgcolor:nth-child(9n+1):hover{
+                        background-color:rgba(68,153,51,0.5);
+                    }
+                    .acs-link-bgcolor:nth-child(9n+2):hover{
+                        background-color:rgba(52,102,187,0.5);
+                    }
+                    .acs-link-bgcolor:nth-child(9n+3):hover{
+                        background-color:rgba(245,125,48,0.5);
+                    }
+                    .acs-link-bgcolor:nth-child(9n+4):hover{
+                        background-color:rgba(221,62,62,0.5);
+                    }
+                    .acs-link-bgcolor:nth-child(9n+5):hover{
+                        background-color:rgba(34,170,119,0.5);
+                    }
+                    .acs-link-bgcolor:nth-child(9n+6):hover{
+                        background-color:rgba(170,102,204,0.5);
+                    }
+                    .acs-link-bgcolor:nth-child(9n+7):hover{
+                        background-color:rgba(102,153,255,0.5);
+                    }
+                    .acs-link-bgcolor:nth-child(9n+8):hover{
+                        background-color:rgba(238,187,0,0.5);
+                    }
+                    .acs-link-bgcolor:nth-child(9n+9):hover{
+                        background-color:rgba(45,170,204,0.5);
+                    }
                 }
-
-                .acs-slider-dot-selected {
-                    background: #f57d30;
-                }
             }
-
-       }
+        }
     }
+   
 }
