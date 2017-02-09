@@ -1,6 +1,6 @@
 module.exports = {
     rootpath: __dirname,
-    prod_root: '../APPSAICSolution/Layouts/APPSAICSolution',
+    prod_root: '../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution',
     webparts: [
         {
             'name': 'links',
