@@ -39,10 +39,10 @@ export default class SliderEvents extends React.Component {
             );
         }
         return (
-            <div>
-                <div className="acs-corporate-events">
-                    <span className="acs-eventPic"></span><span className="acs-eventTitle">CORPORATE EVENTS</span><a href="https://www.baidu.com/s" className="acs-more">MORE</a>
-                </div>
+            //<div>
+                //<div className="acs-corporate-events">
+                //    <span className="acs-eventPic"></span><span className="acs-eventTitle">CORPORATE EVENTS</span><a href="https://www.baidu.com/s" className="acs-more">MORE</a>
+                //</div>
                 <ul style={{
                     left: -100 * nowLocal + "%",
                     transitionDuration: speed + "s",
@@ -50,7 +50,7 @@ export default class SliderEvents extends React.Component {
                 }}>
                     {SliderEvents}
                 </ul>
-            </div>
+            //</div>
         );
     }
 }
