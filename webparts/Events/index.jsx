@@ -2,8 +2,9 @@ import { render } from 'react-dom';
 import $ from 'jquery'
 import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
 import SliderEvents from '../../components/slider/slideEvents.jsx';
+import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 
-function EventRender(config) {
+function eventRender(config) {
     let NewInformation = [{ title: 'AIC Family day', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' },
     { title: 'Anniversary Celebration', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' },
     { title: 'Global Conference on Integrated Care', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' }];
@@ -49,20 +50,27 @@ function EventRender(config) {
 
     if (document.getElementById('eventSlider')) {
         render(
-            <SliderFrame
-                itemCount={IMAGE_DATA.length}
-                speed={1.2}
-                delay={2.1}
-                pause={true}
-                autoplay={false}
-                dots={true}
-                arrows={true}
+            <WebPartFrame
+                title={"Corporate Events"}
+                hasMore={true}
+                link={"wwww.baidu.com"}
+                hasTopLine={true}
+            >
+                <SliderFrame
+                    itemCount={IMAGE_DATA.length}
+                    speed={1.2}
+                    delay={2.1}
+                    pause={true}
+                    autoplay={false}
+                    dots={true}
+                    arrows={true}
                 >
-                <SliderEvents inputDate={IMAGE_DATA} />
-            </SliderFrame>,
+                    <SliderEvents inputDate={IMAGE_DATA} />
+                </SliderFrame>
+            </WebPartFrame>,
             document.getElementById('eventSlider')
         );
     }
 }
 
-global.EventRender = EventRender;
+global.eventRender = eventRender;
