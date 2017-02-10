@@ -11,32 +11,32 @@ function sliderRender(config) {
 
   let param = {};
 
-  function loadDate(){
+  function loadDate() {
     $.ajax({
-        type: "post",
-        url: config.url,
-        data: { },
-        datatype: "xml",
-        async: false,
-        success: function(data) {
-            IMAGE_DATA = data;
-        },
-        error: function(data){
-            
-        }
+      type: "post",
+      url: config.url,
+      data: {},
+      datatype: "xml",
+      async: false,
+      success: function (data) {
+        IMAGE_DATA = data;
+      },
+      error: function (data) {
+
+      }
     });
   }
 
-  if(config && !config.debug){
-        loadData();
-        param.speed = config.speed ? config.speed: 1;
-        param.delay = config.delay ? config.delay: 1;
-        param.pause = config.pause ? config.pause: true;
-        param.autoplay = config.autoplay ? config.autoplay : false;
-        param.dots = config.dots ? config.dots : true;
-        param.arrows = config.arrows ? config.arrows : true;
+  if (config && !config.debug) {
+    loadData();
+    param.speed = config.speed ? config.speed : 1;
+    param.delay = config.delay ? config.delay : 1;
+    param.pause = config.pause ? config.pause : true;
+    param.autoplay = config.autoplay ? config.autoplay : false;
+    param.dots = config.dots ? config.dots : true;
+    param.arrows = config.arrows ? config.arrows : true;
   }
-  else{    
+  else {
     param.url = '';
     param.speed = 1;
     param.delay = 1;
@@ -46,22 +46,22 @@ function sliderRender(config) {
     param.arrows = true;
   }
 
-if (document.getElementById('slider')) {
-  render(
-    <SliderFrame
-      itemCount={IMAGE_DATA.length}
-      speed={param.speed}
-      delay={param.delay}
-      pause={param.pause}
-      autoplay={param.autoplay}
-      dots={param.dots}
-      arrows={param.arrows}
-    >
-      <SliderPics items={IMAGE_DATA} />
-    </SliderFrame>,
-    document.getElementById('slider')
-  );
-}
+  if (document.getElementById('slider')) {
+    render(
+      <SliderFrame
+        itemCount={IMAGE_DATA.length}
+        speed={param.speed}
+        delay={param.delay}
+        pause={param.pause}
+        autoplay={param.autoplay}
+        dots={param.dots}
+        arrows={param.arrows}
+        >
+        <SliderPics items={IMAGE_DATA} />
+      </SliderFrame>,
+      document.getElementById('slider')
+    );
+  }
 }
 
 global.sliderRender = sliderRender;

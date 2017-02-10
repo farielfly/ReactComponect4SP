@@ -4,34 +4,34 @@ import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
 import SliderLinks from '../../components/slider/sliderLinks.jsx';
 import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 
-function linksRender(config){
+function linksRender(config) {
     let LINK_DATA = [];
     let param = {};
 
-    if(config && !config.debug){
+    if (config && !config.debug) {
         loadData();
-        param.speed = config.speed ? config.speed: 1;
-        param.delay = config.delay ? config.delay: 1;
-        param.pause = config.pause ? config.pause: true;
+        param.speed = config.speed ? config.speed : 1;
+        param.delay = config.delay ? config.delay : 1;
+        param.pause = config.pause ? config.pause : true;
         param.autoplay = config.autoplay ? config.autoplay : false;
         param.dots = config.dots ? config.dots : true;
         param.arrows = config.arrows ? config.arrows : true;
     }
-    else{
+    else {
         LINK_DATA = [[{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
-        { 'itemhref': 'www.baidu.com',  'title': 'PRM' },
-        { 'itemhref': 'www.baidu.com',  'title': 'IRMS' },
+        { 'itemhref': 'www.baidu.com', 'title': 'PRM' },
+        { 'itemhref': 'www.baidu.com', 'title': 'IRMS' },
         { 'itemhref': 'www.baidu.com', 'title': 'eForms' },
-        { 'itemhref': 'www.baidu.com',  'title': 'I-innovate' },
+        { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' },
         { 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
         { 'itemhref': 'www.baidu.com', 'title': 'App' },
         { 'itemhref': 'www.baidu.com', 'title': 'App' },
         { 'itemhref': 'www.baidu.com', 'title': 'App' }],
         [{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
-        { 'itemhref': 'www.baidu.com',  'title': 'PRM' },
-        { 'itemhref': 'www.baidu.com',  'title': 'IRMS' },
+        { 'itemhref': 'www.baidu.com', 'title': 'PRM' },
+        { 'itemhref': 'www.baidu.com', 'title': 'IRMS' },
         { 'itemhref': 'www.baidu.com', 'title': 'eForms' },
-        { 'itemhref': 'www.baidu.com',  'title': 'I-innovate' },
+        { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' },
         { 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
         { 'itemhref': 'www.baidu.com', 'title': 'App' },
         { 'itemhref': 'www.baidu.com', 'title': 'App' },
@@ -50,22 +50,21 @@ function linksRender(config){
         };
     }
 
-    function loadData(){
+    function loadData() {
         $.ajax({
             type: "post",
             url: config.url,
-            data: { },
+            data: {},
             datatype: "xml",
             async: false,
-            success: function(data) {
+            success: function (data) {
                 LINK_DATA = data;
             },
-            error: function(data){
-                
+            error: function (data) {
             }
         });
     }
-   
+
     if (document.getElementById('acclinks')) {
         render(
             <WebPartFrame
@@ -73,7 +72,7 @@ function linksRender(config){
                 hasMore={false}
                 link={"wwww.baidu.com"}
                 hasTopLine={false}
-            >
+                >
 
                 <SliderFrame
                     itemCount={LINK_DATA.length}
@@ -83,7 +82,7 @@ function linksRender(config){
                     autoplay={param.deautoplaylay}
                     dots={param.dots}
                     arrows={param.arrows}
-                >
+                    >
                     <SliderLinks items={LINK_DATA} />
                 </SliderFrame>
             </WebPartFrame>,
