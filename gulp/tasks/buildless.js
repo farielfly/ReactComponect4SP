@@ -55,7 +55,7 @@ gulp.task('buildless-common', function(){
         if(!debug&&!common.prod_include) continue;
         buildless([path.join(config.rootpath, common.style)],
             common.bundlecss,
-           debug? path.join(config.rootpath, config.commonStyleoutput):path.join(config.rootpath, config.prod_root, config.prod_commonStyleoutput));
+           debug? path.join(config.rootpath, config.commonStyleoutput):path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
     }
 })
 

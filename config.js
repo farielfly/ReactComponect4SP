@@ -75,6 +75,7 @@ module.exports = {
             'style': 'stylelibrary/commonstyle.less',
             'bundlecss': 'common.css',
             'output': 'dist/common'
+            'prod_include': true
         },
     ],
     commonStyleoutput: 'dist/common',

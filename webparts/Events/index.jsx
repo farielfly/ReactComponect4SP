@@ -3,7 +3,7 @@ import $ from 'jquery'
 import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
 import SliderEvents from '../../components/slider/slideEvents.jsx';
 
-function sliderRender(config) {
+function eventRender(config) {
     let NewInformation = [{ title: 'AIC Family day', month: 'Jan', day: '03',href:'https://www.baidu.com/s',time:'10:00 AM',location:'Meeting Room A' },
     { title: 'Anniversary Celebration', month: 'Jan', day: '03',href:'https://www.baidu.com/s',time:'10:00 AM',location:'Meeting Room A' },
     { title: 'Global Conference on Integrated Care', month: 'Jan', day: '03',href:'https://www.baidu.com/s',time:'10:00 AM',location:'Meeting Room A' }];
@@ -65,4 +65,4 @@ function sliderRender(config) {
     }
 }
 
-global.sliderRender = sliderRender;
+global.sliderRender = eventRender;
