@@ -26,33 +26,33 @@ function build() {
 gulp.task('buildjs-wp', function () {
     let srcs = new Set();
     for (let webpart of config.webparts) {
-        if(!debug&&!webpart.prod_include) continue;
+        if (!debug && !webpart.prod_include) continue;
         srcs.add(path.join(config.rootpath, webpart.src));
     }
     bundleJs("webparts.js", Array.from(srcs),
-        debug?path.join(config.rootpath,config.webpartStyleoutput):path.join(config.rootpath,config.prod_root,config.prod_webpartScriptoutput));
+        debug ? path.join(config.rootpath, config.webpartStyleoutput) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
 })
 
 gulp.task('buildjs-layout', function () {
     for (let layout of config.layouts) {
-        if(!debug&&!layout.prod_include) continue;
+        if (!debug && !layout.prod_include) continue;
         bundleJs(layout.name + '.js',
             [path.join(config.rootpath, layout.src)],
-            debug?path.join(config.rootpath, layout.output, layout.name):path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+            debug ? path.join(config.rootpath, layout.output, layout.name) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
     }
 })
 
-gulp.task('buildjs-common', function(){
+gulp.task('buildjs-common', function () {
     for (let common of config.common) {
-        if(!debug&&!common.prod_include) continue;
+        if (!debug && !common.prod_include) continue;
         bundleJs(common.name + '.js',
             common.src,
-           debug? path.join(config.rootpath, config.commonStyleoutput):path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+            debug ? path.join(config.rootpath, config.commonStyleoutput) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
     }
 })
 
 function bundleJs(name, srcs, des) {
-    del(path.join(des, name),{force:false});
+    del(path.join(des, name), { force: true });
     var stream = browserify(srcs, {
         standalone: 'MyLibrary'
     })
