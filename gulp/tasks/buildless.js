@@ -7,6 +7,7 @@ import source from 'vinyl-source-stream';
 import config from '../../config.js';
 import concat from 'gulp-concat';
 import del from 'del';
+import replace from 'gulp-replace';
 
 function handlerError(err) {
     console.log(err.toString());
@@ -81,6 +82,7 @@ function buildless(srcs, name, dest) {
     del(path.join(dest, name), { force: true });
     gulp.src(srcs)
         .pipe(concat(name))
+        .pipe(replace('../../dist/common/images/', debug? '../../dist/common/images/':config.replacepath))
         .pipe(less())
         .pipe(postcss([precss, autoprefixer]))
         .pipe(cssmin())

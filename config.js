@@ -3,7 +3,7 @@ module.exports = {
     prod_webpartStyleoutput: 'CSS',
     prod_webpartScriptoutput: 'JS',
     prod_root: '../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution',
-
+    replacepath: '/_layouts/15/APPSAICSolution/Images/',
     webparts: [
         {
             'name': 'webparts',
