@@ -64,7 +64,7 @@ function eventRender(config) {
         loadData();
     }
     else{
-        renderUI(data, param){
+        renderUI(data, param)
     }    
 }
 
