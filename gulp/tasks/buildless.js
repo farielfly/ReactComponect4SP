@@ -46,7 +46,7 @@ gulp.task('buildless-layout', function () {
         if (!debug && !layout.prod_include) continue;
         buildless([path.join(config.rootpath, layout.style)],
             layout.bundlecss,
-            debug ? path.join(config.rootpath, config.layoutStyleoutput, layout.name) : path.join(config.rootpath, config.prod_root, layout.output));
+            debug ? path.join(config.rootpath, config.layoutStyleoutput, layout.name) : path.join(config.rootpath, config.prod_root, layout.prod_webpartStyleoutput));
     }
 })
 
