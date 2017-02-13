@@ -16,13 +16,13 @@ export default class NavbarTitleBtn extends React.Component{
             this.props.open?(this.props.isSecond?"#fff":"#fb4f14"):"#000"):"#000"
         ;
         return(
-             <div className={this.props.classname} style={{"borderTop":borderShow? "1px solid #fb4f14" : "none",
+             <a href={this.props.ItemHref} className={this.props.classname} style={{"borderTop":borderShow? "1px solid #fb4f14" : "none",
                  "borderLeft":borderShow ? "1px solid #fb4f14" : "none",
                  "borderRight":borderShow ? "1px solid #fb4f14" : "none",
                  height:borderShow?"65px":heightChange}
              }>
                      <span className="acs-titlebtn-span" style={{color:fontColor}}>{this.props.name}<span className={icon}></span></span>
-             </div>
+             </a>
             )
     }
 }

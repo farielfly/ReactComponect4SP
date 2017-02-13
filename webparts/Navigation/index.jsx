@@ -6,105 +6,115 @@ function NavigationRender(config) {
     let param = {};
     let data = [
         {
-            name: "Home", itemHref: "", arr: [], hasChild: false, hasGrandChild: false,
+            Title: "Home", itemHref: "", Items: [], hasChild: false, hasGrandChild: false,
         },
         {
-            name: "Division", itemHref: "", hasChild: true, hasGrandChild: true,
-            arr: [
+            Title: "Division", itemHref: "", hasChild: true, hasGrandChild: true,
+            Items: [
                 {
-                    name: "Care Integration Division", itemHref: "",
-                    arr: [
-                        { name: "Assessment & Co-ordination Services Devt", itemHref: "" },
-                        { name: "Care Innovations & Integration Devt", itemHref: "" },
-                        { name: "Palliative Care Services Development", itemHref: "" }
+                    Title: "Care Integration Division", itemHref: "",
+                    Items: [
+                        { Title: "Assessment & Co-ordination Services Devt", itemHref: "" },
+                        { Title: "Care Innovations & Integration Devt", itemHref: "" },
+                        { Title: "Palliative Care Services Development", itemHref: "" }
                     ]
                 },
                 {
-                    name: "Care Transition Division", itemHref: "",
-                    arr: [
-                        { name: "ACTION & Ops Support", itemHref: "" },
-                        { name: "Care Transition Office", itemHref: "" },
-                        { name: "CCMS & Comm CAT", itemHref: "" },
-                        { name: "Helpdesk Infosystem and Projects (HIP)", itemHref: "" },
-                        { name: "Referral Management Teams", itemHref: "" }
+                    Title: "Care Transition Division", itemHref: "",
+                    Items: [
+                        { Title: "ACTION & Ops Support", itemHref: "" },
+                        { Title: "Care Transition Office", itemHref: "" },
+                        { Title: "CCMS & Comm CAT", itemHref: "" },
+                        { Title: "Helpdesk Infosystem and Projects (HIP)", itemHref: "" },
+                        { Title: "Referral Management Teams", itemHref: "" }
                     ]
                 },
                 {
-                    name: "CEO Office", itemHref: "", arr: []
+                    Title: "CEO Office", itemHref: "", Items: []
                 },
                 {
-                    name: "Community Mental Health Division", itemHref: "",
-                    arr: [
-                        { name: "Capability Building & Sector Development", itemHref: "" },
-                        { name: "Community Engagement & Development", itemHref: "" },
-                        { name: "Community Support", itemHref: "" },
-                        { name: "Resource Planning", itemHref: "" },
-                        { name: "Service Implementation & Development", itemHref: "" }
+                    Title: "Community Mental Health Division", itemHref: "",
+                    Items: [
+                        { Title: "Capability Building & Sector Development", itemHref: "" },
+                        { Title: "Community Engagement & Development", itemHref: "" },
+                        { Title: "Community Support", itemHref: "" },
+                        { Title: "Resource Planning", itemHref: "" },
+                        { Title: "Service Implementation & Development", itemHref: "" }
                     ]
                 },
                 {
-                    name: "Corporate Services & Strategy Division", itemHref: "",
-                    arr: [
-                        { name: "Corporate & Marketing Comm", itemHref: "" },
-                        { name: "Corporate Development", itemHref: "" },
-                        { name: "Finance", itemHref: "" },
-                        { name: "Human Resource", itemHref: "" },
-                        { name: "Office Administration", itemHref: "" }
+                    Title: "Corporate Services & Strategy Division", itemHref: "",
+                    Items: [
+                        { Title: "Corporate & Marketing Comm", itemHref: "" },
+                        { Title: "Corporate Development", itemHref: "" },
+                        { Title: "Finance", itemHref: "" },
+                        { Title: "Human Resource", itemHref: "" },
+                        { Title: "Office Administration", itemHref: "" }
                     ]
                 },
                 {
-                    name: "Grants Management Office", itemHref: "",
-                    arr: [
-                        { name: "Grant Policy & Management", itemHref: "" },
-                        { name: "Resource Management", itemHref: "" }
+                    Title: "Grants Management Office", itemHref: "",
+                    Items: [
+                        { Title: "Grant Policy & Management", itemHref: "" },
+                        { Title: "Resource Management", itemHref: "" }
                     ]
                 },
                 {
-                    name: "Home & Primary Care Division", itemHref: "",
-                    arr: [
-                        { name: "Home & Community Care", itemHref: "" },
-                        { name: "Primary Care Development", itemHref: "" }
+                    Title: "Home & Primary Care Division", itemHref: "",
+                    Items: [
+                        { Title: "Home & Community Care", itemHref: "" },
+                        { Title: "Primary Care Development", itemHref: "" }
                     ]
                 },
                 {
-                    name: "ILTC IT Enablement Office", itemHref: "",
-                    arr: [
-                        { name: "ILTC IT Development", itemHref: "" }
+                    Title: "ILTC IT Enablement Office", itemHref: "",
+                    Items: [
+                        { Title: "ILTC IT Development", itemHref: "" }
                     ]
                 }
             ]
         },
         {
-            name: "APPLICATION", itemHref: "", hasChild: true, hasGrandChild: false,
-            arr: [
-                { name: "FAQ", itemHref: "" },
-                { name: "AIC library", itemHref: "" },
-                { name: "PRM Conversations", itemHref: "" },
-                { name: "iHR", itemHref: "" },
-                { name: "LMS", itemHref: "" },
-                { name: "PRM", itemHref: "" },
-                { name: "Integrated Referral Management System (IRMS)", itemHref: "" },
-                { name: "eForms", itemHref: "" },
-                { name: "I-innovate", itemHref: "" },
-                { name: "Webmail", itemHref: "" },
-                { name: "Grants Management System (GMS)", itemHref: "" },
-                { name: "Budget and Reporting System (BARS)", itemHref: "" }
+            Title: "APPLICATION", itemHref: "", hasChild: true, hasGrandChild: false,
+            Items: [
+                { Title: "FAQ", itemHref: "" },
+                { Title: "AIC library", itemHref: "" },
+                { Title: "PRM Conversations", itemHref: "" },
+                { Title: "iHR", itemHref: "" },
+                { Title: "LMS", itemHref: "" },
+                { Title: "PRM", itemHref: "" },
+                { Title: "Integrated Referral Management System (IRMS)", itemHref: "" },
+                { Title: "eForms", itemHref: "" },
+                { Title: "I-innovate", itemHref: "" },
+                { Title: "Webmail", itemHref: "" },
+                { Title: "Grants Management System (GMS)", itemHref: "" },
+                { Title: "Budget and Reporting System (BARS)", itemHref: "" }
             ]
         },
         {
-            name: "CROSS-DIVISIONS", itemHref: "", hasChild: false, hasGrandChild: false, arr: []
+            Title: "CROSS-DIVISIONS", itemHref: "", hasChild: false, hasGrandChild: false, Items: []
         }
         ,
         {
-            name: "ABOUT AIC", itemHref: "", hasChild: true, hasGrandChild: false,
-            arr: [
-                { name: "Org Structure", itemHref: "" },
-                { name: "Staff Directory", itemHref: "" },
-                { name: "Policies", itemHref: "" },
-                { name: "SMM", itemHref: "" }
+            Title: "ABOUT AIC", itemHref: "", hasChild: true, hasGrandChild: false,
+            Items: [
+                { Title: "Org Structure", itemHref: "" },
+                { Title: "Staff Directory", itemHref: "" },
+                { Title: "Policies", itemHref: "" },
+                { Title: "SMM", itemHref: "" }
             ]
         }
     ];
+
+    function renderUI(data){
+         if (document.getElementById('navigation')) {
+            render(
+                <MenuList data={data}>
+                </MenuList>,
+                document.getElementById('navigation')
+            );
+        }    
+    }
 
     function loadData() {
         $.ajax({
@@ -113,7 +123,7 @@ function NavigationRender(config) {
             headers: { "accept": "application/json;odata=verbose" },
             async: false,
             success: function (data) {
-                data = data;
+               renderUI(data);
             },
             error: function (data) {
 
@@ -121,16 +131,13 @@ function NavigationRender(config) {
         });
     }
 
-    if (config && !config.debug) {
-        loadData();
-    }
-    if (document.getElementById('navigation')) {
-        render(
-            <MenuList data={data}>
-            </MenuList>,
-            document.getElementById('navigation')
-        );
-    }
+     if (config && !config.debug) {
+            loadData();
+        }
+        else {
+            renderUI(data);
+        }
+   
 }
 
 global.NavigationRender = NavigationRender;
