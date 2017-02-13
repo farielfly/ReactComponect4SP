@@ -3,6 +3,7 @@ module.exports = {
     prod_webpartStyleoutput: 'CSS',
     prod_webpartScriptoutput: 'JS',
     prod_root: '../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution',
+
     webparts: [
         {
             'name': 'webparts',
@@ -14,13 +15,6 @@ module.exports = {
                 'webparts/slider/style.less',
                 'webparts/news/style.less',
                 'webparts/events/style.less'],
-            'output': 'dist/webparts',
-            'prod_include': true
-        },
-        {
-            'name': 'Navigation',
-            'src': ['webparts/Navigation/index.jsx'],
-            'style': ['webparts/Navigation/style.less'],
             'output': 'dist/webparts',
             'prod_include': true
         }
@@ -60,8 +54,8 @@ module.exports = {
     webglobal: [
         {
             'name': 'aicGlobal',
-            'src': [],
-            'style': ['stylelibrary/commonstyle.less'],
+            'src': ['webparts/Navigation/index.jsx'],
+            'style': ['stylelibrary/commonstyle.less', 'webparts/Navigation/style.less'],
             'output': 'dist/webglobal',
             'prod_include': true
         },
