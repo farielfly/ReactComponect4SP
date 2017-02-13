@@ -6,16 +6,59 @@ import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 
 function linksRender(config) {
     let LINK_DATA = [];
-    let param = {};
+    let param = {url : '',speed : 1,delay : 2,pause : true,autoplay : false,dots : true,arrows : true};
+
+    function renderUI(data, param){
+        if (document.getElementById('acclinks')) {
+            render(
+                <WebPartFrame
+                    title={"Frequently Accessed List"}
+                    hasMore={false}
+                    link={"wwww.baidu.com"}
+                    hasTopLine={false}
+                    >
+
+                    <SliderFrame
+                        itemCount={data.length}
+                        speed={param.speed}
+                        delay={param.delay}
+                        pause={param.pause}
+                        autoplay={param.deautoplaylay}
+                        dots={param.dots}
+                        arrows={param.arrows}
+                        >
+                        <SliderLinks items={data} />
+                    </SliderFrame>
+                </WebPartFrame>,
+                document.getElementById('acclinks')
+            );
+        }   
+    }
+
+    function loadData(param) {
+        $.ajax({
+            type: "post",
+            url: config.url,
+            data: {},
+            datatype: "xml",
+            config: param,
+            async: false,
+            success: function (data) {
+                renderUI(data, this.config);
+            },
+            error: function (data) {
+            }
+        });
+    }
 
     if (config && !config.debug) {
-        loadData();
         param.speed = config.speed ? config.speed : 1;
         param.delay = config.delay ? config.delay : 1;
         param.pause = config.pause ? config.pause : true;
         param.autoplay = config.autoplay ? config.autoplay : false;
         param.dots = config.dots ? config.dots : true;
         param.arrows = config.arrows ? config.arrows : true;
+        loadData(param);
     }
     else {
         LINK_DATA = [[{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
@@ -50,45 +93,9 @@ function linksRender(config) {
         };
     }
 
-    function loadData() {
-        $.ajax({
-            type: "post",
-            url: config.url,
-            data: {},
-            datatype: "xml",
-            async: false,
-            success: function (data) {
-                LINK_DATA = data;
-            },
-            error: function (data) {
-            }
-        });
-    }
+    
 
-    if (document.getElementById('acclinks')) {
-        render(
-            <WebPartFrame
-                title={"Frequently Accessed List"}
-                hasMore={false}
-                link={"wwww.baidu.com"}
-                hasTopLine={false}
-                >
-
-                <SliderFrame
-                    itemCount={LINK_DATA.length}
-                    speed={param.speed}
-                    delay={param.delay}
-                    pause={param.pause}
-                    autoplay={param.deautoplaylay}
-                    dots={param.dots}
-                    arrows={param.arrows}
-                    >
-                    <SliderLinks items={LINK_DATA} />
-                </SliderFrame>
-            </WebPartFrame>,
-            document.getElementById('acclinks')
-        );
-    }
+    
 }
 
 global.linksRender = linksRender;

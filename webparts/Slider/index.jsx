@@ -9,17 +9,37 @@ function sliderRender(config) {
   { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
   { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
-  let param = {};
+  let param = {url : '',speed : 1,delay : 1,pause : true,autoplay : false,dots : true,arrows : true};
 
-  function loadDate() {
+  function renderUI(data, param){
+    if (document.getElementById('slider')) {
+      render(
+        <SliderFrame
+          itemCount={data.length}
+          speed={param.speed}
+          delay={param.delay}
+          pause={param.pause}
+          autoplay={param.autoplay}
+          dots={param.dots}
+          arrows={param.arrows}
+          >
+          <SliderPics items={data} />
+        </SliderFrame>,
+        document.getElementById('slider')
+      );
+    }   
+  }
+
+  function loadDate(param) {
     $.ajax({
       type: "post",
       url: config.url,
       data: {},
+      config: param,
       datatype: "xml",
       async: false,
       success: function (data) {
-        IMAGE_DATA = data;
+        renderUI(data, this.config);
       },
       error: function (data) {
 
@@ -28,39 +48,16 @@ function sliderRender(config) {
   }
 
   if (config && !config.debug) {
-    loadData();
     param.speed = config.speed ? config.speed : 1;
     param.delay = config.delay ? config.delay : 1;
     param.pause = config.pause ? config.pause : true;
     param.autoplay = config.autoplay ? config.autoplay : false;
     param.dots = config.dots ? config.dots : true;
     param.arrows = config.arrows ? config.arrows : true;
+    loadData(param);
   }
   else {
-    param.url = '';
-    param.speed = 1;
-    param.delay = 1;
-    param.pause = true;
-    param.autoplay = false;
-    param.dots = true;
-    param.arrows = true;
-  }
-
-  if (document.getElementById('slider')) {
-    render(
-      <SliderFrame
-        itemCount={IMAGE_DATA.length}
-        speed={param.speed}
-        delay={param.delay}
-        pause={param.pause}
-        autoplay={param.autoplay}
-        dots={param.dots}
-        arrows={param.arrows}
-        >
-        <SliderPics items={IMAGE_DATA} />
-      </SliderFrame>,
-      document.getElementById('slider')
-    );
+    renderUI(data, param);
   }
 }
 
