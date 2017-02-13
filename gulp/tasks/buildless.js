@@ -82,8 +82,8 @@ function buildless(srcs, name, dest) {
     del(path.join(dest, name), { force: true });
     gulp.src(srcs)
         .pipe(concat(name))
-        .pipe(replace('../../dist/common/images/', debug? '../../dist/common/images/':config.replacepath))
         .pipe(less())
+        .pipe(replace('../../dist/common/images/', debug? '../../dist/common/images/':config.replacepath))
         .pipe(postcss([precss, autoprefixer]))
         .pipe(cssmin())
         .on('error', handlerError)
