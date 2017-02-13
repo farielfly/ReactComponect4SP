@@ -32,83 +32,131 @@
     content: "\e9cb";
 }
 
-#titleAreaRow {
-    display: block;
+body {
+    overflow: auto;
 
-    & > div:nth-child(2).ms-breadcrumb-box {
-        display: none;
-    }
+    #s4-workspace {
+        margin: auto;
+        width: 1180px !important;
+        overflow: hidden;
 
-    & > div:nth-child(3) {
-        display: block;
-        float: right;
+        #s4-bodyContainer {
+            #s4-titlerow {
+                #titleAreaBox {
+                    display: block;
 
-        #SearchBox {
-            .ms-srch-sb-border {
-                height: 30px;
-                border-radius: 15px;
+                    #titleAreaRow {
+                        display: block;
 
-                input {
-                    height: 28px;
+                        > div:nth-child(2).ms-breadcrumb-box {
+                            display: none;
+                        }
+
+                        > div:nth-child(3) {
+                            #DeltaPlaceHolderSearchArea {
+                                margin-top: 10px;
+                            }
+
+                            #SearchBox {
+                                .ms-srch-sb-border {
+                                    height: 30px;
+                                    border-radius: 15px;
+
+                                    input {
+                                        height: 28px;
+                                    }
+                                }
+
+                                .ms-srch-sb-borderFocused {
+                                    border-radius: 15px;
+                                }
+
+                                .ms-srch-sb-searchLink {
+                                    margin-top: 4px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
-            .ms-srch-sb-borderFocused {
-                border-radius: 15px;
-            }
+            #contentRow {
+                padding-top: 0;
 
-            .ms-srch-sb-searchLink {
-                margin-top: 4px;
+                #contentBox {
+                    margin: 0;
+                }
             }
         }
     }
-}
 
-#s4-workspace {
-    position: absolute;
+    #suiteBar {
+        display: block;
+        height: 34px;
+        background-color: #ffbc35;
 
-    .acs-footer {
-        clear: both;
-        background: #3b3d48;
-        width: 100%;
-        min-width: 100%;
-        height: 90px;
-        line-height: 90px;
-        position: absolute;
-        bottom: 0px;
-        display: flex;
-        justify-content: space-between;
+        #suiteBarLeft{
+		    display:none;
+	    }
 
-        & > .acs-link > a {
-            font-family: 'Frutiger CE 55 Roman';
-            font-size: 13px;
-            color: #aaa;
-            text-transform: uppercase;
-            margin-left: 40px;
+        #suiteBarRight {
+            display: block;
+            float: right;
+            padding-right: 0;
+            margin-right: 20px;
+
+            #DeltaSuiteBarRight {
+                background-color: #ffbc35;
+            }
         }
+    }
 
-        .acs-search {
-            margin-right: 40px;
-            position: relative;
+    #s4-workspace {
+        position: relative;
 
-            input {
-                width: 220px;
-                height: 30px;
-                line-height: 30px;
-                background: rgba(255,255,255,0.1);
-                color: #aaa;
+        .acs-footer {
+            clear: both;
+            background: #3b3d48;
+            width: 100%;
+            min-width: 100%;
+            height: 90px;
+            line-height: 90px;
+            position: absolute;
+            bottom: 0px;
+            display: flex;
+            justify-content: space-between;
+
+            & > .acs-link > a {
                 font-family: 'Frutiger CE 55 Roman';
                 font-size: 13px;
-                padding-left: 10px;
-                border-radius: 15px;
+                color: #aaa;
+                text-transform: uppercase;
+                margin-left: 40px;
             }
 
-            a {
-                width: 20px;
-                height: 20px;
-                position: absolute;
-                top: 35px;
-                right: 10px;
+            .acs-search {
+                margin-right: 40px;
+                position: relative;
+
+                input {
+                    width: 220px;
+                    height: 30px;
+                    line-height: 30px;
+                    background: rgba(255,255,255,0.1);
+                    color: #aaa;
+                    font-family: 'Frutiger CE 55 Roman';
+                    font-size: 13px;
+                    padding-left: 10px;
+                    border-radius: 15px;
+                }
+
+                a {
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 35px;
+                    right: 10px;
+                }
             }
         }
     }
