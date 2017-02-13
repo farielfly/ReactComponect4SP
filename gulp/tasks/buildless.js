@@ -25,37 +25,50 @@ gulp.task('buildless', function () {
 });
 
 function build() {
-    gulp.start('buildless-wp', 'buildless-layout', 'buildless-common');
+    gulp.start('buildless-wp', 'buildless-layout', 'buildless-webglobal');
 }
 
 gulp.task('buildless-wp', function () {
     let srcs = new Set();
-
     for (let webpart of config.webparts) {
-        if (!debug && !webpart.prod_include) continue;
-        srcs.add(path.join(config.rootpath, webpart.style));
+        if (!debug && !webpart.prod_include) {
+            continue;
+        }
+        for (let style of webpart.style) {
+            srcs.add(path.join(config.rootpath, style));
+        }
+        buildless(Array.from(srcs), webpart.name + '.css',
+            debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
     }
-    buildless(Array.from(srcs),
-        'webparts.css',
-        debug ? path.join(config.rootpath, config.webpartStyleoutput) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
 })
 
 
 gulp.task('buildless-layout', function () {
+    let srcs = new Set();
     for (let layout of config.layouts) {
-        if (!debug && !layout.prod_include) continue;
-        buildless([path.join(config.rootpath, layout.style)],
-            layout.bundlecss,
-            debug ? path.join(config.rootpath, config.layoutStyleoutput, layout.name) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
+        if (!debug && !layout.prod_include) {
+            continue;
+        }
+        for (let style of layout.style) {
+            srcs.add(path.join(config.rootpath, style));
+        }
+        buildless(Array.from(srcs), layout.name + '.css',
+            debug ? path.join(config.rootpath, layout.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
     }
+
 })
 
-gulp.task('buildless-common', function () {
-    for (let common of config.common) {
-        if (!debug && !common.prod_include) continue;
-        buildless([path.join(config.rootpath, common.style)],
-            common.bundlecss,
-            debug ? path.join(config.rootpath, config.commonStyleoutput) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
+gulp.task('buildless-webglobal', function () {
+    let srcs = new Set();
+    for (let web of config.webglobal) {
+        if (!debug && !web.prod_include) {
+            continue;
+        }
+        for (let style of web.style) {
+            srcs.add(path.join(config.rootpath, style));
+        }
+        buildless(Array.from(srcs), web.name + '.css',
+            debug ? path.join(config.rootpath, web.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
     }
 })
 

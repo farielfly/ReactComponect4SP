@@ -6,6 +6,7 @@ import shim from 'browserify-shim';
 import path from 'path';
 import uglify from 'gulp-uglify';
 import config from '../../config.js';
+import rename from 'gulp-rename';
 import del from 'del';
 
 let debug = false;
@@ -20,39 +21,73 @@ gulp.task('buildjs', function () {
 });
 
 function build() {
-    gulp.start('buildjs-wp', 'buildjs-layout', 'buildjs-common');
+    gulp.start('buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary');
 }
 
 gulp.task('buildjs-wp', function () {
     let srcs = new Set();
     for (let webpart of config.webparts) {
-        if (!debug && !webpart.prod_include) continue;
-        srcs.add(path.join(config.rootpath, webpart.src));
+        if (!debug && !webpart.prod_include) {
+            continue;
+        }
+        for (let src of webpart.src) {
+            srcs.add(path.join(config.rootpath, src));
+        }
+        bundleJs(webpart.name + '.js', Array.from(srcs),
+            debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
     }
-    bundleJs("webparts.js", Array.from(srcs),
-        debug ? path.join(config.rootpath, config.webpartStyleoutput) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
 })
 
 gulp.task('buildjs-layout', function () {
+    let srcs = new Set();
     for (let layout of config.layouts) {
-        if (!debug && !layout.prod_include) continue;
-        bundleJs(layout.name + '.js',
-            [path.join(config.rootpath, layout.src)],
-            debug ? path.join(config.rootpath, layout.output, layout.name) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+        if (!debug && !layout.prod_include) {
+            continue;
+        }
+        for (let src of layout.src) {
+            srcs.add(path.join(config.rootpath, src));
+        }
+        bundleJs(layout.name + '.js', Array.from(srcs),
+            debug ? path.join(config.rootpath, layout.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+    }
+
+})
+
+gulp.task('buildjs-webglobal', function () {
+    let srcs = new Set();
+    for (let web of config.webglobal) {
+        if (!debug && !web.prod_include) {
+            continue;
+        }
+        for (let src of web.src) {
+            srcs.add(path.join(config.rootpath, src));
+        }
+        bundleJs(web.name + '.js', Array.from(srcs),
+            debug ? path.join(config.rootpath, web.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
     }
 })
 
-gulp.task('buildjs-common', function () {
-    for (let common of config.common) {
-        if (!debug && !common.prod_include) continue;
-        bundleJs(common.name + '.js',
-            common.src,
-            debug ? path.join(config.rootpath, config.commonStyleoutput) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+gulp.task('copy-jslibrary', function () {
+    for (let library of config.jslibrary) {
+        if (!debug && !library.prod_include) {
+            continue;
+        }
+        CopyJs(library.name + '.js',
+            path.join(config.rootpath, library.src),
+            debug ? path.join(config.rootpath, library.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
     }
 })
 
-function bundleJs(name, srcs, des) {
-    del(path.join(des, name), { force: true });
+function CopyJs(name, src, dest) {
+    del(src, { force: true });
+    gulp.src(src)
+        .pipe(gulp.dest(path.dirname(src)))
+        .pipe(rename(name))
+        .pipe(gulp.dest(path.join(dest)));
+}
+
+function bundleJs(name, srcs, dest) {
+    del(path.join(dest, name), { force: true });
     var stream = browserify(srcs, {
         standalone: 'MyLibrary'
     })
@@ -62,10 +97,7 @@ function bundleJs(name, srcs, des) {
         .transform(shim)
         .bundle()
         .pipe(source(name))
-    //if (!debug) {
-    //    stream.pipe(uglify());
-    //}
-    stream.pipe(gulp.dest(des));
+    stream.pipe(gulp.dest(dest));
 }
 
 function handleError(err) {

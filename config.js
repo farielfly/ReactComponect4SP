@@ -1,98 +1,87 @@
 module.exports = {
     rootpath: __dirname,
+    prod_webpartStyleoutput: 'CSS',
+    prod_webpartScriptoutput: 'JS',
     prod_root: '../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution',
     webparts: [
         {
-            'name': 'links',
-            'src': 'webparts/links/index.jsx',
-            'style': 'webparts/links/style.less',
-            'output': 'dist/webparts',
-            'prod_include': true       
-        },
-        {
-            'name': 'slider',
-            'src': 'webparts/slider/index.jsx',
-            'style': 'webparts/slider/style.less',
+            'name': 'webparts',
+            'src': ['webparts/links/index.jsx',
+                'webparts/slider/index.jsx',
+                'webparts/news/index.jsx',
+                'webparts/events/index.jsx'],
+            'style': ['webparts/links/style.less',
+                'webparts/slider/style.less',
+                'webparts/news/style.less',
+                'webparts/events/style.less'],
             'output': 'dist/webparts',
             'prod_include': true
         },
         {
             'name': 'Navigation',
-            'src': 'webparts/Navigation/index.jsx',
-            'style': 'webparts/Navigation/style.less',
+            'src': ['webparts/Navigation/index.jsx'],
+            'style': ['webparts/Navigation/style.less'],
             'output': 'dist/webparts',
-            'prod_include': true   
-        },
-        {
-            'name': 'news',
-            'src': 'webparts/news/index.jsx',
-            'style': 'webparts/news/style.less',
-            'output': 'dist/webparts',
-            'prod_include': true    
-        },
-        {
-            'name': 'events',
-            'src': 'webparts/events/index.jsx',
-            'style': 'webparts/events/style.less',
-            'output': 'dist/webparts',
-            'prod_include': true   
+            'prod_include': true
         }
     ],
-    webpartStyleoutput: 'dist/webparts',
-    prod_webpartStyleoutput: 'CSS',
-    prod_webpartScriptoutput: 'JS',
+
     layouts: [
         {
-            'name': 'layouta',
-            'src': 'layouts/layouta/script.jsx',
-            'style': 'layouts/layouta/style.less',
-            'bundlecss': 'layouta.css',
-            'output': 'dist/layouts',
-            'prod_include': false  
-        },
-        {
-            'name': 'layoutb',
-            'src': 'layouts/layoutb/script.jsx',
-            'style': 'layouts/layoutb/style.less',
-            'bundlecss': 'layoutb.css',
-            'output': 'dist/layouts',
-            'prod_include': false
-        },
-        {
             'name': 'flexlayout',
-            'src': 'layouts/flexlayout/script.jsx',
-            'style': 'layouts/flexlayout/style.less',
-            'bundlecss': 'layout.css',
+            'src': ['layouts/flexlayout/script.jsx'],
+            'style': ['layouts/flexlayout/style.less'],
             'output': 'dist/layouts',
             'prod_include': true
         }
     ],
-    layoutStyleoutput: 'dist/layouts',
-    common: [
+
+    jslibrary: [
         {
-            'name': 'common',
-            'src': ['node_modules/react/dist/react.js', 'node_modules/react-dom/dist/react-dom.js', 'node_modules/jquery/dist/jquery.js'],
-            'style': 'stylelibrary/commonstyle.less',
-            'bundlecss': 'common.css',
-            'output': 'dist/common',
-            'prod_include': true 
+            'name': 'react.min',
+            'src': 'node_modules/react/dist/react.min.js',
+            'output': 'dist/jslibrary',
+            'prod_include': true
+        },
+        {
+            'name': 'react-dom.min',
+            'src': 'node_modules/react-dom/dist/react-dom.min.js',
+            'output': 'dist/jslibrary',
+            'prod_include': true
+        },
+        {
+            'name': 'jquery.min',
+            'src': 'node_modules/jquery/dist/jquery.min.js',
+            'output': 'dist/jslibrary',
+            'prod_include': true
         },
     ],
-    commonStyleoutput: 'dist/common',
+
+    webglobal: [
+        {
+            'name': 'aicGlobal',
+            'src': [],
+            'style': ['stylelibrary/commonstyle.less'],
+            'output': 'dist/webglobal',
+            'prod_include': true
+        },
+    ],
+
     images: [
         {
             'src': ['stylelibrary/images/*'],
             output: 'dist/common/images',
             prod_output: 'Images',
-            'prod_include': true 
+            'prod_include': true
 
         },
     ],
+
     font: {
         'src': ['stylelibrary/fonts/*'],
         'output': 'dist/common/fonts',
         prod_output: 'Fonts',
-        'prod_include': false 
+        'prod_include': false
     }
 }
 
