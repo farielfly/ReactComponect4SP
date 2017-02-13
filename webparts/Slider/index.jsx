@@ -30,7 +30,7 @@ function sliderRender(config) {
     }   
   }
 
-  function loadDate(param) {
+  function loadData(param) {
     $.ajax({
       type: "post",
       url: config.url,
