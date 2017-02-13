@@ -15,7 +15,7 @@ export default class SliderPics extends React.Component {
                 panel = <TitleDescriptionPanel title={item.title} description={item.description} itemhref={item.itemhref} />
             }
             return <li key={'pic' + idx} className="acs-slider-pic" style={{ width: width }}>
-                <a href={item.href}>
+                <a href={item.itemhref}>
                     <img src={item.src} />
                 </a>
                 {panel}

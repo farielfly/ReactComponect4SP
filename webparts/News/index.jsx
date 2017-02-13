@@ -12,12 +12,14 @@ function newsRender(config) {
   { 'src': '../../components/img/image1.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }];
 
   var maxCount = 3;
-  let param = {url : '',speed : 1,delay : 1,pause : true,autoplay : false,dots : true,arrows : true};
+  let param = { url: '', speed: 1, delay: 1, pause: true, autoplay: false, dots: true, arrows: true };
 
-  function renderUI(data, param){
+  function renderUI(data, param) {
     var itemNodes = [];
-    for (var i = 0, len = data.length; i < len; i += maxCount) {
-      itemNodes.push(<SliderItem children={data.slice(i, i + maxCount)} count={Math.ceil(data.length/maxCount)} idx={i} />);
+
+    for (let i = 0, len = data.length; i < len; i += maxCount) {
+      let cell = Math.ceil(data.length / maxCount);
+      itemNodes.push(<SliderItem children={data.slice(i, i + maxCount)} count={cell} idx={i} />);
     }
 
     if (document.getElementById('news')) {
@@ -70,11 +72,11 @@ function newsRender(config) {
     param.dots = config.dots ? config.dots : true;
     param.arrows = config.arrows ? config.arrows : true;
     loadData(param);
-    
+
   }
   else {
     renderUI(data, param);
-  }  
+  }
 }
 
 global.newsRender = newsRender;
