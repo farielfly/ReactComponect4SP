@@ -108,10 +108,9 @@ function NavigationRender(config) {
 
     function loadData() {
         $.ajax({
-            type: "post",
+            type: "GET",
             url: config.url,
-            data: {},
-            datatype: "xml",
+            headers: { "accept": "application/json;odata=verbose" },
             async: false,
             success: function (data) {
                 data = data;
