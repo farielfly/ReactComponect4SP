@@ -106,14 +106,14 @@ function NavigationRender(config) {
         }
     ];
 
-    function renderUI(data){
-         if (document.getElementById('navigation')) {
+    function renderUI(data) {
+        if (document.getElementById('navigation')) {
             render(
                 <MenuList data={data}>
                 </MenuList>,
                 document.getElementById('navigation')
             );
-        }    
+        }
     }
 
     function loadData() {
@@ -122,22 +122,32 @@ function NavigationRender(config) {
             url: config.url,
             headers: { "accept": "application/json;odata=verbose" },
             async: false,
-            success: function (data) {
-               renderUI(data);
+            success: function(dataInput) {
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    data.push({
+                        'src': dataInput.d.results[i].ACSImageUrl,
+                        'alt': dataInput.d.results[i].Title,
+                        'itemhref': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
+                        'title': dataInput.d.results[i].Title,
+                        'description': dataInput.d.results[i].ACSDescription
+                    })
+                }
+                renderUI(data);
             },
-            error: function (data) {
+            error: function(data) {
 
             }
         });
     }
 
-     if (config && !config.debug) {
-            loadData();
-        }
-        else {
-            renderUI(data);
-        }
-   
+    if (config && !config.debug) {
+        loadData();
+    }
+    else {
+        renderUI(data);
+    }
+
 }
 
 global.NavigationRender = NavigationRender;

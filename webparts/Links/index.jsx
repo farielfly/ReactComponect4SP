@@ -6,33 +6,33 @@ import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 
 function linksRender(config) {
     let data = [[{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
-        { 'itemhref': 'www.baidu.com', 'title': 'PRM' },
-        { 'itemhref': 'www.baidu.com', 'title': 'IRMS' },
-        { 'itemhref': 'www.baidu.com', 'title': 'eForms' },
-        { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' },
-        { 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
-        { 'itemhref': 'www.baidu.com', 'title': 'App' },
-        { 'itemhref': 'www.baidu.com', 'title': 'App' },
-        { 'itemhref': 'www.baidu.com', 'title': 'App' }],
-        [{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
-        { 'itemhref': 'www.baidu.com', 'title': 'PRM' },
-        { 'itemhref': 'www.baidu.com', 'title': 'IRMS' },
-        { 'itemhref': 'www.baidu.com', 'title': 'eForms' },
-        { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' },
-        { 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
-        { 'itemhref': 'www.baidu.com', 'title': 'App' },
-        { 'itemhref': 'www.baidu.com', 'title': 'App' },
-        { 'itemhref': 'www.baidu.com', 'title': 'App' }],
-        [{ 'itemhref': 'www.baidu.com', 'title': 'LMS' }]];
-    let param = {url : '',speed : 1,delay : 2,pause : true,autoplay : false,dots : true,arrows : true};
+    { 'itemhref': 'www.baidu.com', 'title': 'PRM' },
+    { 'itemhref': 'www.baidu.com', 'title': 'IRMS' },
+    { 'itemhref': 'www.baidu.com', 'title': 'eForms' },
+    { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' },
+    { 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
+    { 'itemhref': 'www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'www.baidu.com', 'title': 'App' }],
+    [{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
+    { 'itemhref': 'www.baidu.com', 'title': 'PRM' },
+    { 'itemhref': 'www.baidu.com', 'title': 'IRMS' },
+    { 'itemhref': 'www.baidu.com', 'title': 'eForms' },
+    { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' },
+    { 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
+    { 'itemhref': 'www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'www.baidu.com', 'title': 'App' }],
+    [{ 'itemhref': 'www.baidu.com', 'title': 'LMS' }]];
+    let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '' };
 
-    function renderUI(data, param){
+    function renderUI(data, param) {
         if (document.getElementById('acclinks')) {
             render(
                 <WebPartFrame
-                    title={"Frequently Accessed List"}
+                    title={param.webparttitle}
                     hasMore={false}
-                    link={"wwww.baidu.com"}
+                    link={param.listurl}
                     hasTopLine={false}
                     >
 
@@ -50,18 +50,29 @@ function linksRender(config) {
                 </WebPartFrame>,
                 document.getElementById('acclinks')
             );
-        }   
+        }
     }
 
     function loadData(param) {
         $.ajax({
-            type: "post",
+            type: "GET",
             url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose",
+            },
+            dataType: "json",
             data: {},
-            datatype: "xml",
             config: param,
             async: false,
-            success: function (data) {
+            success: function (dataInput) {
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    data.push({
+                        'src': dataInput.d.results[i].ACSUrl.Url,
+                        'itemhref': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID
+                    })
+                }
                 renderUI(data, this.config);
             },
             error: function (data) {
@@ -76,15 +87,17 @@ function linksRender(config) {
         param.autoplay = config.autoplay ? config.autoplay : false;
         param.dots = config.dots ? config.dots : true;
         param.arrows = config.arrows ? config.arrows : true;
+        param.listurl = config.listurl ? config.listurl : '';
+        param.webparttitle = config.webparttitle ? config.webparttitle : '';
         loadData(param);
     }
     else {
         renderUI(data, param);
     }
 
-    
 
-    
+
+
 }
 
 global.linksRender = linksRender;
