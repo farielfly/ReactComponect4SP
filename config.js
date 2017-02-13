@@ -62,9 +62,9 @@ module.exports = {
             'name': 'flexlayout',
             'src': 'layouts/flexlayout/script.jsx',
             'style': 'layouts/flexlayout/style.less',
-            'bundlecss': 'flexlayout.css',
+            'bundlecss': 'layout.css',
             'output': 'dist/layouts',
-            'prod_include': false
+            'prod_include': true
         }
     ],
     layoutStyleoutput: 'dist/layouts',

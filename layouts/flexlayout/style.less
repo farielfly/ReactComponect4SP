@@ -10,3 +10,106 @@
         margin-bottom: 20px;
     }
 }
+
+/*Sharepint*/
+body{
+    #s4-ribbonrow{
+	    display:none;
+    }
+
+    #s4-workspace{
+	    margin: auto;
+	    width: 1180px !important;
+	    height:unset !important;
+	    overflow: hidden;
+	
+	    #s4-bodyContainer{
+		    #s4-titlerow{
+			    #titleAreaBox{	
+				    display:block;
+				    #titleAreaRow{
+					    display:block;
+
+					    > div:nth-child(2).ms-breadcrumb-box{
+						    display:none;
+					    }
+					
+					    > div:nth-child(3){
+						    display:block;
+						    float:right;
+						
+						    #SearchBox{
+							    .ms-srch-sb-border{
+								    height:30px;
+								    border-radius:15px;
+								
+								    input{
+									    height:28px;
+								    }
+							    }
+							
+							    .ms-srch-sb-borderFocused{
+								    border-radius:15px;
+							    }
+							
+							    .ms-srch-sb-searchLink{
+								    margin-top:4px;
+							    }
+						    }
+					    }
+				    }
+			    }
+		    }
+		
+		    #contentRow{
+			    padding-top:0;
+		
+			    #sideNavBox{
+				    display:none;
+			    }
+			
+			    #contentBox{
+				    margin:0;
+
+				    #slider{
+					    width:730px;
+					    height:350px;
+				    }
+
+				    #news{
+					    width:730px;
+					    height:430px;
+				    }
+			    }
+		    }
+	    }
+    }
+
+    #suiteBar{
+	    display:block;
+	    height:34px;
+	    background-color:#ffbc35;
+	
+	
+	    #suiteBarLeft{
+		    display:none;
+	    }
+	
+	    #suiteBarRight{
+		    display:block;
+		    float:right;
+		    padding-right:0;
+		    margin-right:20px;
+		
+		    #DeltaSuiteBarRight{
+			    background-color:#ffbc35;
+			
+			    #suiteBarButtons{
+				    display:none;
+			    }
+		    }
+	    }
+	
+    }
+}
+
