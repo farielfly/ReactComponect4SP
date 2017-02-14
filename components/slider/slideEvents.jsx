@@ -9,13 +9,9 @@ class Events extends React.Component {
     }
     render() {
         let Events = [];
-        let {NewInformation} = this.props.NewInformation;
-        let count = NewInformation.length;
-        for (let i = 0; i < count; i++) {
-            Events[i] = (
-                <Event key={'Event' + i} title={NewInformation[i].title} month={NewInformation[i].month} day={NewInformation[i].day} href={NewInformation[i].href} time={NewInformation[i].time} location={NewInformation[i].location} />
-            )
-        }
+        this.props.NewInformation.map((item, ind) => {
+            Events.push(<Event key={'Event' + ind} title={item.title} month={item.month} day={item.day} href={item.href} time={item.time} location={item.location} />);
+        });
         return (
             <div>{Events}</div>
         );
@@ -31,25 +27,26 @@ export default class SliderEvents extends React.Component {
         let width = 100 / count + '%';
 
         let SliderEvents = [];
-        for (let i = 0; i < count; i++) {
-            SliderEvents[i] = (
-                <li key={'Events' + i} className="acs-slider-pic" style={{ width: width }} >
-                    <Events NewInformation={inputDate[i]} />
+        inputDate.map((item, ind) => {
+            SliderEvents.push(
+                <li key={'Events' + ind} className="acs-slider-pic" style={{ width: width }} >
+                    <Events NewInformation={item} />
                 </li>
-            );
-        }
+            )
+        });
+
         return (
             //<div>
-                //<div className="acs-corporate-events">
-                //    <span className="acs-eventPic"></span><span className="acs-eventTitle">CORPORATE EVENTS</span><a href="https://www.baidu.com/s" className="acs-more">MORE</a>
-                //</div>
-                <ul style={{
-                    left: -100 * nowLocal + "%",
-                    transitionDuration: speed + "s",
-                    width: count * 100 + "%"
-                }}>
-                    {SliderEvents}
-                </ul>
+            //<div className="acs-corporate-events">
+            //    <span className="acs-eventPic"></span><span className="acs-eventTitle">CORPORATE EVENTS</span><a href="https://www.baidu.com/s" className="acs-more">MORE</a>
+            //</div>
+            <ul style={{
+                left: -100 * nowLocal + "%",
+                transitionDuration: speed + "s",
+                width: count * 100 + "%"
+            }}>
+                {SliderEvents}
+            </ul>
             //</div>
         );
     }
