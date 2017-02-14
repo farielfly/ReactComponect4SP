@@ -14,7 +14,7 @@ class NewItem extends Component {
                     return <div key={'news' + idx} style={{ height: height }}>
                         <div className='newContent'><img src={item.src} /></div>
                         <div className='newContent'><a href={item.href}>{item.value}</a></div>
-                        <div className='newContent'><span className='icon-clock'></span>{item.date}</div>
+                        <div className='newContent'><span className='acs-pic-clock'></span>{item.date}</div>
                     </div>
                 })
             }
