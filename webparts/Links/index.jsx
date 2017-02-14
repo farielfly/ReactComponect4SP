@@ -27,6 +27,11 @@ function linksRender(config) {
     let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '' };
 
     function renderUI(data, param) {
+        var itemNodes = [];
+        let maxCount = 9;
+        for (let i = 0, len = data.length; i < len; i += maxCount) {
+            itemNodes.push(data.slice(i, i + maxCount));
+        }
         if (document.getElementById('acclinks')) {
             render(
                 <WebPartFrame
@@ -37,7 +42,7 @@ function linksRender(config) {
                     >
 
                     <SliderFrame
-                        itemCount={data.length}
+                        itemCount={itemNodes.length}
                         speed={param.speed}
                         delay={param.delay}
                         pause={param.pause}
@@ -45,7 +50,7 @@ function linksRender(config) {
                         dots={param.dots}
                         arrows={param.arrows}
                         >
-                        <SliderLinks items={data} />
+                        <SliderLinks items={itemNodes} />
                     </SliderFrame>
                 </WebPartFrame>,
                 document.getElementById('acclinks')
@@ -69,8 +74,9 @@ function linksRender(config) {
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
                     data.push({
-                        'src': dataInput.d.results[i].ACSUrl.Url,
-                        'itemhref': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID
+                        'src': dataInput.d.results[i].ACSUrl ? dataInput.d.results[i].ACSUrl.Url : '',
+                        'itemhref': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
+                        'title': dataInput.d.results[i].Title
                     })
                 }
                 renderUI(data, this.config);
