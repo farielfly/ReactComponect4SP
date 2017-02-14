@@ -1,3 +1,7 @@
+@bgimage_path: url('../../dist/common/images/image.png');
+@common_font_roman: 'frutiger ce 55 roman';
+@common_font_light: 'frutiger ce 55 roman';
+
 .acs-webpartframe{
     height:100%;
 
@@ -10,7 +14,7 @@
         .acs-header-icon{
             width:40px;
             height:40px;
-            background-image: url('../../dist/common/images/image.png');
+            background-image: @bgimage_path;
         }
 
         .acs-header-title, .acs-header-more{
@@ -46,7 +50,7 @@
             .acs-slider-arrow-left, .acs-slider-arrow-right{
                 width: 26px;
                 height: 26px;
-                background-image: url('../../dist/common/images/image.png');
+                background-image: @bgimage_path;
                 z-index: 100;
                 cursor: pointer;
             }
@@ -87,3 +91,4 @@
        }
     }
 }
+

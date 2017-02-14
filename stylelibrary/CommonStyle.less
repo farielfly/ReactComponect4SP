@@ -52,25 +52,33 @@ body {
                             }
 
                             #SearchBox {
-                                .ms-srch-sb-border {
+                                & > div{
                                     height: 30px;
                                     border-radius: 15px;
-
                                     input {
                                         height: 28px;
+                                        padding-left: 15px;
+                                        font-family: '';
+                                        font-size: 13px;
+                                        color: 'Frutiger CE 55 Roman';
                                     }
+                                }
+                                
+                                .ms-srch-sb-border {
+                                    
                                 }
 
                                 .ms-srch-sb-borderFocused {
-                                    height: 30px;
-                                    border-radius: 15px;
-                                    input {
-                                        height: 28px;
-                                    }
                                 }
 
                                 .ms-srch-sb-searchLink {
                                     margin-top: 4px;
+                                    margin-right: 10px;
+                                    background-image: url(/_layouts/15/APPSAICSolution/Images/image.png);
+                                    background-position: -72px -66px;
+                                    img {
+                                        display: none;
+                                    }
                                 }
                             }
                         }
@@ -95,6 +103,7 @@ body {
             float: right;
             padding-right: 0;
             margin-right: 20px;
+            margin-top: 2px;
 
             #DeltaSuiteBarRight {
                 background-color: #ffbc35;
@@ -139,6 +148,7 @@ body {
                     font-size: 13px;
                     padding-left: 10px;
                     border-radius: 15px;
+                    outline: none;
                 }
 
                 a {
@@ -149,6 +159,10 @@ body {
                     right: 10px;
                 }
             }
+        }
+
+        .acs-footer-relative{
+            position: relative;
         }
     }
 }
