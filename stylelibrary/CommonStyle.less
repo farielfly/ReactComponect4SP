@@ -33,15 +33,8 @@
 }
 
 body {
-    overflow: auto;
-
     #s4-workspace {
-        margin: auto;
-        overflow: hidden;
-
         #s4-bodyContainer {
-            margin: auto;
-            width: 1180px !important;
             #s4-titlerow {
                 #titleAreaBox {
                     display: block;
@@ -71,6 +64,9 @@ body {
                                 .ms-srch-sb-borderFocused {
                                     height: 30px;
                                     border-radius: 15px;
+                                    input {
+                                        height: 28px;
+                                    }
                                 }
 
                                 .ms-srch-sb-searchLink {
@@ -82,13 +78,6 @@ body {
                 }
             }
 
-            #contentRow {
-                padding-top: 0;
-
-                #contentBox {
-                    margin: 0;
-                }
-            }
         }
     }
 

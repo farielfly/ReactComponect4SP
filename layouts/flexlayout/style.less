@@ -11,13 +11,7 @@
     }
 }
 		
-#sideNavBox{
-	display:none;
-}
 
-#s4-workspace{
-	height:unset !important;
-}
 
 .ms-webpart-zone{
 	display: flex;
@@ -29,10 +23,34 @@
 			margin: 0 40px 0 0;
 		}
 	}
-
-
 }	
 
+body {
+    overflow: auto;
+
+    #s4-workspace {
+        margin: auto;
+        overflow: hidden;
+        height:unset !important;
+
+        #s4-bodyContainer {
+            margin: auto;
+            width: 1180px !important;
+
+            #contentRow {
+                padding-top: 0;
+
+                #sideNavBox{
+                    display:none;
+                }
+
+                #contentBox {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
 	
 
 
