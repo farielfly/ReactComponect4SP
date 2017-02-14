@@ -21,7 +21,6 @@ body{
             min-width:110px;
             height:60px;
             z-index: 998;
-            text-align: center;
 
             .acs-navbaritem-titlebtn{
                 height:60px;
@@ -29,33 +28,13 @@ body{
                 z-index:999;
                 background-color:#fff;
                 cursor:pointer;
+                text-align: center;
+
 
                 .acs-titlebtn-span{
                     line-height:4;
                     margin:0 20px;
                 }
-
-                /*.acs-titlebtn-down, .acs-titlebtn-right{
-                    display:inline-block;
-                    background-image:url(../../stylelibrary/image.png);
-                }
-                .acs-titlebtn-down{
-                     width:10px;
-                    height:10px;
-                }
-                .acs-titlebtn-down{
-                    background-position:0 -66px;
-                }
-
-                acs-titlebtn-right{
-                    float:right;
-                    right:20px;
-                    width:18px;
-                    height:18px;
-                }
-                .acs-titlebtn-right{
-                     background-position:-126px -66px;
-                }*/ 
 
                 .acs-titlebtn-up, .acs-titlebtn-down{
                     display:inline-block;
@@ -70,19 +49,22 @@ body{
                 .acs-titlebtn-down{
                     background-position:0 -66px;
                 }
-
-                
-
             }
-            /*.acs-navbaritem-titlebtn:hover{
 
-                .acs-titlebtn-down{
-                    background-position:-18px -66px;
-                }
-                .acs-titlebtn-right{
-                     background-position:-144px -66px;
-                } 
-            }*/
+            
+            .acs-titlebtn-boxshadow{
+                box-shadow:0 -1px 2px 0 rgba(193,73,0,0.5);
+            }
+
+            .acs-titlebtn-bottomline{
+                display: none;
+                margin: auto;
+                margin-top: -10px;
+                width:20px;
+                height: 2px;
+                background-color: #f57d30;
+                border-radius: 1px;
+            }
 
             .acs-navbaritem-secondO{
                 min-width:400px;
