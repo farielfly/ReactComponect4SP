@@ -56,12 +56,13 @@ function eventRender(config) {
             config: param,
             async: false,
             success: function (dataInput) {
+                let month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
                     let date = dataInput.d.results[i].EventDate ? new Date(dataInput.d.results[i].EventDate) : '';
                     data.push({
                         'href': param.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
-                        'month': date === '' ? '' : date.getMonth(),
+                        'month': date === '' ? '' : month[date.getMonth()],
                         'day': date === '' ? '' : date.getDate(),
                         'time': date === '' ? '' : date.getHours() + ":" + date.getMinutes(),
                         'location': dataInput.d.results[i].Location,
@@ -71,7 +72,6 @@ function eventRender(config) {
                 renderUI(data, this.config);
             },
             error: function (data) {
-
             }
         });
     }
