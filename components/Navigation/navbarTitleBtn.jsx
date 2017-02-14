@@ -7,7 +7,7 @@ export default class NavbarTitleBtn extends React.Component{
     }
 
     render(){
-        let borderShow = (this.props.open && (!this.props.isSecond) );
+        let borderShow = (this.props.open && (!this.props.isSecond) ) && this.props.hasChild;
         let heightChange = this.props.classname === ''?"20px":"60px";
         let icon = this.props.hasChild?(
             this.props.open?(this.props.isSecond?"acs-titlebtn-rightw":"acs-titlebtn-up"):(this.props.isSecond?"acs-titlebtn-right":"acs-titlebtn-down")):""
