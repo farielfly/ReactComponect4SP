@@ -70,18 +70,17 @@ function linksRender(config) {
             data: {},
             config: param,
             async: false,
-            success: function (dataInput) {
+            success: function(dataInput) {
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
                     data.push({
-                        'src': dataInput.d.results[i].ACSUrl ? dataInput.d.results[i].ACSUrl.Url : '',
-                        'itemhref': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
+                        'itemhref': dataInput.d.results[i].ACSUrl ? dataInput.d.results[i].ACSUrl.Url : '',
                         'title': dataInput.d.results[i].Title
                     })
                 }
                 renderUI(data, this.config);
             },
-            error: function (data) {
+            error: function(data) {
             }
         });
     }
