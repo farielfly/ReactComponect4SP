@@ -37,8 +37,14 @@ export default class SliderFrame extends React.Component {
     }
 
     render() {
-        let arrowsNode = <SliderArrows turn={this.turn.bind(this)} />;
-        let dotsNode = <SliderDots turn={this.turn.bind(this)} count={this.props.itemCount} nowLocal={this.state.nowLocal} />;
+        let arrowsNode = '';
+        let dotsNode = '';
+        if (this.props.dots && this.props.itemCount > 1) {
+            dotsNode = <SliderDots turn={this.turn.bind(this)} count={this.props.itemCount} nowLocal={this.state.nowLocal} />;
+        }
+        if (this.props.arrows && this.props.itemCount > 1) {
+            arrowsNode = <SliderArrows turn={this.turn.bind(this)} />;
+        }
         let children = React.Children.map(this.props.children, (item, i) => {
             return React.cloneElement(item, {
                 left: this.props.left,
