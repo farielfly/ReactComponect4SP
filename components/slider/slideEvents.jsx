@@ -42,7 +42,7 @@ export default class SliderEvents extends React.Component {
             //</div>
             <ul style={{
                 left: -100 * nowLocal + "%",
-                transitionDuration: speed + "s",
+                transitionDuration: speed + "ms",
                 width: count * 100 + "%"
             }}>
                 {SliderEvents}

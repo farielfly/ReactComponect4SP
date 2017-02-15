@@ -24,7 +24,7 @@ export default class SliderFrame extends React.Component {
         if (this.props.autoplay) {
             this.autoPlayFlag = setInterval(() => {
                 this.turn(1);
-            }, this.props.delay * 1000);
+            }, this.props.delay);
         }
     }
 
@@ -61,10 +61,10 @@ export default class SliderFrame extends React.Component {
 }
 
 SliderFrame.defaultProps = {
-    speed: 1,
-    delay: 2,
+    speed: 1000,
+    delay: 2000,
     pause: true,
-    autoplay: true,
+    autoplay: false,
     dots: true,
     arrows: true,
     itemCount: 0,

@@ -25,7 +25,7 @@ export default class SliderPics extends React.Component {
         return (
             <ul style={{
                 left: -100 * nowLocal + "%",
-                transitionDuration: speed + "s",
+                transitionDuration: speed + "ms",
                 width: count * 100 + "%"
             }}>
                 {itemNodes}
