@@ -21,7 +21,7 @@ export default class SliderFrame extends React.Component {
     }
 
     goPlay() {
-        if (this.props.autoplay) {
+        if (this.props.autoplay || this.props.autoplay === 'True' || this.props.autoplay === 'true') {
             this.autoPlayFlag = setInterval(() => {
                 this.turn(1);
             }, this.props.delay);
@@ -49,7 +49,8 @@ export default class SliderFrame extends React.Component {
             return React.cloneElement(item, {
                 left: this.props.left,
                 speed: this.props.speed,
-                nowLocal: this.state.nowLocal
+                nowLocal: this.state.nowLocal,
+                autoplay: this.props.autoplay
             });
         });
 

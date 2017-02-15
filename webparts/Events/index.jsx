@@ -28,12 +28,12 @@ function eventRender(config) {
                     >
                     <SliderFrame
                         itemCount={itemNodes.length}
-                        speed={1.2}
-                        delay={2.1}
-                        pause={true}
-                        autoplay={false}
-                        dots={true}
-                        arrows={true}
+                        speed={param.speed}
+                        delay={param.delay}
+                        pause={param.pause}
+                        autoplay={param.autoplay}
+                        dots={param.dots}
+                        arrows={param.arrows}
                         >
                         <SliderEvents inputDate={itemNodes} />
                     </SliderFrame>

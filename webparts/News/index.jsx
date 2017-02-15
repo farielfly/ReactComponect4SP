@@ -32,12 +32,12 @@ function newsRender(config) {
                     >
                     <SliderFrame
                         itemCount={itemNodes.length}
-                        speed={1.2}
-                        delay={2.1}
-                        pause={true}
-                        autoplay={false}
-                        dots={true}
-                        arrows={true}
+                        speed={param.speed}
+                        delay={param.delay}
+                        pause={param.pause}
+                        autoplay={param.autoplay}
+                        dots={param.dots}
+                        arrows={param.arrows}
                         >
                         <SliderItem items={itemNodes} maxCount={maxCount} />
                     </SliderFrame>
@@ -59,7 +59,7 @@ function newsRender(config) {
             data: {},
             config: param,
             async: false,
-            success: function(dataInput) {
+            success: function (dataInput) {
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
                     data.push({
@@ -71,7 +71,7 @@ function newsRender(config) {
                 }
                 renderUI(data, this.config);
             },
-            error: function(data) {
+            error: function (data) {
 
             }
         });
