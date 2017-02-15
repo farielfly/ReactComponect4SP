@@ -43,12 +43,12 @@ function linksRender(config) {
 
                     <SliderFrame
                         itemCount={itemNodes.length}
-                        speed={param.speed}
-                        delay={param.delay}
-                        pause={param.pause}
-                        autoplay={param.deautoplaylay}
-                        dots={param.dots}
-                        arrows={param.arrows}
+                        speed={1.2}
+                        delay={2.1}
+                        pause={true}
+                        autoplay={false}
+                        dots={true}
+                        arrows={true}
                         >
                         <SliderLinks items={itemNodes} />
                     </SliderFrame>
