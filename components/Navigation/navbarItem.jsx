@@ -38,25 +38,26 @@ export default class NavbarItem extends React.Component{
 
 
     render(){
-        let secondMenuC = (<ul onMouseOver={this.menushow.bind(this,false)} onMouseOut={this.menuhidden.bind(this,false)} className="acs-navbaritem-second acs-navbaritem-secondO" style={{display:this.state.open ? "flex" : "none",top:this.state.open ? "84px" : "60px","flexDirection":"row"}}>
-                                <div style={{"flexDirection":"column"}}>
-                                    {this.props.menuData.Items.map((els, index) => {
-                                        if(index <8){
-                                            return (<a href={els.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
-                                            }
+        let minWidth = Math.ceil(this.props.menuData.Items.length/8)*400+'px';
+        let maxCount = 8;
+        let itemNodes = [];
+        for (let i = 0, len = this.props.menuData.Items.length; i < len; i += maxCount) {
+            itemNodes.push(this.props.menuData.Items.slice(i, i + maxCount));
+        }
+
+
+        let secondMenuC = (<ul onMouseOver={this.menushow.bind(this,false)} onMouseOut={this.menuhidden.bind(this,false)} className="acs-navbaritem-second acs-navbaritem-secondO" style={{display:this.state.open ? "flex" : "none",top:this.state.open ? "65px" : "60px","flexDirection":"row",minWidth:minWidth}}>
+                            {itemNodes.map((item,index) => {
+                                return (<div style={{"flexDirection":"column"}}>
+                                            {item.map((els, index) => {                                    
+                                            return (<a href={els.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)                                            
                                     })}
-                                </div>
-                                <div style={{"flexDirection":"column"}}>
-                                    {this.props.menuData.Items.map((els, index) => {
-                                        if(index >8){
-                                            return (<a href={els.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
-                                        }
-                                    })}
-                                </div>
+                                </div>)
+                            })}
                         </ul>);
 
 
-        let secondMenu = (<ul onMouseOver={this.menushow.bind(this,false)} onMouseOut={this.menuhidden.bind(this,false)} className="acs-navbaritem-second" style={{display:this.state.open ? "block" : "none",top:this.state.open ? "84px" : "60px"}}>
+        let secondMenu = (<ul onMouseOver={this.menushow.bind(this,false)} onMouseOut={this.menuhidden.bind(this,false)} className="acs-navbaritem-second" style={{display:this.state.open ? "block" : "none",top:this.state.open ? "65px" : "60px"}}>
                                 {this.props.menuData.Items.map((els, index) => {
                                     if(typeof els.Items==='object'){
                                         if(els.Items.length === 0){

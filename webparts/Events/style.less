@@ -31,6 +31,7 @@
             flex-direction: column;
 
             ul {
+                height: 300px;
                 position: relative;
                 left: 0;
                 height: auto;
@@ -44,6 +45,8 @@
                 display: inline-block;
                 height: auto;
                 & > div{
+                    display: flex;
+                    flex-direction: column;
                     padding-left: 20px;
                 }
                 img {
@@ -128,6 +131,7 @@
                         font-size: 13px;
                         text-align: left;
                         margin-left: 5px;
+                        .text_overflow;
                     }
                     div.acs-timeDes-title{
                         margin-bottom: 12px;
@@ -136,6 +140,7 @@
                             font-family: @common_font_roman;
                             font-size:14px;
                             text-decoration: underline;
+                            .text_overflow;
                         }
                     }
                     div.acs-timeDes-time{

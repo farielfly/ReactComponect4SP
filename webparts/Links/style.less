@@ -24,15 +24,13 @@
                 flex-wrap:nowrap;
 
                 > li{
-                    display: flex;
+                    display: block;
                     height:auto;
-                    width:100%;
-                    flex-wrap:wrap;
-                    align-items:stretch;
-                    justify-content:space-between; 
+                    width:100%; 
 
                     > a{
-                        margin:5px 0;
+                        float:left;
+                        margin:5px 5px;
                         width:130px;
                         height:90px;
                         text-decoration:none;
@@ -42,6 +40,7 @@
                         flex-wrap: wrap;
                         justify-content: space-around;
                         align-items: center;
+                        text-align: center;
 
                         .acs-linkitem-icon{
                             display: none;
@@ -56,8 +55,17 @@
                             margin-bottom:10px;
                             color:#fff;
                             font-size: 14px;
+                            .text_overflow;
                         }
                     }  
+
+                    .acs-link-bgcolor:nth-child(3n+1){
+                        margin-left: 0px;
+                    }
+
+                    .acs-link-bgcolor:nth-child(3n){
+                        margin-right: 0px;
+                    }
 
                     .acs-link-bgcolor:nth-child(9n+1){
                         background-color:#449933;

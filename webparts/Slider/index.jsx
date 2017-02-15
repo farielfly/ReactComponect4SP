@@ -27,6 +27,7 @@ function sliderRender(config) {
                 </SliderFrame>,
                 document.getElementById('slider')
             );
+            AIC.wordLimit('.acs-titledescriptionpanel-description');
         }
     }
 
