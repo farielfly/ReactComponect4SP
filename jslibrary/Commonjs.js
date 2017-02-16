@@ -65,21 +65,25 @@ var AIC;
 
     AIC.wordLimit =function(query){
         $(query).each(function(){
-            var copyThis = $(this.cloneNode(true)).hide().css({
-                'position': 'absolute',
-                'width': 'auto',
-                'overflow': 'visible'
-            });
-            $(this).after(copyThis);
-            if(copyThis.width()>$(this).width()*2){
-                $(this).text($(this).text().substring(0,$(this).html().length-4));
-                $(this).html($(this).html()+'…');
-                copyThis.remove();
-                wordLimit();
-            }else{
-                copyThis.remove(); 
-                return;
-            }
+            //var copyThis = $(this.cloneNode(true)).hide().css({
+            //    'position': 'absolute',
+            //    'width': 'auto',
+            //    'overflow': 'visible'
+            //});
+            //$(this).after(copyThis);
+            //if (copyThis.width() > $(this).width() * 2) {
+            //    $(this).text($(this).text().substring(0, $(this).html().length - 4));
+            //    $(this).html($(this).html() + '¡­');
+            //    copyThis.remove();
+            //    wordLimit();
+            //} else {
+            //    copyThis.remove();
+            //    return;
+            //}
+            var fontSize = parseInt($(this).css('font-size').replace('px',''));
+            while ($(this).height() > fontSize * 2 * 1.4) {
+                $(this).text($(this).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+            };
         });
     }
 })((AIC || (AIC = {})))
