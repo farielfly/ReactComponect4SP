@@ -62,9 +62,16 @@ function newsRender(config) {
             success: function (dataInput) {
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    let date = new Date(dataInput.d.results[i].ACSPublishedDate);
+                    let year = date.getFullYear();
+                    let month = date.getMonth() + 1;
+                    let day = date.getDate();
+                    let hour = date.getHours() >= 12 ? (date.getHours() - 12) : date.getHours();
+                    let minute = date.getMinutes() > 10 ? date.getMinutes() : "0" + date.getMinutes();
+                    let pmOrAm = date.getHours() > 12 ? "PM" : "AM";
                     data.push({
                         'src': dataInput.d.results[i].ACSImageUrl,
-                        'date': dataInput.d.results[i].ACSPublishedDate,
+                        'date': month + "/" + day + "/" + year + " " + hour + ":" + minute + " " + pmOrAm,
                         'href': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
                         'value': dataInput.d.results[i].Title
                     })
