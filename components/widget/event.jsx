@@ -16,7 +16,7 @@ export default class Event extends React.Component {
             </div>
             <div className="acs-timeDes">
                 <div className="acs-timeDes-title">
-                    <a className="acs-title" href={this.props.href}>{this.props.title}</a>
+                    <a className="acs-title" title={this.props.title} href={this.props.href}>{this.props.title}</a>
                 </div>
                 <div className="acs-timeDes-time">
                     <div className="acs-pic-clock"></div><span className="acs-event-time">{this.props.time}</span></div>
