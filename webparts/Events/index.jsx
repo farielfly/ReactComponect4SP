@@ -9,7 +9,7 @@ function eventRender(config) {
     { title: 'Anniversary Celebration', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' },
     { title: 'Global Conference on Integrated Care', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' }];
     let data = NewInformation;
-    let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '' };
+    let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '', moreurl: '' };
 
     function renderUI(data, param) {
         var itemNodes = [];
@@ -23,7 +23,7 @@ function eventRender(config) {
                 <WebPartFrame
                     title={param.webparttitle}
                     hasMore={true}
-                    link={param.listurl}
+                    link={param.moreurl}
                     hasTopLine={true}
                     >
                     <SliderFrame
@@ -55,7 +55,7 @@ function eventRender(config) {
             data: {},
             config: param,
             async: false,
-            success: function (dataInput) {
+            success: function(dataInput) {
                 let month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
@@ -71,7 +71,7 @@ function eventRender(config) {
                 }
                 renderUI(data, this.config);
             },
-            error: function (data) {
+            error: function(data) {
             }
         });
     }
@@ -84,6 +84,7 @@ function eventRender(config) {
         param.dots = config.dots ? config.dots : true;
         param.arrows = config.arrows ? config.arrows : true;
         param.listurl = config.listurl ? config.listurl : '';
+        param.moreurl = config.moreurl ? config.moreurl : '';
         param.webparttitle = config.webparttitle ? config.webparttitle : '';
         loadData(param);
     }

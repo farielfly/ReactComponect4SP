@@ -24,7 +24,7 @@ function linksRender(config) {
     { 'itemhref': 'www.baidu.com', 'title': 'App' },
     { 'itemhref': 'www.baidu.com', 'title': 'App' },
     { 'itemhref': 'www.baidu.com', 'title': 'LMS' }];
-    let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: 'frequently accessed links' };
+    let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: 'frequently accessed links', moreurl: '' };
 
     function renderUI(data, param) {
         var itemNodes = [];
@@ -37,7 +37,7 @@ function linksRender(config) {
                 <WebPartFrame
                     title={param.webparttitle}
                     hasMore={false}
-                    link={param.listurl}
+                    link={param.moreurl}
                     hasTopLine={false}
                     >
 
@@ -94,6 +94,7 @@ function linksRender(config) {
         param.arrows = config.arrows ? config.arrows : true;
         param.listurl = config.listurl ? config.listurl : '';
         param.webparttitle = config.webparttitle ? config.webparttitle : '';
+        param.moreurl = config.moreurl ? config.moreurl : '';
         loadData(param);
     }
     else {
