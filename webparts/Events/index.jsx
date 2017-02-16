@@ -64,7 +64,7 @@ function eventRender(config) {
                         'href': param.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
                         'month': date === '' ? '' : month[date.getMonth()],
                         'day': date === '' ? '' : date.getDate(),
-                        'time': date === '' ? '' : date.getHours() + ":" + date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
+                        'time': date === '' ? '' : date.getHours() + ":" + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()),
                         'location': dataInput.d.results[i].Location,
                         'title': dataInput.d.results[i].Title
                     })
