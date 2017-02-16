@@ -6,102 +6,102 @@ function NavigationRender(config) {
     let param = {};
     let data = [
         {
-            Title: "Home", itemHref: "", Items: [], hasChild: false, hasGrandChild: false,
+            Title: "Home", ItemHref: "", Items: [], hasChild: false, hasGrandChild: false,
         },
         {
-            Title: "Division", itemHref: "", hasChild: true, hasGrandChild: true,
+            Title: "Division", ItemHref: "", hasChild: true, hasGrandChild: true,
             Items: [
                 {
-                    Title: "Care Integration Division", itemHref: "",
+                    Title: "Care Integration Division", ItemHref: "",
                     Items: [
-                        { Title: "Assessment & Co-ordination Services Devt", itemHref: "" },
-                        { Title: "Care Innovations & Integration Devt", itemHref: "" },
-                        { Title: "Palliative Care Services Development", itemHref: "" }
+                        { Title: "Assessment & Co-ordination Services Devt", ItemHref: "" },
+                        { Title: "Care Innovations & Integration Devt", ItemHref: "" },
+                        { Title: "Palliative Care Services Development", ItemHref: "" }
                     ]
                 },
                 {
-                    Title: "Care Transition Division", itemHref: "",
+                    Title: "Care Transition Division", ItemHref: "",
                     Items: [
-                        { Title: "ACTION & Ops Support", itemHref: "" },
-                        { Title: "Care Transition Office", itemHref: "" },
-                        { Title: "CCMS & Comm CAT", itemHref: "" },
-                        { Title: "Helpdesk Infosystem and Projects (HIP)", itemHref: "" },
-                        { Title: "Referral Management Teams", itemHref: "" }
+                        { Title: "ACTION & Ops Support", ItemHref: "" },
+                        { Title: "Care Transition Office", ItemHref: "" },
+                        { Title: "CCMS & Comm CAT", ItemHref: "" },
+                        { Title: "Helpdesk Infosystem and Projects (HIP)", ItemHref: "" },
+                        { Title: "Referral Management Teams", ItemHref: "" }
                     ]
                 },
                 {
-                    Title: "CEO Office", itemHref: "", Items: []
+                    Title: "CEO Office", ItemHref: "", Items: []
                 },
                 {
-                    Title: "Community Mental Health Division", itemHref: "",
+                    Title: "Community Mental Health Division", ItemHref: "",
                     Items: [
-                        { Title: "Capability Building & Sector Development", itemHref: "" },
-                        { Title: "Community Engagement & Development", itemHref: "" },
-                        { Title: "Community Support", itemHref: "" },
-                        { Title: "Resource Planning", itemHref: "" },
-                        { Title: "Service Implementation & Development", itemHref: "" }
+                        { Title: "Capability Building & Sector Development", ItemHref: "" },
+                        { Title: "Community Engagement & Development", ItemHref: "" },
+                        { Title: "Community Support", ItemHref: "" },
+                        { Title: "Resource Planning", ItemHref: "" },
+                        { Title: "Service Implementation & Development", ItemHref: "" }
                     ]
                 },
                 {
-                    Title: "Corporate Services & Strategy Division", itemHref: "",
+                    Title: "Corporate Services & Strategy Division", ItemHref: "",
                     Items: [
-                        { Title: "Corporate & Marketing Comm", itemHref: "" },
-                        { Title: "Corporate Development", itemHref: "" },
-                        { Title: "Finance", itemHref: "" },
-                        { Title: "Human Resource", itemHref: "" },
-                        { Title: "Office Administration", itemHref: "" }
+                        { Title: "Corporate & Marketing Comm", ItemHref: "" },
+                        { Title: "Corporate Development", ItemHref: "" },
+                        { Title: "Finance", ItemHref: "" },
+                        { Title: "Human Resource", ItemHref: "" },
+                        { Title: "Office Administration", ItemHref: "" }
                     ]
                 },
                 {
-                    Title: "Grants Management Office", itemHref: "",
+                    Title: "Grants Management Office", ItemHref: "",
                     Items: [
-                        { Title: "Grant Policy & Management", itemHref: "" },
-                        { Title: "Resource Management", itemHref: "" }
+                        { Title: "Grant Policy & Management", ItemHref: "" },
+                        { Title: "Resource Management", ItemHref: "" }
                     ]
                 },
                 {
-                    Title: "Home & Primary Care Division", itemHref: "",
+                    Title: "Home & Primary Care Division", ItemHref: "",
                     Items: [
-                        { Title: "Home & Community Care", itemHref: "" },
-                        { Title: "Primary Care Development", itemHref: "" }
+                        { Title: "Home & Community Care", ItemHref: "" },
+                        { Title: "Primary Care Development", ItemHref: "" }
                     ]
                 },
                 {
-                    Title: "ILTC IT Enablement Office", itemHref: "",
+                    Title: "ILTC IT Enablement Office", ItemHref: "",
                     Items: [
-                        { Title: "ILTC IT Development", itemHref: "" }
+                        { Title: "ILTC IT Development", ItemHref: "" }
                     ]
                 }
             ]
         },
         {
-            Title: "APPLICATION", itemHref: "", hasChild: true, hasGrandChild: false,
+            Title: "APPLICATION", ItemHref: "", hasChild: true, hasGrandChild: false,
             Items: [
-                { Title: "FAQ", itemHref: "" },
-                { Title: "AIC library", itemHref: "" },
-                { Title: "PRM Conversations", itemHref: "" },
-                { Title: "iHR", itemHref: "" },
-                { Title: "LMS", itemHref: "" },
-                { Title: "PRM", itemHref: "" },
-                { Title: "Integrated Referral Management System (IRMS)", itemHref: "" },
-                { Title: "eForms", itemHref: "" },
-                { Title: "I-innovate", itemHref: "" },
-                { Title: "Webmail", itemHref: "" },
-                { Title: "Grants Management System (GMS)", itemHref: "" },
-                { Title: "Budget and Reporting System (BARS)", itemHref: "" }
+                { Title: "FAQ", ItemHref: "" },
+                { Title: "AIC library", ItemHref: "" },
+                { Title: "PRM Conversations", ItemHref: "" },
+                { Title: "iHR", ItemHref: "" },
+                { Title: "LMS", ItemHref: "" },
+                { Title: "PRM", ItemHref: "" },
+                { Title: "Integrated Referral Management System (IRMS)", ItemHref: "" },
+                { Title: "eForms", ItemHref: "" },
+                { Title: "I-innovate", ItemHref: "" },
+                { Title: "Webmail", ItemHref: "" },
+                { Title: "Grants Management System (GMS)", ItemHref: "" },
+                { Title: "Budget and Reporting System (BARS)", ItemHref: "" }
             ]
         },
         {
-            Title: "CROSS-DIVISIONS", itemHref: "", hasChild: false, hasGrandChild: false, Items: []
+            Title: "CROSS-DIVISIONS", ItemHref: "", hasChild: false, hasGrandChild: false, Items: []
         }
         ,
         {
-            Title: "ABOUT AIC", itemHref: "", hasChild: true, hasGrandChild: false,
+            Title: "ABOUT AIC", ItemHref: "", hasChild: true, hasGrandChild: false,
             Items: [
-                { Title: "Org Structure", itemHref: "" },
-                { Title: "Staff Directory", itemHref: "" },
-                { Title: "Policies", itemHref: "" },
-                { Title: "SMM", itemHref: "" }
+                { Title: "Org Structure", ItemHref: "" },
+                { Title: "Staff Directory", ItemHref: "" },
+                { Title: "Policies", ItemHref: "" },
+                { Title: "SMM", ItemHref: "" }
             ]
         }
     ];

@@ -77,7 +77,7 @@ export default class NavbarItem extends React.Component{
 
         return (
                 <div className="acs-navbar-item"  onMouseOver={this.menushow.bind(this,false)} onMouseOut={this.menuhidden.bind(this,false)}>
-                    <NavTitleBtn classname={"acs-navbaritem-titlebtn"}  isSecond={false} name={this.props.menuData.Title} open={this.state.open} hasChild={this.props.menuData.hasChild}  itemHref={this.props.menuData.ItemHref}/>
+                    <NavTitleBtn classname={"acs-navbaritem-titlebtn"}  isSecond={false} name={this.props.menuData.Title} open={this.state.open} hasChild={this.props.menuData.hasChild}  ItemHref={this.props.menuData.ItemHref}/>
                         {secondMenu}
                 </div>)
     }
@@ -123,7 +123,7 @@ class SecondItem extends React.Component{
     render(){
         return (
             <div className="acs-secondnav-item"  onMouseOver={this.menushow.bind(this,true)} onMouseOut={this.menuhidden.bind(this,true)}>
-                <NavTitleBtn classname={""}  isSecond={true} name={this.props.menuData.Title} open={this.state.sopen} hasChild={true} itemHref={this.props.menuData.ItemHref}/>
+                <NavTitleBtn classname={""}  isSecond={true} name={this.props.menuData.Title} open={this.state.sopen} hasChild={true} ItemHref={this.props.menuData.ItemHref}/>
                     <ul onMouseOver={this.menushow.bind(this,true)} onMouseOut={this.menuhidden.bind(this,true)} className="acs-thirdnav-itemlist" style={{display:this.state.sopen ? "block" : "none",width:"400px"}}>
                         {this.props.menuData.Items.map((el, index) => {
                             return (<a href={el.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{el.Title}</a>)
