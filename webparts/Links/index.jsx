@@ -5,25 +5,25 @@ import SliderLinks from '../../components/slider/sliderLinks.jsx';
 import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 
 function linksRender(config) {
-    let data = [{ 'itemhref': 'www.baidu.com', 'title': 'LMS' },
-    { 'itemhref': 'www.baidu.com', 'title': 'PRM' },
-    { 'itemhref': 'www.baidu.com', 'title': 'IRMS' },
-    { 'itemhref': 'www.baidu.com', 'title': 'eForms' },
-    { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' },
-    { 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
-    { 'itemhref': 'www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'www.baidu.com', 'title': 'LMS' },
-    { 'itemhref': 'www.baidu.com', 'title': 'PRM' },
-    { 'itemhref': 'www.baidu.com', 'title': 'IRMS' },
-    { 'itemhref': 'www.baidu.com', 'title': 'eForms' },
-    { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' },
-    { 'itemhref': 'www.baidu.com', 'title': 'Webmail' },
-    { 'itemhref': 'www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'www.baidu.com', 'title': 'LMS' }];
+    let data = [{ 'itemhref': 'http://www.baidu.com', 'title': 'LMS' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'PRM' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'eForms' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'I-innovate' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'Webmail' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'LMS' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'PRM' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'eForms' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'I-innovate' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'Webmail' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'LMS' }];
     let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: 'frequently accessed links', moreurl: '' };
 
     function renderUI(data, param) {
