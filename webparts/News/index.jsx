@@ -12,7 +12,7 @@ function newsRender(config) {
     { 'src': '../../components/img/image1.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }];
 
     var maxCount = 3;
-    let param = { url: '', speed: 1, delay: 1, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '', moreurl: '' };
+    let param = { url: '', speed: 1, delay: 1, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '', moreurl: '', defaultPicUrl: '' };
 
     function renderUI(data, param) {
         var itemNodes = [];
@@ -70,7 +70,7 @@ function newsRender(config) {
                     let minute = date.getMinutes() > 10 ? date.getMinutes() : "0" + date.getMinutes();
                     let pmOrAm = date.getHours() > 12 ? "PM" : "AM";
                     data.push({
-                        'src': dataInput.d.results[i].ACSImageUrl,
+                        'src': dataInput.d.results[i].ACSImageUrl ? dataInput.d.results[i].ACSImageUrl : param.defaultPicUrl,
                         'date': month + "/" + day + "/" + year + " " + hour + ":" + minute + " " + pmOrAm,
                         'href': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
                         'value': dataInput.d.results[i].Title
@@ -94,6 +94,7 @@ function newsRender(config) {
         param.listurl = config.listurl ? config.listurl : '';
         param.webparttitle = config.webparttitle ? config.webparttitle : '';
         param.moreurl = config.moreurl ? config.moreurl : '';
+        param.defaultPicUrl = config.defaultPicUrl ? config.defaultPicUrl : '';
         loadData(param);
 
     }
