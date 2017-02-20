@@ -14,13 +14,14 @@
 
 
 .ms-webpart-zone{
-	display: flex;
+	display: block;
     width: 1180px;
     margin: auto;
 
 	& > div{
-		display: block;
+		display: inline-block;
         width: auto;
+        white-space: nowrap;
 
 		&:nth-child(1){
 			margin: 0 40px 0 0;
@@ -33,9 +34,8 @@ body {
 
     #s4-workspace {
         margin: auto;
-        overflow-x: hidden;
-        overflow-y: auto;
         height:unset !important;
+        overflow: visible;
 
         #s4-bodyContainer {
             margin: auto;
