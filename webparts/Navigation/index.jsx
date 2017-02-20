@@ -118,6 +118,7 @@ function NavigationRender(config) {
 
     function loadData() {
         $.ajax({
+            cache: false,
             type: "GET",
             url: config.url,
             headers: { "accept": "application/json;odata=verbose" },
