@@ -107,7 +107,10 @@ function NavigationRender(config) {
     ];
 
     function renderUI(data) {
-        if (document.getElementById('navigation')) {
+        var minWidth = data.length * 130;
+        var elementDiv = document.getElementById('navigation')
+        if (elementDiv) {
+            elementDiv.style.minWidth = minWidth+'px';
             render(
                 <MenuList data={data}>
                 </MenuList>,

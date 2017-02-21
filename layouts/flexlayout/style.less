@@ -46,26 +46,36 @@ body {
                 margin: 0 e('calc(50% - 590px)');
                 #titleAreaBox{
                     margin: 0 0 0 10px;
-                }
-                #navigation{
-                        .acs-navbar{
-                            justify-content:flex-start;
+                    #titleAreaRow{
+                        > div::nth-child(3){
+                            display: block;
+                        }
 
-                            .acs-navbar-item{
-                                margin: 0 10px;
-                            }
+                         #navigation{
+                             display:block;
+                             min-width: 1000px;
 
-                            .acs-titlebtn-bottomline{
-                                display: none;
-                                margin: auto;
-                                margin-top: -10px;
-                                width:20px;
-                                height: 2px;
-                                background-color: #f57d30;
-                                border-radius: 1px;
+                            .acs-navbar{
+                                justify-content:flex-start;
+
+                                .acs-navbar-item{
+                                    margin: 0 10px;
+                                }
+
+                                .acs-titlebtn-bottomline{
+                                    display: none;
+                                    margin: auto;
+                                    margin-top: -10px;
+                                    width:20px;
+                                    height: 2px;
+                                    background-color: #f57d30;
+                                    border-radius: 1px;
+                                }
                             }
                         }
                     }
+                }
+               
             }
 
             #contentRow {
