@@ -144,6 +144,7 @@ var AIC;
             searchUrl = $('.acs-search input').data('search');
         }
         window.open(searchUrl + '?k=' + $('.acs-search input').val(), 'search');
+        return false;
     }
 
     AIC.wordLimit = function (query) {
