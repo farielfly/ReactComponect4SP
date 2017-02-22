@@ -39,7 +39,7 @@ body {
         #s4-bodyContainer {
             margin: auto;
             width: 100% !important;
-            padding-bottom: 75px;
+            padding-bottom: 0px;
 
             #s4-titlerow{
                // margin: 0 e('calc(50% - 590px)');
@@ -88,6 +88,9 @@ body {
 
                 #contentBox {
                     margin: 0;
+                    .welcome{
+                        padding-bottom:0px;
+                    }
                     #DeltaPlaceHolderMain{
                         .cell-margin{
                             margin: 0;
@@ -106,6 +109,10 @@ body {
                     }
                 }
             }
+        }
+
+        .acs-footer{
+            bottom:unset;
         }
     }
 

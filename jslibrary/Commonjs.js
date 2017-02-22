@@ -134,7 +134,7 @@ var AIC;
             html += '<a href="' + item.Url + '" target="_blank">' + item.Name + '</a>';
         })
         html += '</span><span class="acs-search"><input type="text" data-search="' + search + '" placeholder="Search everything"/>';
-        html += '<a href="javascript:void(0);" onclick="AIC.search(this);" target="_blank" class="ms-srch-sb-searchLink"></a></span></div>';
+        html += '<a href="javascript:void(0);" onclick="AIC.search(this);" class="ms-srch-sb-searchLink"></a></span></div>';
         $('#s4-workspace').append(html);
     }
 
@@ -143,7 +143,7 @@ var AIC;
         if ($('.acs-search input').data('search')) {
             searchUrl = $('.acs-search input').data('search');
         }
-        window.open(searchUrl + '?k=' + $('.acs-search input').val(), 'search');
+        window.location.href = searchUrl + '?k=' + $('.acs-search input').val();
         return false;
     }
 
