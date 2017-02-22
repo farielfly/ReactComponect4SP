@@ -55,6 +55,7 @@ function linksRender(config) {
                 </WebPartFrame>,
                 document.getElementById('acclinks')
             );
+            AIC.wordLimit('.acs-linkitem-title');
         }
     }
 
