@@ -92,6 +92,7 @@ gulp.task('concat-js',['buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'cop
                 return path.join(config.rootpath,item);
             })
             gulp.src(srcs)
+                .pipe(streamify(uglify()))
                 .pipe(gulpconcat(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput, concat.name + '.tmp.js')))
                 .pipe(rename(concat.name + '.js'))
                 .pipe(gulp.dest(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput),{overwrite:true}));
