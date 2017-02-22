@@ -60,7 +60,13 @@ module.exports = {
             'prod_include': true
         },
     ],
-
+    concats:[
+        {
+            'name': 'aicGlobal',
+            'src': ['../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution/JS/aicGlobal.js','jslibrary/Commonjs.js'],
+            'output': 'dist/jslibrary',
+        }
+    ],
     images: [
         {
             'src': ['stylelibrary/images/*'],

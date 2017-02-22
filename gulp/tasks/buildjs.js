@@ -8,6 +8,9 @@ import uglify from 'gulp-uglify';
 import config from '../../config.js';
 import rename from 'gulp-rename';
 import del from 'del';
+import gulpconcat from 'gulp-concat';
+import es from 'event-stream';
+import streamify from 'gulp-streamify';
 
 let debug = false;
 
@@ -21,7 +24,7 @@ gulp.task('buildjs', function () {
 });
 
 function build() {
-    gulp.start('buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary');
+    gulp.start('buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary','concat-js');
 }
 
 gulp.task('buildjs-wp', function () {
@@ -55,6 +58,7 @@ gulp.task('buildjs-layout', function () {
 
 gulp.task('buildjs-webglobal', function () {
     let srcs = new Set();
+    let streamArr = [];
     for (let web of config.webglobal) {
         if (!debug && !web.prod_include) {
             continue;
@@ -62,9 +66,11 @@ gulp.task('buildjs-webglobal', function () {
         for (let src of web.src) {
             srcs.add(path.join(config.rootpath, src));
         }
-        bundleJs(web.name + '.js', Array.from(srcs),
+        let stream = bundleJs(web.name + '.js', Array.from(srcs),
             debug ? path.join(config.rootpath, web.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+        streamArr.push(stream);       
     }
+    return es.merge(streamArr);
 })
 
 gulp.task('copy-jslibrary', function () {
@@ -75,6 +81,21 @@ gulp.task('copy-jslibrary', function () {
         CopyJs(library.name + '.js',
             path.join(config.rootpath, library.src),
             debug ? path.join(config.rootpath, library.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+    }
+    return;
+})
+
+gulp.task('concat-js',['buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary'],function(){
+    if(!debug){
+        for(let concat of config.concats){
+            let srcs = concat.src.map(function(item){
+                return path.join(config.rootpath,item);
+            })
+            gulp.src(srcs)
+                .pipe(gulpconcat(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput, concat.name + '.tmp.js')))
+                .pipe(rename(concat.name + '.js'))
+                .pipe(gulp.dest(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput),{overwrite:true}));
+        }
     }
 })
 
@@ -97,7 +118,10 @@ function bundleJs(name, srcs, dest) {
         .transform(shim)
         .bundle()
         .pipe(source(name))
-    stream.pipe(gulp.dest(dest));
+    if (!debug) {
+        stream.pipe(streamify(uglify()));
+    }       
+    return stream.pipe(gulp.dest(dest));
 }
 
 function handleError(err) {
