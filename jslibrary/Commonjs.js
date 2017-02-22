@@ -112,7 +112,7 @@ var AIC;
                 addFooter(footerArray, search);
             }
         })
-        $('#titleAreaRow>div:nth-child(2)').css('display', 'table-cell');
+        $('#titleAreaRow>div:nth-child(2)').css('display', 'inline-block');
 
         $('#contentRow').resize(function () {
             if ($('#s4-bodyContainer').height() > $('#s4-workspace').height()) {
