@@ -12,9 +12,16 @@ class NewItem extends Component {
             {
                 this.props.children.map((item, idx) => {
                     return <div key={'news' + idx} style={{ height: height }}>
-                        <div className='newContent'><img src={item.src} /></div>
-                        <div className='newContent'><a href={item.href} title={item.value}>{item.value}</a></div>
-                        <div className='newContent'><span className='acs-pic-clock'></span>{item.date}</div>
+                        <div className='newContent'>
+                            <img src={item.src} />
+                        </div>
+                        <div className='newContent'>
+                            <a href={item.href} title={item.value}>{item.value}</a>
+                        </div>
+                        <div className='newContent'>
+                            <div className='acs-pic-clock'></div>
+                            <span >{item.date}</span>
+                        </div>
                     </div>
                 })
             }
