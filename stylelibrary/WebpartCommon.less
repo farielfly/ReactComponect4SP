@@ -10,55 +10,55 @@
     display: inline-block;
 }
 
-.acs-webpartframe{
-    height:100%;
+.acs-webpartframe {
+    height: 100%;
 
-    .acs-webpartframe-header{
-        display:flex;        
-        align-items:center;
-        justify-content:space-around;
-        text-decoration:none;
+    .acs-webpartframe-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        text-decoration: none;
 
-        .acs-header-icon{
-            width:40px;
-            height:40px;
+        .acs-header-icon {
+            width: 40px;
+            height: 40px;
             display: inline-block;
             background-image: @bgimage_path;
         }
 
-        .acs-header-title, .acs-header-more{
-            color:#f57d30;
-            text-transform:uppercase;
+        .acs-header-title, .acs-header-more {
+            color: #f57d30;
+            text-transform: uppercase;
         }
 
-        .acs-header-title{
+        .acs-header-title {
             display: inline-block;
-            margin-left:10px;
-            font-weight:bold;
-            font-size:16px;
-            flex-grow:2;
+            margin-left: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            flex-grow: 2;
         }
 
-        .acs-header-more{
+        .acs-header-more {
             display: inline-block;
-            text-align:right;
-            flex-grow:1;
+            text-align: right;
+            flex-grow: 1;
         }
     }
 
     .acs-sliderframe {
         position: relative;
         width: 100%;
-        height:100%;
+        height: 100%;
         overflow: hidden;
-        
-       .acs-slider-arrow-wrap{     
-             display: flex;
-             flex-direction: row;  
-             flex-wrap: nowrap;
-             justify-content: center;
 
-            .acs-slider-arrow-left, .acs-slider-arrow-right{
+        .acs-slider-arrow-wrap {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+
+            .acs-slider-arrow-left, .acs-slider-arrow-right {
                 width: 26px;
                 height: 26px;
                 background-image: @bgimage_path;
@@ -67,10 +67,11 @@
                 display: inline-block;
             }
 
-            .acs-slider-arrow-left{
+            .acs-slider-arrow-left {
                 background-position: -26px -40px;
             }
-            .acs-slider-arrow-right{
+
+            .acs-slider-arrow-right {
                 background-position: -52px -40px;
             }
 
@@ -83,7 +84,7 @@
                 height: 26px;
                 text-align: center;
                 z-index: 99;
-               
+
 
                 .acs-slider-dot {
                     display: inline-block;
@@ -99,8 +100,6 @@
                     background: #f57d30;
                 }
             }
-
-       }
+        }
     }
 }
-
