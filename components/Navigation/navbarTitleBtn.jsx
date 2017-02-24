@@ -15,15 +15,10 @@ export default class NavbarTitleBtn extends React.Component{
         let fontColor=this.props.hasChild?(
             this.props.open?(this.props.isSecond?"#fff":"#fb4f14"):"#000"):"#000"
         ;
-        let isHome = this.props.name.toString().toUpperCase() ==="HOME";
+
         return(
-             <a href={this.props.ItemHref} className={this.props.classname + (borderShow?" acs-titlebtn-boxshadow":"") } style={{"borderTop":borderShow? "1px solid #fb4f14" : "none",
-                 "borderLeft":borderShow ? "1px solid #fb4f14" : "none",
-                 "borderRight":borderShow ? "1px solid #fb4f14" : "none",
-                 height:borderShow?"65px":heightChange}
-             }>
+             <a href={this.props.ItemHref} className={(!this.props.isSecond?"acs-titlebtn-noneborder ":" ")+this.props.classname + (borderShow?" acs-titlebtn-boxshadow acs-titlebtn-border":"") } style={{height:borderShow?"65px":heightChange}}>
                      <span className="acs-titlebtn-span" style={{color:fontColor}}>{this.props.name}<span className={icon}></span></span>
-                     <div className="acs-titlebtn-bottomline" style={{display:isHome?"block":"none"}}></div>
              </a>
             )
     }

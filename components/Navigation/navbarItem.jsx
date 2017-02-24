@@ -5,7 +5,7 @@ export default class NavbarItem extends React.Component {
         super(props);
         this.state = {
             open: false,
-            sopen: false,
+            ulWidth:'402px'
         };
     }
 
@@ -17,7 +17,7 @@ export default class NavbarItem extends React.Component {
         }
         else {
             this.setState({
-                sopen: true
+                ulWidth:'800px'
             });
         }
     }
@@ -25,12 +25,13 @@ export default class NavbarItem extends React.Component {
     menuhidden(isSecond) {
         if (!isSecond) {
             this.setState({
-                open: false
+                open: false,
+                ulWidth:'402px'
             });
         }
         else {
             this.setState({
-                sopen: false
+                ulWidth:'402px'
             });
         }
     }
@@ -57,14 +58,15 @@ export default class NavbarItem extends React.Component {
         </ul>);
 
 
-        let secondMenu = (<ul onMouseOver={this.menushow.bind(this, false)} onMouseOut={this.menuhidden.bind(this, false)} className="acs-navbaritem-second" style={{ display: this.state.open ? "block" : "none", top: this.state.open ? "65px" : "60px" }}>
+        let secondMenu = (<ul onMouseOver={this.menushow.bind(this, false)} onMouseOut={this.menuhidden.bind(this, false)} className="acs-navbaritem-second"
+         style={{ display: this.state.open ? "block" : "none", top: this.state.open ? "65px" : "60px",width:this.state.ulWidth}}>
             {this.props.menuData.Items.map((els, index) => {
                 if (typeof els.Items === 'object') {
                     if (els.Items.length === 0) {
                         return (<a href={els.ItemHref} className="acs-secondnav-item" key={index} >{els.Title}</a>)
                     }
                     else {
-                        return (<SecondItem key={index} menuData={els} />)
+                        return (<SecondItem key={index} menuData={els} menushow={this.menushow.bind(this,true)} menuhidden={this.menuhidden.bind(this,true)}/>)
                     }
                 }
                 else {
@@ -88,43 +90,30 @@ class SecondItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false,
-            sopen: false,
+            sopen: false
         };
     }
 
-    menushow(isSecond) {
-        if (!isSecond) {
-            this.setState({
-                open: true
+    menushow() {
+        this.props.menushow();
+        this.setState({
+                 sopen: true
             });
-        }
-        else {
-            this.setState({
-                sopen: true
-            });
-        }
     }
 
-    menuhidden(isSecond) {
-        if (!isSecond) {
-            this.setState({
-                open: false
-            });
-        }
-        else {
-            this.setState({
+    menuhidden() {
+        this.props.menuhidden();
+        this.setState({
                 sopen: false
             });
-        }
     }
 
 
     render() {
         return (
-            <div className="acs-secondnav-item" onMouseOver={this.menushow.bind(this, true)} onMouseOut={this.menuhidden.bind(this, true)}>
+            <div className="acs-secondnav-item" onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)}>
                 <NavTitleBtn classname={""} isSecond={true} name={this.props.menuData.Title} open={this.state.sopen} hasChild={true} ItemHref={this.props.menuData.ItemHref} />
-                <ul onMouseOver={this.menushow.bind(this, true)} onMouseOut={this.menuhidden.bind(this, true)} className="acs-thirdnav-itemlist" style={{ display: this.state.sopen ? "block" : "none", width: "400px" }}>
+                <ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-thirdnav-itemlist" style={{ display: this.state.sopen ? "block" : "none", width: "400px" }}>
                     {this.props.menuData.Items.map((el, index) => {
                         return (<a href={el.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{el.Title}</a>)
                     })}
