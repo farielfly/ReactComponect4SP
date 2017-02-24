@@ -1,160 +1,162 @@
 @import "../../stylelibrary/webpartcommon";
-body{
-    margin:0;
+
+body {
+    margin: 0;
 }
-#navigation{
-    a{
+
+#navigation {
+    a {
         display: block;
-        text-decoration:none;
-        color:#000;
+        text-decoration: none;
+        color: #000;
     }
 
-    .acs-navbar{
-        width:100%;
+    .acs-navbar {
+        width: 100%;
         white-space: nowrap;
 
 
-        .acs-navbar-item{
+        .acs-navbar-item {
             display: inline-block;
             margin: 0 15px;
-            min-width:110px;
+            min-width: 110px;
             width: auto;
-            height:60px;
+            height: 60px;
             z-index: 998;
             position: relative;
 
-            .acs-navbaritem-titlebtn{
-                height:60px;
-                position:relative;
-                z-index:999;
-                background-color:#fff;
-                cursor:pointer;
+            .acs-navbaritem-titlebtn {
+                height: 60px;
+                position: relative;
+                z-index: 999;
+                background-color: #fff;
+                cursor: pointer;
                 text-align: center;
 
 
-                .acs-titlebtn-span{
-                    line-height:4;
-                    margin:0 20px;
+                .acs-titlebtn-span {
+                    line-height: 4;
+                    margin: 0 20px;
                     font-family: @common_font_CE_55_ROMAN !important;
                     font-size: 13px;
-                    font-weight:blod;
-                    color:#585858;
-                    text-transform:uppercase;
+                    font-weight: blod;
+                    color: #585858;
+                    text-transform: uppercase;
                     font-weight: bold;
                 }
 
-                .acs-titlebtn-up, .acs-titlebtn-down{
-                    display:inline-block;
-                    margin-left:5px;
-                     width:10px;
-                    height:10px;
-                    background-image:url('../../dist/common/images/image.png');
+                .acs-titlebtn-up, .acs-titlebtn-down {
+                    display: inline-block;
+                    margin-left: 5px;
+                    width: 10px;
+                    height: 10px;
+                    background-image: url('../../dist/common/images/image.png');
                 }
-                .acs-titlebtn-up{
-                    background-position:-18px -66px;
+
+                .acs-titlebtn-up {
+                    background-position: -18px -66px;
                 }
-                .acs-titlebtn-down{
-                    background-position:0 -66px;
+
+                .acs-titlebtn-down {
+                    background-position: 0 -66px;
                 }
             }
 
-            
-            .acs-titlebtn-boxshadow{
-                box-shadow:0 -1px 2px 0 rgba(193,73,0,0.5);
+
+            .acs-titlebtn-boxshadow {
+                box-shadow: 0 -1px 2px 0 rgba(193,73,0,0.5);
             }
 
-            .acs-navbaritem-secondO{
-                min-width:400px;
-                max-width:660px;
-                width:auto !important;
+            .acs-navbaritem-secondO {
+                min-width: 400px;
+                max-width: 660px;
+                width: auto !important;
             }
 
-            .acs-navbaritem-second{
-                padding:0;
-                margin:0;
-                position:absolute;
-                top:60px;
-                width:800px;
-                border:1px solid #fb4f14;
-                box-shadow:0 0 6px 0 rgba(193,73,0,0.5);
+            .acs-navbaritem-second {
+                padding: 0;
+                margin: 0;
+                position: absolute;
+                top: 60px;
+                width: 800px;
+                border: 1px solid #fb4f14;
+                box-shadow: 0 0 6px 0 rgba(193,73,0,0.5);
                 background-color: #fff;
 
-                    .acs-secondnav-item{
-                        padding:10px 10px 10px 20px;
-                        width:370px;
-                        min-height:20px;
-                        background-color:#ffefe3;
-                        border-bottom:1px solid #fff;
-                        border-left:1px solid #fff;
-                        cursor:pointer;
+                .acs-secondnav-item {
+                    padding: 10px 10px 10px 20px;
+                    width: 370px;
+                    min-height: 20px;
+                    background-color: #ffefe3;
+                    border-bottom: 1px solid #fff;
+                    border-left: 1px solid #fff;
+                    cursor: pointer;
 
 
-                         .acs-titlebtn-span {
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-
-                         }  
-                        .acs-thirdnav-itemlist{
-                            padding:0;
-                            margin:0;
-                            position:absolute;
-                            left:400px;
-                            top:-1px;
-                        }
-
-                        .acs-titlebtn-right, .acs-titlebtn-rightw{
-                            float:right;
-                            right:20px;
-                            width:18px;
-                            height:18px;
-                            background-image:url('../../dist/common/images/image.png');
-                        }
-                        .acs-titlebtn-right{
-                             background-position:-126px -66px;
-                        } 
-                        .acs-titlebtn-rightw{
-                             background-position:-144px -66px;
-                        }
+                    .acs-titlebtn-span {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
                     }
 
-                    .acs-secondnav-item:hover{
-                         background-color:#ff8e3b;
+                    .acs-thirdnav-itemlist {
+                        padding: 0;
+                        margin: 0;
+                        position: absolute;
+                        left: 400px;
+                        top: -1px;
                     }
-            }
 
-            .acs-itemlink{
-                display:flex;
-                margin-top:20px;
-                margin-left:20px;
-                margin-right:25px;
-                min-width: 240px;
-                max-width: 330px;
-                align-items:center;
-                cursor:pointer;
-                font-family: Frutiger LT 55;
-                font-size: 13px;
-                color:#444;
+                    .acs-titlebtn-right, .acs-titlebtn-rightw {
+                        float: right;
+                        right: 20px;
+                        width: 18px;
+                        height: 18px;
+                        background-image: url('../../dist/common/images/image.png');
+                    }
 
-                .acs-itemlink-icon{
-                    display:inline-block;
-                    margin-right:8px;
-                    width:18px;
-                    height:18px;
-                    background-image:url('../../dist/common/images/image.png');
-                    background-position:-162px -66px;
+                    .acs-titlebtn-right {
+                        background-position: -126px -66px;
+                    }
+
+                    .acs-titlebtn-rightw {
+                        background-position: -144px -66px;
+                    }
+                }
+
+                .acs-secondnav-item:hover {
+                    background-color: #ff8e3b;
                 }
             }
 
+            .acs-itemlink {
+                display: flex;
+                margin-top: 20px;
+                margin-left: 20px;
+                margin-right: 25px;
+                min-width: 240px;
+                max-width: 330px;
+                align-items: center;
+                cursor: pointer;
+                font-family: Frutiger LT 55;
+                font-size: 13px;
+                color: #444;
+
+                .acs-itemlink-icon {
+                    display: inline-block;
+                    margin-right: 8px;
+                    width: 18px;
+                    height: 18px;
+                    background-image: url('../../dist/common/images/image.png');
+                    background-position: -162px -66px;
+                }
+            }
             /*.acs-itemlink:nth-last-child(2){
                 margin-bottom:25px;
             }*/
-
-            .acs-itemlink:last-child{
-                margin-bottom:25px;
+            .acs-itemlink:last-child {
+                margin-bottom: 25px;
             }
-
         }
     }
-
 }
