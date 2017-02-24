@@ -26,71 +26,50 @@
 }
 
 body {
-    #suiteBarRight {
-        margin-right: 0px !important;
-
-        #DeltaSuiteBarRight {
-            #welcomeMenuBox {
-                a[id$='_Menu'] {
-                    font-family: 'Frutiger LT 55 Roman';
-                    font-size: 13px;
-                    color: #444;
-                }
-            }
-
-            #ms-help {
-                display: none;
-            }
-        }
-    }
-
     #s4-workspace {
         #s4-bodyContainer {
             #s4-titlerow {
                 #titleAreaBox {
                     display: block;
-                    margin-left: 0px !important;
 
                     #titleAreaRow {
                         display: block;
                         white-space: nowrap;
 
                         > div:nth-child(2).ms-breadcrumb-box {
-                            // display: none;
-                            display: inline-block;
-                            width: auto;
-                            min-width: e('calc(100% - 400px)');
+                           // display: none;
+                            display:inline-block;
+                             width: auto;
+                             min-width: e('calc(100% - 400px)');
                         }
 
                         > div:nth-child(3) {
-                            display: inline-block;
-
+                             display: inline-block;
                             #DeltaPlaceHolderSearchArea {
                                 margin-top: 10px;
                                 padding-left: 10px;
                             }
 
                             #SearchBox {
-                                & > div {
+                                & > div{
                                     height: 30px;
                                     border-radius: 15px;
-
                                     input {
                                         height: 28px;
                                         padding-left: 15px;
-                                        font-family: 'Frutiger CE 55 Roman';
+                                        font-family: '';
                                         font-size: 13px;
-                                        color: #aaa;
+                                        color: 'Frutiger CE 55 Roman';
                                     }
-                                    a[title=Navigation]{
-                                        margin-top: 4px;
-                                        width: 18px;
-                                        height: 18px;
-                                    }
+
+                                    ::-ms-clear{display: none;}
+                                }
+                                
+                                .ms-srch-sb-border {
                                     
-                                    ::-ms-clear {
-                                        display: none;
-                                    }
+                                }
+
+                                .ms-srch-sb-borderFocused {
                                 }
 
                                 .ms-srch-sb-searchLink {
@@ -98,7 +77,6 @@ body {
                                     margin-right: 10px;
                                     background-image: url(/_layouts/15/APPSAICSolution/Images/image.png);
                                     background-position: -72px -66px;
-
                                     img {
                                         display: none;
                                     }
@@ -108,6 +86,7 @@ body {
                     }
                 }
             }
+
         }
     }
 
@@ -116,9 +95,9 @@ body {
         height: 34px;
         background-color: #ffbc35;
 
-        #suiteBarLeft {
-            display: none;
-        }
+        #suiteBarLeft{
+		    display:none;
+	    }
 
         #suiteBarRight {
             display: block;
@@ -175,10 +154,9 @@ body {
                     border: none;
                 }
 
-                input::-ms-clear {
-                    display: none;
-                }
-
+                input::-ms-clear{
+                    display:none;}
+                    
                 a {
                     width: 20px;
                     height: 20px;
@@ -186,12 +164,12 @@ body {
                     top: 37px;
                     right: 10px;
                     background-image: url(/_layouts/15/APPSAICSolution/Images/image.png);
-                    background-position: -72px -66px;
+                    background-position:-72px -66px;
                 }
             }
         }
 
-        .acs-footer-relative {
+        .acs-footer-relative{
             position: relative;
         }
     }
