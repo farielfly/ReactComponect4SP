@@ -31,6 +31,10 @@ body {
                         display: block;
                         white-space: nowrap;
 
+                        #siteIcon {
+                            margin-right: 0px !important;
+                        }
+
                         > div:nth-child(2).ms-breadcrumb-box {
                             // display: none;
                             display: inline-block;
@@ -47,6 +51,11 @@ body {
                             }
 
                             #SearchBox {
+
+                                div[id$=_sboxdiv] {
+                                    width: 250px;
+                                }
+
                                 & > div {
                                     height: 30px;
                                     border-radius: 15px;
@@ -61,6 +70,7 @@ body {
 
                                     a[title=Navigation] {
                                         margin-top: 3px;
+                                        margin-left: -20px;
                                     }
 
                                     ::-ms-clear {
