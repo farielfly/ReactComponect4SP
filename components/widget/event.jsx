@@ -5,13 +5,11 @@ export default class Event extends React.Component {
     render() {
         return (<div className="acs-evnet-container">
             <div className="acs-event-timePic">
-                <div className="acs-monthAndDate">
-                    <div>
-                        <span>{this.props.month}</span>
-                    </div>
-                    <div className="acs-date">
-                        <span>{this.props.day}</span>
-                    </div>
+                <div className="acs-month">
+                    <span>{this.props.month}</span>
+                </div>
+                <div className="acs-date">
+                    <span>{this.props.day}</span>
                 </div>
             </div>
             <div className="acs-timeDes">
