@@ -7,7 +7,7 @@ export default class WPFrame extends React.Component {
         let {title,hasMore,link,hasTopLine} = this.props;
 
         return (
-            <div className="acs-webpartframe" style={{"borderTop":hasTopLine?"3px solid #f57d30":"none"}}>
+            <div className={"acs-webpartframe" + (hasTopLine?" acs-webpartframe-topline":"")}>
                 <a className="acs-webpartframe-header" href={link}>
                     <span className="acs-header-icon"></span>
                     <span className="acs-header-title">{title} </span>
