@@ -60,13 +60,14 @@ function eventRender(config) {
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
                     let date = dataInput.d.results[i].EventDate ? new Date(dataInput.d.results[i].EventDate) : '';
+                    let day = date.getDate() > 10 ? date.getDate() : "0" + date.getDate();
                     let hour = date.getHours() >= 12 ? (date.getHours() - 12) : date.getHours();
                     let minute = date.getMinutes() > 10 ? date.getMinutes() : "0" + date.getMinutes();
                     let pmOrAm = date.getHours() > 12 ? "PM" : "AM";
                     data.push({
                         'href': param.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
                         'month': date === '' ? '' : month[date.getMonth()],
-                        'day': date === '' ? '' : date.getDate(),
+                        'day': day,
                         'time': hour + ":" + minute + " " + pmOrAm,
                         'location': dataInput.d.results[i].Location,
                         'title': dataInput.d.results[i].Title
