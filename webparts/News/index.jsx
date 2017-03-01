@@ -67,8 +67,8 @@ function newsRender(config) {
                     let month = date.getMonth() + 1;
                     let day = date.getDate();
                     let hour = date.getHours() >= 12 ? (date.getHours() - 12) : date.getHours();
-                    let minute = date.getMinutes() > 10 ? date.getMinutes() : "0" + date.getMinutes();
-                    let pmOrAm = date.getHours() > 12 ? "PM" : "AM";
+                    let minute = date.getMinutes() >= 10 ? date.getMinutes() : "0" + date.getMinutes();
+                    let pmOrAm = date.getHours() >= 12 ? "PM" : "AM";
                     data.push({
                         'src': dataInput.d.results[i].ACSImageUrl ? dataInput.d.results[i].ACSImageUrl : param.defaultPicUrl,
                         'date': month + "/" + day + "/" + year + " " + hour + ":" + minute + " " + pmOrAm,
