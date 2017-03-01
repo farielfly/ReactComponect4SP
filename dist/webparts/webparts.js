@@ -34,7 +34,7 @@ var WPFrame = function (_React$Component) {
 
             return React.createElement(
                 "div",
-                { className: "acs-webpartframe", style: { "borderTop": hasTopLine ? "3px solid #f57d30" : "none" } },
+                { className: "acs-webpartframe" + (hasTopLine ? " acs-webpartframe-topline" : "") },
                 React.createElement(
                     "a",
                     { className: "acs-webpartframe-header", href: link },
@@ -158,12 +158,9 @@ var Events = function (_React$Component) {
         key: 'render',
         value: function render() {
             var Events = [];
-            var NewInformation = this.props.NewInformation.NewInformation;
-
-            var count = NewInformation.length;
-            for (var i = 0; i < count; i++) {
-                Events[i] = React.createElement(_event2.default, { key: 'Event' + i, title: NewInformation[i].title, month: NewInformation[i].month, day: NewInformation[i].day, href: NewInformation[i].href, time: NewInformation[i].time, location: NewInformation[i].location });
-            }
+            this.props.NewInformation.map(function (item, ind) {
+                Events.push(React.createElement(_event2.default, { key: 'Event' + ind, title: item.title, month: item.month, day: item.day, href: item.href, time: item.time, location: item.location }));
+            });
             return React.createElement(
                 'div',
                 null,
@@ -197,13 +194,14 @@ var SliderEvents = function (_React$Component2) {
             var width = 100 / count + '%';
 
             var SliderEvents = [];
-            for (var i = 0; i < count; i++) {
-                SliderEvents[i] = React.createElement(
+            inputDate.map(function (item, ind) {
+                SliderEvents.push(React.createElement(
                     'li',
-                    { key: 'Events' + i, className: 'acs-slider-pic', style: { width: width } },
-                    React.createElement(Events, { NewInformation: inputDate[i] })
-                );
-            }
+                    { key: 'Events' + ind, className: 'acs-slider-pic', style: { width: width } },
+                    React.createElement(Events, { NewInformation: item })
+                ));
+            });
+
             return (
                 //<div>
                 //<div className="acs-corporate-events">
@@ -213,7 +211,7 @@ var SliderEvents = function (_React$Component2) {
                     'ul',
                     { style: {
                             left: -100 * nowLocal + "%",
-                            transitionDuration: speed + "s",
+                            transitionDuration: speed + "ms",
                             width: count * 100 + "%"
                         } },
                     SliderEvents
@@ -394,10 +392,10 @@ var SliderFrame = function (_React$Component) {
         value: function goPlay() {
             var _this2 = this;
 
-            if (this.props.autoplay) {
+            if (this.props.autoplay || this.props.autoplay === 'True' || this.props.autoplay === 'true') {
                 this.autoPlayFlag = setInterval(function () {
                     _this2.turn(1);
-                }, this.props.delay * 1000);
+                }, this.props.delay);
             }
         }
     }, {
@@ -415,13 +413,20 @@ var SliderFrame = function (_React$Component) {
         value: function render() {
             var _this3 = this;
 
-            var arrowsNode = React.createElement(_sliderArrows2.default, { turn: this.turn.bind(this) });
-            var dotsNode = React.createElement(_sliderDots2.default, { turn: this.turn.bind(this), count: this.props.itemCount, nowLocal: this.state.nowLocal });
+            var arrowsNode = '';
+            var dotsNode = '';
+            if (this.props.dots && this.props.itemCount > 1) {
+                dotsNode = React.createElement(_sliderDots2.default, { turn: this.turn.bind(this), count: this.props.itemCount, nowLocal: this.state.nowLocal });
+            }
+            if (this.props.arrows && this.props.itemCount > 1) {
+                arrowsNode = React.createElement(_sliderArrows2.default, { turn: this.turn.bind(this) });
+            }
             var children = React.Children.map(this.props.children, function (item, i) {
                 return React.cloneElement(item, {
                     left: _this3.props.left,
                     speed: _this3.props.speed,
-                    nowLocal: _this3.state.nowLocal
+                    nowLocal: _this3.state.nowLocal,
+                    autoplay: _this3.props.autoplay
                 });
             });
 
@@ -444,10 +449,10 @@ exports.default = SliderFrame;
 
 
 SliderFrame.defaultProps = {
-    speed: 1,
-    delay: 2,
+    speed: 1000,
+    delay: 2000,
     pause: true,
-    autoplay: true,
+    autoplay: false,
     dots: true,
     arrows: true,
     itemCount: 0
@@ -497,8 +502,8 @@ var SliderFrameArrowOnBottom = function (_SliderFrame) {
         value: function render() {
             var _this2 = this;
 
-            var showArrows = this.props.arrows && this.props.itemCount >= 1;
-            var showDots = this.props.dots && this.props.itemCount >= 1;
+            var showArrows = this.props.arrows && this.props.itemCount > 1;
+            var showDots = this.props.dots && this.props.itemCount > 1;
             var dotsNode = React.createElement(_sliderDots2.default, { turn: this.turn.bind(this), count: this.props.itemCount, nowLocal: this.state.nowLocal });
 
             var arrowsAndDotsNode = '';
@@ -518,7 +523,8 @@ var SliderFrameArrowOnBottom = function (_SliderFrame) {
                 return React.cloneElement(item, {
                     left: _this2.props.left,
                     speed: _this2.props.speed,
-                    nowLocal: _this2.state.nowLocal
+                    nowLocal: _this2.state.nowLocal,
+                    autoplay: _this2.props.autoplay
                 });
             });
 
@@ -575,32 +581,30 @@ var SliderLinks = function (_React$Component) {
             var width = 100 / count + '%';
 
             var itemCollection = this.props.items.map(function (items, idc) {
-                if (typeof items.length === 'number') {
-                    var itemNodes = items.map(function (item, idn) {
-                        return React.createElement(
-                            'a',
-                            { key: 'link' + idn, href: item.itemhref, className: 'acs-link-bgcolor' },
-                            React.createElement('span', { className: 'acs-linkitem-icon' }),
-                            React.createElement(
-                                'span',
-                                { className: 'acs-linkitem-title' },
-                                item.title
-                            )
-                        );
-                    });
+                var itemNodes = items.map(function (item, idn) {
                     return React.createElement(
-                        'li',
-                        { key: 'coll' + idc, style: { width: width } },
-                        itemNodes
+                        'a',
+                        { key: 'link' + idn, href: item.itemhref, className: 'acs-link-bgcolor', target: '_blank', title: item.title },
+                        React.createElement('span', { className: 'acs-linkitem-icon' }),
+                        React.createElement(
+                            'span',
+                            { className: 'acs-linkitem-title' },
+                            item.title
+                        )
                     );
-                }
+                });
+                return React.createElement(
+                    'li',
+                    { key: 'coll' + idc, style: { width: width } },
+                    itemNodes
+                );
             });
 
             return React.createElement(
                 'ul',
                 { style: {
                         left: -100 * nowLocal + "%",
-                        transitionDuration: speed + "s",
+                        transitionDuration: speed + "ms",
                         width: count * 100 + "%"
                     } },
                 itemCollection
@@ -666,15 +670,19 @@ var NewItem = function (_Component) {
                             { className: 'newContent' },
                             _react2.default.createElement(
                                 'a',
-                                { href: item.href },
+                                { href: item.href, title: item.value },
                                 item.value
                             )
                         ),
                         _react2.default.createElement(
                             'div',
                             { className: 'newContent' },
-                            _react2.default.createElement('span', { className: 'icon-clock' }),
-                            item.date
+                            _react2.default.createElement('div', { className: 'acs-pic-clock' }),
+                            _react2.default.createElement(
+                                'span',
+                                null,
+                                item.date
+                            )
                         )
                     );
                 })
@@ -719,7 +727,7 @@ var News = function (_Component2) {
                 'ul',
                 { style: {
                         left: -100 * nowLocal + "%",
-                        transitionDuration: speed + "s",
+                        transitionDuration: speed + "ms",
                         width: count * 100 + "%"
                     } },
                 itemNodes
@@ -785,7 +793,7 @@ var SliderPics = function (_React$Component) {
                     { key: 'pic' + idx, className: 'acs-slider-pic', style: { width: width } },
                     React.createElement(
                         'a',
-                        { href: item.href },
+                        { href: item.itemhref },
                         React.createElement('img', { src: item.src })
                     ),
                     panel
@@ -796,7 +804,7 @@ var SliderPics = function (_React$Component) {
                 'ul',
                 { style: {
                         left: -100 * nowLocal + "%",
-                        transitionDuration: speed + "s",
+                        transitionDuration: speed + "ms",
                         width: count * 100 + "%"
                     } },
                 itemNodes
@@ -844,24 +852,20 @@ var Event = function (_React$Component) {
                     { className: "acs-event-timePic" },
                     React.createElement(
                         "div",
-                        { className: "acs-monthAndDate" },
+                        { className: "acs-month" },
                         React.createElement(
-                            "div",
+                            "span",
                             null,
-                            React.createElement(
-                                "span",
-                                null,
-                                this.props.month
-                            )
-                        ),
+                            this.props.month
+                        )
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "acs-date" },
                         React.createElement(
-                            "div",
-                            { className: "acs-date" },
-                            React.createElement(
-                                "span",
-                                null,
-                                this.props.day
-                            )
+                            "span",
+                            null,
+                            this.props.day
                         )
                     )
                 ),
@@ -873,7 +877,7 @@ var Event = function (_React$Component) {
                         { className: "acs-timeDes-title" },
                         React.createElement(
                             "a",
-                            { className: "acs-title", href: this.props.href },
+                            { className: "acs-title", title: this.props.title, href: this.props.href },
                             this.props.title
                         )
                     ),
@@ -933,65 +937,91 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function eventRender(config) {
     var NewInformation = [{ title: 'AIC Family day', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' }, { title: 'Anniversary Celebration', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' }, { title: 'Global Conference on Integrated Care', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' }];
-    var IMAGE_DATA = [{ NewInformation: NewInformation }, { NewInformation: NewInformation }, { NewInformation: NewInformation }];
+    var data = NewInformation;
+    var param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '', moreurl: '' };
 
-    var param = {
-        items: [],
-        speed: 1,
-        delay: 2,
-        pause: true,
-        autoplay: false,
-        dots: true,
-        arrows: true
+    function renderUI(data, param) {
+        var itemNodes = [];
+        var maxCount = 3;
+        for (var i = 0, len = data.length; i < len; i += maxCount) {
+            var cell = Math.ceil(data.length / maxCount);
+            itemNodes.push(data.slice(i, i + maxCount));
+        }
+        if (document.getElementById('eventSlider')) {
+            (0, _reactDom.render)(React.createElement(
+                _webPartFrame2.default,
+                {
+                    title: param.webparttitle,
+                    hasMore: true,
+                    link: param.moreurl,
+                    hasTopLine: true
+                },
+                React.createElement(
+                    _sliderFrameArrowOnBottom2.default,
+                    {
+                        itemCount: itemNodes.length,
+                        speed: param.speed,
+                        delay: param.delay,
+                        pause: param.pause,
+                        autoplay: param.autoplay,
+                        dots: param.dots,
+                        arrows: param.arrows
+                    },
+                    React.createElement(_slideEvents2.default, { inputDate: itemNodes })
+                )
+            ), document.getElementById('eventSlider'));
+        }
     };
 
-    function loadData() {
+    function loadData(param) {
         _jquery2.default.ajax({
-            type: "post",
+            type: "GET",
             url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose"
+            },
+            dataType: "json",
             data: {},
-            datatype: "xml",
+            config: param,
             async: false,
-            success: function success(data) {
-                NewInformation = data;
+            success: function success(dataInput) {
+                var month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    var date = dataInput.d.results[i].EventDate ? new Date(dataInput.d.results[i].EventDate) : '';
+                    var day = date.getDate() >= 10 ? date.getDate() : "0" + date.getDate();
+                    var hour = date.getHours() >= 12 ? date.getHours() - 12 : date.getHours();
+                    var minute = date.getMinutes() >= 10 ? date.getMinutes() : "0" + date.getMinutes();
+                    var pmOrAm = date.getHours() >= 12 ? "PM" : "AM";
+                    data.push({
+                        'href': param.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
+                        'month': date === '' ? '' : month[date.getMonth()],
+                        'day': day,
+                        'time': hour + ":" + minute + " " + pmOrAm,
+                        'location': dataInput.d.results[i].Location,
+                        'title': dataInput.d.results[i].Title
+                    });
+                }
+                renderUI(data, this.config);
             },
             error: function error(data) {}
         });
     }
 
     if (config && !config.debug) {
-        loadData();
         param.speed = config.speed ? config.speed : 1;
         param.delay = config.delay ? config.delay : 1;
         param.pause = config.pause ? config.pause : true;
         param.autoplay = config.autoplay ? config.autoplay : false;
         param.dots = config.dots ? config.dots : true;
         param.arrows = config.arrows ? config.arrows : true;
-    }
-
-    if (document.getElementById('eventSlider')) {
-        (0, _reactDom.render)(React.createElement(
-            _webPartFrame2.default,
-            {
-                title: "Corporate Events",
-                hasMore: true,
-                link: "wwww.baidu.com",
-                hasTopLine: true
-            },
-            React.createElement(
-                _sliderFrameArrowOnBottom2.default,
-                {
-                    itemCount: IMAGE_DATA.length,
-                    speed: 1.2,
-                    delay: 2.1,
-                    pause: true,
-                    autoplay: false,
-                    dots: true,
-                    arrows: true
-                },
-                React.createElement(_slideEvents2.default, { inputDate: IMAGE_DATA })
-            )
-        ), document.getElementById('eventSlider'));
+        param.listurl = config.listurl ? config.listurl : '';
+        param.moreurl = config.moreurl ? config.moreurl : '';
+        param.webparttitle = config.webparttitle ? config.webparttitle : '';
+        loadData(param);
+    } else {
+        renderUI(data, param);
     }
 }
 
@@ -1023,69 +1053,81 @@ var _webPartFrame2 = _interopRequireDefault(_webPartFrame);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function linksRender(config) {
-    var LINK_DATA = [];
-    var param = {};
+    var data = [{ 'itemhref': 'http://www.baidu.com', 'title': 'LMS' }, { 'itemhref': 'http://www.baidu.com', 'title': 'PRM' }, { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS' }, { 'itemhref': 'http://www.baidu.com', 'title': 'eForms' }, { 'itemhref': 'http://www.baidu.com', 'title': 'I-innovate' }, { 'itemhref': 'http://www.baidu.com', 'title': 'Webmail' }, { 'itemhref': 'http://www.baidu.com', 'title': 'App' }, { 'itemhref': 'http://www.baidu.com', 'title': 'App' }, { 'itemhref': 'http://www.baidu.com', 'title': 'App' }, { 'itemhref': 'http://www.baidu.com', 'title': 'LMS' }, { 'itemhref': 'http://www.baidu.com', 'title': 'PRM' }, { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS' }, { 'itemhref': 'http://www.baidu.com', 'title': 'eForms' }, { 'itemhref': 'http://www.baidu.com', 'title': 'I-innovate' }, { 'itemhref': 'http://www.baidu.com', 'title': 'Webmail' }, { 'itemhref': 'http://www.baidu.com', 'title': 'App' }, { 'itemhref': 'http://www.baidu.com', 'title': 'App' }, { 'itemhref': 'http://www.baidu.com', 'title': 'App' }, { 'itemhref': 'http://www.baidu.com', 'title': 'LMS' }];
+    var param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: 'frequently accessed links', moreurl: '' };
+
+    function renderUI(data, param) {
+        var itemNodes = [];
+        var maxCount = 9;
+        for (var i = 0, len = data.length; i < len; i += maxCount) {
+            itemNodes.push(data.slice(i, i + maxCount));
+        }
+        if (document.getElementById('acclinks')) {
+            (0, _reactDom.render)(React.createElement(
+                _webPartFrame2.default,
+                {
+                    title: param.webparttitle,
+                    hasMore: false,
+                    link: param.moreurl,
+                    hasTopLine: false
+                },
+                React.createElement(
+                    _sliderFrameArrowOnBottom2.default,
+                    {
+                        itemCount: itemNodes.length,
+                        speed: param.speed,
+                        delay: param.delay,
+                        pause: param.pause,
+                        autoplay: param.autoplay,
+                        dots: param.dots,
+                        arrows: param.arrows
+                    },
+                    React.createElement(_sliderLinks2.default, { items: itemNodes })
+                )
+            ), document.getElementById('acclinks'));
+            AIC.wordLimit('.acs-linkitem-title');
+        }
+    }
+
+    function loadData(param) {
+        _jquery2.default.ajax({
+            type: "GET",
+            url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose"
+            },
+            dataType: "json",
+            data: {},
+            config: param,
+            async: false,
+            success: function success(dataInput) {
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    data.push({
+                        'itemhref': dataInput.d.results[i].ACSUrl ? dataInput.d.results[i].ACSUrl.Url : '',
+                        'title': dataInput.d.results[i].Title
+                    });
+                }
+                renderUI(data, this.config);
+            },
+            error: function error(data) {}
+        });
+    }
 
     if (config && !config.debug) {
-        loadData();
         param.speed = config.speed ? config.speed : 1;
         param.delay = config.delay ? config.delay : 1;
         param.pause = config.pause ? config.pause : true;
         param.autoplay = config.autoplay ? config.autoplay : false;
         param.dots = config.dots ? config.dots : true;
         param.arrows = config.arrows ? config.arrows : true;
+        param.listurl = config.listurl ? config.listurl : '';
+        param.webparttitle = config.webparttitle ? config.webparttitle : '';
+        param.moreurl = config.moreurl ? config.moreurl : '';
+        loadData(param);
     } else {
-        LINK_DATA = [[{ 'itemhref': 'www.baidu.com', 'title': 'LMS' }, { 'itemhref': 'www.baidu.com', 'title': 'PRM' }, { 'itemhref': 'www.baidu.com', 'title': 'IRMS' }, { 'itemhref': 'www.baidu.com', 'title': 'eForms' }, { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' }, { 'itemhref': 'www.baidu.com', 'title': 'Webmail' }, { 'itemhref': 'www.baidu.com', 'title': 'App' }, { 'itemhref': 'www.baidu.com', 'title': 'App' }, { 'itemhref': 'www.baidu.com', 'title': 'App' }], [{ 'itemhref': 'www.baidu.com', 'title': 'LMS' }, { 'itemhref': 'www.baidu.com', 'title': 'PRM' }, { 'itemhref': 'www.baidu.com', 'title': 'IRMS' }, { 'itemhref': 'www.baidu.com', 'title': 'eForms' }, { 'itemhref': 'www.baidu.com', 'title': 'I-innovate' }, { 'itemhref': 'www.baidu.com', 'title': 'Webmail' }, { 'itemhref': 'www.baidu.com', 'title': 'App' }, { 'itemhref': 'www.baidu.com', 'title': 'App' }, { 'itemhref': 'www.baidu.com', 'title': 'App' }], [{ 'itemhref': 'www.baidu.com', 'title': 'LMS' }]];
-
-        param = {
-            items: [],
-            speed: 1,
-            delay: 2,
-            pause: true,
-            autoplay: false,
-            dots: true,
-            arrows: true,
-            url: ''
-        };
-    }
-
-    function loadData() {
-        _jquery2.default.ajax({
-            type: "post",
-            url: config.url,
-            data: {},
-            datatype: "xml",
-            async: false,
-            success: function success(data) {
-                LINK_DATA = data;
-            },
-            error: function error(data) {}
-        });
-    }
-
-    if (document.getElementById('acclinks')) {
-        (0, _reactDom.render)(React.createElement(
-            _webPartFrame2.default,
-            {
-                title: "Frequently Accessed List",
-                hasMore: false,
-                link: "wwww.baidu.com",
-                hasTopLine: false
-            },
-            React.createElement(
-                _sliderFrameArrowOnBottom2.default,
-                {
-                    itemCount: LINK_DATA.length,
-                    speed: param.speed,
-                    delay: param.delay,
-                    pause: param.pause,
-                    autoplay: param.deautoplaylay,
-                    dots: param.dots,
-                    arrows: param.arrows
-                },
-                React.createElement(_sliderLinks2.default, { items: LINK_DATA })
-            )
-        ), document.getElementById('acclinks'));
+        renderUI(data, param);
     }
 }
 
@@ -1117,72 +1159,95 @@ var _jquery2 = _interopRequireDefault(_jquery);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function newsRender(config) {
-  var data = [{ 'src': '../../components/img/image1.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }, { 'src': '../../components/img/image2.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }, { 'src': '../../components/img/image3.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }, { 'src': '../../components/img/image1.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }, { 'src': '../../components/img/image1.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }];
+    var data = [{ 'src': '../../components/img/image1.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }, { 'src': '../../components/img/image2.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }, { 'src': '../../components/img/image3.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }, { 'src': '../../components/img/image1.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }, { 'src': '../../components/img/image1.jpg', 'href': 'www.baidu.com', 'date': '01/03/2017 10:00AM', 'value': 'test' }];
 
-  var maxCount = 3;
-  var itemNodes = [];
-  var param = {};
+    var maxCount = 3;
+    var param = { url: '', speed: 1, delay: 1, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '', moreurl: '', defaultPicUrl: '' };
 
-  function loadDate() {
-    _jquery2.default.ajax({
-      type: "post",
-      url: config.url,
-      data: {},
-      datatype: "xml",
-      async: false,
-      success: function success(data) {
-        data = data;
-      },
-      error: function error(data) {}
-    });
-  }
+    function renderUI(data, param) {
+        var itemNodes = [];
 
-  if (config && !config.debug) {
-    loadData();
-    param.speed = config.speed ? config.speed : 1;
-    param.delay = config.delay ? config.delay : 1;
-    param.pause = config.pause ? config.pause : true;
-    param.autoplay = config.autoplay ? config.autoplay : false;
-    param.dots = config.dots ? config.dots : true;
-    param.arrows = config.arrows ? config.arrows : true;
-  } else {
-    param.url = '';
-    param.speed = 1;
-    param.delay = 1;
-    param.pause = true;
-    param.autoplay = false;
-    param.dots = true;
-    param.arrows = true;
-  }
+        for (var i = 0, len = data.length; i < len; i += maxCount) {
+            var cell = Math.ceil(data.length / maxCount);
+            itemNodes.push(React.createElement(_sliderNews2.default, { children: data.slice(i, i + maxCount), count: cell, idx: i }));
+        }
 
-  for (var i = 0, len = data.length; i < len; i += maxCount) {
-    itemNodes.push(React.createElement(_sliderNews2.default, { children: data.slice(i, i + maxCount), count: Math.ceil(data.length / maxCount), idx: i }));
-  }
+        if (document.getElementById('news')) {
+            (0, _reactDom.render)(React.createElement(
+                _webPartFrame2.default,
+                {
+                    title: param.webparttitle,
+                    hasMore: true,
+                    link: param.listurl,
+                    hasTopLine: true
+                },
+                React.createElement(
+                    _sliderFrameArrowOnBottom2.default,
+                    {
+                        itemCount: itemNodes.length,
+                        speed: param.speed,
+                        delay: param.delay,
+                        pause: param.pause,
+                        autoplay: param.autoplay,
+                        dots: param.dots,
+                        arrows: param.arrows
+                    },
+                    React.createElement(_sliderNews2.default, { items: itemNodes, maxCount: maxCount })
+                )
+            ), document.getElementById('news'));
+        }
+    }
 
-  if (document.getElementById('news')) {
-    (0, _reactDom.render)(React.createElement(
-      _webPartFrame2.default,
-      {
-        title: "NEWS & ANNOUNCEMENTS",
-        hasMore: true,
-        link: "wwww.baidu.com",
-        hasTopLine: true
-      },
-      React.createElement(
-        _sliderFrameArrowOnBottom2.default,
-        {
-          itemCount: itemNodes.length,
-          speed: param.speed,
-          delay: param.delay,
-          pause: param.pause,
-          autoplay: param.autoplay,
-          dots: param.dots,
-          arrows: param.arrows
-        },
-        React.createElement(_sliderNews2.default, { items: itemNodes, maxCount: maxCount })
-      )
-    ), document.getElementById('news'));
-  }
+    function loadData(param) {
+        _jquery2.default.ajax({
+            type: "GET",
+            url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose"
+            },
+            dataType: "json",
+            data: {},
+            config: param,
+            async: false,
+            success: function success(dataInput) {
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    var date = new Date(dataInput.d.results[i].ACSPublishedDate);
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var hour = date.getHours() >= 12 ? date.getHours() - 12 : date.getHours();
+                    var minute = date.getMinutes() >= 10 ? date.getMinutes() : "0" + date.getMinutes();
+                    var pmOrAm = date.getHours() >= 12 ? "PM" : "AM";
+                    data.push({
+                        'src': dataInput.d.results[i].ACSImageUrl ? dataInput.d.results[i].ACSImageUrl : param.defaultPicUrl,
+                        'date': month + "/" + day + "/" + year + " " + hour + ":" + minute + " " + pmOrAm,
+                        'href': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
+                        'value': dataInput.d.results[i].Title
+                    });
+                }
+                renderUI(data, this.config);
+            },
+            error: function error(data) {}
+        });
+    }
+
+    if (config && !config.debug) {
+        param.speed = config.speed ? config.speed : 1;
+        param.delay = config.delay ? config.delay : 1;
+        param.pause = config.pause ? config.pause : true;
+        param.autoplay = config.autoplay ? config.autoplay : false;
+        param.dots = config.dots ? config.dots : true;
+        param.arrows = config.arrows ? config.arrows : true;
+        param.listurl = config.listurl ? config.listurl : '';
+        param.webparttitle = config.webparttitle ? config.webparttitle : '';
+        param.moreurl = config.moreurl ? config.moreurl : '';
+        param.defaultPicUrl = config.defaultPicUrl ? config.defaultPicUrl : '';
+        loadData(param);
+    } else {
+        renderUI(data, param);
+    }
 }
 
 global.newsRender = newsRender;
@@ -1210,57 +1275,72 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function sliderRender(config) {
 
-  var IMAGE_DATA = [{ 'src': '../../components/img/image1.jpg', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' }, { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' }, { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
+    var data = [{ 'src': '../../components/img/image1.jpg', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' }, { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' }, { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
-  var param = {};
+    var param = { url: '', speed: 1, delay: 1, pause: true, autoplay: false, dots: true, arrows: true, listurl: '' };
 
-  function loadDate() {
-    _jquery2.default.ajax({
-      type: "post",
-      url: config.url,
-      data: {},
-      datatype: "xml",
-      async: false,
-      success: function success(data) {
-        IMAGE_DATA = data;
-      },
-      error: function error(data) {}
-    });
-  }
+    function renderUI(data, param) {
+        if (document.getElementById('slider')) {
+            (0, _reactDom.render)(React.createElement(
+                _sliderFrame2.default,
+                {
+                    itemCount: data.length,
+                    speed: param.speed,
+                    delay: param.delay,
+                    pause: param.pause,
+                    autoplay: param.autoplay,
+                    dots: param.dots,
+                    arrows: param.arrows
+                },
+                React.createElement(_sliderPics2.default, { items: data })
+            ), document.getElementById('slider'));
+            AIC.wordLimit('.acs-titledescriptionpanel-description');
+        }
+    }
 
-  if (config && !config.debug) {
-    loadData();
-    param.speed = config.speed ? config.speed : 1;
-    param.delay = config.delay ? config.delay : 1;
-    param.pause = config.pause ? config.pause : true;
-    param.autoplay = config.autoplay ? config.autoplay : false;
-    param.dots = config.dots ? config.dots : true;
-    param.arrows = config.arrows ? config.arrows : true;
-  } else {
-    param.url = '';
-    param.speed = 1;
-    param.delay = 1;
-    param.pause = true;
-    param.autoplay = false;
-    param.dots = true;
-    param.arrows = true;
-  }
+    function loadData(param) {
+        _jquery2.default.ajax({
+            type: "GET",
+            url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose"
+            },
+            dataType: "json",
+            data: {},
+            config: param,
+            async: false,
+            success: function success(dataInput) {
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    data.push({
+                        'src': dataInput.d.results[i].ACSImageUrl,
+                        'alt': dataInput.d.results[i].Title,
+                        'itemhref': this.config.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
+                        'title': dataInput.d.results[i].Title,
+                        'description': dataInput.d.results[i].ACSDescription
+                    });
+                }
+                renderUI(data, this.config);
+            },
+            error: function error(data) {
+                debugger;
+            }
+        });
+    }
 
-  if (document.getElementById('slider')) {
-    (0, _reactDom.render)(React.createElement(
-      _sliderFrame2.default,
-      {
-        itemCount: IMAGE_DATA.length,
-        speed: param.speed,
-        delay: param.delay,
-        pause: param.pause,
-        autoplay: param.autoplay,
-        dots: param.dots,
-        arrows: param.arrows
-      },
-      React.createElement(_sliderPics2.default, { items: IMAGE_DATA })
-    ), document.getElementById('slider'));
-  }
+    if (config && !config.debug) {
+        param.speed = config.speed ? config.speed : 1;
+        param.delay = config.delay ? config.delay : 1;
+        param.pause = config.pause ? config.pause : true;
+        param.autoplay = config.autoplay ? config.autoplay : false;
+        param.dots = config.dots ? config.dots : true;
+        param.arrows = config.arrows ? config.arrows : true;
+        param.listurl = config.listurl ? config.listurl : '';
+        loadData(param);
+    } else {
+        renderUI(data, param);
+    }
 }
 
 global.sliderRender = sliderRender;
