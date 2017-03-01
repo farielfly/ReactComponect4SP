@@ -75,7 +75,7 @@ gulp.task('buildjs-webglobal', function () {
 
 gulp.task('copy-jslibrary', function () {
     for (let library of config.jslibrary) {
-        if (!debug && !library.prod_include) {
+        if (!debug || !library.prod_include) {
             continue;
         }
         CopyJs(library.name + '.js',
@@ -101,11 +101,13 @@ gulp.task('concat-js',['buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'cop
 })
 
 function CopyJs(name, src, dest) {
-    del(src, { force: true });
-    gulp.src(src)
+    del(path.join(dest, name), { force: true });
+    
+   gulp.src(src)
         .pipe(gulp.dest(path.dirname(src)))
         .pipe(rename(name))
         .pipe(gulp.dest(path.join(dest)));
+        return;
 }
 
 function bundleJs(name, srcs, dest) {
