@@ -1,0 +1,188 @@
+import { render } from 'react-dom';
+import Organization from '../../components/organization/division.jsx';
+
+
+function orgStructureRender(config){
+    let data=[
+    {
+        title:'one',
+        description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
+        children:[
+            {title:'one1',href:'http://www.baidu.com'},{title:'one2',href:'http://www.baidu.com'},{title:'one3',href:'http://www.baidu.com'},
+        ],
+        cheifUser:{
+            Id:'1111',
+            ADName:'Tom',
+            Emaiil:'eeeeeeeeee',
+            Designation:'Manager',
+            OfficeNumber:'1234567',
+            PhoneNumber:'1234567890',
+            Location:'Wedid, dsfids a02',
+            Reporter:'Tom Sum',
+            People:'ham.gao@example.com',
+            AskAbout:'Swim'
+        }
+
+    },
+    {
+        title:'two',
+        description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
+        children:[
+            {title:'two1',href:'http://www.baidu.com'},{title:'two2',href:'http://www.baidu.com'},{title:'two3',href:'http://www.baidu.com'},
+        ],
+        cheifUser:{
+            Id:'1111',
+            ADName:'Jerry',
+            Emaiil:'eeeeeeeeee',
+            Designation:'Manager',
+            OfficeNumber:'1234567',
+            PhoneNumber:'1234567890',
+            Location:'Wedid, dsfids a02',
+            Reporter:'Tom Sum',
+            People:'ham.gao@example.com',
+            AskAbout:'Swim'
+        }
+    },
+    {
+        title:'three',
+        description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
+        children:[
+            {title:'three1',href:'http://www.baidu.com'},{title:'three2',href:'http://www.baidu.com'},{title:'three3',href:'http://www.baidu.com'},
+        ],
+        cheifUser:{
+            Id:'David',
+            ADName:'test',
+            Emaiil:'eeeeeeeeee',
+            Designation:'Manager',
+            OfficeNumber:'1234567',
+            PhoneNumber:'1234567890',
+            Location:'Wedid, dsfids a02',
+            Reporter:'Tom Sum',
+            People:'ham.gao@example.com',
+            AskAbout:'Swim'
+        }
+    },
+    {
+        title:'four',
+        description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
+        children:[
+            {title:'four1',href:'http://www.baidu.com'},{title:'four2',href:'http://www.baidu.com'},{title:'four3',href:'http://www.baidu.com'},
+        ],
+        cheifUser:{
+            Id:'1111',
+            ADName:'test',
+            Emaiil:'eeeeeeeeee',
+            Designation:'Manager',
+            OfficeNumber:'1234567',
+            PhoneNumber:'1234567890',
+            Location:'Wedid, dsfids a02',
+            Reporter:'Tom Sum',
+            People:'ham.gao@example.com',
+            AskAbout:'Swim'
+        }
+    }
+    ];
+    let data2=[
+    {
+        title:'one',
+        description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
+        children:[
+            {title:'one1',href:'http://www.baidu.com'},{title:'one2',href:'http://www.baidu.com'},{title:'one3',href:'http://www.baidu.com'},
+        ],
+        cheifUser:{
+            Id:'1111',
+            ADName:'Tom',
+            Emaiil:'eeeeeeeeee',
+            Designation:'Manager',
+            OfficeNumber:'1234567',
+            PhoneNumber:'1234567890',
+            Location:'Wedid, dsfids a02',
+            Reporter:'Tom Sum',
+            People:'ham.gao@example.com',
+            AskAbout:'Swim'
+        }
+
+    },
+    {
+        title:'two',
+        description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
+        children:[
+            {title:'two1',href:'http://www.baidu.com'},{title:'two2',href:'http://www.baidu.com'},{title:'two3',href:'http://www.baidu.com'},
+        ],
+        cheifUser:{
+            Id:'1111',
+            ADName:'Jerry',
+            Emaiil:'eeeeeeeeee',
+            Designation:'Manager',
+            OfficeNumber:'1234567',
+            PhoneNumber:'1234567890',
+            Location:'Wedid, dsfids a02',
+            Reporter:'Tom Sum',
+            People:'ham.gao@example.com',
+            AskAbout:'Swim'
+        }
+    },
+    {
+        title:'three',
+        description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
+        children:[
+            {title:'three1',href:'http://www.baidu.com'},{title:'three2',href:'http://www.baidu.com'},{title:'three3',href:'http://www.baidu.com'},
+        ],
+        cheifUser:{
+            Id:'David',
+            ADName:'test',
+            Emaiil:'eeeeeeeeee',
+            Designation:'Manager',
+            OfficeNumber:'1234567',
+            PhoneNumber:'1234567890',
+            Location:'Wedid, dsfids a02',
+            Reporter:'Tom Sum',
+            People:'ham.gao@example.com',
+            AskAbout:'Swim'
+        }
+    }
+    ];
+
+    function renderUI(data,open) {
+        if (document.getElementById('organization')) 
+        {
+            render(
+                    <Organization data={data} expanded={open}></Organization>,
+                document.getElementById('organization')
+            )
+        }
+    }
+
+        function loadData(param) {
+            $.ajax({
+                type: "GET",
+                url: config.url,
+                headers: {
+                    "Accept": "application/json;odata=verbose",
+                    "Content-Type": "application/json;odata=verbose",
+                },
+                dataType: "json",
+                data: {},
+                config: param,
+                async: false,
+                success: function(dataInput) {
+                    renderUI(data, this.config);
+                },
+                error: function(data) {
+                }
+            });
+        }
+
+        if (config && !config.debug) {
+            loadData(param);
+        }
+        else {
+            if (config.searchInfo !='') {
+                renderUI(data2,config.open);
+            }
+            else {
+                renderUI(data,config.open);
+            }
+        }
+}
+        global.orgStructureRender = orgStructureRender;
