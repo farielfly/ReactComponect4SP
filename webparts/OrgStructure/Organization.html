@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../../node_modules/react/dist/react.js"></script>
+    <script src="../../node_modules/react-dom/dist/react-dom.js"></script>
+    <link href="../../dist/webparts/webparts.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div style="width:1180px;height:auto;overflow-y:auto;">
+        <div style="width:100%;height:40px;">
+            <a>Home</a> > <span>Organization Structure</span>
+            <div style="float:right;width:260px;height:30px;border:1px solid #000;">
+                <input type="text" id="searchInfo" style="float:left;padding:0;width:80%;height:28px;display:block;" />
+                <a style="display:block;float:right;width:18%;height:100%;background-color:#999" id="searchBtn" onclick="searchClick();"></a>
+            </div>
+        </div>
+        
+        <div id="organization" style="width:100%;height:350px;" prefix="dd"></div>
+    </div>
+    
+    <script src="../../dist/webparts/webparts.js"></script>
+    <script type="text/javascript">
+        var object = {
+            debug: true,
+            open:false,
+            searchInfo:''
+        };
+        window.onload = function(){
+            window.orgStructureRender(object);
+        }
+        function searchClick() {
+            var objectt = {
+                debug: true,
+                open:true,
+                searchInfo: document.getElementById('searchInfo').value
+            }
+            window.orgStructureRender(objectt);
+        }
+    </script>
+</body>
+</html>
