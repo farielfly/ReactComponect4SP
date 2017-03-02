@@ -1,5 +1,5 @@
 import { render } from 'react-dom';
-import Organization from '../../components/organization/division.jsx';
+import Organization from '../../components/accordion/division.jsx';
 
 
 function orgStructureRender(config){
@@ -21,7 +21,8 @@ function orgStructureRender(config){
             Reporter:'Tom Sum',
             People:'ham.gao@example.com',
             AskAbout:'Swim'
-        }
+        },
+        isOpen:false
 
     },
     {
@@ -41,7 +42,8 @@ function orgStructureRender(config){
             Reporter:'Tom Sum',
             People:'ham.gao@example.com',
             AskAbout:'Swim'
-        }
+        },
+        isOpen:false
     },
     {
         title:'three',
@@ -60,7 +62,8 @@ function orgStructureRender(config){
             Reporter:'Tom Sum',
             People:'ham.gao@example.com',
             AskAbout:'Swim'
-        }
+        },
+        isOpen:false
     },
     {
         title:'four',
@@ -79,12 +82,13 @@ function orgStructureRender(config){
             Reporter:'Tom Sum',
             People:'ham.gao@example.com',
             AskAbout:'Swim'
-        }
+        },
+        isOpen:false
     }
     ];
     let data2=[
     {
-        title:'one',
+        title:'odssssne',
         description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
         children:[
             {title:'one1',href:'http://www.baidu.com'},{title:'one2',href:'http://www.baidu.com'},{title:'one3',href:'http://www.baidu.com'},
@@ -100,11 +104,12 @@ function orgStructureRender(config){
             Reporter:'Tom Sum',
             People:'ham.gao@example.com',
             AskAbout:'Swim'
-        }
+        },
+        isOpen:true
 
     },
     {
-        title:'two',
+        title:'twfdffddo',
         description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
         children:[
             {title:'two1',href:'http://www.baidu.com'},{title:'two2',href:'http://www.baidu.com'},{title:'two3',href:'http://www.baidu.com'},
@@ -120,10 +125,11 @@ function orgStructureRender(config){
             Reporter:'Tom Sum',
             People:'ham.gao@example.com',
             AskAbout:'Swim'
-        }
+        },
+        isOpen:true
     },
     {
-        title:'three',
+        title:'thredfdfdfde',
         description:'Click on the value of Reporting Officer, will open up a new browser tab and enter user profile page.If any property value is empty, the whole line (both property name and value) will not be displayed.',
         children:[
             {title:'three1',href:'http://www.baidu.com'},{title:'three2',href:'http://www.baidu.com'},{title:'three3',href:'http://www.baidu.com'},
@@ -139,15 +145,16 @@ function orgStructureRender(config){
             Reporter:'Tom Sum',
             People:'ham.gao@example.com',
             AskAbout:'Swim'
-        }
+        },
+        isOpen:true
     }
     ];
 
-    function renderUI(data,open) {
+    function renderUI(data) {
         if (document.getElementById('organization')) 
         {
             render(
-                    <Organization data={data} expanded={open}></Organization>,
+                    <Organization data={data} ></Organization>,
                 document.getElementById('organization')
             )
         }
@@ -185,4 +192,4 @@ function orgStructureRender(config){
             }
         }
 }
-        global.orgStructureRender = orgStructureRender;
+global.orgStructureRender = orgStructureRender;
