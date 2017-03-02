@@ -5,7 +5,7 @@ export default class LinkItem extends React.Component{
       
      render(){
         return(
-          <a href={this.props.itemData.href} key={index}>
+          <a href={this.props.itemData.href}>
               <span></span>
               <span>{this.props.itemData.title}</span>
           </a>
