@@ -1,5 +1,5 @@
 import DivisionDetail from './divisionDetail.jsx';
-import ExpandedView from './accordision.jsx';
+import ExpandedView from './accordionFrame.jsx';
 
 export default class Division extends React.Component{
     constructor(props){
