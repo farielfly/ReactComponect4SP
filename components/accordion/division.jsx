@@ -8,19 +8,27 @@ export default class Division extends React.Component {
             divisionDetail: null,
             showDetail: false,
             needInit: true,
-            needRefresh : false,
+            needRefresh: false,
             ChangedItemIndex: -1,
+            OpenCount: 0,
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.refresh) {
             this.state.needRefresh = true;
+            this.state.OpenCount = 0;
         }
     }
 
 
     handleDataClick(object, isShow, changedItemIndex, changedStatus) {
+        if (!changedStatus) {
+            this.state.OpenCount--;
+        }
+        else {
+            this.state.OpenCount++;
+        }
         this.setState({
             divisionDetail: object,
             showDetail: isShow,
@@ -43,6 +51,9 @@ export default class Division extends React.Component {
         if (this.state.needInit || this.state.needRefresh) {
             this.props.data.map((dataitem, index) => {
                 ExpandedViews.push(<ExpandedView ref="expandedBtn" accordionData={dataitem} activeStatus={dataitem.isOpen} dataIndex={index} detailEvent={this.handleDataClick.bind(this)} />)
+                if (dataitem.isOpen) {
+                    this.state.OpenCount++;
+                }
             })
         }
         else {
@@ -75,7 +86,7 @@ export default class Division extends React.Component {
                 <div className="acs-division-leftpart">
                     {ExpandedViews}
                 </div>
-                <div style={{ display: this.state.showDetail ? "block" : "none" }} className="acs-division-rightpart">
+                <div style={{ display: this.state.OpenCount != 0 ? "block" : "none" }} className="acs-division-rightpart">
                     {detail}
                 </div>
             </div>

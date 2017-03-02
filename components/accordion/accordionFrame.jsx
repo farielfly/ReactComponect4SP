@@ -18,19 +18,10 @@ export default class AccordionFrame extends React.Component {
     }
 
     handleShow() {
-        if (!this.state.active) {
-            this.setState({
-                active: true
-            });
-            this.props.detailEvent(this.props.accordionData, true, this.props.dataIndex, true);
-
-        }
-        else {
-            this.setState({
-                active: false
-            });
-            this.props.detailEvent(null, false, this.props.dataIndex, false);
-        }
+        this.setState({
+            active: !this.state.active
+        });
+        this.props.detailEvent(this.props.accordionData, true, this.props.dataIndex, !this.state.active);
     }
 
     render() {
