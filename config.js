@@ -10,10 +10,12 @@ module.exports = {
             'src': ['webparts/links/index.jsx',
                 'webparts/slider/index.jsx',
                 'webparts/news/index.jsx',
+                'webparts/navigation/index.jsx',
                 'webparts/events/index.jsx'],
             'style': ['webparts/links/style.less',
                 'webparts/slider/style.less',
                 'webparts/news/style.less',
+                'webparts/navigation/style.less',
                 'webparts/events/style.less'],
             'output': 'dist/webparts',
             'prod_include': true
