@@ -10,7 +10,9 @@ export default class PeopleInfo extends React.Component{
     }
 
     render(){
-
+        if(this.props.chiefUser ===null)
+        return null;
+        
         var userPhoto = "/_layouts/15/images/APPSSP2013MASTERKONG/photo.png";
         //if (this.props.chiefUser.UserPhotoUrl) {
         //    userPhoto = this.props.chiefUser.UserPhotoUrl;
