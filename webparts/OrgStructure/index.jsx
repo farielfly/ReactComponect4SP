@@ -1,5 +1,5 @@
 import { render } from 'react-dom';
-import Organization from '../../components/accordion/division.jsx';
+import Organization from '../../components/accordion/accordionComplex.jsx';
 
 
 function orgStructureRender(config) {
@@ -22,7 +22,7 @@ function orgStructureRender(config) {
                 People: 'ham.gao@example.com',
                 AskAbout: 'Swim'
             },
-            isOpen: false
+            isSearch: false
 
         },
         {
@@ -43,7 +43,7 @@ function orgStructureRender(config) {
                 People: 'ham.gao@example.com',
                 AskAbout: 'Swim'
             },
-            isOpen: false
+            isSearch: false
         },
         {
             title: 'three',
@@ -63,7 +63,7 @@ function orgStructureRender(config) {
                 People: 'ham.gao@example.com',
                 AskAbout: 'Swim'
             },
-            isOpen: false
+            isSearch: false
         },
         {
             title: 'four',
@@ -83,7 +83,7 @@ function orgStructureRender(config) {
                 People: 'ham.gao@example.com',
                 AskAbout: 'Swim'
             },
-            isOpen: false
+            isSearch: false
         }
     ];
     let data2 = [
@@ -105,7 +105,7 @@ function orgStructureRender(config) {
                 People: 'ham.gao@example.com',
                 AskAbout: 'Swim'
             },
-            isOpen: true
+            isSearch: true
 
         },
         {
@@ -126,7 +126,7 @@ function orgStructureRender(config) {
                 People: 'ham.gao@example.com',
                 AskAbout: 'Swim'
             },
-            isOpen: true
+            isSearch: true
         },
         {
             title: 'thredfdfdfde',
@@ -146,17 +146,17 @@ function orgStructureRender(config) {
                 People: 'ham.gao@example.com',
                 AskAbout: 'Swim'
             },
-            isOpen: true
+            isSearch: true
         }
     ];
 
-    function renderUI(data, isRefresh) {
+    function renderUI(data) {
         if (document.getElementById('organization')) {
             render(
-                <Organization data={data} refresh={isRefresh}></Organization>,
-                document.getElementById('organization')
+            <Organization data={data} hasPanel={true}></Organization>,
+            document.getElementById('organization')
             )
-        }
+         }
     }
 
     function loadData(param) {
@@ -184,9 +184,11 @@ function orgStructureRender(config) {
     }
     else {
         if (config.searchInfo != '') {
+            ReactDOM.unmountComponentAtNode(document.getElementById('organization'));
             renderUI(data2, config.open);
         }
         else {
+            ReactDOM.unmountComponentAtNode(document.getElementById('organization'));
             renderUI(data, config.open);
         }
     }
