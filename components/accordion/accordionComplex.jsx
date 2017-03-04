@@ -24,7 +24,7 @@ export default class AccordionComplex extends React.Component {
     render() {
          var children = this.props.data.map((acc,index)=>{
            return (
-              <div key={"acccontent"+index}>
+              <div className="acs-content-links" key={"acccontent"+index}>
                 {
                     acc.children.map((link,index)=>{
                         return (
@@ -39,7 +39,7 @@ export default class AccordionComplex extends React.Component {
            )
        });
         var infoPanel = !this.props.hasPanel?null:(<InfoPanel infoData={this.state.informationPanel} commonTitle={"ttteee"} commonDes={"dfsdfs"}>
-                    <ChiefUser chiefUser={this.state.informationPanel}/>
+                    <ChiefUser personData={this.state.informationPanel}/>
                 </InfoPanel>)
 
         return (

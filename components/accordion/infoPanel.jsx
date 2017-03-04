@@ -10,15 +10,15 @@ export default class DivisionDetail extends React.Component{
         else{
             return(
                 <div className="acs-infopanel">
-                    <div>
-                        <div>
+                    <div className="acs-infopanel-head">
+                        <div className="acs-infohead-titlecontent">
                             <div>{this.props.commonTitle}</div>
-                            <div>{this.props.infoData.title}</div>
+                            <div className="acs-infohead-title">{this.props.infoData.title}</div>
                         </div>
-                        <span>{this.props.infoData.description}</span>  
+                        <div className="acs-infohead-description">{this.props.infoData.description}</div>  
                     </div>
                     {this.props.children}
-                    <div><span></span><a href={this.props.infoData.link}>{this.props.commonDes}</a></div> 
+                    <a className="acs-jumplink" href={this.props.infoData.link}>{this.props.commonDes}</a>
                 </div>
             )
         }
