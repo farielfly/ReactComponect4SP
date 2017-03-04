@@ -25,7 +25,14 @@ module.exports = {
             'name': 'flexlayout',
             'src': ['layouts/flexlayout/script.jsx'],
             'style': ['layouts/flexlayout/style.less'],
-            'output': 'dist/layouts',
+            'output': 'dist/layouts/flexlayout',
+            'prod_include': true
+        },
+        {
+            'name': 'layouta',
+            'src': ['layouts/layouta/script.jsx'],
+            'style': ['layouts/layouta/style.less'],
+            'output': 'dist/layouts/layouta',
             'prod_include': true
         }
     ],
