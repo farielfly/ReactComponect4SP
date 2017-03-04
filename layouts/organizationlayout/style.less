@@ -42,15 +42,20 @@ body {
                         overflow:hidden;
                         transition:height 1s;
 
-                        > a{
-                            display:block;
+                        .acs-content-links{
                             width:100%;
-                            height:40px;
-                            color:#333;
-                            cursor:pointer;
+                            height:100%;
 
-                            > span:nth-child(2){
-                                .text_overflow;
+                            > a{
+                                display:block;
+                                width:100%;
+                                height:40px;
+                                color:#333;
+                                cursor:pointer;
+
+                                > span:nth-child(2){
+                                    .text_overflow;
+                                }
                             }
                         }
                     }
@@ -63,8 +68,69 @@ body {
                 top:0;
                 right:0;
                 width:50%;
-                border-left: 4px solid #ff6a00;
+                border-left: 1px solid #ff6a00;
                 background-color:#fff;
+
+                .acs-infopanel-head{
+                    width:100%;
+                    height: 100%;
+                   
+
+                    .acs-infohead-titlecontent{
+                        padding:20px 0 20px 10px;
+                         background-color: #ff6a00;
+                         color:#fff;
+
+                        .acs-infohead-title{
+                            margin-top: 10px;
+                            font-size: 28px;
+                        }
+                    }
+
+                    
+
+                    .acs-infohead-description{
+                        padding: 20px 0 20px 10px;
+                        overflow-y: auto;
+                    }
+                }
+
+                .acs-personinfo{
+                    margin-bottom: 20px;
+
+                    .acs-personinfo-headpic{
+                        margin:10px 0 10px 10px;
+                    }
+
+                    .acs-personinfo-introduction{
+                        margin:10px 0 10px 10px;
+
+                        > div{
+                            width:100%;
+                            > span{
+                                display: inline-block;
+                                width:50%;
+                            }
+
+                            >span:nth-child(2){
+                                overflow: hidden;
+                                text-overflow:ellipsis;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
+
+                .acs-jumplink{
+                    display: block;
+                    margin-left: 40px;
+                    width: 300px;
+                    height: 30px;
+                    border: 1px solid #6495ed;
+                    color: #6495ed;
+                    text-align: center;
+                    line-height: 1.6;
+                }
 
             }
 

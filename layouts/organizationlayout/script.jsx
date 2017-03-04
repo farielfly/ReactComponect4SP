@@ -162,7 +162,7 @@ function orgStructureRender(config) {
     function loadData(param) {
         $.ajax({
             type: "GET",
-            url: config.url,
+            url: config.url +"/" +config.searchInfo,
             headers: {
                 "Accept": "application/json;odata=verbose",
                 "Content-Type": "application/json;odata=verbose",
@@ -185,11 +185,11 @@ function orgStructureRender(config) {
     else {
         if (config.searchInfo != '') {
             ReactDOM.unmountComponentAtNode(document.getElementById('organization'));
-            renderUI(data2, config.open);
+            renderUI(data2);
         }
         else {
             ReactDOM.unmountComponentAtNode(document.getElementById('organization'));
-            renderUI(data, config.open);
+            renderUI(data);
         }
     }
 }
