@@ -1,12 +1,12 @@
 ﻿(function ($, window, undefined) {
     var elems = $([]),
-     jq_resize = $.resize = $.extend($.resize, {}),
-     timeout_id,
-     str_setTimeout = 'setTimeout',
-     str_resize = 'resize',
-     str_data = str_resize + '-special-event',
-     str_delay = 'delay',
-     str_throttle = 'throttleWindow';
+        jq_resize = $.resize = $.extend($.resize, {}),
+        timeout_id,
+        str_setTimeout = 'setTimeout',
+        str_resize = 'resize',
+        str_data = str_resize + '-special-event',
+        str_delay = 'delay',
+        str_throttle = 'throttleWindow';
     jq_resize[str_delay] = 250;
     jq_resize[str_throttle] = true;
     $.event.special[str_resize] = {
@@ -42,7 +42,7 @@
             var old_handler;
             function new_handler(e, w, h) {
                 var elem = $(this),
-                 data = $.data(this, str_data);
+                    data = $.data(this, str_data);
                 data.w = w !== undefined ? w : elem.width();
                 data.h = h !== undefined ? h : elem.height();
                 old_handler.apply(this, arguments);
@@ -61,9 +61,9 @@
         timeout_id = window[str_setTimeout](function () {
             elems.each(function () {
                 var elem = $(this),
-                 width = elem.width(),
-                 height = elem.height(),
-                 data = $.data(this, str_data);
+                    width = elem.width(),
+                    height = elem.height(),
+                    data = $.data(this, str_data);
                 if (width !== data.w || height !== data.h) {
                     elem.trigger(str_resize, [data.w = width, data.h = height]);
                 }
@@ -145,15 +145,6 @@ var AIC;
         }
         window.location.href = searchUrl + '?k=' + $('.acs-search input').val();
         return false;
-    }
-
-    AIC.wordLimit = function (query) {
-        $(query).each(function () {
-            var fontSize = parseInt($(this).css('font-size').replace('px',''));
-            while ($(this).height() > fontSize * 2 * 1.4) {
-                $(this).text($(this).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
-            };
-        });
     }
 })((AIC || (AIC = {})))
 

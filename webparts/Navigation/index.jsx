@@ -110,7 +110,7 @@ function NavigationRender(config) {
         var minWidth = data.length * 130;
         var elementDiv = document.getElementById('navigation')
         if (elementDiv) {
-            elementDiv.style.minWidth = minWidth+'px';
+            elementDiv.style.minWidth = minWidth + 'px';
             render(
                 <MenuList data={data}>
                 </MenuList>,
@@ -126,10 +126,10 @@ function NavigationRender(config) {
             url: config.url,
             headers: { "accept": "application/json;odata=verbose" },
             async: false,
-            success: function(data) {
+            success: function (data) {
                 renderUI(data);
             },
-            error: function(data) {
+            error: function (data) {
 
             }
         });

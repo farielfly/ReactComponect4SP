@@ -24,11 +24,12 @@ gulp.task('buildjs', function () {
 });
 
 function build() {
-    gulp.start('buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary','concat-js');
+    gulp.start('buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary', 'concat-js');
 }
 
 gulp.task('buildjs-wp', function () {
     let srcs = new Set();
+    let streamArr = [];
     for (let webpart of config.webparts) {
         if (!debug && !webpart.prod_include) {
             continue;
@@ -36,9 +37,11 @@ gulp.task('buildjs-wp', function () {
         for (let src of webpart.src) {
             srcs.add(path.join(config.rootpath, src));
         }
-        bundleJs(webpart.name + '.js', Array.from(srcs),
+        let stream = bundleJs(webpart.name + '.js', Array.from(srcs),
             debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+        streamArr.push(stream);
     }
+    return es.merge(streamArr);
 })
 
 gulp.task('buildjs-layout', function () {
@@ -68,7 +71,7 @@ gulp.task('buildjs-webglobal', function () {
         }
         let stream = bundleJs(web.name + '.js', Array.from(srcs),
             debug ? path.join(config.rootpath, web.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
-        streamArr.push(stream);       
+        streamArr.push(stream);
     }
     return es.merge(streamArr);
 })
@@ -85,29 +88,29 @@ gulp.task('copy-jslibrary', function () {
     return;
 })
 
-gulp.task('concat-js',['buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary'],function(){
-    if(!debug){
-        for(let concat of config.concats){
-            let srcs = concat.src.map(function(item){
-                return path.join(config.rootpath,item);
+gulp.task('concat-js', ['buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary'], function () {
+    if (!debug) {
+        for (let concat of config.concats) {
+            let srcs = concat.src.map(function (item) {
+                return path.join(config.rootpath, item);
             })
             gulp.src(srcs)
                 .pipe(streamify(uglify()))
                 .pipe(gulpconcat(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput, concat.name + '.tmp.js')))
                 .pipe(rename(concat.name + '.js'))
-                .pipe(gulp.dest(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput),{overwrite:true}));
+                .pipe(gulp.dest(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput), { overwrite: true }));
         }
     }
 })
 
 function CopyJs(name, src, dest) {
     del(path.join(dest, name), { force: true });
-    
-   gulp.src(src)
+
+    gulp.src(src)
         .pipe(gulp.dest(path.dirname(src)))
         .pipe(rename(name))
         .pipe(gulp.dest(path.join(dest)));
-        return;
+    return;
 }
 
 function bundleJs(name, srcs, dest) {
@@ -122,8 +125,8 @@ function bundleJs(name, srcs, dest) {
         .bundle()
         .pipe(source(name))
     if (!debug) {
-        stream.pipe(streamify(uglify()));
-    }       
+        //stream.pipe(streamify(uglify()));
+    }
     return stream.pipe(gulp.dest(dest));
 }
 
