@@ -10,7 +10,7 @@ export default class SliderPics extends React.Component {
         let width = 100 / count + '%';
 
         let itemNodes = this.props.items.map((item, idx) => {
-            return <li key={'pic' + idx} className="acs-slider-pic" style={{ width: width }}>
+            return <li key={'pic' + idx} className="acs-slider-pic" style={{ width:'730px' }}>
                 <a href={item.itemhref}>
                     <img src={item.src} />
                 </a>
