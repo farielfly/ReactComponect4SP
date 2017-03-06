@@ -10,7 +10,7 @@ module.exports = {
             'src': ['webparts/links/index.jsx',
                 'webparts/slider/index.jsx',
                 'webparts/news/index.jsx',
-                'webparts/events/index.jsx',
+                'webparts/events/index.jsx'],
             'style': ['webparts/links/style.less',
                 'webparts/slider/style.less',
                 'webparts/news/style.less',
