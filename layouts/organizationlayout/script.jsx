@@ -149,6 +149,7 @@ function orgStructureRender(config) {
             isSearch: true
         }
     ];
+    let param={};
 
     function renderUI(data) {
         if (document.getElementById('organization')) {
@@ -162,7 +163,7 @@ function orgStructureRender(config) {
     function loadData(param) {
         $.ajax({
             type: "GET",
-            url: config.url +"/" +config.searchInfo,
+            url: config.url +(config.searchInfo !==""?("&text="+config.searchInfo):""),
             headers: {
                 "Accept": "application/json;odata=verbose",
                 "Content-Type": "application/json;odata=verbose",
@@ -172,7 +173,7 @@ function orgStructureRender(config) {
             config: param,
             async: false,
             success: function (dataInput) {
-                renderUI(data, this.config);
+                renderUI(dataInput.Divisions, this.config);
             },
             error: function (data) {
             }

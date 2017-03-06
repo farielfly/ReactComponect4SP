@@ -1,140 +1,268 @@
-
-
 body {
-    #organization{
-        position:relative;
-        border-top:4px solid #ff6a00;
+    #organization-layout{
+        margin: auto;
+        width:1180px;
+        min-height: 700px;
+        height:auto;
+        overflow-y:auto;
 
-        .text_overflow {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
+        .acs-organizationlayout-serachpanel{
+            width:100%;
+            height:40px;
+            margin-top: 20px;
+
+            .acs-organizationlayout-breadtitle{
+                float: left;
+                margin-top: 5px;
+
+
+                a{
+                    color:#f57d30;
+                    font-family: Frutiger CE 55 Roman;
+                    font-size:13px;
+                }
+
+                span{
+                    color:#444;
+                }
+            }
+            .acs-searchpanel-div{
+                float:right;
+                width:250px;
+                height:30px;
+                border:1px solid #d7d7d7;
+
+                input{
+                    display:block;
+                    float:left;
+                    padding:0;
+                    width:80%;
+                    height:28px;
+                    border:none;
+                }
+            }
         }
 
-        .acs-accordioncomplex{
-            .acs-accordion{
-                width:100%;
-                height:auto;
+        #organization{
+            position:relative;
+            width:e('calc(100% - 2px)');
+            height:100%;
+            border: 1px solid #e6e6e6;
+            border-top:2px solid #147f55;
 
-                .acs-accordion-item{
-                    min-height:40px;
-                    border-bottom:1px solid #666;
+            .text_overflow {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+            }
 
-                    .acs-accordionitem-head{
+            .acs-accordioncomplex{
+                .acs-accordion{
+                    width:100%;
+                    height:auto;
+
+                    .acs-accordion-item{
+                        margin-top: 2px;
                         width:100%;
-                        height:40px;
+                        height:auto;
+                        min-height: 50px;
+                        border-bottom:1px solid #e6e6e6;
+                        cursor:pointer;
 
-                        .acs-divisionhead-title{
-                            cursor:pointer;
-                            text-decoration:underline;
-                            .text_overflow;
+                        .acs-accordionitem-retracticon, .acs-accordionitem-expandicon {
+                            float:left;
+                            margin-left:20px;
+                            margin-right: 15px;
+                            width:18px;
+                            height: 18px;
+                            background-image: url();
                         }
-                    }
 
-                    .acs-accordionitem-head:hover{
-                        background-color:#00ffff;
-                    }
+                        .acs-accordionitem-retracticon{
+                            background-position: -180px -66px;
+                        }
+                        .acs-accordionitem-expandicon{
+                            background-position: -198px -66px;
+                        }
 
-                    .acs-accordionitem-content{
-                        width:100%;    
-                        height:0;
-                        overflow:hidden;
-                        transition:height 1s;
-
-                        .acs-content-links{
+                        .acs-accordionitem-head{
+                            display: flex;
+                            align-items:center;
                             width:100%;
-                            height:100%;
+                            min-height: 50px;
+                            background-color:#fafafa;
 
-                            > a{
-                                display:block;
+                            .acs-divisionhead-title{
+                                font-family: Frutiger CE 55 Roman;
+                                font-size: 16px;
+                                color:#444;
+                                text-decoration:underline;
+                                .text_overflow;
+                            }
+                        }
+
+                        .acs-accordionitem-head:select{
+                            background-color:#3ee7f8;
+                        }
+
+                        .acs-accordionitem-content{
+                            width:100%;    
+                            height:0;
+                            overflow:hidden;
+                            transition:height 1s;
+
+                            .acs-content-links{
                                 width:100%;
-                                height:40px;
-                                color:#333;
-                                cursor:pointer;
+                                height:100%;
 
-                                > span:nth-child(2){
-                                    .text_overflow;
+                                > a{
+                                    display:flex;
+                                    align-items: center;
+                                    width:100%;
+                                    height:60px;
+                                    background-color:#fff;
+                                    color:#444;
+                                    font-family: Frutiger CE 55 Roman;
+                                    font-size: 14px;
+                                    cursor:pointer;
+                                    border-bottom: 1px solid #e6e6e6;
+
+                                    > span:nth-child(1){
+                                        margin-left: 52px;
+                                        margin-right: 15px;
+                                        width:34px;
+                                        height: 34px;
+                                        background-image: url();
+                                        background-position: 0 -138px;
+                                    }
+
+                                    > span:nth-child(2){
+                                        .text_overflow;
+                                    }
                                 }
                             }
                         }
                     }
+
                 }
 
-            }
+                .acs-infopanel{
+                    position: absolute;
+                    top:0;
+                    right:0;
+                    width:500px;
+                    height: auto;
+                    border: 1px solid #E6E6E6;
+                    border-top: none;
+                    background-color:#fff;
 
-            .acs-infopanel{
-                position: absolute;
-                top:0;
-                right:0;
-                width:50%;
-                border-left: 1px solid #ff6a00;
-                background-color:#fff;
+                    .acs-infopanel-head{
+                        width:100%;
+                        height: 100%;
 
-                .acs-infopanel-head{
-                    width:100%;
-                    height: 100%;
-                   
-
-                    .acs-infohead-titlecontent{
-                        padding:20px 0 20px 10px;
-                         background-color: #ff6a00;
-                         color:#fff;
-
-                        .acs-infohead-title{
-                            margin-top: 10px;
-                            font-size: 28px;
+                        .acs-infohead-commontitle{
+                            padding-left: 20px;
+                            padding-top: 30px;
+                            width:480px;
+                            height: 50px;
+                            background-color: #f6f6f6;
+                            font-family: Frutiger CE 55 Roman;
+                            font-size: 16px;
+                            color:#444;
                         }
-                    }
-
                     
 
-                    .acs-infohead-description{
-                        padding: 20px 0 20px 10px;
-                        overflow-y: auto;
-                    }
-                }
+                        .acs-infohead-titlecontent{
+                            margin: 40px 30px 50px;
+                            color:#444;
 
-                .acs-personinfo{
-                    margin-bottom: 20px;
-
-                    .acs-personinfo-headpic{
-                        margin:10px 0 10px 10px;
-                    }
-
-                    .acs-personinfo-introduction{
-                        margin:10px 0 10px 10px;
-
-                        > div{
-                            width:100%;
-                            > span{
-                                display: inline-block;
-                                width:50%;
+                            .acs-infohead-title{
+                                margin-bottom: 30px;
+                                font-family: Frutiger CE 55 Roman;
+                                font-size: 26px;
+                                color:#444;
                             }
+                            .acs-infohead-description{
+                                font-family: Frutiger CE 55 Roman;
+                                font-size: 16px;
+                                color:#444;
+                                line-height: 24px;
+                                overflow-y: auto;
+                            }
+                        }
 
-                            >span:nth-child(2){
-                                overflow: hidden;
-                                text-overflow:ellipsis;
-                                white-space: nowrap;
+                        
+
+                        
+                    }
+
+                    .acs-personinfo{
+                        margin-left: 30px;
+                        margin-bottom: 40px;
+
+                        .acs-personinfo-headpic{
+                            margin-bottom: 30px;
+
+                            .acs-headpic-pictute{
+                                margin-right: 15px;
+                                width: 48px;
+                                height: 48px;
+                                border: 1px solid #ccc;
+                                border-radius: 24px;
+                            }
+                        }
+
+                        .acs-personinfo-introduction{
+
+                            > div{
+                                margin-bottom: 20px;
+                                width:100%;
+                                > span{
+                                    display: inline-block;
+                                    max-width: 200px;
+                                    font-size: 13px;
+                                    width:50%;
+                                }
+                                >span:nth-child(1){
+                                    font-family: Frutiger Blod;
+                                    color:#444;
+                                }
+
+                                >span:nth-child(2){
+                                    font-family: Frutiger CE 55 Roman;
+                                    color:#585858;
+                                    overflow: hidden;
+                                    text-overflow:ellipsis;
+                                    white-space: nowrap;
+                                    text-decoration: underline;
+                                }
                             }
                         }
                     }
+
+                    .acs-jumplink{
+                        margin-left: 30px;
+                       width:auto;
+
+                        div{
+                            float: left;
+                            margin-right: 10px;
+                            width: 6px;
+                            height: 6px;
+                            background-color: #2277ff;
+                        }
+
+                        a{
+                            font-family: Frutiger CE 55 Roman;
+                            font-size: 13px;
+                            color:#2277ff;
+                            text-decoration:none; 
+                        }
+                    }
+
                 }
-
-                .acs-jumplink{
-                    display: block;
-                    margin-left: 40px;
-                    width: 300px;
-                    height: 30px;
-                    border: 1px solid #6495ed;
-                    color: #6495ed;
-                    text-align: center;
-                    line-height: 1.6;
-                }
-
-            }
-
-
-        }           
+            }           
+        }
     }
 }
