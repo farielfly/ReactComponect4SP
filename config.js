@@ -10,7 +10,7 @@ module.exports = {
             'src': ['webparts/links/index.jsx',
                 'webparts/slider/index.jsx',
                 'webparts/news/index.jsx',
-                'webparts/events/index.jsx'],
+                'webparts/events/index.jsx',
             'style': ['webparts/links/style.less',
                 'webparts/slider/style.less',
                 'webparts/news/style.less',
@@ -67,10 +67,15 @@ module.exports = {
             'prod_include': true
         },
     ],
-    concats:[
+    concats: [
         {
             'name': 'aicGlobal',
-            'src': ['../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution/JS/aicGlobal.js','jslibrary/Commonjs.js'],
+            'src': ['../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution/JS/aicGlobal.js', 'jslibrary/Commonjs.js'],
+            'output': 'dist/jslibrary',
+        },
+        {
+            'name': 'webparts',
+            'src': ['../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution/JS/webparts.js', 'jslibrary/WebpartCommonjs.js'],
             'output': 'dist/jslibrary',
         }
     ],
