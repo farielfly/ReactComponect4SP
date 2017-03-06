@@ -9,7 +9,7 @@ export default class Accordion extends React.Component {
         return (
             <div className="acs-accordion">
                 {this.props.data.map((item,index)=>{
-                    return <AccordionFrame key={"accordion" +index} accordionData={item} itemHeight={40} hasInfoPanel={this.props.hasPanel} informationEvent={this.props.informationEvent}>
+                    return <AccordionFrame key={"accordion" +index} accordionData={item} itemHeight={60} hasInfoPanel={this.props.hasPanel} informationEvent={this.props.informationEvent}>
                     {this.props.children[index]}
                     </AccordionFrame>
                 })}
