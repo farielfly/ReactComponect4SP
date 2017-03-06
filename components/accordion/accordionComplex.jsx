@@ -38,9 +38,21 @@ export default class AccordionComplex extends React.Component {
                </div>
            )
        });
-       
+       var tempData= [];
+       if(this.state.informationPanel !==null)
+          {
+            var propsData = this.state.informationPanel.Properties;
+            for(var i=0 ;i<propsData.length;i++){
+                var temp = propsData[i].split(":");
+                tempData.push({
+                    "key":temp[0],
+                    "value":(typeof temp[1] !== 'undefined'?temp[1]:'')
+                    })
+            }
+          }  
+
         var infoPanel = !this.props.hasPanel?null:(<InfoPanel infoData={this.state.informationPanel} commonTitle={"Detail of Division"} commonDes={"Go to see Staff Directory information"}>
-                    <ChiefUser personData={this.state.informationPanel}/>
+                    <ChiefUser personData={tempData} photoLink={this.state.informationPanel}/>
                 </InfoPanel>)
 
         return (
