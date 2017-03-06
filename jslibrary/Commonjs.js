@@ -115,7 +115,7 @@ var AIC;
         $('#titleAreaRow>div:nth-child(2)').css('display', 'inline-block');
 
         $('#contentRow').resize(function () {
-            if ($('#s4-bodyContainer').height() > $('#s4-workspace').height()) {
+            if (($('#s4-bodyContainer').height() + 90) > $('#s4-workspace').height()) {
                 $('#acs-footer')[0].className = 'acs-footer acs-footer-relative';
             }
             else {
