@@ -1,5 +1,5 @@
 import { render } from 'react-dom';
-import SliderFrame from '../../components/slider/sliderFrame.jsx';
+import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
 import SliderPics from '../../components/slider/sliderPics.jsx';
 import $ from 'jquery';
 
@@ -22,7 +22,7 @@ function sliderRender(config) {
                     autoplay={param.autoplay}
                     dots={param.dots}
                     arrows={param.arrows}
-                    >
+                >
                     <SliderPics items={data} />
                 </SliderFrame>,
                 document.getElementById('slider')
@@ -43,7 +43,7 @@ function sliderRender(config) {
             data: {},
             config: param,
             async: false,
-            success: function(dataInput) {
+            success: function (dataInput) {
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
                     data.push({
@@ -56,7 +56,7 @@ function sliderRender(config) {
                 }
                 renderUI(data, this.config);
             },
-            error: function(data) {
+            error: function (data) {
                 debugger;
             }
         });
