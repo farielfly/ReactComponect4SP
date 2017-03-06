@@ -34,6 +34,14 @@ module.exports = {
             'style': ['layouts/layouta/style.less'],
             'output': 'dist/layouts/layouta',
             'prod_include': true
+        },
+        ,
+        {
+            'name': 'organizationlayout',
+            'src': ['layouts/organizationlayout/script.jsx'],
+            'style': ['layouts/organizationlayout/style.less'],
+            'output': 'dist/layouts/organizationlayout',
+            'prod_include': true
         }
     ],
 
