@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
+import Pagination from './Pagination.jsx'
 
 const TablePagination = React.createClass({
     propTypes: {
@@ -139,7 +140,7 @@ const TablePagination = React.createClass({
                 {this.renderInfo()}
 
                 <div className={classNames('act-table-pagination')} >
-                   
+                 
                 </div>
 
             </div>

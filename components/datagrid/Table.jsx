@@ -3,7 +3,7 @@ import Row from './Row.jsx';
 import CellGroup from './CellGroup.jsx';
 import {assign} from 'lodash';
 import { findDOMNode } from 'react-dom';
-import { on, scrollLeft, scrollTop, addStyle, addClass, removeClass, toggleClass} from 'dom-lib';
+import { on, scrollLeft, scrollTop, addStyle, addClass, removeClass, toggleClass} from './utils.jsx';
 
 const Table = React.createClass({
     propTypes: {
