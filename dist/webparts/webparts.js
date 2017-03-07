@@ -86,6 +86,72 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var PanelFrame = function (_React$Component) {
+    _inherits(PanelFrame, _React$Component);
+
+    function PanelFrame(props) {
+        _classCallCheck(this, PanelFrame);
+
+        return _possibleConstructorReturn(this, (PanelFrame.__proto__ || Object.getPrototypeOf(PanelFrame)).call(this, props));
+    }
+
+    _createClass(PanelFrame, [{
+        key: "gotoDetails",
+        value: function gotoDetails(url) {
+            window.location.href = url;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                title = _props.title,
+                msgCount = _props.msgCount,
+                iconClass = _props.iconClass,
+                url = _props.url;
+
+
+            return React.createElement(
+                "div",
+                { className: "acs-panelframe", onClick: this.gotoDetails.bind(this, this.props.url) },
+                React.createElement(
+                    "div",
+                    { className: "acs-panelframe-title" },
+                    React.createElement(
+                        "b",
+                        null,
+                        this.props.title
+                    ),
+                    this.props.msgCount > 0 ? React.createElement(
+                        "div",
+                        { className: "acs-panelframe-alert" },
+                        this.props.msgCount
+                    ) : null
+                ),
+                React.createElement("div", { className: "acs-panelframe-ico" })
+            );
+        }
+    }]);
+
+    return PanelFrame;
+}(React.Component);
+
+exports.default = PanelFrame;
+
+},{}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var WPFrame = function (_React$Component) {
     _inherits(WPFrame, _React$Component);
 
@@ -134,7 +200,7 @@ var WPFrame = function (_React$Component) {
 
 exports.default = WPFrame;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -192,7 +258,7 @@ var titleDescriptionPanel = function (_React$Component) {
 
 exports.default = titleDescriptionPanel;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -386,7 +452,7 @@ var SecondItem = function (_React$Component2) {
     return SecondItem;
 }(React.Component);
 
-},{"./navbarTitleBtn.jsx":6}],5:[function(require,module,exports){
+},{"./navbarTitleBtn.jsx":7}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -434,7 +500,7 @@ var navbarMenuList = function (_React$Component) {
 
 exports.default = navbarMenuList;
 
-},{"./navbarItem.jsx":4}],6:[function(require,module,exports){
+},{"./navbarItem.jsx":5}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -489,7 +555,7 @@ var NavbarTitleBtn = function (_React$Component) {
 
 exports.default = NavbarTitleBtn;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -598,7 +664,7 @@ var SliderEvents = function (_React$Component2) {
 exports.default = SliderEvents;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../widget/event.jsx":15}],8:[function(require,module,exports){
+},{"../widget/event.jsx":16}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -649,7 +715,7 @@ var SliderArrows = function (_React$Component) {
 
 exports.default = SliderArrows;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -706,7 +772,7 @@ var SliderDots = function (_React$Component) {
 
 exports.default = SliderDots;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -829,7 +895,7 @@ SliderFrame.defaultProps = {
 };
 SliderFrame.autoPlayFlag = null;
 
-},{"./sliderArrows.jsx":8,"./sliderDots.jsx":9}],11:[function(require,module,exports){
+},{"./sliderArrows.jsx":9,"./sliderDots.jsx":10}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -914,7 +980,7 @@ var SliderFrameArrowOnBottom = function (_SliderFrame) {
 
 exports.default = SliderFrameArrowOnBottom;
 
-},{"./sliderArrows.jsx":8,"./sliderDots.jsx":9,"./sliderFrame.jsx":10}],12:[function(require,module,exports){
+},{"./sliderArrows.jsx":9,"./sliderDots.jsx":10,"./sliderFrame.jsx":11}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -987,7 +1053,7 @@ var SliderLinks = function (_React$Component) {
 
 exports.default = SliderLinks;
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1111,7 +1177,7 @@ var News = function (_Component2) {
 exports.default = News;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1187,7 +1253,7 @@ var SliderPics = function (_React$Component) {
 
 exports.default = SliderPics;
 
-},{"../common/titleDescriptionPanel.jsx":3}],15:[function(require,module,exports){
+},{"../common/titleDescriptionPanel.jsx":4}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1281,7 +1347,7 @@ var Event = function (_React$Component) {
 
 exports.default = Event;
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1322,7 +1388,7 @@ function articleRender(params) {
 global.articleRender = articleRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/articleFrame.jsx":1}],17:[function(require,module,exports){
+},{"../../components/Common/articleFrame.jsx":1}],18:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1439,7 +1505,7 @@ function eventRender(config) {
 global.eventRender = eventRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":2,"../../components/slider/slideEvents.jsx":7,"../../components/slider/sliderFrameArrowOnBottom.jsx":11}],18:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":3,"../../components/slider/slideEvents.jsx":8,"../../components/slider/sliderFrameArrowOnBottom.jsx":12}],19:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1545,7 +1611,7 @@ function linksRender(config) {
 global.linksRender = linksRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":2,"../../components/slider/sliderFrameArrowOnBottom.jsx":11,"../../components/slider/sliderLinks.jsx":12}],19:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":3,"../../components/slider/sliderFrameArrowOnBottom.jsx":12,"../../components/slider/sliderLinks.jsx":13}],20:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1634,7 +1700,7 @@ function NavigationRender(config) {
 global.NavigationRender = NavigationRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/navigation/navbarMenu.jsx":5}],20:[function(require,module,exports){
+},{"../../components/navigation/navbarMenu.jsx":6}],21:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1753,7 +1819,57 @@ function newsRender(config) {
 global.newsRender = newsRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":2,"../../components/slider/sliderFrameArrowOnBottom.jsx":11,"../../components/slider/sliderNews.jsx":13}],21:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":3,"../../components/slider/sliderFrameArrowOnBottom.jsx":12,"../../components/slider/sliderNews.jsx":14}],22:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
+
+var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _panelFrame = require('../../components/Common/panelFrame.jsx');
+
+var _panelFrame2 = _interopRequireDefault(_panelFrame);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function panelRender() {
+    var panels = [{
+        title: 'My Task',
+        msgCount: 3,
+        iconClass: 'acs-header-icon',
+        url: 'www.baidu.com'
+    }, {
+        title: 'HR Connect',
+        msgCount: 0,
+        iconClass: 'acs-header-icon',
+        url: 'www.baidu.com'
+    }];
+
+    function renderUI(panels) {
+        var panelsFrame = panels.map(function (panel, idn) {
+            return React.createElement(_panelFrame2.default, {
+                title: panel.title,
+                msgCount: panel.msgCount,
+                iconClass: panel.iconClass,
+                url: panel.url });
+        });
+        (0, _reactDom.render)(React.createElement(
+            'div',
+            null,
+            panelsFrame
+        ), document.getElementById('panel'));
+    }
+
+    renderUI(panels);
+}
+
+global.panelRender = panelRender;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../components/Common/panelFrame.jsx":2}],23:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1846,5 +1962,5 @@ function sliderRender(config) {
 global.sliderRender = sliderRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/slider/sliderFrame.jsx":10,"../../components/slider/sliderPics.jsx":14}]},{},[18,21,20,19,17,16])(21)
+},{"../../components/slider/sliderFrame.jsx":11,"../../components/slider/sliderPics.jsx":15}]},{},[19,23,21,20,18,22,17])(23)
 });
