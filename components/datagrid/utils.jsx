@@ -1,4 +1,4 @@
-module.exports =  function on(target, eventName, listener, capture = false) {
+function on(target, eventName, listener, capture = false) {
     const bind = window.addEventListener ? 'addEventListener' : 'attachEvent';
     const unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent';
     const eventPrefix = bind !== 'addEventListener' ? 'on' : '';
@@ -11,7 +11,13 @@ module.exports =  function on(target, eventName, listener, capture = false) {
     };
 };
 
-module.exports = function scrollTop(node, val) {
+function getWindow(node) {
+    return node === node.window ?
+        node : node.nodeType === 9 ?
+        node.defaultView || node.parentWindow : false;
+}
+
+function scrollTop(node, val) {
     let win = getWindow(node);
     let top = win ? (('pageYOffset' in win) ? win.pageYOffset : win.document.documentElement.scrollTop) : node.scrollTop;
     let left = win ? (('pageXOffset' in win) ? win.pageXOffset : win.document.documentElement.scrollLeft) : 0;
@@ -23,7 +29,7 @@ module.exports = function scrollTop(node, val) {
     win ? win.scrollTo(left, val) : node.scrollTop = val;
 }
 
-module.exports = function scrollLeft(node, val) {
+function scrollLeft(node, val) {
 
     let win = getWindow(node);
     let left = win ? (('pageXOffset' in win) ? win.pageXOffset : win.document.documentElement.scrollLeft) : node.scrollLeft;
@@ -36,15 +42,19 @@ module.exports = function scrollLeft(node, val) {
     win ? win.scrollTo(val, top) : node.scrollLeft = val;
 }
 
-module.exports =  function hyphenateStyleName(string) {
-    return hyphenate(string).replace(msPattern, '-ms-');
+function hyphenate(string) {
+    return string.replace(/([A-Z])/g, '-$1').toLowerCase();
+}
+
+function hyphenateStyleName(string) {
+    return hyphenate(string).replace('/^ms-/', '-ms-');
 };
 
-module.exports =  function removeStyle(node, key) {
+function removeStyle(node, key) {
     return ('removeProperty' in node.style) ? node.style.removeProperty(key) : node.style.removeAttribute(key);
 };
 
-module.exports =  function addStyle(node, property, value) {
+function addStyle(node, property, value) {
     let css = '';
     let props = property;
 
@@ -66,7 +76,7 @@ module.exports =  function addStyle(node, property, value) {
     node.style.cssText += ';' + css;
 };
 
-module.exports = function addClass(target, className) {
+function addClass(target, className) {
     if (className) {
         if (target.classList) {
             target.classList.add(className);
@@ -77,14 +87,14 @@ module.exports = function addClass(target, className) {
     return target;
 };
 
-module.exports = function hasClass(target, className) {
+function hasClass(target, className) {
     if (target.classList) {
         return !!className && target.classList.contains(className);
     }
     return ` ${target.className} `.indexOf(` ${className} `) !== -1;
 };
 
-module.exports =  function removeClass(target, className) {
+function removeClass(target, className) {
     if (className) {
         if (target.classList) {
             target.classList.remove(className);
@@ -98,9 +108,13 @@ module.exports =  function removeClass(target, className) {
     return target;
 };
 
-module.exports = function toggleClass(target, className) {
+function toggleClass(target, className) {
     if (hasClass(target, className)) {
         return removeClass(target, className);
     }
     return addClass(target, className);
 };
+
+module.exports ={
+on, scrollLeft, scrollTop, addStyle, addClass, removeClass, toggleClass
+}
