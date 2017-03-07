@@ -13,6 +13,68 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var ArticleFrame = function (_React$Component) {
+    _inherits(ArticleFrame, _React$Component);
+
+    function ArticleFrame(props) {
+        _classCallCheck(this, ArticleFrame);
+
+        return _possibleConstructorReturn(this, (ArticleFrame.__proto__ || Object.getPrototypeOf(ArticleFrame)).call(this, props));
+    }
+
+    _createClass(ArticleFrame, [{
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                title = _props.title,
+                iconPath = _props.iconPath,
+                link = _props.link,
+                picturePath = _props.picturePath;
+
+
+            return React.createElement(
+                "div",
+                { className: "acs-articleframe" },
+                React.createElement(
+                    "div",
+                    { className: "acs-articleframe-header" },
+                    React.createElement("div", { className: "acs-articleframe-header-icon" }),
+                    React.createElement(
+                        "div",
+                        { className: "acs-articleframe-header-title" },
+                        title
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "acs-articleframe-picture" },
+                    React.createElement("img", { src: picturePath })
+                ),
+                this.props.children
+            );
+        }
+    }]);
+
+    return ArticleFrame;
+}(React.Component);
+
+exports.default = ArticleFrame;
+
+},{}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var WPFrame = function (_React$Component) {
     _inherits(WPFrame, _React$Component);
 
@@ -61,7 +123,7 @@ var WPFrame = function (_React$Component) {
 
 exports.default = WPFrame;
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -119,7 +181,304 @@ var titleDescriptionPanel = function (_React$Component) {
 
 exports.default = titleDescriptionPanel;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _navbarTitleBtn = require('./navbarTitleBtn.jsx');
+
+var _navbarTitleBtn2 = _interopRequireDefault(_navbarTitleBtn);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NavbarItem = function (_React$Component) {
+    _inherits(NavbarItem, _React$Component);
+
+    function NavbarItem(props) {
+        _classCallCheck(this, NavbarItem);
+
+        var _this = _possibleConstructorReturn(this, (NavbarItem.__proto__ || Object.getPrototypeOf(NavbarItem)).call(this, props));
+
+        _this.state = {
+            open: false,
+            ulWidth: '402px'
+        };
+        return _this;
+    }
+
+    _createClass(NavbarItem, [{
+        key: 'menushow',
+        value: function menushow(isSecond) {
+            if (!isSecond) {
+                this.setState({
+                    open: true
+                });
+            } else {
+                this.setState({
+                    ulWidth: '800px'
+                });
+            }
+        }
+    }, {
+        key: 'menuhidden',
+        value: function menuhidden(isSecond) {
+            if (!isSecond) {
+                this.setState({
+                    open: false,
+                    ulWidth: '402px'
+                });
+            } else {
+                this.setState({
+                    ulWidth: '402px'
+                });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var minWidth = Math.ceil(this.props.menuData.Items.length / 9) * 400 + 'px';
+            var maxCount = 9;
+            var itemNodes = [];
+            for (var i = 0, len = this.props.menuData.Items.length; i < len; i += maxCount) {
+                itemNodes.push(this.props.menuData.Items.slice(i, i + maxCount));
+            }
+
+            var secondMenuC = React.createElement(
+                'ul',
+                { onMouseOver: this.menushow.bind(this, false), onMouseOut: this.menuhidden.bind(this, false), className: 'acs-navbaritem-second acs-navbaritem-secondO', style: { display: this.state.open ? "flex" : "none", top: this.state.open ? "65px" : "60px", "flexDirection": "row", minWidth: minWidth } },
+                itemNodes.map(function (item, index) {
+                    return React.createElement(
+                        'div',
+                        { style: { "flexDirection": "column" } },
+                        item.map(function (els, index) {
+                            return React.createElement(
+                                'a',
+                                { href: els.ItemHref, className: 'acs-itemlink', key: index },
+                                React.createElement('span', { className: 'acs-itemlink-icon' }),
+                                els.Title
+                            );
+                        })
+                    );
+                })
+            );
+
+            var secondMenu = React.createElement(
+                'ul',
+                { onMouseOver: this.menushow.bind(this, false), onMouseOut: this.menuhidden.bind(this, false), className: 'acs-navbaritem-second',
+                    style: { display: this.state.open ? "block" : "none", top: this.state.open ? "65px" : "60px", width: this.state.ulWidth } },
+                this.props.menuData.Items.map(function (els, index) {
+                    if (_typeof(els.Items) === 'object') {
+                        if (els.Items.length === 0) {
+                            return React.createElement(
+                                'a',
+                                { href: els.ItemHref, className: 'acs-secondnav-item', key: index },
+                                els.Title
+                            );
+                        } else {
+                            return React.createElement(SecondItem, { key: index, menuData: els, menushow: _this2.menushow.bind(_this2, true), menuhidden: _this2.menuhidden.bind(_this2, true) });
+                        }
+                    } else {
+                        return React.createElement(
+                            'a',
+                            { href: els.ItemHref, className: 'acs-itemlink', style: { float: index > 7 ? "right" : "none" }, key: index },
+                            React.createElement('span', { className: 'acs-itemlink-icon' }),
+                            els.Title
+                        );
+                    }
+                })
+            );
+            secondMenu = this.props.hasGrandChild ? secondMenu : secondMenuC;
+            secondMenu = this.props.menuData.hasChild ? secondMenu : null;
+
+            return React.createElement(
+                'div',
+                { className: 'acs-navbar-item', onMouseOver: this.menushow.bind(this, false), onMouseOut: this.menuhidden.bind(this, false) },
+                React.createElement(_navbarTitleBtn2.default, { classname: "acs-navbaritem-titlebtn", isSecond: false, name: this.props.menuData.Title, open: this.state.open, hasChild: this.props.menuData.hasChild, ItemHref: this.props.menuData.ItemHref }),
+                secondMenu
+            );
+        }
+    }]);
+
+    return NavbarItem;
+}(React.Component);
+
+exports.default = NavbarItem;
+
+var SecondItem = function (_React$Component2) {
+    _inherits(SecondItem, _React$Component2);
+
+    function SecondItem(props) {
+        _classCallCheck(this, SecondItem);
+
+        var _this3 = _possibleConstructorReturn(this, (SecondItem.__proto__ || Object.getPrototypeOf(SecondItem)).call(this, props));
+
+        _this3.state = {
+            sopen: false
+        };
+        return _this3;
+    }
+
+    _createClass(SecondItem, [{
+        key: 'menushow',
+        value: function menushow() {
+            this.props.menushow();
+            this.setState({
+                sopen: true
+            });
+        }
+    }, {
+        key: 'menuhidden',
+        value: function menuhidden() {
+            this.props.menuhidden();
+            this.setState({
+                sopen: false
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                { className: 'acs-secondnav-item', onMouseOver: this.menushow.bind(this), onMouseOut: this.menuhidden.bind(this) },
+                React.createElement(_navbarTitleBtn2.default, { classname: "", isSecond: true, name: this.props.menuData.Title, open: this.state.sopen, hasChild: true, ItemHref: this.props.menuData.ItemHref }),
+                React.createElement(
+                    'ul',
+                    { onMouseOver: this.menushow.bind(this), onMouseOut: this.menuhidden.bind(this), className: 'acs-thirdnav-itemlist', style: { display: this.state.sopen ? "block" : "none", width: "400px" } },
+                    this.props.menuData.Items.map(function (el, index) {
+                        return React.createElement(
+                            'a',
+                            { href: el.ItemHref, className: 'acs-itemlink', key: index },
+                            React.createElement('span', { className: 'acs-itemlink-icon' }),
+                            el.Title
+                        );
+                    })
+                )
+            );
+        }
+    }]);
+
+    return SecondItem;
+}(React.Component);
+
+},{"./navbarTitleBtn.jsx":6}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _navbarItem = require("./navbarItem.jsx");
+
+var _navbarItem2 = _interopRequireDefault(_navbarItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var navbarMenuList = function (_React$Component) {
+    _inherits(navbarMenuList, _React$Component);
+
+    function navbarMenuList(props) {
+        _classCallCheck(this, navbarMenuList);
+
+        return _possibleConstructorReturn(this, (navbarMenuList.__proto__ || Object.getPrototypeOf(navbarMenuList)).call(this, props));
+    }
+
+    _createClass(navbarMenuList, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                { className: "acs-navbar" },
+                this.props.data.map(function (el, index) {
+                    return React.createElement(_navbarItem2.default, { key: index, menuData: el, hasGrandChild: el.hasGrandChild });
+                })
+            );
+        }
+    }]);
+
+    return navbarMenuList;
+}(React.Component);
+
+exports.default = navbarMenuList;
+
+},{"./navbarItem.jsx":4}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NavbarTitleBtn = function (_React$Component) {
+    _inherits(NavbarTitleBtn, _React$Component);
+
+    function NavbarTitleBtn(props) {
+        _classCallCheck(this, NavbarTitleBtn);
+
+        var _this = _possibleConstructorReturn(this, (NavbarTitleBtn.__proto__ || Object.getPrototypeOf(NavbarTitleBtn)).call(this, props));
+
+        _this.state = {
+            icon: _this.props.hasChild ? _this.props.isSecond ? "acs-titlebtn-right" : "acs-titlebtn-down" : ""
+        };
+        return _this;
+    }
+
+    _createClass(NavbarTitleBtn, [{
+        key: "render",
+        value: function render() {
+            var borderShow = this.props.open && !this.props.isSecond && this.props.hasChild;
+            var heightChange = this.props.classname === '' ? "20px" : "60px";
+            var icon = this.props.hasChild ? this.props.open ? this.props.isSecond ? "acs-titlebtn-rightw" : "acs-titlebtn-up" : this.props.isSecond ? "acs-titlebtn-right" : "acs-titlebtn-down" : "";
+            var fontColor = this.props.hasChild ? this.props.open ? this.props.isSecond ? "stitle-selectcolor" : "ftitle-selectcolor" : "" : "";
+
+            return React.createElement(
+                "a",
+                { href: this.props.ItemHref, className: (!this.props.isSecond ? "acs-titlebtn-noneborder " : " ") + this.props.classname + (borderShow ? " acs-titlebtn-boxshadow acs-titlebtn-border" : ""), style: { height: borderShow ? "65px" : heightChange } },
+                React.createElement(
+                    "span",
+                    { className: 'acs-titlebtn-span ' + fontColor },
+                    this.props.name,
+                    React.createElement("span", { className: icon })
+                )
+            );
+        }
+    }]);
+
+    return NavbarTitleBtn;
+}(React.Component);
+
+exports.default = NavbarTitleBtn;
+
+},{}],7:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -228,7 +587,7 @@ var SliderEvents = function (_React$Component2) {
 exports.default = SliderEvents;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../widget/event.jsx":11}],4:[function(require,module,exports){
+},{"../widget/event.jsx":15}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -279,7 +638,7 @@ var SliderArrows = function (_React$Component) {
 
 exports.default = SliderArrows;
 
-},{}],5:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -336,7 +695,7 @@ var SliderDots = function (_React$Component) {
 
 exports.default = SliderDots;
 
-},{}],6:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -459,7 +818,7 @@ SliderFrame.defaultProps = {
 };
 SliderFrame.autoPlayFlag = null;
 
-},{"./sliderArrows.jsx":4,"./sliderDots.jsx":5}],7:[function(require,module,exports){
+},{"./sliderArrows.jsx":8,"./sliderDots.jsx":9}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -544,7 +903,7 @@ var SliderFrameArrowOnBottom = function (_SliderFrame) {
 
 exports.default = SliderFrameArrowOnBottom;
 
-},{"./sliderArrows.jsx":4,"./sliderDots.jsx":5,"./sliderFrame.jsx":6}],8:[function(require,module,exports){
+},{"./sliderArrows.jsx":8,"./sliderDots.jsx":9,"./sliderFrame.jsx":10}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -617,7 +976,7 @@ var SliderLinks = function (_React$Component) {
 
 exports.default = SliderLinks;
 
-},{}],9:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -741,7 +1100,7 @@ var News = function (_Component2) {
 exports.default = News;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -817,7 +1176,7 @@ var SliderPics = function (_React$Component) {
 
 exports.default = SliderPics;
 
-},{"../common/titleDescriptionPanel.jsx":2}],11:[function(require,module,exports){
+},{"../common/titleDescriptionPanel.jsx":3}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -911,7 +1270,42 @@ var Event = function (_React$Component) {
 
 exports.default = Event;
 
-},{}],12:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
+
+var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _articleFrame = require('../../components/Common/articleFrame.jsx');
+
+var _articleFrame2 = _interopRequireDefault(_articleFrame);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function articleRender(params) {
+    if (!params) {
+        params = { Title: 'Kevin', PicturePath: '../../components/img/image1.jpg' };
+    }
+    renderUI(params);
+
+    function renderUI(params) {
+        if (document.getElementById('articles')) {
+            (0, _reactDom.render)(React.createElement(_articleFrame2.default, {
+                title: params.Title,
+                picturePath: params.PicturePath
+            }), document.getElementById('articles'));
+        }
+    }
+}
+
+global.articleRender = articleRender;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../components/Common/articleFrame.jsx":1}],17:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1028,7 +1422,7 @@ function eventRender(config) {
 global.eventRender = eventRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":1,"../../components/slider/slideEvents.jsx":3,"../../components/slider/sliderFrameArrowOnBottom.jsx":7}],13:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":2,"../../components/slider/slideEvents.jsx":7,"../../components/slider/sliderFrameArrowOnBottom.jsx":11}],18:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1134,7 +1528,96 @@ function linksRender(config) {
 global.linksRender = linksRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":1,"../../components/slider/sliderFrameArrowOnBottom.jsx":7,"../../components/slider/sliderLinks.jsx":8}],14:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":2,"../../components/slider/sliderFrameArrowOnBottom.jsx":11,"../../components/slider/sliderLinks.jsx":12}],19:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
+
+var _navbarMenu = require('../../components/navigation/navbarMenu.jsx');
+
+var _navbarMenu2 = _interopRequireDefault(_navbarMenu);
+
+var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function NavigationRender(config) {
+    var param = {};
+    var data = [{
+        Title: "Home", ItemHref: "", Items: [], hasChild: false, hasGrandChild: false
+    }, {
+        Title: "Division", ItemHref: "", hasChild: true, hasGrandChild: true,
+        Items: [{
+            Title: "Care Integration Division", ItemHref: "",
+            Items: [{ Title: "Assessment & Co-ordination Services Devt", ItemHref: "" }, { Title: "Care Innovations & Integration Devt", ItemHref: "" }, { Title: "Palliative Care Services Development", ItemHref: "" }]
+        }, {
+            Title: "Care Transition Division", ItemHref: "",
+            Items: [{ Title: "ACTION & Ops Support", ItemHref: "" }, { Title: "Care Transition Office", ItemHref: "" }, { Title: "CCMS & Comm CAT", ItemHref: "" }, { Title: "Helpdesk Infosystem and Projects (HIP)", ItemHref: "" }, { Title: "Referral Management Teams", ItemHref: "" }]
+        }, {
+            Title: "CEO Office", ItemHref: "", Items: []
+        }, {
+            Title: "Community Mental Health Division", ItemHref: "",
+            Items: [{ Title: "Capability Building & Sector Development", ItemHref: "" }, { Title: "Community Engagement & Development", ItemHref: "" }, { Title: "Community Support", ItemHref: "" }, { Title: "Resource Planning", ItemHref: "" }, { Title: "Service Implementation & Development", ItemHref: "" }]
+        }, {
+            Title: "Corporate Services & Strategy Division", ItemHref: "",
+            Items: [{ Title: "Corporate & Marketing Comm", ItemHref: "" }, { Title: "Corporate Development", ItemHref: "" }, { Title: "Finance", ItemHref: "" }, { Title: "Human Resource", ItemHref: "" }, { Title: "Office Administration", ItemHref: "" }]
+        }, {
+            Title: "Grants Management Office", ItemHref: "",
+            Items: [{ Title: "Grant Policy & Management", ItemHref: "" }, { Title: "Resource Management", ItemHref: "" }]
+        }, {
+            Title: "Home & Primary Care Division", ItemHref: "",
+            Items: [{ Title: "Home & Community Care", ItemHref: "" }, { Title: "Primary Care Development", ItemHref: "" }]
+        }, {
+            Title: "ILTC IT Enablement Office", ItemHref: "",
+            Items: [{ Title: "ILTC IT Development", ItemHref: "" }]
+        }]
+    }, {
+        Title: "APPLICATION", ItemHref: "", hasChild: true, hasGrandChild: false,
+        Items: [{ Title: "FAQ", ItemHref: "" }, { Title: "AIC library", ItemHref: "" }, { Title: "PRM Conversations", ItemHref: "" }, { Title: "iHR", ItemHref: "" }, { Title: "LMS", ItemHref: "" }, { Title: "PRM", ItemHref: "" }, { Title: "Integrated Referral Management System (IRMS)", ItemHref: "" }, { Title: "eForms", ItemHref: "" }, { Title: "I-innovate", ItemHref: "" }, { Title: "Webmail", ItemHref: "" }, { Title: "Grants Management System (GMS)", ItemHref: "" }, { Title: "Budget and Reporting System (BARS)", ItemHref: "" }]
+    }, {
+        Title: "CROSS-DIVISIONS", ItemHref: "", hasChild: false, hasGrandChild: false, Items: []
+    }, {
+        Title: "ABOUT AIC", ItemHref: "", hasChild: true, hasGrandChild: false,
+        Items: [{ Title: "Org Structure", ItemHref: "" }, { Title: "Staff Directory", ItemHref: "" }, { Title: "Policies", ItemHref: "" }, { Title: "SMM", ItemHref: "" }]
+    }];
+
+    function renderUI(data) {
+        var minWidth = data.length * 130;
+        var elementDiv = document.getElementById('navigation');
+        if (elementDiv) {
+            elementDiv.style.minWidth = minWidth + 'px';
+            (0, _reactDom.render)(React.createElement(_navbarMenu2.default, { data: data }), document.getElementById('navigation'));
+        }
+    }
+
+    function loadData() {
+        _jquery2.default.ajax({
+            cache: false,
+            type: "GET",
+            url: config.url,
+            headers: { "accept": "application/json;odata=verbose" },
+            async: false,
+            success: function success(data) {
+                renderUI(data);
+            },
+            error: function error(data) {}
+        });
+    }
+
+    if (config && !config.debug) {
+        loadData();
+    } else {
+        renderUI(data);
+    }
+}
+
+global.NavigationRender = NavigationRender;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../components/navigation/navbarMenu.jsx":5}],20:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1253,7 +1736,7 @@ function newsRender(config) {
 global.newsRender = newsRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":1,"../../components/slider/sliderFrameArrowOnBottom.jsx":7,"../../components/slider/sliderNews.jsx":9}],15:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":2,"../../components/slider/sliderFrameArrowOnBottom.jsx":11,"../../components/slider/sliderNews.jsx":13}],21:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1346,5 +1829,5 @@ function sliderRender(config) {
 global.sliderRender = sliderRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/slider/sliderFrame.jsx":6,"../../components/slider/sliderPics.jsx":10}]},{},[13,15,14,12])(15)
+},{"../../components/slider/sliderFrame.jsx":10,"../../components/slider/sliderPics.jsx":14}]},{},[18,21,20,19,17,16])(21)
 });

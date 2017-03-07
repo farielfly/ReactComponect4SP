@@ -11,12 +11,14 @@ module.exports = {
                 'webparts/slider/index.jsx',
                 'webparts/news/index.jsx',
                 'webparts/navigation/index.jsx',
-                'webparts/events/index.jsx'],
+                'webparts/events/index.jsx',
+                'webparts/Articles/index.jsx'],
             'style': ['webparts/links/style.less',
                 'webparts/slider/style.less',
                 'webparts/news/style.less',
                 'webparts/navigation/style.less',
-                'webparts/events/style.less'],
+                'webparts/events/style.less',
+                'webparts/Articles/style.less'],
             'output': 'dist/webparts',
             'prod_include': true
         }
