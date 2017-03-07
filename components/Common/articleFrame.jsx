@@ -4,7 +4,7 @@ export default class ArticleFrame extends React.Component {
     }
 
     render() {
-        let { title, iconPath, link, picturePath } = this.props;
+        let { title, iconPath, link, picturePath, headline, intro } = this.props;
 
         return (
             <div className={"acs-articleframe"}>
@@ -15,7 +15,8 @@ export default class ArticleFrame extends React.Component {
                 <div className={"acs-articleframe-picture"}>
                     <img src={picturePath}></img>
                 </div>
-                {this.props.children}
+                <div className={"acs-articleframe-headline"}>{headline}</div>
+                <div className={"acs-articleframe-intro"}>{intro}</div>
             </div>
         );
     }

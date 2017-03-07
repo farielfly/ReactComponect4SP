@@ -29,7 +29,9 @@ var ArticleFrame = function (_React$Component) {
                 title = _props.title,
                 iconPath = _props.iconPath,
                 link = _props.link,
-                picturePath = _props.picturePath;
+                picturePath = _props.picturePath,
+                headline = _props.headline,
+                intro = _props.intro;
 
 
             return React.createElement(
@@ -50,7 +52,16 @@ var ArticleFrame = function (_React$Component) {
                     { className: "acs-articleframe-picture" },
                     React.createElement("img", { src: picturePath })
                 ),
-                this.props.children
+                React.createElement(
+                    "div",
+                    { className: "acs-articleframe-headline" },
+                    headline
+                ),
+                React.createElement(
+                    "div",
+                    { className: "acs-articleframe-intro" },
+                    intro
+                )
             );
         }
     }]);
@@ -1288,7 +1299,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function articleRender(params) {
     if (!params) {
-        params = { Title: 'Kevin', PicturePath: '../../components/img/image1.jpg' };
+        params = {
+            Title: 'Kevin', PicturePath: '../../components/img/image1.jpg',
+            Headline: 'There are some items to show in this view. There are no items to show in this view.',
+            Intro: "its security certificate is not trusted by your computer's operating system. This may be caused by a misconfiguration or an attacker intercepting your connection."
+        };
     }
     renderUI(params);
 
@@ -1296,7 +1311,9 @@ function articleRender(params) {
         if (document.getElementById('articles')) {
             (0, _reactDom.render)(React.createElement(_articleFrame2.default, {
                 title: params.Title,
-                picturePath: params.PicturePath
+                picturePath: params.PicturePath,
+                headline: params.Headline,
+                intro: params.Intro
             }), document.getElementById('articles'));
         }
     }
