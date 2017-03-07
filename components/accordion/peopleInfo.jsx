@@ -14,18 +14,6 @@ export default class PeopleInfo extends React.Component{
         return null;
         
         var userPhoto = "/_layouts/15/images/APPSSP2013MASTERKONG/photo.png";
-        //if (this.props.chiefUser.UserPhotoUrl) {
-        //    userPhoto = this.props.chiefUser.UserPhotoUrl;
-        //}
-        //<div><span>Office Location:</span><span>{chiefuser.Location}</span></div>
-         //           <div><span>Reporting Officer:</span><span>{chiefuser.Reporter}</span></div>
-        //            <div><span>Convering People:</span><span>{chiefuser.People}</span></div>
-        //<div><span>Designation:</span><span>{chiefuser.Designation}</span></div>
-         //           <div><span>Email:</span><span>{chiefuser.Email}</span></div>
-         //           <div><span>Office Contact Number:</span><span>{chiefuser.ContactMe}</span></div>
-         //           <div><span>Mobile Number:</span><span>{chiefuser.MyMobile}</span></div>
-         //           <div><span>Ask me about:</span><span>{chiefuser.Hobbies}</span></div>
-        
         let chiefuser = this.props.personData,linkinfo = this.props.photoLink.ChiefUser;
        
 

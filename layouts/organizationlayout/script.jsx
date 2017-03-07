@@ -173,6 +173,11 @@ function orgStructureRender(config) {
             config: param,
             async: false,
             success: function (dataInput) {
+                if(config.searchInfo !==""){
+                    dataInput.Divisions.map((item)=>{
+                        item.isSearch = true;
+                    })
+                }
                 renderUI(dataInput.Divisions, this.config);
             },
             error: function (data) {
@@ -181,6 +186,7 @@ function orgStructureRender(config) {
     }
 
     if (config && !config.debug) {
+        ReactDOM.unmountComponentAtNode(document.getElementById('organization'));
         loadData(param);
     }
     else {

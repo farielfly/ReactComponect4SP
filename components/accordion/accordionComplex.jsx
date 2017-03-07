@@ -43,7 +43,7 @@ export default class AccordionComplex extends React.Component {
           {
             var propsData = this.state.informationPanel.Properties;
             for(var i=0 ;i<propsData.length;i++){
-                var temp = propsData[i].split(":");
+                var temp = propsData[i].split(" : ");
                 tempData.push({
                     "key":temp[0],
                     "value":(typeof temp[1] !== 'undefined'?temp[1]:'')

@@ -19,7 +19,7 @@ export default class DivisionDetail extends React.Component{
                         
                     </div>
                     {this.props.children}
-                    <div className="acs-jumplink"><div></div><a className="" href={this.props.infoData.link}>{this.props.commonDes}</a></div>
+                    <div className="acs-jumplink"><div></div><a className="" href={this.props.infoData.Url}>{this.props.commonDes}</a></div>
                     
                 </div>
             )
