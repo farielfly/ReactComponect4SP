@@ -149,3 +149,122 @@ var AIC;
 })((AIC || (AIC = {})))
 
 window.onload = AIC.Global;
+
+var NewItemParam = function () {
+    var Source;
+    var OriSource;
+    var SiteUrl;
+    var RequestUrl;
+    var RootFolder;
+    var ListId;
+    var ItemId;
+    var LoginUser;
+    var RegStatus;
+}
+
+function RedirectToNewItem(src, listId, siteUrl) {
+    NewItemParam.OriSource = src;
+    NewItemParam.SiteUrl = siteUrl;
+    NewItemParam.RequestUrl = siteUrl + "/Lists/EventRegInfo/NewForm.aspx";
+    NewItemParam.Source =  encodeURIComponent(siteUrl + "/_layouts/15/APPSAICSolution/RegistrationResult.aspx");
+    NewItemParam.ListId = listId;
+    NewItemParam.ItemId = SP.ListOperation.Selection.getSelectedItems(ctx)[0].id;
+    NewItemParam.LoginUser = curentWeb.get_currentUser();
+
+    var ctx = SP.ClientContext.get_current();
+    var currentSite = ctx.get_site();
+    var currentWeb = ctx.get_web();
+    var currentList = currentWeb.get_lists().getById(SP.ListOperation.Selection.getSelectedList());
+    var currentItem = currentList.getItemById(SP.ListOperation.Selection.getSelectedItems(ctx)[0].id);
+
+    ctx.load(currentItem, "ID", "Title", "ACSEventType", "ACSTheAllocatedSeats", "ACSTheRemainingSeats", "ACSEventDate");
+    ctx.executeQueryAsync(
+         function () {
+             var title = currentItem.get_item("Title");
+             NewItemParam.RootFolder = encodeURIComponent(NewItemParam.SiteUrl + "/Lists/EventRegInfo/" + title);
+
+             var currentDate = dateGetCurrentUTCDate();
+             if (currentItem.get_item("ACSEventDate") <= currentDate) {
+                 NewItemParam.RegStatus = "Closed";
+             }
+             else if (currentItem.get_item("ACSTheAllocatedSeats") <= currentItem.get_item("ACSTheRemainingSeats")) {
+                 NewItemParam.RegStatus = "Closed";
+             }
+             else {
+                 NewItemParam.RegStatus = "Open";
+             }
+
+             var destList = currentWeb.get_lists().getByTitle("Event Registration Information")
+             var contentTypes = destList.get_contentTypes();
+             var eventType = currentItem.get_item("ACSEventType");
+
+             ctx.load(contentTypes);
+             ctx.executeQueryAsync(
+                function () {
+                    var id = null;
+                    for (var i = 0; i < contentTypes.get_count() ; i++) {
+                        if (contentTypes.itemAt(i).get_name() === eventType) {
+                            id = contentTypes.itemAt(i).get_id();
+                            break;
+                        }
+                    }
+                    if (id != null) {
+                        var newItemUrl = NewItemParam.RequestUrl 
+                            + "?Source=" + NewItemParam.Source 
+                            + "&ContentTypeId=" + id.toString() 
+                            + "&RootFolder=" + NewItemParam.RootFolder
+                            + "&OriSource=" + NewItemParam.OriSource
+                            + "&ListId=" + NewItemParam.ListId
+                            + "&ItemId=" + NewItemParam.ItemId
+                            + "&LoginUser=" + NewItemParam.LoginUser
+                            + "&RegStatus=" + NewItemParam.RegStatus;
+                        Redirect(newItemUrl);
+                    }
+                    else {
+                        alert("Can't find the Event Type");
+                    }
+                },
+                function (sender, args) {
+                    alert('Error occurred: ' + args.get_message());
+                }
+             );
+         },
+         function (sender, args) {
+             alert('Error occurred: ' + args.get_message());
+         }
+       );
+}
+
+function IsItemSelected() {
+    var ctx = SP.ClientContext.get_current();
+    var items = SP.ListOperation.Selection.getSelectedItems(ctx);
+
+    if (items.length == 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function Redirect(url) {
+    window.location.href = url;
+}
+
+function GetCurrentUTCDate() {
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+
+    var currentdate = date.getFullYear() + "-" + month + "-" + strDate + "T"
+        + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "Z";
+             
+    return currentdate;
+}

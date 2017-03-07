@@ -35,7 +35,6 @@ module.exports = {
             'output': 'dist/layouts/layouta',
             'prod_include': true
         },
-        ,
         {
             'name': 'organizationlayout',
             'src': ['layouts/organizationlayout/script.jsx'],
