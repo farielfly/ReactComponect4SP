@@ -1751,6 +1751,117 @@ var _listFrame2 = _interopRequireDefault(_listFrame);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function newsListRender(config) {
+    var param = { title: 'Latest News', hasPager: false };
+    var data = [{
+        title: 'Verizon is bringing back unlimited data',
+        modifiedOn: new Date(2017, 2, 8, 14, 3),
+        url: 'www.baidu.com'
+    }, {
+        title: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
+        modifiedOn: new Date(2017, 2, 8, 13, 52),
+        url: 'www.baidu.com'
+    }, {
+        title: 'There are many variations of passages of Lorem Ipsum available',
+        modifiedOn: new Date(2017, 2, 8, 10, 27),
+        url: 'www.baidu.com'
+    }, {
+        title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+        modifiedOn: new Date(2017, 2, 8, 9, 50),
+        url: 'www.baidu.com'
+    }];
+    var weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    function formatDate(date) {
+        var week = weeks[date.getDay()];
+        return week + " " + date.getDate() + ", " + (date.getMonth() + 1) + ", " + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
+    }
+
+    function renderUI(data, param) {
+        if (document.getElementById('news-list')) {
+            var listItems = data.map(function (item, idn) {
+                return React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                        'div',
+                        { className: 'content-title' },
+                        item.title
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'content-footer' },
+                        formatDate(item.modifiedOn)
+                    )
+                );
+            });
+            (0, _reactDom.render)(React.createElement(
+                _listFrame2.default,
+                { title: param.title, hasPager: param.hasPager },
+                React.createElement(
+                    'ul',
+                    null,
+                    listItems
+                )
+            ), document.getElementById('news-list'));
+        }
+    }
+
+    function loadData(param) {
+        _jquery2.default.ajax({
+            type: "GET",
+            url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose"
+            },
+            dataType: "json",
+            data: {},
+            config: param,
+            async: false,
+            success: function success(dataInput) {
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    data.push({
+                        title: dataInput.d.results[i].Title,
+                        modifiedOn: dataInput.d.results[i].ModifiedOn,
+                        url: dataInput.d.results[i].Url
+                    });
+                }
+                renderUI(data, this.config);
+            },
+            error: function error(data) {
+                debugger;
+            }
+        });
+    }
+
+    if (config && !config.debug) {
+        loadData(param);
+    } else {
+        renderUI(data, param);
+    }
+}
+
+global.newsListRender = newsListRender;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../components/Common/listFrame.jsx":2}],23:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
+
+var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _listFrame = require('../../components/Common/listFrame.jsx');
+
+var _listFrame2 = _interopRequireDefault(_listFrame);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function popularListRender(config) {
     var param = { title: 'Most Popular', hasPager: false };
     var data = [{
@@ -1801,7 +1912,34 @@ function popularListRender(config) {
         }
     }
 
-    function loadData(param) {}
+    function loadData(param) {
+        _jquery2.default.ajax({
+            type: "GET",
+            url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose"
+            },
+            dataType: "json",
+            data: {},
+            config: param,
+            async: false,
+            success: function success(dataInput) {
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    data.push({
+                        title: dataInput.d.results[i].Title,
+                        likeCount: dataInput.d.results[i].LikeCount,
+                        url: dataInput.d.results[i].Url
+                    });
+                }
+                renderUI(data, this.config);
+            },
+            error: function error(data) {
+                debugger;
+            }
+        });
+    }
 
     if (config && !config.debug) {
         loadData(param);
@@ -1813,7 +1951,7 @@ function popularListRender(config) {
 global.popularListRender = popularListRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/listFrame.jsx":2}],23:[function(require,module,exports){
+},{"../../components/Common/listFrame.jsx":2}],24:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1902,7 +2040,7 @@ function NavigationRender(config) {
 global.NavigationRender = NavigationRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/navigation/navbarMenu.jsx":8}],24:[function(require,module,exports){
+},{"../../components/navigation/navbarMenu.jsx":8}],25:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2021,7 +2159,7 @@ function newsRender(config) {
 global.newsRender = newsRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":14,"../../components/slider/sliderNews.jsx":16}],25:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":14,"../../components/slider/sliderNews.jsx":16}],26:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2071,7 +2209,7 @@ function panelRender() {
 global.panelRender = panelRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/panelFrame.jsx":3}],26:[function(require,module,exports){
+},{"../../components/Common/panelFrame.jsx":3}],27:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2116,7 +2254,7 @@ function searchRender(params) {
 global.searchRender = searchRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/searchBox.jsx":4}],27:[function(require,module,exports){
+},{"../../components/Common/searchBox.jsx":4}],28:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2209,5 +2347,5 @@ function sliderRender(config) {
 global.sliderRender = sliderRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/slider/sliderFrame.jsx":13,"../../components/slider/sliderPics.jsx":17}]},{},[21,27,24,23,20,25,22,19,26])(27)
+},{"../../components/slider/sliderFrame.jsx":13,"../../components/slider/sliderPics.jsx":17}]},{},[21,28,25,24,20,26,23,22,19,27])(28)
 });

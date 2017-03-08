@@ -2,32 +2,39 @@ import { render } from 'react-dom';
 import $ from 'jquery';
 import ListFrame from '../../components/Common/listFrame.jsx';
 
-function popularListRender(config) {
-    let param = { title: 'Most Popular', hasPager: false };
+function newsListRender(config) {
+    let param = { title: 'Latest News', hasPager: false };
     let data = [{
-        title: 'How social media filter bubbles work',
-        likeCount: 221,
+        title: 'Verizon is bringing back unlimited data',
+        modifiedOn: new Date(2017, 2, 8, 14, 3),
         url: 'www.baidu.com'
     }, {
         title: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
-        likeCount: 199,
+        modifiedOn: new Date(2017, 2, 8, 13, 52),
         url: 'www.baidu.com'
     }, {
         title: 'There are many variations of passages of Lorem Ipsum available',
-        likeCount: 169,
+        modifiedOn: new Date(2017, 2, 8, 10, 27),
         url: 'www.baidu.com'
     }, {
         title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        likeCount: 152,
+        modifiedOn: new Date(2017, 2, 8, 9, 50),
         url: 'www.baidu.com'
-    }]
+    }];
+    const weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    function formatDate(date) {
+        let week = weeks[date.getDay()];
+        return week + " " + date.getDate() + ", " + (date.getMonth() + 1) + ", " + date.getFullYear() +
+            " " + date.getHours() + ":" + date.getMinutes();
+    }
 
     function renderUI(data, param) {
-        if (document.getElementById('popular-list')) {
+        if (document.getElementById('news-list')) {
             let listItems = data.map((item, idn) => {
                 return (<li>
                     <div className="content-title">{item.title}</div>
-                    <div className="content-footer">{item.likeCount + ' likes'}</div>
+                    <div className="content-footer">{formatDate(item.modifiedOn)}</div>
                 </li>)
             });
             render(
@@ -36,7 +43,7 @@ function popularListRender(config) {
                         {listItems}
                     </ul>
                 </ListFrame>,
-                document.getElementById('popular-list')
+                document.getElementById('news-list')
             )
         }
     }
@@ -58,7 +65,7 @@ function popularListRender(config) {
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
                     data.push({
                         title: dataInput.d.results[i].Title,
-                        likeCount: dataInput.d.results[i].LikeCount,
+                        modifiedOn: dataInput.d.results[i].ModifiedOn,
                         url: dataInput.d.results[i].Url,
                     });
                 }
@@ -78,4 +85,4 @@ function popularListRender(config) {
     }
 }
 
-global.popularListRender = popularListRender;
+global.newsListRender = newsListRender;
