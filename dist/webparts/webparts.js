@@ -1513,6 +1513,9 @@ global.articleRender = articleRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../../components/Common/articleFrame.jsx":1}],20:[function(require,module,exports){
+"use strict";
+
+},{}],21:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1629,7 +1632,7 @@ function eventRender(config) {
 global.eventRender = eventRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/slideEvents.jsx":10,"../../components/slider/sliderFrameArrowOnBottom.jsx":14}],21:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/slideEvents.jsx":10,"../../components/slider/sliderFrameArrowOnBottom.jsx":14}],22:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1735,7 +1738,7 @@ function linksRender(config) {
 global.linksRender = linksRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":14,"../../components/slider/sliderLinks.jsx":15}],22:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":14,"../../components/slider/sliderLinks.jsx":15}],23:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1851,7 +1854,7 @@ function newsListRender(config) {
 global.newsListRender = newsListRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/listFrame.jsx":2}],23:[function(require,module,exports){
+},{"../../components/Common/listFrame.jsx":2}],24:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1961,7 +1964,7 @@ function popularListRender(config) {
 global.popularListRender = popularListRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/listFrame.jsx":2}],24:[function(require,module,exports){
+},{"../../components/Common/listFrame.jsx":2}],25:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2050,7 +2053,7 @@ function NavigationRender(config) {
 global.NavigationRender = NavigationRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/navigation/navbarMenu.jsx":8}],25:[function(require,module,exports){
+},{"../../components/navigation/navbarMenu.jsx":8}],26:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2169,7 +2172,7 @@ function newsRender(config) {
 global.newsRender = newsRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":14,"../../components/slider/sliderNews.jsx":16}],26:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":14,"../../components/slider/sliderNews.jsx":16}],27:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2219,7 +2222,7 @@ function panelRender() {
 global.panelRender = panelRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/panelFrame.jsx":3}],27:[function(require,module,exports){
+},{"../../components/Common/panelFrame.jsx":3}],28:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2264,7 +2267,7 @@ function searchRender(params) {
 global.searchRender = searchRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/searchBox.jsx":4}],28:[function(require,module,exports){
+},{"../../components/Common/searchBox.jsx":4}],29:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2357,5 +2360,5 @@ function sliderRender(config) {
 global.sliderRender = sliderRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/slider/sliderFrame.jsx":13,"../../components/slider/sliderPics.jsx":17}]},{},[21,28,25,24,20,26,23,22,19,27])(28)
+},{"../../components/slider/sliderFrame.jsx":13,"../../components/slider/sliderPics.jsx":17}]},{},[22,29,26,25,21,27,24,23,20,19,28])(29)
 });

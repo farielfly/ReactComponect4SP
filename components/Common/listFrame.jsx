@@ -1,10 +1,10 @@
-export default class ListFrame extends React.Component{
-    constructor(props){
+export default class ListFrame extends React.Component {
+    constructor(props) {
         super(props);
     }
 
-    render(){
-        let {title,hasPager}=this.props;
+    render() {
+        let { title, hasPager } = this.props;
 
         return (
             <div className="acs-listframe">
