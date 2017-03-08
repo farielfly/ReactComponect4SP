@@ -27,7 +27,10 @@ function popularListRender(config) {
             let listItems = data.map((item, idn) => {
                 return (<li>
                     <div className="content-title">{item.title}</div>
-                    <div className="content-footer">{item.likeCount + ' likes'}</div>
+                    <div className="content-footer">
+                        <span className=""></span>
+                        <span>{item.likeCount + ' likes'}</span>
+                    </div>
                 </li>)
             });
             render(

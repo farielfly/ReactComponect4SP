@@ -6,27 +6,32 @@ function newsListRender(config) {
     let param = { title: 'Latest News', hasPager: false };
     let data = [{
         title: 'Verizon is bringing back unlimited data',
-        modifiedOn: new Date(2017, 2, 8, 14, 3),
+        modifiedOn: (new Date()).setHours(14),
         url: 'www.baidu.com'
     }, {
         title: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
-        modifiedOn: new Date(2017, 2, 8, 13, 52),
+        modifiedOn: (new Date()).setHours(12),
         url: 'www.baidu.com'
     }, {
         title: 'There are many variations of passages of Lorem Ipsum available',
-        modifiedOn: new Date(2017, 2, 8, 10, 27),
+        modifiedOn: (new Date()).setHours(5),
         url: 'www.baidu.com'
     }, {
         title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        modifiedOn: new Date(2017, 2, 8, 9, 50),
+        modifiedOn: (new Date()).setHours(0),
         url: 'www.baidu.com'
     }];
-    const weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    function formatDate(date) {
-        let week = weeks[date.getDay()];
-        return week + " " + date.getDate() + ", " + (date.getMonth() + 1) + ", " + date.getFullYear() +
-            " " + date.getHours() + ":" + date.getMinutes();
+    function fillZero(value) {
+        return value > 9 ? value : ("0" + value);
+    }
+
+    function formatDate(value) {
+        let date=new Date(value);
+        let hour = date.getHours();
+        return months[date.getMonth()] + " " + fillZero(date.getDate()) + ", " + date.getFullYear() +
+            " " + fillZero(hour % 12) + ":" + fillZero(date.getMinutes()) + (hour > 11 ? " PM" : " AM");
     }
 
     function renderUI(data, param) {
