@@ -160,16 +160,18 @@ var NewItemParam = function () {
     var ItemId;
     var LoginUser;
     var RegStatus;
+    var State;  //0:Open; 1:Expired; 2:No available seat; 3:Registered
 }
 
 function RedirectToNewItem(src, listId, siteUrl) {
     NewItemParam.OriSource = src;
     NewItemParam.SiteUrl = siteUrl;
     NewItemParam.RequestUrl = siteUrl + "/Lists/EventRegInfo/NewForm.aspx";
-    NewItemParam.Source =  encodeURIComponent(siteUrl + "/_layouts/15/APPSAICSolution/RegistrationResult.aspx");
     NewItemParam.ListId = listId;
     NewItemParam.ItemId = SP.ListOperation.Selection.getSelectedItems(ctx)[0].id;
-    NewItemParam.LoginUser = curentWeb.get_currentUser();
+    // NewItemParam.LoginUser = curentWeb.get_currentUser();
+
+    NewItemParam.Source =  encodeURIComponent(siteUrl + "/_layouts/15/APPSAICSolution/RegistrationResult.aspx?List="+NewItemParam.ListId+"&ID="+NewItemParam.ItemId);
 
     var ctx = SP.ClientContext.get_current();
     var currentSite = ctx.get_site();
@@ -183,15 +185,17 @@ function RedirectToNewItem(src, listId, siteUrl) {
              var title = currentItem.get_item("Title");
              NewItemParam.RootFolder = encodeURIComponent(NewItemParam.SiteUrl + "/Lists/EventRegInfo/" + title);
 
-             var currentDate = dateGetCurrentUTCDate();
-             if (currentItem.get_item("ACSEventDate") <= currentDate) {
+             if (currentItem.get_item("ACSEventDate") <= new Date()) {
                  NewItemParam.RegStatus = "Closed";
+                 NewItemParam.State = 1;
              }
              else if (currentItem.get_item("ACSTheAllocatedSeats") <= currentItem.get_item("ACSTheRemainingSeats")) {
                  NewItemParam.RegStatus = "Closed";
+                 NewItemParam.State = 2;
              }
              else {
                  NewItemParam.RegStatus = "Open";
+                 NewItemParam.State = 0;
              }
 
              var destList = currentWeb.get_lists().getByTitle("Event Registration Information")
@@ -217,7 +221,8 @@ function RedirectToNewItem(src, listId, siteUrl) {
                             + "&ListId=" + NewItemParam.ListId
                             + "&ItemId=" + NewItemParam.ItemId
                             + "&LoginUser=" + NewItemParam.LoginUser
-                            + "&RegStatus=" + NewItemParam.RegStatus;
+                            + "&RegStatus=" + NewItemParam.RegStatus
+                            + "&State=" + NewItemParam.State;
                         Redirect(newItemUrl);
                     }
                     else {
@@ -249,22 +254,4 @@ function IsItemSelected() {
 
 function Redirect(url) {
     window.location.href = url;
-}
-
-function GetCurrentUTCDate() {
-    var date = new Date();
-    var month = date.getMonth() + 1;
-    var strDate = date.getDate();
-
-    if (month >= 1 && month <= 9) {
-        month = "0" + month;
-    }
-    if (strDate >= 0 && strDate <= 9) {
-        strDate = "0" + strDate;
-    }
-
-    var currentdate = date.getFullYear() + "-" + month + "-" + strDate + "T"
-        + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "Z";
-             
-    return currentdate;
 }
