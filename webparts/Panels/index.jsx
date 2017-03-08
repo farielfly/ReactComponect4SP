@@ -23,7 +23,7 @@ function panelRender(){
                         iconClass={panel.iconClass}
                         url={panel.url}>
                     </PanelFrame>) 
-         })
+         });
         render(
             <div>{panelsFrame}</div>,
             document.getElementById('panel')

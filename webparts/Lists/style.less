@@ -2,7 +2,8 @@
 
 
 .acs-listframe{
-    width:20%;
+    width:25%;
+    margin: 10px;
 
     .acs-listframe-title{
         color: #FFF;
@@ -12,16 +13,36 @@
         text-align: center;
 
         span{
-            margin-top: 10px;
             text-transform: uppercase;
             font-weight: bold;
         }
     }
 
     .acs-listframe-content{
-        border-bottom: 1px solid #ccc;
+        // border-bottom: 1px solid #ccc;
         border-left: 1px solid #ccc;
         border-right: 1px solid #ccc;
-        height: 100px;
+        min-height: 100px;
+
+        ul{
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+
+            li{
+                padding: 20px;
+                border-bottom: 1px solid #ccc;
+
+                .content-title{
+                    font-weight: bold;
+                }
+
+                .content-footer{
+                    margin-top: 15px;
+                    color: #8A8A8A;
+                    font-size: 13px;
+                }
+            }
+        }
     }
 }

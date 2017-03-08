@@ -12,7 +12,7 @@ export default class ListFrame extends React.Component{
                     <span>{this.props.title}</span>
                 </div>
                 <div className="acs-listframe-content">
-                    {this.props.chidren}
+                    {this.props.children}
                 </div>
             </div>
         );

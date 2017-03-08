@@ -118,7 +118,7 @@ var ListFrame = function (_React$Component) {
                 React.createElement(
                     "div",
                     { className: "acs-listframe-content" },
-                    this.props.chidren
+                    this.props.children
                 )
             );
         }
@@ -1751,7 +1751,7 @@ var _listFrame2 = _interopRequireDefault(_listFrame);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function popularListRender() {
+function popularListRender(config) {
     var param = { title: 'Most Popular', hasPager: false };
     var data = [{
         title: 'How social media filter bubbles work',
@@ -1773,19 +1773,41 @@ function popularListRender() {
 
     function renderUI(data, param) {
         if (document.getElementById('popular-list')) {
-            var listItems = data.map(function (item, idn) {});
-            (0, _reactDom.render)(React.createElement(_listFrame2.default, { title: param.title, hasPager: param.hasPager }), document.getElementById('popular-list'));
+            var listItems = data.map(function (item, idn) {
+                return React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                        'div',
+                        { className: 'content-title' },
+                        item.title
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'content-footer' },
+                        item.likeCount + ' likes'
+                    )
+                );
+            });
+            (0, _reactDom.render)(React.createElement(
+                _listFrame2.default,
+                { title: param.title, hasPager: param.hasPager },
+                React.createElement(
+                    'ul',
+                    null,
+                    listItems
+                )
+            ), document.getElementById('popular-list'));
         }
     }
 
     function loadData(param) {}
 
-    // if(config && !config.debug){
-    //     loadData(param);
-    // }
-    // else{
-    renderUI(data, param);
-    // }
+    if (config && !config.debug) {
+        loadData(param);
+    } else {
+        renderUI(data, param);
+    }
 }
 
 global.popularListRender = popularListRender;
