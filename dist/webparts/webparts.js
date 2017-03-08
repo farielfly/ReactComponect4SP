@@ -152,6 +152,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var SearchBox = function (_React$Component) {
+    _inherits(SearchBox, _React$Component);
+
+    function SearchBox(props) {
+        _classCallCheck(this, SearchBox);
+
+        return _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).call(this, props));
+    }
+
+    _createClass(SearchBox, [{
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                iconPosition = _props.iconPosition,
+                placeHolder = _props.placeHolder,
+                link = _props.link;
+
+            iconPosition = '-26px -40px';
+
+            return React.createElement(
+                "div",
+                { className: "acs-searchbox" },
+                React.createElement("div", { className: "acs-searchbox-headericon", style: { backgroundposition: iconPosition } })
+            );
+        }
+    }]);
+
+    return SearchBox;
+}(React.Component);
+
+exports.default = SearchBox;
+
+},{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var WPFrame = function (_React$Component) {
     _inherits(WPFrame, _React$Component);
 
@@ -200,7 +247,7 @@ var WPFrame = function (_React$Component) {
 
 exports.default = WPFrame;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -258,7 +305,7 @@ var titleDescriptionPanel = function (_React$Component) {
 
 exports.default = titleDescriptionPanel;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -452,7 +499,7 @@ var SecondItem = function (_React$Component2) {
     return SecondItem;
 }(React.Component);
 
-},{"./navbarTitleBtn.jsx":7}],6:[function(require,module,exports){
+},{"./navbarTitleBtn.jsx":8}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -500,7 +547,7 @@ var navbarMenuList = function (_React$Component) {
 
 exports.default = navbarMenuList;
 
-},{"./navbarItem.jsx":5}],7:[function(require,module,exports){
+},{"./navbarItem.jsx":6}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -555,7 +602,7 @@ var NavbarTitleBtn = function (_React$Component) {
 
 exports.default = NavbarTitleBtn;
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -664,7 +711,7 @@ var SliderEvents = function (_React$Component2) {
 exports.default = SliderEvents;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../widget/event.jsx":16}],9:[function(require,module,exports){
+},{"../widget/event.jsx":17}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -715,7 +762,7 @@ var SliderArrows = function (_React$Component) {
 
 exports.default = SliderArrows;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -772,7 +819,7 @@ var SliderDots = function (_React$Component) {
 
 exports.default = SliderDots;
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -895,7 +942,7 @@ SliderFrame.defaultProps = {
 };
 SliderFrame.autoPlayFlag = null;
 
-},{"./sliderArrows.jsx":9,"./sliderDots.jsx":10}],12:[function(require,module,exports){
+},{"./sliderArrows.jsx":10,"./sliderDots.jsx":11}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -980,7 +1027,7 @@ var SliderFrameArrowOnBottom = function (_SliderFrame) {
 
 exports.default = SliderFrameArrowOnBottom;
 
-},{"./sliderArrows.jsx":9,"./sliderDots.jsx":10,"./sliderFrame.jsx":11}],13:[function(require,module,exports){
+},{"./sliderArrows.jsx":10,"./sliderDots.jsx":11,"./sliderFrame.jsx":12}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1053,7 +1100,7 @@ var SliderLinks = function (_React$Component) {
 
 exports.default = SliderLinks;
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1177,7 +1224,7 @@ var News = function (_Component2) {
 exports.default = News;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1253,7 +1300,7 @@ var SliderPics = function (_React$Component) {
 
 exports.default = SliderPics;
 
-},{"../common/titleDescriptionPanel.jsx":4}],16:[function(require,module,exports){
+},{"../common/titleDescriptionPanel.jsx":5}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1347,7 +1394,7 @@ var Event = function (_React$Component) {
 
 exports.default = Event;
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1365,22 +1412,41 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function articleRender(params) {
     if (!params) {
-        params = {
+        params = [{
             Title: 'Kevin', PicturePath: '../../components/img/image1.jpg',
             Headline: 'There are some items to show in this view. There are no items to show in this view.',
             Intro: "its security certificate is not trusted by your computer's operating system. This may be caused by a misconfiguration or an attacker intercepting your connection."
-        };
+        }, {
+            Title: 'Tom', PicturePath: '../../components/img/image2.jpg',
+            Headline: 'There are some items to show in this view. ',
+            Intro: "its security certificate is not trusted by your computer's operating system."
+        }, {
+            Title: 'Justin', PicturePath: '../../components/img/image3.jpg',
+            Headline: 'Overview',
+            Intro: "Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. React.Component is provided by React."
+        }, {
+            Title: 'Bill', PicturePath: '../../components/img/image1.jpg',
+            Headline: 'Forbidden: Access is denied.',
+            Intro: "You do not have permission to view this directory or page using the credentials that you supplied"
+        }];
     }
     renderUI(params);
 
     function renderUI(params) {
         if (document.getElementById('articles')) {
-            (0, _reactDom.render)(React.createElement(_articleFrame2.default, {
-                title: params.Title,
-                picturePath: params.PicturePath,
-                headline: params.Headline,
-                intro: params.Intro
-            }), document.getElementById('articles'));
+            (0, _reactDom.render)(React.createElement(
+                'div',
+                null,
+                params.map(function (article, i) {
+                    return React.createElement(_articleFrame2.default, {
+                        key: i,
+                        title: article.Title,
+                        picturePath: article.PicturePath,
+                        headline: article.Headline,
+                        intro: article.Intro
+                    });
+                })
+            ), document.getElementById('articles'));
         }
     }
 }
@@ -1388,7 +1454,7 @@ function articleRender(params) {
 global.articleRender = articleRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/articleFrame.jsx":1}],18:[function(require,module,exports){
+},{"../../components/Common/articleFrame.jsx":1}],19:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1505,7 +1571,7 @@ function eventRender(config) {
 global.eventRender = eventRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":3,"../../components/slider/slideEvents.jsx":8,"../../components/slider/sliderFrameArrowOnBottom.jsx":12}],19:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":4,"../../components/slider/slideEvents.jsx":9,"../../components/slider/sliderFrameArrowOnBottom.jsx":13}],20:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1611,7 +1677,7 @@ function linksRender(config) {
 global.linksRender = linksRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":3,"../../components/slider/sliderFrameArrowOnBottom.jsx":12,"../../components/slider/sliderLinks.jsx":13}],20:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":4,"../../components/slider/sliderFrameArrowOnBottom.jsx":13,"../../components/slider/sliderLinks.jsx":14}],21:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1700,7 +1766,7 @@ function NavigationRender(config) {
 global.NavigationRender = NavigationRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/navigation/navbarMenu.jsx":6}],21:[function(require,module,exports){
+},{"../../components/navigation/navbarMenu.jsx":7}],22:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1819,7 +1885,7 @@ function newsRender(config) {
 global.newsRender = newsRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":3,"../../components/slider/sliderFrameArrowOnBottom.jsx":12,"../../components/slider/sliderNews.jsx":14}],22:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":4,"../../components/slider/sliderFrameArrowOnBottom.jsx":13,"../../components/slider/sliderNews.jsx":15}],23:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1869,7 +1935,52 @@ function panelRender() {
 global.panelRender = panelRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/panelFrame.jsx":2}],23:[function(require,module,exports){
+},{"../../components/Common/panelFrame.jsx":2}],24:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
+
+var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _searchBox = require('../../components/Common/searchBox.jsx');
+
+var _searchBox2 = _interopRequireDefault(_searchBox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function searchRender(params) {
+    if (!params) {
+        params = {};
+    }
+    renderUI(params);
+
+    function renderUI(params) {
+        if (document.getElementById('quicksearch')) {
+            (0, _reactDom.render)(React.createElement(
+                'div',
+                { className: 'acs-searchbox-container' },
+                React.createElement(
+                    'div',
+                    { className: 'acs-searchbox-title' },
+                    React.createElement('div', { className: 'acs-searchbox-title-icon' }),
+                    React.createElement(
+                        'div',
+                        { className: 'acs-searchbox-title-name' },
+                        'QUICK SEARCH'
+                    )
+                )
+            ), document.getElementById('quicksearch'));
+        }
+    }
+}
+
+global.searchRender = searchRender;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../components/Common/searchBox.jsx":3}],25:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1962,5 +2073,5 @@ function sliderRender(config) {
 global.sliderRender = sliderRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/slider/sliderFrame.jsx":11,"../../components/slider/sliderPics.jsx":15}]},{},[19,23,21,20,18,22,17])(23)
+},{"../../components/slider/sliderFrame.jsx":12,"../../components/slider/sliderPics.jsx":16}]},{},[20,25,22,21,19,23,18,24])(25)
 });

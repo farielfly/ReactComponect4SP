@@ -13,14 +13,16 @@ module.exports = {
                 'webparts/navigation/index.jsx',
                 'webparts/events/index.jsx',
                 'webparts/panels/index.jsx',
-                'webparts/Articles/index.jsx'],
+                'webparts/articles/index.jsx',
+                'webparts/quicksearch/index.jsx'],
             'style': ['webparts/links/style.less',
                 'webparts/slider/style.less',
                 'webparts/news/style.less',
                 'webparts/navigation/style.less',
                 'webparts/events/style.less',
                 'webparts/panels/style.less',
-                'webparts/Articles/style.less'],
+                'webparts/articles/style.less',
+                'webparts/quicksearch/style.less'],
             'output': 'dist/webparts',
             'prod_include': true
         }
