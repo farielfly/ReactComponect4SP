@@ -46,11 +46,40 @@
            margin-top: 5px
        }
        
-       .acs-articleframe-intro{
+       .acs-articleframe-intro,.acs-articleframe-time, .acs-articleframe-like{
            font-size: 13px;
-           font-weight: bold;
            color: #655e5e;
+       }
+       
+       .acs-articleframe-intro{
            margin-top: 5px
        }
+       
+       .acs-articleframe-time{
+           margin-bottom: 5px;
+
+           .acs-articleframe-time-icon{
+               float: left;
+               background-image: @bgimage_path;
+               background-position: -67px -66px;
+           }
+           .acs-articleframe-time-title{
+               float: left;
+           }
+       }
+
+       .acs-articleframe-like{
+           margin-bottom: 5px;
+
+           .acs-articleframe-like-icon{
+               float: left;
+               background-image: @bgimage_path;
+               background-position: -67px -66px;
+           }
+           .acs-articleframe-like-title{
+               float: left;
+           }
+       }
+
     }
 }
