@@ -42,7 +42,7 @@ export default class EventCalendar extends React.Component {
                     {itemCollection}
                 </div>
                 <div className="acs-eventcalendar">
-                    
+
                 </div>
             </WebPartFrame>
         );
