@@ -171,7 +171,7 @@ function RedirectToNewItem(src, listId, siteUrl) {
     NewItemParam.ItemId = SP.ListOperation.Selection.getSelectedItems(ctx)[0].id;
     // NewItemParam.LoginUser = curentWeb.get_currentUser();
 
-    NewItemParam.Source =  encodeURIComponent(siteUrl + "/_layouts/15/APPSAICSolution/RegistrationResult.aspx?List="+NewItemParam.ListId+"&ID="+NewItemParam.ItemId);
+    NewItemParam.Source = encodeURIComponent(siteUrl + "/_layouts/15/APPSAICSolution/RegistrationResult.aspx?List=" + NewItemParam.ListId + "&ID=" + NewItemParam.ItemId);
 
     var ctx = SP.ClientContext.get_current();
     var currentSite = ctx.get_site();
@@ -179,43 +179,40 @@ function RedirectToNewItem(src, listId, siteUrl) {
     var currentList = currentWeb.get_lists().getById(SP.ListOperation.Selection.getSelectedList());
     var currentItem = currentList.getItemById(SP.ListOperation.Selection.getSelectedItems(ctx)[0].id);
 
-    ctx.load(currentItem, "ID", "Title", "ACSEventType", "ACSTheAllocatedSeats", "ACSTheRemainingSeats", "ACSEventDate");
+    ctx.load(currentItem, "ID", "Title", "ACSEventType", "ACSTheAllocatedSeats", "ACSTheRemainingSeats", "ACSEventEndDate");
     ctx.executeQueryAsync(
-         function () {
-             var title = currentItem.get_item("Title");
-             NewItemParam.RootFolder = encodeURIComponent(NewItemParam.SiteUrl + "/Lists/EventRegInfo/" + title);
+        function () {
+            var title = currentItem.get_item("Title");
+            NewItemParam.RootFolder = encodeURIComponent(NewItemParam.SiteUrl + "/Lists/EventRegInfo/" + title);
+            NewItemParam.RegStatus = "Open";
+            NewItemParam.State = 0;
+            if (currentItem.get_item("ACSEventEndDate") <= new Date()) {
+                NewItemParam.RegStatus = "Closed";
+                NewItemParam.State = 1;
+            }
+            if (currentItem.get_item("ACSTheAllocatedSeats") <= currentItem.get_item("ACSTheRemainingSeats")) {
+                NewItemParam.RegStatus = "Closed";
+                NewItemParam.State = 2;
+            }
 
-             if (currentItem.get_item("ACSEventDate") <= new Date()) {
-                 NewItemParam.RegStatus = "Closed";
-                 NewItemParam.State = 1;
-             }
-             else if (currentItem.get_item("ACSTheAllocatedSeats") <= currentItem.get_item("ACSTheRemainingSeats")) {
-                 NewItemParam.RegStatus = "Closed";
-                 NewItemParam.State = 2;
-             }
-             else {
-                 NewItemParam.RegStatus = "Open";
-                 NewItemParam.State = 0;
-             }
+            var destList = currentWeb.get_lists().getByTitle("Event Registration Information")
+            var contentTypes = destList.get_contentTypes();
+            var eventType = currentItem.get_item("ACSEventType");
 
-             var destList = currentWeb.get_lists().getByTitle("Event Registration Information")
-             var contentTypes = destList.get_contentTypes();
-             var eventType = currentItem.get_item("ACSEventType");
-
-             ctx.load(contentTypes);
-             ctx.executeQueryAsync(
+            ctx.load(contentTypes);
+            ctx.executeQueryAsync(
                 function () {
                     var id = null;
-                    for (var i = 0; i < contentTypes.get_count() ; i++) {
+                    for (var i = 0; i < contentTypes.get_count(); i++) {
                         if (contentTypes.itemAt(i).get_name() === eventType) {
                             id = contentTypes.itemAt(i).get_id();
                             break;
                         }
                     }
                     if (id != null) {
-                        var newItemUrl = NewItemParam.RequestUrl 
-                            + "?Source=" + NewItemParam.Source 
-                            + "&ContentTypeId=" + id.toString() 
+                        var newItemUrl = NewItemParam.RequestUrl
+                            + "?Source=" + NewItemParam.Source
+                            + "&ContentTypeId=" + id.toString()
                             + "&RootFolder=" + NewItemParam.RootFolder
                             + "&OriSource=" + NewItemParam.OriSource
                             + "&ListId=" + NewItemParam.ListId
@@ -232,12 +229,12 @@ function RedirectToNewItem(src, listId, siteUrl) {
                 function (sender, args) {
                     alert('Error occurred: ' + args.get_message());
                 }
-             );
-         },
-         function (sender, args) {
-             alert('Error occurred: ' + args.get_message());
-         }
-       );
+            );
+        },
+        function (sender, args) {
+            alert('Error occurred: ' + args.get_message());
+        }
+    );
 }
 
 function IsItemSelected() {
