@@ -28,11 +28,11 @@ module.exports = {
             'output': 'dist/layouts/flexlayout',
             'prod_include': true
         },
-        {
-            'name': 'layouta',
+         {
+            'name': 'stafflayout',
             'src': ['layouts/layouta/script.jsx'],
             'style': ['layouts/layouta/style.less'],
-            'output': 'dist/layouts/layouta',
+            'output': 'dist/layouts/stafflayout',
             'prod_include': true
         },
         {
