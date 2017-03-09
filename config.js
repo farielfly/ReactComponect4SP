@@ -15,7 +15,7 @@ module.exports = {
                 'webparts/panels/index.jsx',
                 'webparts/lists/popularlist.jsx',
                 'webparts/lists/newslist.jsx',
-                'webparts/calendar/eventline.jsx',
+                'webparts/calendar/index.jsx',
                 'webparts/articles/index.jsx',
                 'webparts/articles/articlesBusiness.jsx',
                 'webparts/quicksearch/index.jsx'],

@@ -1,8 +1,8 @@
 import { render } from 'react-dom';
 import $ from 'jquery';
-import CalendarEventLine from '../../components/Calendar/calendarEventLine.jsx';
+import EventCalendar from '../../components/Common/eventCalendar.jsx';
 
-function eventLineRender(config) {
+function eventCalendarRender(config) {
     let param = { title: 'Event Calendar' };
     let datas = [{
         name: 'Morning Event!',
@@ -25,10 +25,10 @@ function eventLineRender(config) {
     }];
 
     function renderUI(data, param) {
-        if (document.getElementById('eventline-calendar')) {
+        if (document.getElementById('event-calendar')) {
             render(
-                <CalendarEventLine title={param.title} items={data}></CalendarEventLine>,
-                document.getElementById('eventline-calendar')
+                <EventCalendar title={param.title} items={data}></EventCalendar>,
+                document.getElementById('event-calendar')
             )
         }
     }
@@ -69,4 +69,4 @@ function eventLineRender(config) {
     }
 }
 
-global.eventLineRender = eventLineRender;
+global.eventCalendarRender = eventCalendarRender;

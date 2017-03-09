@@ -1,6 +1,6 @@
 import WebPartFrame from '../common/webPartFrame.jsx'
 
-export default class CalendarEventLine extends React.Component {
+export default class EventCalendar extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -40,6 +40,9 @@ export default class CalendarEventLine extends React.Component {
                 hasTopLine={false}>
                 <div className="acs-eventline">
                     {itemCollection}
+                </div>
+                <div className="acs-eventcalendar">
+                    
                 </div>
             </WebPartFrame>
         );
