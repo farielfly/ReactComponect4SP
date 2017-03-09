@@ -7,6 +7,101 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _webPartFrame = require("../common/webPartFrame.jsx");
+
+var _webPartFrame2 = _interopRequireDefault(_webPartFrame);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CalendarEventLine = function (_React$Component) {
+    _inherits(CalendarEventLine, _React$Component);
+
+    function CalendarEventLine(props) {
+        _classCallCheck(this, CalendarEventLine);
+
+        return _possibleConstructorReturn(this, (CalendarEventLine.__proto__ || Object.getPrototypeOf(CalendarEventLine)).call(this, props));
+    }
+
+    _createClass(CalendarEventLine, [{
+        key: "fillZero",
+        value: function fillZero(value) {
+            return value > 9 ? value : "0" + value;
+        }
+    }, {
+        key: "formatTime",
+        value: function formatTime(value) {
+            var date = new Date(value);
+            var hour = date.getHours();
+            return this.fillZero(date.getDate()) + "/" + this.fillZero(date.getMonth() + 1) + "/" + date.getFullYear() + " " + this.fillZero(hour % 12) + ":" + this.fillZero(date.getMinutes()) + (hour > 11 ? " PM" : " AM");
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                items = _props.items,
+                title = _props.title;
+
+
+            var itemCollection = this.props.items.map(function (item, idc) {
+                return React.createElement(
+                    "div",
+                    { className: "acs-eventline-item" },
+                    React.createElement("div", { className: "acs-eventline-dot" }),
+                    React.createElement(
+                        "div",
+                        { className: "acs-eventline-content" },
+                        React.createElement(
+                            "div",
+                            { className: "acs-eventline-name" },
+                            item.name
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "acs-eventline-time" },
+                            _this2.formatTime(item.time)
+                        ),
+                        React.createElement("div", { className: "acs-eventline-triangle" })
+                    )
+                );
+            });
+            return React.createElement(
+                _webPartFrame2.default,
+                {
+                    title: this.props.title,
+                    hasMore: false,
+                    link: "",
+                    hasTopLine: false },
+                React.createElement(
+                    "div",
+                    { className: "acs-eventline" },
+                    itemCollection
+                )
+            );
+        }
+    }]);
+
+    return CalendarEventLine;
+}(React.Component);
+
+exports.default = CalendarEventLine;
+
+},{"../common/webPartFrame.jsx":8}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -71,7 +166,7 @@ var ArticleFrame = function (_React$Component) {
 
 exports.default = ArticleFrame;
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -129,7 +224,7 @@ var ListFrame = function (_React$Component) {
 
 exports.default = ListFrame;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -195,7 +290,7 @@ var PanelFrame = function (_React$Component) {
 
 exports.default = PanelFrame;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -255,7 +350,7 @@ var SearchBox = function (_React$Component) {
 
 exports.default = SearchBox;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -318,7 +413,7 @@ var WPFrame = function (_React$Component) {
 
 exports.default = WPFrame;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -376,7 +471,9 @@ var titleDescriptionPanel = function (_React$Component) {
 
 exports.default = titleDescriptionPanel;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
+arguments[4][6][0].apply(exports,arguments)
+},{"dup":6}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -570,7 +667,7 @@ var SecondItem = function (_React$Component2) {
     return SecondItem;
 }(React.Component);
 
-},{"./navbarTitleBtn.jsx":9}],8:[function(require,module,exports){
+},{"./navbarTitleBtn.jsx":11}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -618,7 +715,7 @@ var navbarMenuList = function (_React$Component) {
 
 exports.default = navbarMenuList;
 
-},{"./navbarItem.jsx":7}],9:[function(require,module,exports){
+},{"./navbarItem.jsx":9}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -673,7 +770,7 @@ var NavbarTitleBtn = function (_React$Component) {
 
 exports.default = NavbarTitleBtn;
 
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -782,7 +879,7 @@ var SliderEvents = function (_React$Component2) {
 exports.default = SliderEvents;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../widget/event.jsx":18}],11:[function(require,module,exports){
+},{"../widget/event.jsx":20}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -833,7 +930,7 @@ var SliderArrows = function (_React$Component) {
 
 exports.default = SliderArrows;
 
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -890,7 +987,7 @@ var SliderDots = function (_React$Component) {
 
 exports.default = SliderDots;
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1013,7 +1110,7 @@ SliderFrame.defaultProps = {
 };
 SliderFrame.autoPlayFlag = null;
 
-},{"./sliderArrows.jsx":11,"./sliderDots.jsx":12}],14:[function(require,module,exports){
+},{"./sliderArrows.jsx":13,"./sliderDots.jsx":14}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1098,7 +1195,7 @@ var SliderFrameArrowOnBottom = function (_SliderFrame) {
 
 exports.default = SliderFrameArrowOnBottom;
 
-},{"./sliderArrows.jsx":11,"./sliderDots.jsx":12,"./sliderFrame.jsx":13}],15:[function(require,module,exports){
+},{"./sliderArrows.jsx":13,"./sliderDots.jsx":14,"./sliderFrame.jsx":15}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1171,7 +1268,7 @@ var SliderLinks = function (_React$Component) {
 
 exports.default = SliderLinks;
 
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1295,7 +1392,7 @@ var News = function (_Component2) {
 exports.default = News;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1371,7 +1468,7 @@ var SliderPics = function (_React$Component) {
 
 exports.default = SliderPics;
 
-},{"../common/titleDescriptionPanel.jsx":6}],18:[function(require,module,exports){
+},{"../common/titleDescriptionPanel.jsx":7}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1465,7 +1562,7 @@ var Event = function (_React$Component) {
 
 exports.default = Event;
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1525,10 +1622,63 @@ function articleRender(params) {
 global.articleRender = articleRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/articleFrame.jsx":1}],20:[function(require,module,exports){
-"use strict";
+},{"../../components/Common/articleFrame.jsx":2}],22:[function(require,module,exports){
+(function (global){
+'use strict';
 
-},{}],21:[function(require,module,exports){
+var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
+
+var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _calendarEventLine = require('../../components/Calendar/calendarEventLine.jsx');
+
+var _calendarEventLine2 = _interopRequireDefault(_calendarEventLine);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function eventLineRender(config) {
+    var param = { title: 'Event Calendar' };
+    var data = [{
+        name: 'Morning Event!',
+        time: new Date()
+    }, {
+        name: 'Hello World,',
+        time: new Date().setHours(10)
+    }, {
+        name: 'Hello World 123,',
+        time: new Date().setHours(12)
+    }, {
+        name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+        time: new Date().setHours(14)
+    }, {
+        name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+        time: new Date().setHours(15)
+    }, {
+        name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+        time: new Date().setHours(21)
+    }];
+
+    function renderUI(data, param) {
+        if (document.getElementById('eventline-calendar')) {
+            (0, _reactDom.render)(React.createElement(_calendarEventLine2.default, { title: param.title, items: data }), document.getElementById('eventline-calendar'));
+        }
+    }
+
+    function loadData(param) {}
+
+    if (config && !config.debug) {
+        loadData(param);
+    } else {
+        renderUI(data, param);
+    }
+}
+
+global.eventLineRender = eventLineRender;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../components/Calendar/calendarEventLine.jsx":1}],23:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1645,7 +1795,7 @@ function eventRender(config) {
 global.eventRender = eventRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/slideEvents.jsx":10,"../../components/slider/sliderFrameArrowOnBottom.jsx":14}],22:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":6,"../../components/slider/slideEvents.jsx":12,"../../components/slider/sliderFrameArrowOnBottom.jsx":16}],24:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1751,7 +1901,7 @@ function linksRender(config) {
 global.linksRender = linksRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":14,"../../components/slider/sliderLinks.jsx":15}],23:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":6,"../../components/slider/sliderFrameArrowOnBottom.jsx":16,"../../components/slider/sliderLinks.jsx":17}],25:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1867,7 +2017,7 @@ function newsListRender(config) {
 global.newsListRender = newsListRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/listFrame.jsx":2}],24:[function(require,module,exports){
+},{"../../components/Common/listFrame.jsx":3}],26:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1977,7 +2127,7 @@ function popularListRender(config) {
 global.popularListRender = popularListRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/listFrame.jsx":2}],25:[function(require,module,exports){
+},{"../../components/Common/listFrame.jsx":3}],27:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2066,7 +2216,7 @@ function NavigationRender(config) {
 global.NavigationRender = NavigationRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/navigation/navbarMenu.jsx":8}],26:[function(require,module,exports){
+},{"../../components/navigation/navbarMenu.jsx":10}],28:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2185,7 +2335,7 @@ function newsRender(config) {
 global.newsRender = newsRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":14,"../../components/slider/sliderNews.jsx":16}],27:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":6,"../../components/slider/sliderFrameArrowOnBottom.jsx":16,"../../components/slider/sliderNews.jsx":18}],29:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2235,7 +2385,7 @@ function panelRender() {
 global.panelRender = panelRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/panelFrame.jsx":3}],28:[function(require,module,exports){
+},{"../../components/Common/panelFrame.jsx":4}],30:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2286,7 +2436,7 @@ function searchRender(params) {
 global.searchRender = searchRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/searchBox.jsx":4}],29:[function(require,module,exports){
+},{"../../components/Common/searchBox.jsx":5}],31:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2379,5 +2529,5 @@ function sliderRender(config) {
 global.sliderRender = sliderRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/slider/sliderFrame.jsx":13,"../../components/slider/sliderPics.jsx":17}]},{},[22,29,26,25,21,27,24,23,20,19,28])(29)
+},{"../../components/slider/sliderFrame.jsx":15,"../../components/slider/sliderPics.jsx":19}]},{},[24,31,28,27,23,29,26,25,22,21,30])(31)
 });

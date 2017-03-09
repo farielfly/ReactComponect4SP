@@ -3,6 +3,50 @@
 .acs-eventline{
     margin-top: 20px;
     width: 25%;
+    
+    .acs-eventline-item{
 
+
+        .acs-eventline-dot{
+            float: left;
+            width: 20%;
+        }
+
+        .acs-eventline-content{
+            float: right;
+            width: 80%;
+            color: #FFF;
+            background: #FFA500;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            position: relative;
+
+            .acs-eventline-name{
+                font-weight: bold;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .acs-eventline-time{
+                margin-top: 10px;
+            }
+            
+            .acs-eventline-triangle {
+                position: absolute;
+                width: 0;
+                height: 0;
+                line-height: 0;
+                border-bottom: 8px solid #FFF;
+                border-left: 8px solid #FFF;
+                border-right: 8px solid orange;
+                left: -16px;
+                top: 23px;
+                border-top: 8px solid #FFF;
+            }
+        }
+
+    }
     
 }
