@@ -216,10 +216,21 @@ var SearchBox = function (_React$Component) {
     function SearchBox(props) {
         _classCallCheck(this, SearchBox);
 
-        return _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).call(this, props));
+
+        _this.state = { searchContent: '' };
+        _this.onSearchClick = _this.onSearchClick.bind(_this);
+        return _this;
     }
 
     _createClass(SearchBox, [{
+        key: "onSearchClick",
+        value: function onSearchClick(event) {
+            var inputValue = this.refs.mSearchBox.value;
+            alert("SearchContent: " + inputValue);
+            this.setState({ searchContent: inputValue });
+        }
+    }, {
         key: "render",
         value: function render() {
             var _props = this.props,
@@ -227,12 +238,14 @@ var SearchBox = function (_React$Component) {
                 placeHolder = _props.placeHolder,
                 link = _props.link;
 
-            iconPosition = '-26px -40px';
+            var searchContent = this.state.searchContent;
 
             return React.createElement(
                 "div",
                 { className: "acs-searchbox" },
-                React.createElement("div", { className: "acs-searchbox-headericon", style: { backgroundposition: iconPosition } })
+                React.createElement("div", { className: "acs-searchbox-headericon", style: { backgroundPosition: iconPosition } }),
+                React.createElement("input", { className: "acs-searchbox-input", type: "text", placeholder: placeHolder, ref: "mSearchBox" }),
+                React.createElement("div", { className: "acs-searchbox-tailicon", onClick: this.onSearchClick })
             );
         }
     }]);
@@ -2240,7 +2253,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function searchRender(params) {
     if (!params) {
-        params = {};
+        params = [{ IconPosition: '-26px -40px', PlaceHolder: 'Find a person' }, { IconPosition: '-26px -40px', PlaceHolder: 'Search Everything' }, { IconPosition: '-26px -40px', PlaceHolder: 'Search all Corporate Documents' }];
     }
     renderUI(params);
 
@@ -2258,7 +2271,13 @@ function searchRender(params) {
                         { className: 'acs-searchbox-title-name' },
                         'QUICK SEARCH'
                     )
-                )
+                ),
+                params.map(function (searchbox, i) {
+                    return React.createElement(_searchBox2.default, {
+                        key: i,
+                        iconPosition: searchbox.IconPosition,
+                        placeHolder: searchbox.PlaceHolder });
+                })
             ), document.getElementById('quicksearch'));
         }
     }
