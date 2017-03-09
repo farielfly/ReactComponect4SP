@@ -12,7 +12,7 @@ export default class CalendarEventLine extends React.Component {
     formatTime(value) {
         let date = new Date(value);
         let hour = date.getHours();
-        return this.fillZero(date.getDate()) + "/" + this.fillZero(date.getMonth()+1) + "/" + date.getFullYear() + " "
+        return this.fillZero(date.getDate()) + "/" + this.fillZero(date.getMonth() + 1) + "/" + date.getFullYear() + " "
             + this.fillZero(hour % 12) + ":" + this.fillZero(date.getMinutes()) + (hour > 11 ? " PM" : " AM");
     }
 
@@ -23,10 +23,11 @@ export default class CalendarEventLine extends React.Component {
             return (
                 <div className="acs-eventline-item">
                     <div className="acs-eventline-dot"></div>
+                    {idc < this.props.items.length - 1 ? <div className="acs-eventline-line"></div> : null}
+                    <div className="acs-eventline-triangle"></div>
                     <div className="acs-eventline-content">
                         <div className="acs-eventline-name">{item.name}</div>
                         <div className="acs-eventline-time">{this.formatTime(item.time)}</div>
-                        <div className="acs-eventline-triangle"></div>
                     </div>
                 </div>
             );

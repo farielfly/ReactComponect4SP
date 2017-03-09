@@ -5,22 +5,49 @@
     width: 25%;
     
     .acs-eventline-item{
-
+        margin-left: 10px;
+        position: relative;
 
         .acs-eventline-dot{
-            float: left;
-            width: 20%;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: #FFA500;
+            left: -5px;
+            top: 26px;
         }
 
+        .acs-eventline-line{
+            position: absolute;
+            width: 0;
+            height: 76px;
+            border-left: 1px dashed rgb(170, 170, 170);
+            left: 0;
+            top: 36px;
+        }
+        
+        .acs-eventline-triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            line-height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid transparent;
+            border-right: 8px solid #FFA500;
+            left: 9px;
+            top: 23px;
+        }
+        
         .acs-eventline-content{
-            float: right;
-            width: 80%;
             color: #FFF;
             background: #FFA500;
-            border-radius: 5px;
+            border-radius: 3px;
             padding: 10px;
-            margin-bottom: 10px;
-            position: relative;
+            margin-left: 25px;
+            margin-bottom: 20px;
+            min-width: 166px;
 
             .acs-eventline-name{
                 font-weight: bold;
@@ -32,21 +59,7 @@
             .acs-eventline-time{
                 margin-top: 10px;
             }
-            
-            .acs-eventline-triangle {
-                position: absolute;
-                width: 0;
-                height: 0;
-                line-height: 0;
-                border-bottom: 8px solid #FFF;
-                border-left: 8px solid #FFF;
-                border-right: 8px solid orange;
-                left: -16px;
-                top: 23px;
-                border-top: 8px solid #FFF;
-            }
         }
 
     }
-    
 }
