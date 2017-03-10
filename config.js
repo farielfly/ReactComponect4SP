@@ -14,7 +14,7 @@ module.exports = {
         },
         {
             'name': 'Calendar',
-            'src': ['webparts/Calendar/eventline.jsx'],
+            'src': ['webparts/Calendar/index.jsx'],
             'style': ['webparts/Calendar/style.less'],
             'output': 'dist/webparts',
             'prod_output': ""
