@@ -1,4 +1,11 @@
+@bgimage_path: url('../../dist/common/images/image.png');
 body {
+    #titleAreaRow{
+        >div:nth-child(3){
+            display: none !important;
+        }
+    }
+
     #organization-layout{
         margin: auto;
         width:1180px;
@@ -14,18 +21,31 @@ body {
             .acs-organizationlayout-breadtitle{
                 float: left;
                 margin-top: 5px;
+                display: flex;
 
 
-                a{
-                    color:#f57d30;
+                .acs-homelink, .acs-locationlink{
                     font-family: Frutiger CE 55 Roman;
                     font-size:13px;
                     text-decoration: none;
                     cursor: pointer;
                 }
 
-                span{
+                .acs-homelink{
+                    color:#f57d30;
+                }
+
+                 .acs-locationlink{
                     color:#444;
+                }
+
+                .acs-hometruangel-icon{
+                     display: inline-block;
+                     margin: 0 3px;
+                     width:18px;
+                    height: 18px;
+                    background-image: @bgimage_path;
+                    background-position: -126px -66px;
                 }
             }
             .acs-searchpanel-div{
@@ -33,14 +53,28 @@ body {
                 width:250px;
                 height:30px;
                 border:1px solid #d7d7d7;
+                display: flex;
+                align-items: center;
 
                 input{
                     display:block;
                     float:left;
                     padding:0;
-                    width:80%;
+                    padding-left: 10px;
+                    width:215px;
                     height:28px;
                     border:none;
+                    outline:none;
+                }
+
+                .acs-searchicon{
+                    display: block;
+                    float: right;
+                    width:18px;
+                    height: 18px;
+                    background-image: @bgimage_path;
+                    background-position: -72px -66px;
+                    cursor: pointer;
                 }
             }
         }
@@ -78,14 +112,14 @@ body {
                             margin-right: 15px;
                             width:18px;
                             height: 18px;
-                            background-image: url();
+                            background-image:  @bgimage_path;
                         }
 
                         .acs-accordionitem-retracticon{
-                            background-position: -180px -66px;
+                            background-position: 0 -66px;
                         }
                         .acs-accordionitem-expandicon{
-                            background-position: -198px -66px;
+                            background-position: -18px -66px;
                         }
 
                         .acs-accordionitem-head{

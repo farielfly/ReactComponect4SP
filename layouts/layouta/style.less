@@ -1,148 +1,196 @@
-﻿#staff-layout{
-    margin: auto;
-    width:1180px;
-    min-height: 800px;
-    height:auto;
-
-    .acs-stafflayout-serachpanel{
-        width:100%;
-        height:40px;
-        margin-top: 20px;
-
-        .acs-stafflayout-breadtitle{
-            float: left;
-            margin-top: 5px;
-
-
-            a{
-                color:#f57d30;
-                font-family: Frutiger CE 55 Roman;
-                font-size:13px;
-                text-decoration: none;
-                cursor: pointer;
-            }
-
-            span{
-                color:#444;
-            }
-        }
-        .acs-searchpanel-div{
-            float:right;
-            width:250px;
-            height:30px;
-            border:1px solid #d7d7d7;
-
-            input{
-                display:block;
-                float:left;
-                padding:0;
-                width:80%;
-                height:28px;
-                border:none;
-            }
+﻿@bgimage_path: url('../../dist/common/images/image.png');
+body{
+     #titleAreaRow{
+        >div:nth-child(3){
+            display: none !important;
         }
     }
 
-    .acs-staff-nameletter{
-        width: 100%; 
-        height: 38px; 
-        background-color: #363940;
-        
-        a{
-            display: inline-block;
-            width:34px;
-            height: 38px;
-            border-radius: 2px 2px 0 0;
-            color:#fff;
-            text-align: center;
-            line-height: 2.6;
-             background-color: #363940;
-             text-decoration: none;
-        }
+    #staff-layout{
+        margin: auto;
+        width:1180px;
+        min-height: 800px;
+        height:auto;
 
-        a:hover{
-            background-color: #5b5e66;
-        }
-        a:focus{
-            background-color: #f57d30;
-        }
-    }
-
-    .acs-staff-paging{
-        margin-top: 15px;
-        width: 100%;
-        text-align: center;
-
-        #pre, #next{
-            display: none;
-            width: 20px;
-            height: 20px;
-            background-color: #5b5e66;
-        }
-    }
-
-    .acs-table{
-        border: 3px solid #363940;
-        border-top:none;
-
-        .acs-table-head{
-            display: flex;
+        .acs-stafflayout-serachpanel{
             width:100%;
-            height:48px;
-            background-color: #f1eeee;
+            height:40px;
+            margin-top: 20px;
 
-            div{
+            .acs-stafflayout-breadtitle{
+                float: left;
+                margin-top: 5px;
                 display: flex;
-                align-items: center;
-                span{
-                    margin: 0 15px;
+
+
+                .acs-homelink, .acs-locationlink{
+                    font-family: Frutiger CE 55 Roman;
+                    font-size:13px;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+
+                .acs-homelink{
+                    color:#f57d30;
+                }
+
+                 .acs-locationlink{
+                    color:#444;
+                }
+
+                .acs-hometruangel-icon{
+                    display: inline-block;
+                    margin: 0 3px;
+                    width:18px;
+                    height: 18px;
+                    background-image: @bgimage_path;
+                    background-position: -126px -66px;
                 }
             }
+            .acs-searchpanel-div{
+                display: flex;
+                align-items: center;
+                float:right;
+                width:250px;
+                height:30px;
+                border:1px solid #d7d7d7;
+
+                input{
+                    display:block;
+                    float:left;
+                    padding:0;
+                    padding-left: 10px;
+                    width:215px;
+                    height:28px;
+                    border:none;
+                    outline:none;
+                }
+
+                .acs-searchicon{
+                    display: block;
+                    float: right;
+                    width:18px;
+                    height: 18px;
+                    background-image: @bgimage_path;
+                    background-position: -72px -66px;
+                    cursor: pointer;
+                }
+            }
+
         }
 
-        .acs-table-body{
-            .acs-tbody-row{
-                display: flex;
-                height: 58px;
-                align-items: center;
+        .acs-staff-nameletter{
+            width: 100%; 
+            height: 38px; 
+            background-color: #363940;
+            
+            a{
+                display: inline-block;
+                width:34px;
+                height: 38px;
+                border-radius: 2px 2px 0 0;
+                color:#fff;
+                text-align: center;
+                line-height: 2.6;
+                background-color: #363940;
+                text-decoration: none;
+            }
 
-                .acs-tobdy-cell{
+            a:hover{
+                background-color: #5b5e66;
+            }
+            a:focus{
+                background-color: #f57d30;
+            }
+        }
+
+        .acs-staff-paging{
+            margin-top: 15px;
+            width: 100%;
+            text-align: center;
+
+            #pre, #next{
+                display: none;
+                width: 20px;
+                height: 20px;
+               // background-image: @bgimage_path;
+                border: 1px solid #ddd;
+                cursor: pointer;
+            }
+            #pre{
+                background-position: -26px -40px;
+            }
+
+            #next{
+                background-position: -52px -40px;
+            }
+
+        }
+
+        .acs-table{
+            border: 3px solid #363940;
+            border-top:none;
+
+            .acs-table-head{
+                display: flex;
+                width:100%;
+                height:48px;
+                background-color: #f1eeee;
+
+                div{
                     display: flex;
-                    >span, >div{
+                    align-items: center;
+                    span{
                         margin: 0 15px;
                     }
+                }
+            }
 
-                    .acs-cellvalue-style{
-                        width:100%;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        display: block;
-                    }
+            .acs-table-body{
+                .acs-tbody-row{
+                    display: flex;
+                    height: 58px;
+                    align-items: center;
 
-                    .acs-person-headpic{
-                        width:32px;
-                        height: 32px;
-                    }
-
-                    .acs-person-statue{
-                        width:100%;
-                        span{
-                            display: inline-block;
+                    .acs-tobdy-cell{
+                        display: flex;
+                        >span, >div{
+                            margin: 0 15px;
                         }
 
-                        span:nth-child(2){
-                            width:80%;
+                        .acs-cellvalue-style{
+                            width:100%;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
+                            display: block;
+                        }
+
+                        .acs-person-headpic{
+                            width:32px;
+                            height: 32px;
+                        }
+
+                        .acs-person-statue{
+                            width:100%;
+                            span{
+                                display: inline-block;
+                            }
+
+                            span:nth-child(2){
+                                width:80%;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
                         }
                     }
                 }
             }
         }
-    }
-  
-} 
+    
+    } 
+}
+
 
     

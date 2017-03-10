@@ -25,10 +25,11 @@ export default class AccordionFrame extends React.Component {
 
     render() {
         var contentHeight = this.props.accordionData.Children.length * this.props.itemHeight +"px";
+        var divisionIcon = this.props.accordionData.Children.length===0?'':(this.state.active?"acs-accordionitem-expandicon":"acs-accordionitem-retracticon");
         return (
             <div className="acs-accordion-item">
                 <div className={"acs-accordionitem-head" + (this.state.active?" acs-accordionitem-visited":"")} onClick={this.handleShow.bind(this)}>
-                    <span className={this.state.active?"acs-accordionitem-expandicon":"acs-accordionitem-retracticon"}></span>
+                    <span className={divisionIcon}></span>
                     <span className="acs-divisionhead-title">{this.props.accordionData.Name}</span>
                 </div>
                 <div className="acs-accordionitem-content" style={{ height: this.state.active ? contentHeight : "0" }}>

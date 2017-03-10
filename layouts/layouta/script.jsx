@@ -33,7 +33,8 @@ function staffDirectoryRender(config){
     }
 
     function loadData(param) {
-        var furl = config.url +"&info="+config.searchInfo +"&firstLetter="+config.firstLetter+"&divisionName="+config.division+"&departmentName="+config.department+"&count="+config.count+"&pageNumber="+config.pageNumber;
+        var letter = config.firstLetter==='#'?'':config.firstLetter;
+        var furl = config.url +"&info="+config.searchInfo +"&firstLetter="+letter+"&divisionName="+config.division+"&departmentName="+config.department+"&count="+config.count+"&pageNumber="+config.pageNumber;
         $.ajax({
             type: "GET",
             url: furl,
