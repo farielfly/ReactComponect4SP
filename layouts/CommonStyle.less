@@ -1,1 +1,116 @@
+@bgimage_path: url('../../dist/common/images/image.png');
+body{
+     #titleAreaRow{
+        >div:nth-child(3){
+            display: none !important;
+        }
+    }
 
+    .acs-pageloading{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity:0.5;
+        z-index: 1000;
+
+        .acs-pageloading-infopanel{
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 20%;
+            height: 20%;
+            z-index: 1001;
+            text-align:center;
+            background-color: #fff;
+
+            .acs-infopanel-position{
+                margin-top: 40%;
+            }
+        }
+    }
+
+    .acs-pagelayout-frame{
+        margin: auto;
+        width:1180px;
+        min-height: 800px;
+        height:auto;
+
+        .acs-pagelayout-serachpanel{
+            width:100%;
+            height:40px;
+            margin-top: 20px;
+
+            .acs-pagelayout-breadtitle{
+                float: left;
+                margin-top: 5px;
+                display: flex;
+
+
+                .acs-homelink, .acs-locationlink{
+                    font-family: Frutiger CE 55 Roman;
+                    font-size:13px;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+
+                .acs-homelink{
+                    color:#f57d30;
+                }
+
+                 .acs-locationlink{
+                    color:#444;
+                }
+
+                .acs-hometruangel-icon{
+                    display: inline-block;
+                    margin: 0 3px;
+                    width:18px;
+                    height: 18px;
+                    background-image: @bgimage_path;
+                    background-position: -126px -66px;
+                }
+            }
+            .acs-searchpanel-div{
+                display: flex;
+                align-items: center;
+                float:right;
+                width:250px;
+                height:30px;
+                border:1px solid #d7d7d7;
+
+                input{
+                    display:block;
+                    float:left;
+                    padding:0;
+                    padding-left: 10px;
+                    width:215px;
+                    height:28px;
+                    border:none;
+                    outline:none;
+                }
+
+                .acs-searchicon{
+                    display: block;
+                    float: right;
+                    width:18px;
+                    height: 18px;
+                    background-image: @bgimage_path;
+                    background-position: -72px -66px;
+                    cursor: pointer;
+                }
+
+                .acs-clearsearchicon{
+                    display: none;
+                    width:18px;
+                    font-size: 18px;
+                    text-align: center;
+                    cursor: pointer;
+                }   
+            }
+
+        }
+    }
+}
