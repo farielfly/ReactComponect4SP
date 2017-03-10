@@ -5,7 +5,7 @@ import ArticleHeadline from '../../components/article/articleHeadline.jsx';
 import ArticleTime from '../../components/article/articleTime.jsx';
 import ArticleLike from '../../components/article/articleLike.jsx';
 
-function articleRender(params) {
+function articleBusinessRender(params) {
     if (!params) {
         params = [{
             PicturePath: '../../components/img/image1.jpg',
@@ -72,25 +72,29 @@ function articleRender(params) {
                         <table><tbody><tr>
                             {
                                 firstParams.map(function (article, i) {
-                                    return <td key={i} style={{ width: width, verticalAlign: 'top' }}>
-                                        <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
-                                        <ArticleHeadline headline={article.Headline}></ArticleHeadline>
-                                        <ArticleTime headline={article.Headline}></ArticleTime>
-                                        <ArticleLike headline={article.Headline}></ArticleLike>
+                                    return <td key={i} style={{ width: width, verticalAlign: 'top', position: 'relative' }}>
+                                        <div className={'acs-articleframe'}>
+                                            <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
+                                            <ArticleHeadline headline={article.Headline}></ArticleHeadline>
+                                            <ArticleTime time={article.Time}></ArticleTime>
+                                            <ArticleLike like={article.Like}></ArticleLike>
+                                        </div>
                                     </td>
                                 })
                             }
                         </tr></tbody></table>
                     </div>
-                    <div style={{ marginTop: '20px' }}>
+                    <div style={{ marginTop: '50px' }}>
                         <table><tbody><tr>
                             {
                                 secondParams.map(function (article, i) {
-                                    return <td key={i} style={{ width: width, verticalAlign: 'top' }}>
-                                        <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
-                                        <ArticleHeadline headline={article.Headline}></ArticleHeadline>
-                                        <ArticleTime headline={article.Headline}></ArticleTime>
-                                        <ArticleLike headline={article.Headline}></ArticleLike>
+                                    return <td key={i} style={{ width: width, verticalAlign: 'top', position: 'relative' }}>
+                                        <div className={'acs-articleframe'}>
+                                            <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
+                                            <ArticleHeadline headline={article.Headline}></ArticleHeadline>
+                                            <ArticleTime time={article.Time}></ArticleTime>
+                                            <ArticleLike like={article.Like}></ArticleLike>
+                                        </div>
                                     </td>
                                 })
                             }

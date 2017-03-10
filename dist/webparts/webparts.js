@@ -19,16 +19,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var CalendarEventLine = function (_React$Component) {
-    _inherits(CalendarEventLine, _React$Component);
+var EventCalendar = function (_React$Component) {
+    _inherits(EventCalendar, _React$Component);
 
-    function CalendarEventLine(props) {
-        _classCallCheck(this, CalendarEventLine);
+    function EventCalendar(props) {
+        _classCallCheck(this, EventCalendar);
 
-        return _possibleConstructorReturn(this, (CalendarEventLine.__proto__ || Object.getPrototypeOf(CalendarEventLine)).call(this, props));
+        return _possibleConstructorReturn(this, (EventCalendar.__proto__ || Object.getPrototypeOf(EventCalendar)).call(this, props));
     }
 
-    _createClass(CalendarEventLine, [{
+    _createClass(EventCalendar, [{
         key: "fillZero",
         value: function fillZero(value) {
             return value > 9 ? value : "0" + value;
@@ -55,6 +55,8 @@ var CalendarEventLine = function (_React$Component) {
                     "div",
                     { className: "acs-eventline-item" },
                     React.createElement("div", { className: "acs-eventline-dot" }),
+                    idc < _this2.props.items.length - 1 ? React.createElement("div", { className: "acs-eventline-line" }) : null,
+                    React.createElement("div", { className: "acs-eventline-triangle" }),
                     React.createElement(
                         "div",
                         { className: "acs-eventline-content" },
@@ -67,8 +69,7 @@ var CalendarEventLine = function (_React$Component) {
                             "div",
                             { className: "acs-eventline-time" },
                             _this2.formatTime(item.time)
-                        ),
-                        React.createElement("div", { className: "acs-eventline-triangle" })
+                        )
                     )
                 );
             });
@@ -83,90 +84,18 @@ var CalendarEventLine = function (_React$Component) {
                     "div",
                     { className: "acs-eventline" },
                     itemCollection
-                )
+                ),
+                React.createElement("div", { className: "acs-eventcalendar" })
             );
         }
     }]);
 
-    return CalendarEventLine;
+    return EventCalendar;
 }(React.Component);
 
-exports.default = CalendarEventLine;
+exports.default = EventCalendar;
 
-},{"../common/webPartFrame.jsx":8}],2:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ArticleFrame = function (_React$Component) {
-    _inherits(ArticleFrame, _React$Component);
-
-    function ArticleFrame(props) {
-        _classCallCheck(this, ArticleFrame);
-
-        return _possibleConstructorReturn(this, (ArticleFrame.__proto__ || Object.getPrototypeOf(ArticleFrame)).call(this, props));
-    }
-
-    _createClass(ArticleFrame, [{
-        key: "render",
-        value: function render() {
-            var _props = this.props,
-                title = _props.title,
-                iconPath = _props.iconPath,
-                link = _props.link,
-                picturePath = _props.picturePath,
-                headline = _props.headline,
-                intro = _props.intro;
-
-
-            return React.createElement(
-                "div",
-                { className: "acs-articleframe" },
-                React.createElement(
-                    "div",
-                    { className: "acs-articleframe-header" },
-                    React.createElement("div", { className: "acs-articleframe-header-icon" }),
-                    React.createElement(
-                        "div",
-                        { className: "acs-articleframe-header-title" },
-                        title
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    { className: "acs-articleframe-picture" },
-                    React.createElement("img", { src: picturePath })
-                ),
-                React.createElement(
-                    "div",
-                    { className: "acs-articleframe-headline" },
-                    headline
-                ),
-                React.createElement(
-                    "div",
-                    { className: "acs-articleframe-intro" },
-                    intro
-                )
-            );
-        }
-    }]);
-
-    return ArticleFrame;
-}(React.Component);
-
-exports.default = ArticleFrame;
-
-},{}],3:[function(require,module,exports){
+},{"../common/webPartFrame.jsx":13}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -224,7 +153,7 @@ var ListFrame = function (_React$Component) {
 
 exports.default = ListFrame;
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -290,7 +219,7 @@ var PanelFrame = function (_React$Component) {
 
 exports.default = PanelFrame;
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -350,7 +279,7 @@ var SearchBox = function (_React$Component) {
 
 exports.default = SearchBox;
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -413,7 +342,288 @@ var WPFrame = function (_React$Component) {
 
 exports.default = WPFrame;
 
+},{}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ArticleHeadline = function (_React$Component) {
+    _inherits(ArticleHeadline, _React$Component);
+
+    function ArticleHeadline(props) {
+        _classCallCheck(this, ArticleHeadline);
+
+        return _possibleConstructorReturn(this, (ArticleHeadline.__proto__ || Object.getPrototypeOf(ArticleHeadline)).call(this, props));
+    }
+
+    _createClass(ArticleHeadline, [{
+        key: "render",
+        value: function render() {
+            var headline = this.props.headline;
+
+
+            return React.createElement(
+                "div",
+                { className: "acs-articleframe-headline" },
+                headline
+            );
+        }
+    }]);
+
+    return ArticleHeadline;
+}(React.Component);
+
+exports.default = ArticleHeadline;
+
 },{}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ArticleIntro = function (_React$Component) {
+    _inherits(ArticleIntro, _React$Component);
+
+    function ArticleIntro(props) {
+        _classCallCheck(this, ArticleIntro);
+
+        return _possibleConstructorReturn(this, (ArticleIntro.__proto__ || Object.getPrototypeOf(ArticleIntro)).call(this, props));
+    }
+
+    _createClass(ArticleIntro, [{
+        key: "render",
+        value: function render() {
+            var intro = this.props.intro;
+
+
+            return React.createElement(
+                "div",
+                { className: "acs-articleframe-intro" },
+                intro
+            );
+        }
+    }]);
+
+    return ArticleIntro;
+}(React.Component);
+
+exports.default = ArticleIntro;
+
+},{}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ArticleLike = function (_React$Component) {
+    _inherits(ArticleLike, _React$Component);
+
+    function ArticleLike(props) {
+        _classCallCheck(this, ArticleLike);
+
+        return _possibleConstructorReturn(this, (ArticleLike.__proto__ || Object.getPrototypeOf(ArticleLike)).call(this, props));
+    }
+
+    _createClass(ArticleLike, [{
+        key: "render",
+        value: function render() {
+            var like = this.props.like;
+
+
+            return React.createElement(
+                "div",
+                { className: "acs-articleframe-like" },
+                React.createElement("div", { className: "acs-articleframe-like-icon" }),
+                React.createElement(
+                    "div",
+                    { className: "acs-articleframe-like-title" },
+                    like
+                )
+            );
+        }
+    }]);
+
+    return ArticleLike;
+}(React.Component);
+
+exports.default = ArticleLike;
+
+},{}],9:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ArticlePicture = function (_React$Component) {
+    _inherits(ArticlePicture, _React$Component);
+
+    function ArticlePicture(props) {
+        _classCallCheck(this, ArticlePicture);
+
+        return _possibleConstructorReturn(this, (ArticlePicture.__proto__ || Object.getPrototypeOf(ArticlePicture)).call(this, props));
+    }
+
+    _createClass(ArticlePicture, [{
+        key: "render",
+        value: function render() {
+            var picturePath = this.props.picturePath;
+
+
+            return React.createElement(
+                "div",
+                { className: "acs-articleframe-picture" },
+                React.createElement("img", { src: picturePath })
+            );
+        }
+    }]);
+
+    return ArticlePicture;
+}(React.Component);
+
+exports.default = ArticlePicture;
+
+},{}],10:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ArticleTime = function (_React$Component) {
+    _inherits(ArticleTime, _React$Component);
+
+    function ArticleTime(props) {
+        _classCallCheck(this, ArticleTime);
+
+        return _possibleConstructorReturn(this, (ArticleTime.__proto__ || Object.getPrototypeOf(ArticleTime)).call(this, props));
+    }
+
+    _createClass(ArticleTime, [{
+        key: "render",
+        value: function render() {
+            var time = this.props.time;
+
+
+            return React.createElement(
+                "div",
+                { className: "acs-articleframe-time" },
+                React.createElement("div", { className: "acs-articleframe-time-icon" }),
+                React.createElement(
+                    "div",
+                    { className: "acs-articleframe-time-title" },
+                    time
+                )
+            );
+        }
+    }]);
+
+    return ArticleTime;
+}(React.Component);
+
+exports.default = ArticleTime;
+
+},{}],11:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ArticleTitle = function (_React$Component) {
+    _inherits(ArticleTitle, _React$Component);
+
+    function ArticleTitle(props) {
+        _classCallCheck(this, ArticleTitle);
+
+        return _possibleConstructorReturn(this, (ArticleTitle.__proto__ || Object.getPrototypeOf(ArticleTitle)).call(this, props));
+    }
+
+    _createClass(ArticleTitle, [{
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                title = _props.title,
+                iconPath = _props.iconPath,
+                link = _props.link;
+
+
+            return React.createElement(
+                "div",
+                { className: "acs-articleframe" },
+                React.createElement(
+                    "div",
+                    { className: "acs-articleframe-header" },
+                    React.createElement("div", { className: "acs-articleframe-header-icon" }),
+                    React.createElement(
+                        "div",
+                        { className: "acs-articleframe-header-title" },
+                        title
+                    )
+                ),
+                this.props.children
+            );
+        }
+    }]);
+
+    return ArticleTitle;
+}(React.Component);
+
+exports.default = ArticleTitle;
+
+},{}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -471,9 +681,9 @@ var titleDescriptionPanel = function (_React$Component) {
 
 exports.default = titleDescriptionPanel;
 
-},{}],8:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],9:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
+arguments[4][5][0].apply(exports,arguments)
+},{"dup":5}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -667,7 +877,7 @@ var SecondItem = function (_React$Component2) {
     return SecondItem;
 }(React.Component);
 
-},{"./navbarTitleBtn.jsx":11}],10:[function(require,module,exports){
+},{"./navbarTitleBtn.jsx":16}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -715,7 +925,7 @@ var navbarMenuList = function (_React$Component) {
 
 exports.default = navbarMenuList;
 
-},{"./navbarItem.jsx":9}],11:[function(require,module,exports){
+},{"./navbarItem.jsx":14}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -770,7 +980,7 @@ var NavbarTitleBtn = function (_React$Component) {
 
 exports.default = NavbarTitleBtn;
 
-},{}],12:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -879,7 +1089,7 @@ var SliderEvents = function (_React$Component2) {
 exports.default = SliderEvents;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../widget/event.jsx":20}],13:[function(require,module,exports){
+},{"../widget/event.jsx":25}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -930,7 +1140,7 @@ var SliderArrows = function (_React$Component) {
 
 exports.default = SliderArrows;
 
-},{}],14:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -987,7 +1197,7 @@ var SliderDots = function (_React$Component) {
 
 exports.default = SliderDots;
 
-},{}],15:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1110,7 +1320,7 @@ SliderFrame.defaultProps = {
 };
 SliderFrame.autoPlayFlag = null;
 
-},{"./sliderArrows.jsx":13,"./sliderDots.jsx":14}],16:[function(require,module,exports){
+},{"./sliderArrows.jsx":18,"./sliderDots.jsx":19}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1195,7 +1405,7 @@ var SliderFrameArrowOnBottom = function (_SliderFrame) {
 
 exports.default = SliderFrameArrowOnBottom;
 
-},{"./sliderArrows.jsx":13,"./sliderDots.jsx":14,"./sliderFrame.jsx":15}],17:[function(require,module,exports){
+},{"./sliderArrows.jsx":18,"./sliderDots.jsx":19,"./sliderFrame.jsx":20}],22:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1268,7 +1478,7 @@ var SliderLinks = function (_React$Component) {
 
 exports.default = SliderLinks;
 
-},{}],18:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1392,7 +1602,7 @@ var News = function (_Component2) {
 exports.default = News;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],19:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1468,7 +1678,7 @@ var SliderPics = function (_React$Component) {
 
 exports.default = SliderPics;
 
-},{"../common/titleDescriptionPanel.jsx":7}],20:[function(require,module,exports){
+},{"../common/titleDescriptionPanel.jsx":12}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1562,7 +1772,7 @@ var Event = function (_React$Component) {
 
 exports.default = Event;
 
-},{}],21:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1572,48 +1782,281 @@ var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _articleFrame = require('../../components/Common/articleFrame.jsx');
+var _articlePicture = require('../../components/article/articlePicture.jsx');
 
-var _articleFrame2 = _interopRequireDefault(_articleFrame);
+var _articlePicture2 = _interopRequireDefault(_articlePicture);
+
+var _articleHeadline = require('../../components/article/articleHeadline.jsx');
+
+var _articleHeadline2 = _interopRequireDefault(_articleHeadline);
+
+var _articleTime = require('../../components/article/articleTime.jsx');
+
+var _articleTime2 = _interopRequireDefault(_articleTime);
+
+var _articleLike = require('../../components/article/articleLike.jsx');
+
+var _articleLike2 = _interopRequireDefault(_articleLike);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function articleBusinessRender(params) {
+    if (!params) {
+        params = [{
+            PicturePath: '../../components/img/image1.jpg',
+            Headline: 'There are some items to show in this view. There are no items to show in this view.',
+            Time: "1/11/2017 10:39 AM",
+            Like: "122"
+        }, {
+            PicturePath: '../../components/img/image2.jpg',
+            Headline: 'There are some items to show in this view. ',
+            Time: "2/15/2017 15:35 PM",
+            Like: "2344"
+        }, {
+            PicturePath: '../../components/img/image3.jpg',
+            Headline: 'Overview',
+            Time: "2/15/2017 16:35 PM",
+            Like: "204"
+        }, {
+            PicturePath: '../../components/img/image1.jpg',
+            Headline: 'Forbidden: Access is denied.',
+            Time: "2/15/2017 18:35 PM",
+            Like: "199"
+        }, {
+            PicturePath: '../../components/img/image2.jpg',
+            Headline: 'There are some items to show in this view. There are no items to show in this view.',
+            Time: "2/15/2017 15:35 PM",
+            Like: "4656"
+        }, {
+            PicturePath: '../../components/img/image1.jpg',
+            Headline: 'There are some items to show in this view. ',
+            Time: "2/15/2017 15:35 PM",
+            Like: "234"
+        }, {
+            PicturePath: '../../components/img/image3.jpg',
+            Headline: 'Hello WorldHello WorldHello WorldHello WorldHello WorldHello World.',
+            Time: "2/15/2017 15:35 PM",
+            Like: "665"
+        }, {
+            PicturePath: '../../components/img/image2.jpg',
+            Headline: 'There are some items to show in this view. There are no items to show in this view.',
+            Time: "2/15/2017 15:35 PM",
+            Like: "8899"
+        }];
+    }
+    renderUI(params);
+
+    function renderUI(params) {
+        if (document.getElementById('articlesBusiness')) {
+            var firstParams = [];var secondParams = [];
+            var width = '20%';
+            if (params.length >= 4) {
+                firstParams = params.slice(0, 4);
+                secondParams = params.slice(4, 8);
+            }
+            (0, _reactDom.render)(React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'div',
+                    null,
+                    React.createElement(
+                        'table',
+                        null,
+                        React.createElement(
+                            'tbody',
+                            null,
+                            React.createElement(
+                                'tr',
+                                null,
+                                firstParams.map(function (article, i) {
+                                    return React.createElement(
+                                        'td',
+                                        { key: i, style: { width: width, verticalAlign: 'top', position: 'relative' } },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'acs-articleframe' },
+                                            React.createElement(_articlePicture2.default, { picturePath: article.PicturePath }),
+                                            React.createElement(_articleHeadline2.default, { headline: article.Headline }),
+                                            React.createElement(_articleTime2.default, { time: article.Time }),
+                                            React.createElement(_articleLike2.default, { like: article.Like })
+                                        )
+                                    );
+                                })
+                            )
+                        )
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { style: { marginTop: '50px' } },
+                    React.createElement(
+                        'table',
+                        null,
+                        React.createElement(
+                            'tbody',
+                            null,
+                            React.createElement(
+                                'tr',
+                                null,
+                                secondParams.map(function (article, i) {
+                                    return React.createElement(
+                                        'td',
+                                        { key: i, style: { width: width, verticalAlign: 'top', position: 'relative' } },
+                                        React.createElement(
+                                            'div',
+                                            { className: 'acs-articleframe' },
+                                            React.createElement(_articlePicture2.default, { picturePath: article.PicturePath }),
+                                            React.createElement(_articleHeadline2.default, { headline: article.Headline }),
+                                            React.createElement(_articleTime2.default, { time: article.Time }),
+                                            React.createElement(_articleLike2.default, { like: article.Like })
+                                        )
+                                    );
+                                })
+                            )
+                        )
+                    )
+                )
+            ), document.getElementById('articlesBusiness'));
+        }
+    }
+}
+
+global.articleBusinessRender = articleBusinessRender;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../components/article/articleHeadline.jsx":6,"../../components/article/articleLike.jsx":8,"../../components/article/articlePicture.jsx":9,"../../components/article/articleTime.jsx":10}],27:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _reactDom = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
+
+var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _articleTitle = require('../../components/article/articleTitle.jsx');
+
+var _articleTitle2 = _interopRequireDefault(_articleTitle);
+
+var _articlePicture = require('../../components/article/articlePicture.jsx');
+
+var _articlePicture2 = _interopRequireDefault(_articlePicture);
+
+var _articleHeadline = require('../../components/article/articleHeadline.jsx');
+
+var _articleHeadline2 = _interopRequireDefault(_articleHeadline);
+
+var _articleIntro = require('../../components/article/articleIntro.jsx');
+
+var _articleIntro2 = _interopRequireDefault(_articleIntro);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function articleRender(params) {
     if (!params) {
         params = [{
-            Title: 'Kevin', PicturePath: '../../components/img/image1.jpg',
+            Title: 'Kevin',
+            PicturePath: '../../components/img/image1.jpg',
             Headline: 'There are some items to show in this view. There are no items to show in this view.',
             Intro: "its security certificate is not trusted by your computer's operating system. This may be caused by a misconfiguration or an attacker intercepting your connection."
         }, {
-            Title: 'Tom', PicturePath: '../../components/img/image2.jpg',
+            Title: 'Tom',
+            PicturePath: '../../components/img/image2.jpg',
             Headline: 'There are some items to show in this view. ',
             Intro: "its security certificate is not trusted by your computer's operating system."
         }, {
-            Title: 'Justin', PicturePath: '../../components/img/image3.jpg',
+            Title: 'Justin',
+            PicturePath: '../../components/img/image3.jpg',
             Headline: 'Overview',
             Intro: "Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. React.Component is provided by React."
         }, {
-            Title: 'Bill', PicturePath: '../../components/img/image1.jpg',
+            Title: 'Bill',
+            PicturePath: '../../components/img/image1.jpg',
             Headline: 'Forbidden: Access is denied.',
             Intro: "You do not have permission to view this directory or page using the credentials that you supplied"
+        }, {
+            Title: 'Jason',
+            PicturePath: '../../components/img/image2.jpg',
+            Headline: 'Hello WorldHello WorldHello WorldHello WorldHello WorldHello World.',
+            Intro: "Hello WorldHello World.You do not have permission to view this directory or page using the credentials that you supplied"
         }];
     }
     renderUI(params);
 
     function renderUI(params) {
         if (document.getElementById('articles')) {
+            var firstParams = [];var secondParams = [];
+            var firstWidth = '45%';var secondWidth = '30%';
+            if (params.length >= 2) {
+                firstParams = params.slice(0, 2);
+                secondParams = params.slice(2, 5);
+            }
             (0, _reactDom.render)(React.createElement(
                 'div',
                 null,
-                params.map(function (article, i) {
-                    return React.createElement(_articleFrame2.default, {
-                        key: i,
-                        title: article.Title,
-                        picturePath: article.PicturePath,
-                        headline: article.Headline,
-                        intro: article.Intro
-                    });
-                })
+                React.createElement(
+                    'div',
+                    null,
+                    React.createElement(
+                        'table',
+                        null,
+                        React.createElement(
+                            'tbody',
+                            null,
+                            React.createElement(
+                                'tr',
+                                null,
+                                firstParams.map(function (article, i) {
+                                    return React.createElement(
+                                        'td',
+                                        { key: i, style: { width: firstWidth, verticalAlign: 'top' } },
+                                        React.createElement(
+                                            _articleTitle2.default,
+                                            {
+                                                title: article.Title,
+                                                width: firstWidth },
+                                            React.createElement(_articlePicture2.default, { picturePath: article.PicturePath }),
+                                            React.createElement(_articleHeadline2.default, { headline: article.Headline }),
+                                            React.createElement(_articleIntro2.default, { intro: article.Intro })
+                                        )
+                                    );
+                                })
+                            )
+                        )
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { style: { marginTop: '20px' } },
+                    React.createElement(
+                        'table',
+                        null,
+                        React.createElement(
+                            'tbody',
+                            null,
+                            React.createElement(
+                                'tr',
+                                null,
+                                secondParams.map(function (article, i) {
+                                    return React.createElement(
+                                        'td',
+                                        { key: i, style: { width: secondWidth, verticalAlign: 'top' } },
+                                        React.createElement(
+                                            _articleTitle2.default,
+                                            {
+                                                title: article.Title,
+                                                width: secondWidth },
+                                            React.createElement(_articlePicture2.default, { picturePath: article.PicturePath }),
+                                            React.createElement(_articleHeadline2.default, { headline: article.Headline }),
+                                            React.createElement(_articleIntro2.default, { intro: article.Intro })
+                                        )
+                                    );
+                                })
+                            )
+                        )
+                    )
+                )
             ), document.getElementById('articles'));
         }
     }
@@ -1622,7 +2065,7 @@ function articleRender(params) {
 global.articleRender = articleRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/articleFrame.jsx":2}],22:[function(require,module,exports){
+},{"../../components/article/articleHeadline.jsx":6,"../../components/article/articleIntro.jsx":7,"../../components/article/articlePicture.jsx":9,"../../components/article/articleTitle.jsx":11}],28:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1632,15 +2075,15 @@ var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _calendarEventLine = require('../../components/Calendar/calendarEventLine.jsx');
+var _eventCalendar = require('../../components/Common/eventCalendar.jsx');
 
-var _calendarEventLine2 = _interopRequireDefault(_calendarEventLine);
+var _eventCalendar2 = _interopRequireDefault(_eventCalendar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function eventLineRender(config) {
+function eventCalendarRender(config) {
     var param = { title: 'Event Calendar' };
-    var data = [{
+    var datas = [{
         name: 'Morning Event!',
         time: new Date()
     }, {
@@ -1661,24 +2104,50 @@ function eventLineRender(config) {
     }];
 
     function renderUI(data, param) {
-        if (document.getElementById('eventline-calendar')) {
-            (0, _reactDom.render)(React.createElement(_calendarEventLine2.default, { title: param.title, items: data }), document.getElementById('eventline-calendar'));
+        if (document.getElementById('event-calendar')) {
+            (0, _reactDom.render)(React.createElement(_eventCalendar2.default, { title: param.title, items: data }), document.getElementById('event-calendar'));
         }
     }
 
-    function loadData(param) {}
+    function loadData(param) {
+        _jquery2.default.ajax({
+            type: "GET",
+            url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose"
+            },
+            dataType: "json",
+            data: {},
+            config: param,
+            async: false,
+            success: function success(dataInput) {
+                var data = new Array();
+                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
+                    data.push({
+                        name: dataInput.d.results[i].Name,
+                        time: dataInput.d.results[i].Time
+                    });
+                }
+                renderUI(data, this.config);
+            },
+            error: function error(data) {
+                debugger;
+            }
+        });
+    }
 
     if (config && !config.debug) {
         loadData(param);
     } else {
-        renderUI(data, param);
+        renderUI(datas, param);
     }
 }
 
-global.eventLineRender = eventLineRender;
+global.eventCalendarRender = eventCalendarRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Calendar/calendarEventLine.jsx":1}],23:[function(require,module,exports){
+},{"../../components/Common/eventCalendar.jsx":1}],29:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1795,7 +2264,7 @@ function eventRender(config) {
 global.eventRender = eventRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":6,"../../components/slider/slideEvents.jsx":12,"../../components/slider/sliderFrameArrowOnBottom.jsx":16}],24:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/slideEvents.jsx":17,"../../components/slider/sliderFrameArrowOnBottom.jsx":21}],30:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1901,7 +2370,7 @@ function linksRender(config) {
 global.linksRender = linksRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":6,"../../components/slider/sliderFrameArrowOnBottom.jsx":16,"../../components/slider/sliderLinks.jsx":17}],25:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":21,"../../components/slider/sliderLinks.jsx":22}],31:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2017,7 +2486,7 @@ function newsListRender(config) {
 global.newsListRender = newsListRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/listFrame.jsx":3}],26:[function(require,module,exports){
+},{"../../components/Common/listFrame.jsx":2}],32:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2127,7 +2596,7 @@ function popularListRender(config) {
 global.popularListRender = popularListRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/listFrame.jsx":3}],27:[function(require,module,exports){
+},{"../../components/Common/listFrame.jsx":2}],33:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2216,7 +2685,7 @@ function NavigationRender(config) {
 global.NavigationRender = NavigationRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/navigation/navbarMenu.jsx":10}],28:[function(require,module,exports){
+},{"../../components/navigation/navbarMenu.jsx":15}],34:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2335,7 +2804,7 @@ function newsRender(config) {
 global.newsRender = newsRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/webPartFrame.jsx":6,"../../components/slider/sliderFrameArrowOnBottom.jsx":16,"../../components/slider/sliderNews.jsx":18}],29:[function(require,module,exports){
+},{"../../components/Common/webPartFrame.jsx":5,"../../components/slider/sliderFrameArrowOnBottom.jsx":21,"../../components/slider/sliderNews.jsx":23}],35:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2385,7 +2854,7 @@ function panelRender() {
 global.panelRender = panelRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/panelFrame.jsx":4}],30:[function(require,module,exports){
+},{"../../components/Common/panelFrame.jsx":3}],36:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2436,7 +2905,7 @@ function searchRender(params) {
 global.searchRender = searchRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/Common/searchBox.jsx":5}],31:[function(require,module,exports){
+},{"../../components/Common/searchBox.jsx":4}],37:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2529,5 +2998,5 @@ function sliderRender(config) {
 global.sliderRender = sliderRender;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../components/slider/sliderFrame.jsx":15,"../../components/slider/sliderPics.jsx":19}]},{},[24,31,28,27,23,29,26,25,22,21,30])(31)
+},{"../../components/slider/sliderFrame.jsx":20,"../../components/slider/sliderPics.jsx":24}]},{},[30,37,34,33,29,35,32,31,28,27,26,36])(37)
 });
