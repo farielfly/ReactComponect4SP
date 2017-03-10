@@ -11,49 +11,57 @@ function articleBusinessRender(params) {
             PicturePath: '../../components/img/image1.jpg',
             Headline: 'There are some items to show in this view. There are no items to show in this view.',
             Time: "1/11/2017 10:39 AM",
-            Like: "122"
+            Like: 122,
+            HasLiked: false
         },
         {
             PicturePath: '../../components/img/image2.jpg',
             Headline: 'There are some items to show in this view. ',
             Time: "2/15/2017 15:35 PM",
-            Like: "2344"
+            Like: 2344,
+            HasLiked: true
         },
         {
             PicturePath: '../../components/img/image3.jpg',
             Headline: 'Overview',
             Time: "2/15/2017 16:35 PM",
-            Like: "204"
+            Like: 204,
+            HasLiked: false
         },
         {
             PicturePath: '../../components/img/image1.jpg',
             Headline: 'Forbidden: Access is denied.',
             Time: "2/15/2017 18:35 PM",
-            Like: "199"
+            Like: 199,
+            HasLiked: true
         },
         {
             PicturePath: '../../components/img/image2.jpg',
             Headline: 'There are some items to show in this view. There are no items to show in this view.',
             Time: "2/15/2017 15:35 PM",
-            Like: "4656"
+            Like: 4656,
+            HasLiked: true
         },
         {
             PicturePath: '../../components/img/image1.jpg',
             Headline: 'There are some items to show in this view. ',
             Time: "2/15/2017 15:35 PM",
-            Like: "234"
+            Like: 234,
+            HasLiked: true
         },
         {
             PicturePath: '../../components/img/image3.jpg',
             Headline: 'Hello WorldHello WorldHello WorldHello WorldHello WorldHello World.',
             Time: "2/15/2017 15:35 PM",
-            Like: "665"
+            Like: 665,
+            HasLiked: false
         },
         {
             PicturePath: '../../components/img/image2.jpg',
             Headline: 'There are some items to show in this view. There are no items to show in this view.',
             Time: "2/15/2017 15:35 PM",
-            Like: "8899"
+            Like: 8899,
+            HasLiked: true
         }];
     }
     renderUI(params);
@@ -77,7 +85,7 @@ function articleBusinessRender(params) {
                                             <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
                                             <ArticleHeadline headline={article.Headline}></ArticleHeadline>
                                             <ArticleTime time={article.Time}></ArticleTime>
-                                            <ArticleLike like={article.Like}></ArticleLike>
+                                            <ArticleLike like={article.Like} hasLiked={article.HasLiked}></ArticleLike>
                                         </div>
                                     </td>
                                 })
@@ -93,7 +101,7 @@ function articleBusinessRender(params) {
                                             <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
                                             <ArticleHeadline headline={article.Headline}></ArticleHeadline>
                                             <ArticleTime time={article.Time}></ArticleTime>
-                                            <ArticleLike like={article.Like}></ArticleLike>
+                                            <ArticleLike like={article.Like} hasLiked={article.HasLiked}></ArticleLike>
                                         </div>
                                     </td>
                                 })
