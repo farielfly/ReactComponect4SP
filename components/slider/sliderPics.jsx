@@ -5,7 +5,7 @@ export default class SliderPics extends React.Component {
     }
 
     render() {
-        let {items, left, speed, nowLocal } = this.props;
+        let {items, left, speed, nowLocal, pagecount } = this.props;
         let count = items.length;
         let width = 100 / count + '%';
 
@@ -24,9 +24,9 @@ export default class SliderPics extends React.Component {
 
         return (
             <ul style={{
-                left: -100 * nowLocal + "%",
+                left: -100 * nowLocal / pagecount + "%",
                 transitionDuration: speed + "ms",
-                width: count * 100 + "%"
+                width: count * 100 / pagecount + "%"
             }}>
                 {itemNodes}
             </ul>

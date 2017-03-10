@@ -9,8 +9,10 @@ function sliderRender(config) {
     { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
     { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
-    let param = { url: '', speed: 1, delay: 1, pause: true, autoplay: false, dots: true, arrows: true, listurl: '' };
-
+    let param = { url: '', speed: 1000, delay: 1, pagecount: 3, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true };
+    if(document.body.clientWidth < 768){
+        param.pagecount = 1;
+    }
     function renderUI(data, param) {
         if (document.getElementById('slider')) {
             render(
@@ -22,12 +24,12 @@ function sliderRender(config) {
                     autoplay={param.autoplay}
                     dots={param.dots}
                     arrows={param.arrows}
+                    pagecount={param.pagecount}
                     >
                     <SliderPics items={data} />
                 </SliderFrame>,
                 document.getElementById('slider')
-            );
-            AIC.wordLimit('.acs-titledescriptionpanel-description');
+            );            
         }
     }
 
@@ -70,6 +72,7 @@ function sliderRender(config) {
         param.dots = config.dots ? config.dots : true;
         param.arrows = config.arrows ? config.arrows : true;
         param.listurl = config.listurl ? config.listurl : '';
+        param.pagecount = config.pagecount ? config.pagecount : '';
         loadData(param);
     }
     else {

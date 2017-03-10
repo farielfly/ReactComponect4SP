@@ -2,35 +2,64 @@ module.exports = {
     rootpath: __dirname,
     prod_webpartStyleoutput: 'CSS',
     prod_webpartScriptoutput: 'JS',
-    prod_root: '../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution',
+    prod_root: '../NTUCIncome/',
     replacepath: '/_layouts/15/APPSAICSolution/Images/',
     webparts: [
         {
-            'name': 'webparts',
-            'src': ['webparts/links/index.jsx',
-                'webparts/slider/index.jsx',
-                'webparts/news/index.jsx',
-                'webparts/navigation/index.jsx',
-                'webparts/events/index.jsx',
-                'webparts/panels/index.jsx',
-                'webparts/lists/popularlist.jsx',
-                'webparts/lists/newslist.jsx',
-                'webparts/calendar/index.jsx',
-                'webparts/articles/index.jsx',
-                'webparts/articles/articlesBusiness.jsx',
-                'webparts/quicksearch/index.jsx'],
-            'style': ['webparts/links/style.less',
-                'webparts/slider/style.less',
-                'webparts/news/style.less',
-                'webparts/navigation/style.less',
-                'webparts/events/style.less',
-                'webparts/panels/style.less',
-                'webparts/lists/style.less',
-                'webparts/calendar/style.less',
-                'webparts/articles/style.less',
-                'webparts/quicksearch/style.less'],
+            'name': 'Articles',
+            'src': ['webparts/Articles/index.jsx'],
+            'style': ['webparts/Articles/style.less'],
             'output': 'dist/webparts',
-            'prod_include': true
+            'prod_output': ""
+        },
+        {
+            'name': 'Calendar',
+            'src': ['webparts/Calendar/eventline.jsx'],
+            'style': ['webparts/Calendar/style.less'],
+            'output': 'dist/webparts',
+            'prod_output': ""
+        },
+        {
+            'name': 'Links',
+            'src': ['webparts/Links/index.jsx'],
+            'style': ['webparts/Links/style.less'],
+            'output': 'dist/webparts',
+            'prod_output': ""
+        },
+        {
+            'name': 'popularList',
+            'src': ['webparts/Lists/popularList.jsx'],
+            'style': ['webparts/Lists/style.less'],
+            'output': 'dist/webparts',
+            'prod_output': ""
+        },
+        {
+            'name': 'newsList',
+            'src': ['webparts/Lists/newsList.jsx'],
+            'style': ['webparts/Lists/style.less'],
+            'output': 'dist/webparts',
+            'prod_output': ""
+        },
+        {
+            'name': 'Panels',
+            'src': ['webparts/Panels/index.jsx'],
+            'style': ['webparts/Panels/style.less'],
+            'output': 'dist/webparts',
+            'prod_output': ""
+        },
+        {
+            'name': 'QuickSearch',
+            'src': ['webparts/QuickSearch/index.jsx'],
+            'style': ['webparts/QuickSearch/style.less'],
+            'output': 'dist/webparts',
+            'prod_output': ""
+        },
+        {
+            'name': 'Slider',
+            'src': ['webparts/Slider/index.jsx'],
+            'style': ['webparts/Slider/style.less'],
+            'output': 'dist/webparts',
+            'prod_output': "APPSSP13NewsRotator/APPSSP13NewsRotator/Style Library/Script"
         }
     ],
 
@@ -67,7 +96,7 @@ module.exports = {
 
     webglobal: [
         {
-            'name': 'aicGlobal',
+            'name': 'campusGlobal',
             'src': ['webparts/Navigation/index.jsx'],
             'style': ['stylelibrary/commonstyle.less', 'webparts/Navigation/style.less'],
             'output': 'dist/webglobal',
@@ -84,7 +113,7 @@ module.exports = {
     images: [
         {
             'src': ['stylelibrary/images/*'],
-            output: 'dist/common/images',
+            output: 'dist/webglobal/images',
             prod_output: 'Images',
             'prod_include': true
 
@@ -93,8 +122,8 @@ module.exports = {
 
     font: {
         'src': ['stylelibrary/fonts/*'],
-        'output': 'dist/common/fonts',
-        prod_output: 'Fonts',
+        'output': 'dist/webglobal/fonts',
+         prod_output: 'Fonts',
         'prod_include': false
     }
 }

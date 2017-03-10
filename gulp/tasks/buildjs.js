@@ -27,19 +27,19 @@ function build() {
     gulp.start('buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary','concat-js');
 }
 
-gulp.task('buildjs-wp', function () {
-    let srcs = new Set();
+gulp.task('buildjs-wp', function () {    
     for (let webpart of config.webparts) {
-        if (!debug && !webpart.prod_include) {
+        let srcs = new Set();
+        if(!debug && !webpart.prod_output){
             continue;
         }
         for (let src of webpart.src) {
             srcs.add(path.join(config.rootpath, src));
         }
         bundleJs(webpart.name + '.js', Array.from(srcs),
-            debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+            debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, webpart.prod_output));
     }
-})
+}) 
 
 gulp.task('buildjs-layout', function () {
     let srcs = new Set();

@@ -1,8 +1,7 @@
 ﻿@import "../../stylelibrary/webpartcommon";
 
 #slider {
-    width: 730px;
-    height: 350px;
+    width: 90%;    
 
     .acs-sliderframe {
         position: relative;
@@ -26,8 +25,7 @@
 
                 > a {
                     display: block;
-                    height: 265px;
-                    width: 100%;
+                    width: 99%;
                     padding-left: 1px;
 
                     img {
@@ -43,10 +41,8 @@
                     position: absolute;
                     bottom: 0;
                     padding: 15px;
-                    width: 100%;
+                    width: 99%;
                     height: 55px;
-                    background-color: #b9cc00;
-                    width: 700px;
                     font-family: @common_font_CE_55_ROMAN;
 
                     a {
@@ -80,27 +76,48 @@
             }
         }
 
-
-
-        .acs-slider-arrow {
+        .acs-slider-arrow-wrap {
             display: inline-block;
             position: absolute;
             top: 50%;
-            margin-top: -50px;
-            padding: 20px;
+            margin-top: -20px;            
             color: #fff;
             font-size: 30px;
             font-weight: bold;
             z-index: 100;
+            width: 100%;
             cursor: pointer;
         }
 
+        [class="acs-slider-arrow-left"], [class="acs-slider-arrow-right"] {
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'icomoon' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .acs-slider-arrow-right:before {
+            content: "\ea42";
+        }
+        .acs-slider-arrow-left:before {
+             content: "\ea44";
+        }
+        
         .acs-slider-arrow-right {
             right: 0;
+            position: absolute;
         }
 
         .acs-slider-arrow-left {
             left: 0;
+            position: absolute;
         }
 
         .acs-slider-arrow:hover {
@@ -129,4 +146,20 @@
             }
         }
     }
+}
+
+@media (max-width:767px){
+    #slider {  
+
+        .acs-sliderframe {
+
+            ul {
+
+                .acs-slider-pic {
+                    
+                }
+            }
+        }
+    }
+
 }

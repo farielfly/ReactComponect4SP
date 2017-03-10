@@ -50,7 +50,8 @@ export default class SliderFrame extends React.Component {
                 left: this.props.left,
                 speed: this.props.speed,
                 nowLocal: this.state.nowLocal,
-                autoplay: this.props.autoplay
+                autoplay: this.props.autoplay,
+                pagecount: this.props.pagecount
             });
         });
 
@@ -75,5 +76,6 @@ SliderFrame.defaultProps = {
     dots: true,
     arrows: true,
     itemCount: 0,
+    pagecount: 1,
 };
 SliderFrame.autoPlayFlag = null;
