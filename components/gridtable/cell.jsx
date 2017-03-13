@@ -10,7 +10,7 @@ export default class TableCell extends React.Component {
                 cell=(<span className="acs-cellvalue-style" title={data}>{data}</span>);
                 break;}
             case 'photo':{
-                cell=(<div className="acs-headpic-pictute">
+                cell=(<div className="acs-person-headpic">
                             <img src={data} alt=""/>
                         </div>);
                 break;}

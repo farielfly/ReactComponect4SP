@@ -20,13 +20,15 @@ function staffDirectoryRender(config){
     function integration(data){
         var newData = [];
         data.map((item)=>{
+            var dividep = (item.Division ===''||item.Department==='')?'':';';
+            var telmob = (item.ContactMe ===''||item.MyMobile==='')?'':'/';
             newData.push([
                 {data:item.Photo,type:'photo'},
                 {data:{email:item.Email,name: item.Name,id:item.ItemId},type:'name'},
-                {data:item.Division +";"+item.Department,type:'text'},
+                {data:item.Division + dividep + item.Department,type:'text'},
                 {data:item.Email,type:'text'},
                 {data:item.Designation,type:'text'},
-                {data:item.ContactMe+"/"+item.MyMobile,type:'text'}
+                {data:item.ContactMe + telmob + item.MyMobile,type:'text'}
             ])
         })
         return newData;
