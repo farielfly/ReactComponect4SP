@@ -24,7 +24,7 @@ export default class EventCalendar extends React.Component {
                 <div className="acs-eventline-item">
                     <div className="acs-eventline-dot"></div>
                     {idc < this.props.items.length - 1 ? <div className="acs-eventline-line"></div> : null}
-                    <div className="acs-eventline-triangle"></div>
+                    {/*<div className="acs-eventline-triangle"></div>*/}
                     <div className="acs-eventline-content">
                         <div className="acs-eventline-name">{item.name}</div>
                         <div className="acs-eventline-time">{this.formatTime(item.time)}</div>
