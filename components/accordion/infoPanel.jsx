@@ -9,7 +9,7 @@ export default class DivisionDetail extends React.Component{
         }
         else{
             return(
-                <div className="acs-infopanel">
+                <div className="acs-infopanel" style={{display:!this.props.hasPanel?'none':'block'}}>
                     <div className="acs-infopanel-head">
                         <div className="acs-infohead-commontitle">{this.props.commonTitle}</div>
                         <div className="acs-infohead-titlecontent">

@@ -26,7 +26,7 @@ export default class AccordionComplex extends React.Component {
            return (
               <div className="acs-content-links" key={"acccontent"+index}>
                 {
-                    acc.Children.map((link,index)=>{
+                    acc.Items.map((link,index)=>{
                         return (
                             <a href={link.Url} key={"link" + index}>
                                 <span></span>
@@ -51,16 +51,15 @@ export default class AccordionComplex extends React.Component {
             }
           }  
 
-        var infoPanel = !this.props.hasPanel?null:(<InfoPanel infoData={this.state.informationPanel} commonTitle={"Detail of Division"} commonDes={"Go to see Staff Directory information"}>
-                    <ChiefUser personData={tempData} photoLink={this.state.informationPanel}/>
-                </InfoPanel>)
 
         return (
             <div className="acs-accordioncomplex">
                 <Accordion data={this.props.data} hasPanel={this.props.hasPanel} informationEvent={this.handleDataClick.bind(this)}>
                     {children}
                 </Accordion>
-                {infoPanel}
+                <InfoPanel infoData={this.state.informationPanel} commonTitle={"Detail of Division"} commonDes={"Go to see Staff Directory information"} hasPanel={true}>
+                    <ChiefUser personData={tempData} photoLink={this.state.informationPanel}/>
+                </InfoPanel>
             </div>
         )
     }
