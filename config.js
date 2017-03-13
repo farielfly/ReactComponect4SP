@@ -10,56 +10,64 @@ module.exports = {
             'src': ['webparts/Articles/index.jsx'],
             'style': ['webparts/Articles/style.less'],
             'output': 'dist/webparts',
-            'prod_output': ""
+            'prod_output_js': '',
+            'prod_output_css':''
         },
         {
             'name': 'Calendar',
             'src': ['webparts/Calendar/index.jsx'],
             'style': ['webparts/Calendar/style.less'],
             'output': 'dist/webparts',
-            'prod_output': ""
+            'prod_output_js': '',
+            'prod_output_css':''
         },
         {
             'name': 'Links',
             'src': ['webparts/Links/index.jsx'],
             'style': ['webparts/Links/style.less'],
             'output': 'dist/webparts',
-            'prod_output': ""
+            'prod_output_js': '',
+            'prod_output_css':''
         },
         {
             'name': 'popularList',
             'src': ['webparts/Lists/popularList.jsx'],
             'style': ['webparts/Lists/style.less'],
             'output': 'dist/webparts',
-            'prod_output': ""
+            'prod_output_js': '',
+            'prod_output_css':''
         },
         {
             'name': 'newsList',
             'src': ['webparts/Lists/newsList.jsx'],
             'style': ['webparts/Lists/style.less'],
             'output': 'dist/webparts',
-            'prod_output': ""
+            'prod_output_js': '',
+            'prod_output_css':''
         },
         {
             'name': 'Panels',
             'src': ['webparts/Panels/index.jsx'],
             'style': ['webparts/Panels/style.less'],
             'output': 'dist/webparts',
-            'prod_output': ""
+            'prod_output_js': '',
+            'prod_output_css':''
         },
         {
             'name': 'QuickSearch',
             'src': ['webparts/QuickSearch/index.jsx'],
             'style': ['webparts/QuickSearch/style.less'],
             'output': 'dist/webparts',
-            'prod_output': ""
+            'prod_output_js': '',
+            'prod_output_css':''
         },
         {
             'name': 'Slider',
             'src': ['webparts/Slider/index.jsx'],
             'style': ['webparts/Slider/style.less'],
             'output': 'dist/webparts',
-            'prod_output': "APPSSP13NewsRotator/APPSSP13NewsRotator/Style Library/Script"
+            'prod_output_js': 'APPSSP13NewsSlider/APPSSP13NewsSlider/Style Library/Script',
+            'prod_output_css': 'APPSSP13NewsSlider/APPSSP13NewsSlider/Style Library/CSS'
         }
     ],
 

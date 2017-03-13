@@ -29,17 +29,17 @@ function build() {
     gulp.start('buildless-wp', 'buildless-layout', 'buildless-webglobal');
 }
 
-gulp.task('buildless-wp', function () {
-    let srcs = new Set();
+gulp.task('buildless-wp', function () {    
     for (let webpart of config.webparts) {
-        if (!debug && !webpart.prod_include) {
+        let srcs = new Set();
+        if(!debug && !webpart.prod_output_css){
             continue;
         }
         for (let style of webpart.style) {
             srcs.add(path.join(config.rootpath, style));
         }
         buildless(Array.from(srcs), webpart.name + '.css',
-            debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
+            debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, webpart.prod_output_css));
     }
 })
 

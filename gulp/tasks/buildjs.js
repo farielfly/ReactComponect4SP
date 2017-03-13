@@ -30,14 +30,14 @@ function build() {
 gulp.task('buildjs-wp', function () {    
     for (let webpart of config.webparts) {
         let srcs = new Set();
-        if(!debug && !webpart.prod_output){
+        if(!debug && !webpart.prod_output_js){
             continue;
         }
         for (let src of webpart.src) {
             srcs.add(path.join(config.rootpath, src));
         }
         bundleJs(webpart.name + '.js', Array.from(srcs),
-            debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, webpart.prod_output));
+            debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, webpart.prod_output_js));
     }
 }) 
 
