@@ -1,4 +1,88 @@
+@bgimage_path: url('../../dist/common/images/image.png');
 @import "../../stylelibrary/webpartcommon";
+@import "../../stylelibrary/commonstyle";
+
+.acs-calendar{
+    width: 40%;
+    min-width: 250px;
+    border-left: 1px solid #e9e9e9;
+    border-top: 1px solid #e9e9e9;
+
+    .acs-calendar-month{
+        width: 100%;
+        border-right: 1px solid #e9e9e9;
+        padding: 10px 0;
+        background: #f3f3f3;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+
+        .icon-arrow-left{
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .icon-arrow-right{
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .acs-calendar-table{
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        border-top: 1px solid #e9e9e9;
+
+        tr{
+            height: 30px;
+
+            th{
+                width: 14%;
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+
+            td{
+                border-right: 1px solid #e9e9e9;
+                border-bottom: 1px solid #e9e9e9;
+
+                .acs-calendar-day{
+                    position: relative;
+                    margin: 18px auto;
+                    max-width: 26px;
+                    width: 50%;
+
+                    .acs-calendar-dot{
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 3px;
+                        background: #FFA500;
+                        position: absolute;
+                        left: 40%;
+                        top: 22px;
+                    }
+                }
+
+                .acs-calendar-today{
+                    background: #FFA500;
+                    color: #FFF;
+                    border-radius: 2px;
+                }
+
+                .acs-calendar-notcurrent{
+                    color: #e9e9e9;
+                }
+            }
+        }
+
+        .acs-calendar-tableheader{
+            background: #f3f3f3;
+            border-right: 1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+        }
+    }
+}
 
 .acs-eventline{
     margin-top: 20px;
