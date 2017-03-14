@@ -9,14 +9,14 @@ export default class AccordionFrame extends React.Component {
     handleShow() {
         if (!this.state.active) {
             this.setState({active: true},function () {
-              if(!this.hasInfoPanel)  {
+              if(this.props.hasInfoPanel)  {
                   this.props.informationEvent(this.props.accordionData, true);
                 }
             });
         }
         else {
              this.setState({ active: false },function(){
-                if(!this.hasInfoPanel) {
+                if(this.props.hasInfoPanel) {
                     this.props.informationEvent(null, false)
                 };
             });
