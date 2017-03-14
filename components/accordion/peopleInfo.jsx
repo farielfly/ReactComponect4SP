@@ -4,17 +4,13 @@ export default class PeopleInfo extends React.Component{
         super(props);
     }
 
-    IMNImageClick(event){
-        //IMNImageOnClick(event);
-        return false;
-    }
-
     render(){
         if(this.props.personData.length === 0 || this.props.photoLink === null)
         return null;
         
-        var userPhoto = "/_layouts/15/images/APPSSP2013MASTERKONG/photo.png";
-        let chiefuser = this.props.personData,linkinfo = this.props.photoLink.ChiefUser;
+        let userPhoto = "/_layouts/15/images/APPSSP2013MASTERKONG/photo.png";
+        let chiefuser = this.props.personData;
+        let linkinfo = this.props.photoLink.ChiefUser;
        
 
         return (
@@ -26,7 +22,7 @@ export default class PeopleInfo extends React.Component{
                         </div>
                     </span>
                     <span className="ms-imnSpan">
-                        <a href="javascript:void(0)" onClick={this.IMNImageClick(event)} className="ms-imnlink ms-spimn-presenceLink">
+                        <a href="javascript:void(0)" className="ms-imnlink ms-spimn-presenceLink">
                             <span className="ms-spimn-presenceWrapper ms-imnImg ms-spimn-imgSize-10x10">
                                 <img className="acs-headpic-statue" name='imnmark' title='' ShowOfflinePawn='1' className="ms-spimn-img ms-spimn-presence-offline-10x10x32" src="/_layouts/15/images/spimn.png?rev=23" alt='User Presence' sip={linkinfo.Email} id={linkinfo.ItemId+",type=sip"} />
                             </span>

@@ -1,6 +1,5 @@
 import InfoPanel from './infoPanel.jsx';
 import Accordion from './accordion.jsx';
-import ChiefUser from './peopleInfo.jsx';
 
 
 export default class AccordionComplex extends React.Component {
@@ -38,19 +37,7 @@ export default class AccordionComplex extends React.Component {
                </div>
            )
        });
-       var tempData= [];
-       if(this.state.informationPanel !==null)
-          {
-            var propsData = this.state.informationPanel.Properties;
-            for(var i=0 ;i<propsData.length;i++){
-                var temp = propsData[i].split(" : ");
-                tempData.push({
-                    "key":temp[0],
-                    "value":(typeof temp[1] !== 'undefined'?temp[1]:'')
-                    })
-            }
-          }  
-
+       
 
         return (
             <div className="acs-accordioncomplex">
@@ -58,7 +45,7 @@ export default class AccordionComplex extends React.Component {
                     {children}
                 </Accordion>
                 <InfoPanel infoData={this.state.informationPanel} commonTitle={"Detail of Division"} commonDes={"Go to see Staff Directory information"} hasPanel={true}>
-                    <ChiefUser personData={tempData} photoLink={this.state.informationPanel}/>
+                    
                 </InfoPanel>
             </div>
         )
