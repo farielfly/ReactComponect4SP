@@ -1,6 +1,6 @@
 import InfoPanel from './infoPanel.jsx';
 import Accordion from './accordion.jsx';
-
+import ChiefUser from './peopleInfo.jsx';
 
 export default class AccordionComplex extends React.Component {
     constructor(props) {
@@ -21,7 +21,9 @@ export default class AccordionComplex extends React.Component {
     }
 
     render() {
-         var children = this.props.data.map((acc,index)=>{
+        let {data, hasPanel} = this.props;
+
+         let children = data.map((acc,index)=>{
            return (
               <div className="acs-content-links" key={"acccontent"+index}>
                 {
@@ -38,14 +40,27 @@ export default class AccordionComplex extends React.Component {
            )
        });
        
+        let tempData= [];
+       if(this.state.informationPanel !==null && this.state.informationPanel.Properties !==null) 
+          {
+            var propsData = this.props.infoData.Properties;
+            for(var i=0 ;i<propsData.length;i++){
+                var temp = propsData[i].split(" : ");
+                tempData.push({
+                    "key":temp[0],
+                    "value":(typeof temp[1] !== 'undefined'?temp[1]:'')
+                    })
+            }
+          }  
+          
 
         return (
             <div className="acs-accordioncomplex">
-                <Accordion data={this.props.data} hasPanel={this.props.hasPanel} informationEvent={this.handleDataClick.bind(this)}>
+                <Accordion data={data} hasPanel={hasPanel} informationEvent={this.handleDataClick.bind(this)}>
                     {children}
                 </Accordion>
-                <InfoPanel infoData={this.state.informationPanel} commonTitle={"Detail of Division"} commonDes={"Go to see Staff Directory information"} hasPanel={true}>
-                    
+                <InfoPanel infoData={this.state.informationPanel} commonTitle={"Detail of Division"} commonDes={"Go to see Staff Directory information"} hasPanel={hasPanel}>
+                     <ChiefUser personData={tempData} photoLink={this.state.informationPanel} ></ChiefUser>
                 </InfoPanel>
             </div>
         )

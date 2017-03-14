@@ -1,25 +1,9 @@
-
-import ChiefUser from './peopleInfo.jsx';
 export default class DivisionDetail extends React.Component{
     constructor(props){
         super(props);
     }
 
     render(){
-
-        var tempData= [];
-       if(this.props.infoData !==null)
-          {
-            var propsData = this.props.infoData.Properties;
-            for(var i=0 ;i<propsData.length;i++){
-                var temp = propsData[i].split(" : ");
-                tempData.push({
-                    "key":temp[0],
-                    "value":(typeof temp[1] !== 'undefined'?temp[1]:'')
-                    })
-            }
-          }  
-          //
 
         if(this.props.infoData === null){
             return null;
@@ -35,7 +19,7 @@ export default class DivisionDetail extends React.Component{
                         </div>
                         
                     </div>
-                    <ChiefUser personData={tempData} photoLink={this.props.infoData} ></ChiefUser>
+                   {this.props.children}
                     <div className="acs-jumplink"><div></div><a className="" href={this.props.infoData.Url}>{this.props.commonDes}</a></div>
                     
                 </div>
