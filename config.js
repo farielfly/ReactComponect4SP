@@ -2,16 +2,16 @@ module.exports = {
     rootpath: __dirname,
     prod_webpartStyleoutput: 'CSS',
     prod_webpartScriptoutput: 'JS',
-    prod_root: '../NTUCIncome/',
+    prod_root: '../../../NTUCIncome/',
     replacepath: '/_layouts/15/APPSAICSolution/Images/',
     webparts: [
         {
             'name': 'Articles',
-            'src': ['webparts/Articles/index.jsx'],
+            'src': ['webparts/Articles/signleArticles.jsx'],
             'style': ['webparts/Articles/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js': '',
-            'prod_output_css':''
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Articles/Script',
+            'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Articles/CSS'
         },
         {
             'name': 'Calendar',
@@ -74,8 +74,8 @@ module.exports = {
             'src': ['webparts/Slider/index.jsx'],
             'style': ['webparts/Slider/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js': 'APPSSP13NewsSlider/APPSSP13NewsSlider/Style Library/Script',
-            'prod_output_css': 'APPSSP13NewsSlider/APPSSP13NewsSlider/Style Library/CSS'
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/Script',
+            'prod_output_css': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/CSS'
         }
     ],
 
