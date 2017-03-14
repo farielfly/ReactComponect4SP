@@ -15,7 +15,15 @@ module.exports = {
         },
         {
             'name': 'Calendar',
-            'src': ['webparts/Calendar/index.jsx'],
+            'src': ['webparts/Calendar/calendar.jsx'],
+            'style': ['webparts/Calendar/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': '',
+            'prod_output_css':''
+        },
+        {
+            'name': 'EventCalendar',
+            'src': ['webparts/Calendar/eventCalendar.jsx'],
             'style': ['webparts/Calendar/style.less'],
             'output': 'dist/webparts',
             'prod_output_js': '',

@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
 import $ from 'jquery';
-import EventCalendar from '../../components/Common/eventCalendar.jsx';
+import EventCalendar from '../../components/Calendar/eventCalendar.jsx';
 
 function eventCalendarRender(config) {
     let param = { title: 'Event Calendar' };
