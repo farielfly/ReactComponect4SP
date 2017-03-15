@@ -1,19 +1,83 @@
-export default class Calender extends React.Component {
-    constructor(props) {
-        super(props);
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+function getCalendarData(year, month) {
+    let newDate;
+    if (year != null && month != null) {
+        newDate = new Date(year, month);
+    } else {
+        newDate = new Date((new Date()).setDate(1));
     }
 
-    render() {
-        // let { year, month, dateArray } = this.props;
-        let month = "March";
-        let year = 2017;
-        let days = [
-            [{ date: 26, hasEvents: false, isCurrentMonth: false }, { date: 27, hasEvents: false, isCurrentMonth: false }, { date: 28, hasEvents: true, isCurrentMonth: false }, { date: 1, hasEvents: false }, { date: 2, hasEvents: false }, { date: 3, hasEvents: false }, { date: 4, hasEvents: false }],
-            [{ date: 5, hasEvents: false }, { date: 6, hasEvents: false }, { date: 7, hasEvents: false }, { date: 8, hasEvents: false }, { date: 9, hasEvents: false }, { date: 10, hasEvents: false }, { date: 11, hasEvents: false }],
-            [{ date: 12, hasEvents: false }, { date: 13, hasEvents: false }, { date: 14, hasEvents: true, isToday: true }, { date: 15, hasEvents: true }, { date: 16, hasEvents: false }, { date: 17, hasEvents: false }, { date: 18, hasEvents: false }],
-            [{ date: 19, hasEvents: false }, { date: 20, hasEvents: false }, { date: 21, hasEvents: false }, { date: 22, hasEvents: false }, { date: 3, hasEvents: false }, { date: 24, hasEvents: false }, { date: 25, hasEvents: false }],
-            [{ date: 26, hasEvents: false }, { date: 27, hasEvents: false }, { date: 28, hasEvents: false }, { date: 29, hasEvents: true }, { date: 30, hasEvents: false }, { date: 31, hasEvents: false }, { date: 1, hasEvents: false, isCurrentMonth: false }]];
+    let curYear = newDate.getFullYear(),
+        curMonth = newDate.getMonth(),
+        curDate = newDate.getDate(),
+        curDay = newDate.getDay();
 
+    let monthDays = getDayNumberInMonth(newDate);
+    let startDate, endDate;
+    if (curDay % 7 == 0) {
+        startDate = new Date(newDate.getTime());
+        if (monthDays % 7 == 0) {
+            endDate = new Date(curYear, curMonth, monthDays);
+        } else {
+            endDate = new Date(curYear, curMonth + 1, (7 - (monthDays % 7)));
+        }
+    } else {
+        startDate = new Date(curYear, curMonth, (1 - curDay));
+        if ((curDay + monthDays) % 7 == 0) {
+            endDate = new Date(curYear, curMonth, monthDays);
+        } else {
+            endDate = new Date(curYear, curMonth + 1, (7 - ((curDay + monthDays) % 7)));
+        }
+    }
+
+    let days = [];
+    let today = new Date();
+    while (startDate < endDate) {
+        let row = [];
+        for (let j = 0; j < 7; j++) {
+            row.push({
+                date: startDate.getDate(),
+                isCurrentMonth: startDate.getMonth() == curMonth,
+                isToday: startDate.getDate() == today.getDate() && startDate.getMonth() == today.getMonth() && startDate.getFullYear() == today.getFullYear()
+            });
+            startDate = new Date(startDate.getTime() + 24 * 60 * 60 * 1000);
+        }
+        days.push(row);
+    }
+    return {
+        year: curYear,
+        month: curMonth,
+        days: days
+    };
+}
+
+function getDayNumberInMonth(date) {
+    let tempDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    return tempDate.getDate();
+}
+
+function handlePreMonthClick() {
+    this.setState(
+        getCalendarData(this.state.month == 0 ? this.state.year - 1 : this.state.year, this.state.month == 0 ? this.state.month = 11 : this.state.month - 1)
+    );
+}
+
+function handleNextMonthClick() {
+    this.setState(
+        getCalendarData(this.state.month == 11 ? this.state.year + 1 : this.state.year, this.state.month == 11 ? this.state.month = 0 : this.state.month + 1)
+    );
+}
+
+const Calender = React.createClass({
+    getInitialState() {
+        return getCalendarData();
+    },
+
+    render() {
+        let year = this.state.year;
+        let month = this.state.month;
+        let days = this.state.days;
         let daysCollection = days.map((week, weekIndex) => {
             return (
                 <tr>
@@ -36,11 +100,14 @@ export default class Calender extends React.Component {
         return (
             <div className="acs-calendar">
                 <table className="acs-calendar-table">
+                    <tbody>
                         <tr className="acs-calendar-month">
                             <td colSpan="7">
-                                <span className="icon-arrow-left"></span>
-                                <span>{month + " " + year}</span>
-                                <span className="icon-arrow-right"></span>
+                                <div style={{display: 'inline-block'}}>
+                                    <span className="acs-calendar-icon-left" onClick={handlePreMonthClick.bind(this)}></span>
+                                    <span style={{float: 'left', margin: '5px 20px 0'}}>{months[month] + " " + year}</span>
+                                    <span className="acs-calendar-icon-right" onClick={handleNextMonthClick.bind(this)}></span>
+                                </div >
                             </td>
                         </tr>
                         <tr className="acs-calendar-week">
@@ -53,8 +120,11 @@ export default class Calender extends React.Component {
                             <td>Sat</td>
                         </tr>
                         {daysCollection}
+                    </tbody>
                 </table>
             </div >
         );
     }
-}
+});
+
+export default Calender;
