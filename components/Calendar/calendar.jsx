@@ -103,9 +103,9 @@ const Calender = React.createClass({
                     <tbody>
                         <tr className="acs-calendar-month">
                             <td colSpan="7">
-                                <div style={{display: 'inline-block'}}>
+                                <div style={{ display: 'inline-block' }}>
                                     <span className="acs-calendar-icon-left" onClick={handlePreMonthClick.bind(this)}></span>
-                                    <span style={{float: 'left', margin: '5px 20px 0'}}>{months[month] + " " + year}</span>
+                                    <span style={{ float: 'left', marginTop: '5px', width: '180px' }}>{months[month] + " " + year}</span>
                                     <span className="acs-calendar-icon-right" onClick={handleNextMonthClick.bind(this)}></span>
                                 </div >
                             </td>
