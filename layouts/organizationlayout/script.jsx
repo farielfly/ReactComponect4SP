@@ -156,7 +156,8 @@ function orgStructureRender(config) {
             render(
             <Organization data={data} hasPanel={true}></Organization>,
             document.getElementById('organization')
-            )
+            );
+            setStatus();
          }
     }
 
@@ -201,3 +202,12 @@ function orgStructureRender(config) {
     }
 }
 global.orgStructureRender = orgStructureRender;
+
+
+function setStatus(){
+    let imgs = document.getElementsByClassName('ms-spimn-img');
+    for(var i=imgs.length-1;i>-1;i--){
+        imgs[i].setAttribute('sip',imgs[i].getAttribute('data-sip'));
+    }
+    ProcessImn();
+}

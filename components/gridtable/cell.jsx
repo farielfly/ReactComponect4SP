@@ -20,7 +20,7 @@ export default class TableCell extends React.Component {
                         <span className="ms-imnSpan">
                             <a href="javascript:void(0)" className="ms-imnlink ms-spimn-presenceLink">
                                 <span className="ms-spimn-presenceWrapper ms-imnImg ms-spimn-imgSize-10x10">
-                                    <img className="acs-headpic-statue" name='imnmark' title='' ShowOfflinePawn='1' className="ms-spimn-img ms-spimn-presence-offline-10x10x32" src="/_layouts/15/images/spimn.png?rev=23" alt='User Presence' sip={data.email} id={data.id+",type=sip"} />
+                                    <img className="acs-headpic-statue" name='imnmark' title='' ShowOfflinePawn='1' className="ms-spimn-img ms-spimn-presence-offline-10x10x32" src="/_layouts/15/images/spimn.png?rev=23" alt='User Presence' data-sip={data.email} id={"imn_"+data.id+",type=sip"} />
                                 </span>
                             </a>
                         </span>

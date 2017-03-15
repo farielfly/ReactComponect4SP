@@ -14,7 +14,8 @@ function staffDirectoryRender(config){
             render(
             <PaginationTable data={data} column={tableColumn}></PaginationTable>,
             document.getElementById('staff')
-            )
+            );
+            setStatus();
          }
     }
     function integration(data){
@@ -66,3 +67,12 @@ function staffDirectoryRender(config){
     }
 }
 global.staffDirectoryRender = staffDirectoryRender;
+
+
+function setStatus(){
+    let imgs = document.getElementsByClassName('ms-spimn-img');
+    for(var i=imgs.length-1;i>-1;i--){
+        imgs[i].setAttribute('sip',imgs[i].getAttribute('data-sip'));
+    }
+    ProcessImn();
+}
