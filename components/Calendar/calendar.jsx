@@ -1,54 +1,59 @@
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-function getCalendarData(year, month) {
+function getCalendarData(onDataChange, year, month) {
+    let today = new Date();
     let newDate;
     if (year != null && month != null) {
         newDate = new Date(year, month);
     } else {
-        newDate = new Date((new Date()).setDate(1));
+        newDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     }
 
     let curYear = newDate.getFullYear(),
         curMonth = newDate.getMonth(),
-        curDate = newDate.getDate(),
-        curDay = newDate.getDay();
+        curDay = newDate.getDay();//0-6
 
     let monthDays = getDayNumberInMonth(newDate);
-    let startDate, endDate;
+    let startDate, endDate, totalDays;
     if (curDay % 7 == 0) {
         startDate = new Date(newDate.getTime());
-        if (monthDays % 7 == 0) {
-            endDate = new Date(curYear, curMonth, monthDays);
-        } else {
-            endDate = new Date(curYear, curMonth + 1, (7 - (monthDays % 7)));
-        }
+        totalDays = Math.ceil(monthDays / 7) * 7;
+        // if (monthDays % 7 == 0) {
+        //     endDate = new Date(curYear, curMonth, monthDays);
+        // } else {
+        //     endDate = new Date(curYear, curMonth + 1, (7 - (monthDays % 7)));
+        // }
     } else {
         startDate = new Date(curYear, curMonth, (1 - curDay));
-        if ((curDay + monthDays) % 7 == 0) {
-            endDate = new Date(curYear, curMonth, monthDays);
-        } else {
-            endDate = new Date(curYear, curMonth + 1, (7 - ((curDay + monthDays) % 7)));
-        }
+        totalDays = Math.ceil((curDay + monthDays) / 7) * 7;
+        // if ((curDay + monthDays) % 7 == 0) {
+        //     endDate = new Date(curYear, curMonth, monthDays);
+        // } else {
+        //     endDate = new Date(curYear, curMonth + 1, (7 - ((curDay + monthDays) % 7)));
+        // }
     }
 
-    let days = [];
-    let today = new Date();
-    while (startDate < endDate) {
+    let datas = onDataChange(startDate, totalDays);
+
+    let results = [];
+    let i = 0;
+    while (i < datas.length) {
         let row = [];
         for (let j = 0; j < 7; j++) {
             row.push({
-                date: startDate.getDate(),
-                isCurrentMonth: startDate.getMonth() == curMonth,
-                isToday: startDate.getDate() == today.getDate() && startDate.getMonth() == today.getMonth() && startDate.getFullYear() == today.getFullYear()
+                date: datas[i].date.getDate(),
+                isCurrentMonth: datas[i].date.getMonth() == curMonth,
+                isToday: datas[i].date.getDate() == today.getDate() && datas[i].date.getMonth() == today.getMonth() && datas[i].date.getFullYear() == today.getFullYear(),
+                hasEvents: datas[i].hasEvents,
             });
-            startDate = new Date(startDate.getTime() + 24 * 60 * 60 * 1000);
+            i++;
         }
-        days.push(row);
+        results.push(row);
     }
     return {
         year: curYear,
         month: curMonth,
-        days: days
+        days: results
     };
 }
 
@@ -59,25 +64,26 @@ function getDayNumberInMonth(date) {
 
 function handlePreMonthClick() {
     this.setState(
-        getCalendarData(this.state.month == 0 ? this.state.year - 1 : this.state.year, this.state.month == 0 ? this.state.month = 11 : this.state.month - 1)
+        getCalendarData(this.props.onDataChange, this.state.month == 0 ? this.state.year - 1 : this.state.year, this.state.month == 0 ? this.state.month = 11 : this.state.month - 1)
     );
 }
 
 function handleNextMonthClick() {
     this.setState(
-        getCalendarData(this.state.month == 11 ? this.state.year + 1 : this.state.year, this.state.month == 11 ? this.state.month = 0 : this.state.month + 1)
+        getCalendarData(this.props.onDataChange, this.state.month == 11 ? this.state.year + 1 : this.state.year, this.state.month == 11 ? this.state.month = 0 : this.state.month + 1)
     );
 }
 
 const Calender = React.createClass({
     getInitialState() {
-        return getCalendarData();
+        return getCalendarData(this.props.onDataChange);
     },
 
     render() {
         let year = this.state.year;
         let month = this.state.month;
         let days = this.state.days;
+
         let daysCollection = days.map((week, weekIndex) => {
             return (
                 <tr>
