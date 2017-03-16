@@ -1,5 +1,3 @@
-import WebPartFrame from '../common/webPartFrame.jsx'
-
 export default class EventCalendar extends React.Component {
     constructor(props) {
         super(props);
@@ -17,7 +15,7 @@ export default class EventCalendar extends React.Component {
     }
 
     render() {
-        let { items, title } = this.props;
+        let { items } = this.props;
 
         let itemCollection = this.props.items.map((item, idc) => {
             return (
@@ -33,18 +31,9 @@ export default class EventCalendar extends React.Component {
             );
         });
         return (
-            <WebPartFrame
-                title={this.props.title}
-                hasMore={false}
-                link={""}
-                hasTopLine={false}>
-                <div className="acs-eventline">
-                    {itemCollection}
-                </div>
-                <div className="acs-eventcalendar">
-
-                </div>
-            </WebPartFrame>
+            <div className="acs-eventline">
+                {itemCollection}
+            </div>
         );
     }
 }

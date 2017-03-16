@@ -15,19 +15,11 @@ module.exports = {
         },
         {
             'name': 'Calendar',
-            'src': ['webparts/Calendar/calendar.jsx'],
+            'src': ['webparts/Calendar/index.jsx'],
             'style': ['webparts/Calendar/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js': '',
-            'prod_output_css':''
-        },
-        {
-            'name': 'EventCalendar',
-            'src': ['webparts/Calendar/eventCalendar.jsx'],
-            'style': ['webparts/Calendar/style.less'],
-            'output': 'dist/webparts',
-            'prod_output_js': '',
-            'prod_output_css':''
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Calendar/Script',
+            'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Calendar/CSS'
         },
         {
             'name': 'Links',
@@ -58,8 +50,8 @@ module.exports = {
             'src': ['webparts/Panels/index.jsx'],
             'style': ['webparts/Panels/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js': '',
-            'prod_output_css':''
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Panels/Script',
+            'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Panels/CSS'
         },
         {
             'name': 'QuickSearch',
