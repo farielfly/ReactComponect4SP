@@ -98,7 +98,7 @@ var AIC;
 
     function changeStyle() {
       $('#contentBox').prepend($('#titleAreaRow>div:nth-child(2) .ms-breadcrumb-dropdownBox').prop("outerHTML"));
-    $('#titleAreaRow>div:nth-child(2)').html("").attr('id', 'navigation');
+      $('#titleAreaRow>div:nth-child(2)').html("").attr('id', 'navigation');
         var config = { url: _spPageContextInfo.siteAbsoluteUrl + "/_layouts/15/APPSAICSolution/NavigationProvider.aspx" }
         window.NavigationRender(config);
 
@@ -110,6 +110,11 @@ var AIC;
                 var footerArray = [{ Name: 'link1', Url: 'http://www.baidu.com' }, { Name: 'link2', Url: 'http://www.baidu.com' },
                 { Name: 'link3', Url: 'http://www.baidu.com' }, { Name: 'link4', Url: 'http://www.baidu.com' }, { Name: 'link5', Url: 'http://www.baidu.com' }];
                 addFooter(footerArray, search);
+            }
+        })
+        $.get('/_vti_bin/APPSAICSolution/CommonService.svc/GetLogoLink', function (data) {
+            if (data) {
+                $("a[id$='_onetidProjectPropertyTitleGraphic']").attr({'id':'acs-logolink','href':data.LogoLinkUrl});
             }
         })
         $('#titleAreaRow>div:nth-child(2)').css('display', 'inline-block');
@@ -137,14 +142,28 @@ var AIC;
 
     function addFooter(footerArray, search) {
         var footerClass = 'acs-footer';
-        if($('#contentRow').height() < $('#sideNavBox').height()){
-            if ($('#sideNavBox').height()+200 > $('#s4-workspace').height()) {
-                footerClass += ' acs-footer-relative';
+        if($('#contentRow').height() === 0){
+            if($('.ms-searchCenter-result-main').height()< $('#sideNavBox').height()){
+                if ($('#sideNavBox').height()> $('#s4-workspace').height()) {
+                    footerClass += ' acs-footer-relative';
+                }
+            }
+            else{
+                if ($('.ms-searchCenter-result-main').height()> $('#s4-workspace').height()) {
+                    footerClass += ' acs-footer-relative';
+                }
             }
         }
         else{
-            if ($('#s4-bodyContainer').height() > $('#s4-workspace').height()) {
-                footerClass += ' acs-footer-relative';
+            if($('#contentRow').height() < $('#sideNavBox').height()){
+                if ($('#sideNavBox').height()+200 > $('#s4-workspace').height()) {
+                    footerClass += ' acs-footer-relative';
+                }
+            }
+            else{
+                if ($('#s4-bodyContainer').height() > $('#s4-workspace').height()) {
+                    footerClass += ' acs-footer-relative';
+                }
             }
         }
         
