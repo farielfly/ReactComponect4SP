@@ -97,8 +97,8 @@ var AIC;
     };
 
     function changeStyle() {
-
-        $('#titleAreaRow>div:nth-child(2)').html("").attr('id', 'navigation');
+      $('#contentBox').prepend($('#titleAreaRow>div:nth-child(2) .ms-breadcrumb-dropdownBox').prop("outerHTML"));
+    $('#titleAreaRow>div:nth-child(2)').html("").attr('id', 'navigation');
         var config = { url: _spPageContextInfo.siteAbsoluteUrl + "/_layouts/15/APPSAICSolution/NavigationProvider.aspx" }
         window.NavigationRender(config);
 
