@@ -51,7 +51,7 @@ export default class NavbarItem extends React.Component {
             {itemNodes.map((item, index) => {
                 return (<div style={{ "flexDirection": "column" }}>
                     {item.map((els, index) => {
-                        return (<a href={els.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
+                        return (<a href={els.ItemHref === ''?'javascript:void(0);':els.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
                     })}
                 </div>)
             })}
@@ -63,14 +63,14 @@ export default class NavbarItem extends React.Component {
             {this.props.menuData.Items.map((els, index) => {
                 if (typeof els.Items === 'object') {
                     if (els.Items.length === 0) {
-                        return (<a href={els.ItemHref} className="acs-secondnav-item" key={index} >{els.Title}</a>)
+                        return (<a href={els.ItemHref === ''?'javascript:void(0);':els.ItemHref} className="acs-secondnav-item" key={index} >{els.Title}</a>)
                     }
                     else {
                         return (<SecondItem key={index} menuData={els} menushow={this.menushow.bind(this,true)} menuhidden={this.menuhidden.bind(this,true)}/>)
                     }
                 }
                 else {
-                    return (<a href={els.ItemHref} className="acs-itemlink" style={{ float: (index > 7) ? "right" : "none" }} key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
+                    return (<a href={els.ItemHref===''?'javascript:void(0);':els.ItemHref} className="acs-itemlink" style={{ float: (index > 7) ? "right" : "none" }} key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
                 }
             })}
         </ul>);
@@ -115,7 +115,7 @@ class SecondItem extends React.Component {
                 <NavTitleBtn classname={""} isSecond={true} name={this.props.menuData.Title} open={this.state.sopen} hasChild={true} ItemHref={this.props.menuData.ItemHref} />
                 <ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-thirdnav-itemlist" style={{ display: this.state.sopen ? "block" : "none", width: "400px" }}>
                     {this.props.menuData.Items.map((el, index) => {
-                        return (<a href={el.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{el.Title}</a>)
+                        return (<a href={el.ItemHref===''?'javascript:void(0);':el.ItemHref} className="acs-itemlink" key={index}><span className="acs-itemlink-icon"></span>{el.Title}</a>)
                     })}
                 </ul>
             </div>

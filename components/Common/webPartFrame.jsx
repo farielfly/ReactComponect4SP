@@ -8,7 +8,7 @@ export default class WPFrame extends React.Component {
 
         return (
             <div className={"acs-webpartframe" + (hasTopLine?" acs-webpartframe-topline":"")}>
-                <a className="acs-webpartframe-header" href={link}>
+                <a className="acs-webpartframe-header" href={link} target={title === "News & Announcements"?'_blank':''}>
                     <span className="acs-header-icon"></span>
                     <span className="acs-header-title">{title} </span>
                     <span className="acs-header-more">{hasMore?"More":""}</span>
