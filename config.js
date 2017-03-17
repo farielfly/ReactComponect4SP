@@ -54,6 +54,14 @@ module.exports = {
             'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Panels/CSS'
         },
         {
+            'name': 'Message',
+            'src': ['webparts/Message/index.jsx'],
+            'style': ['webparts/Message/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Message/Script',
+            'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Message/CSS'
+        },
+        {
             'name': 'QuickSearch',
             'src': ['webparts/QuickSearch/index.jsx'],
             'style': ['webparts/QuickSearch/style.less'],
