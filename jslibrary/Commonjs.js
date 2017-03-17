@@ -120,36 +120,55 @@ var AIC;
         $('#titleAreaRow>div:nth-child(2)').css('display', 'inline-block');
 
         $('#contentRow').resize(function () {
-            if($('#contentRow').height() < $('#sideNavBox').height()){
-                if (($('#sideNavBox').height()+ 200) > $('#s4-workspace').height()) {
-                    $('#acs-footer')[0].className = 'acs-footer acs-footer-relative';
+            if($('#contentRow').height() === 0){
+                if($('.ms-srch-siteSearchResults').height()< $('#sideNavBox').height()){
+                    if ($('#sideNavBox').height()+200> $('#s4-workspace').height()) {
+                         $('#acs-footer')[0].className = 'acs-footer acs-footer-relative';
+                    }
+                    else{
+                         $('#acs-footer')[0].className = 'acs-footer';
+                    }
                 }
-                else {
-                    $('#acs-footer')[0].className = 'acs-footer';
+                else{
+                    if ($('.ms-srch-siteSearchResults').height()+90> $('#s4-workspace').height()) {
+                         $('#acs-footer')[0].className = 'acs-footer acs-footer-relative';
+                    }
+                    else{
+                        $('#acs-footer')[0].className = 'acs-footer';
+                    }
                 }
             }
             else{
-                if (($('#s4-bodyContainer').height() + 90) > $('#s4-workspace').height()) {
-                    $('#acs-footer')[0].className = 'acs-footer acs-footer-relative';
+                if($('#contentRow').height() < $('#sideNavBox').height()){
+                    if (($('#sideNavBox').height()+ 200) > $('#s4-workspace').height()) {
+                        $('#acs-footer')[0].className = 'acs-footer acs-footer-relative';
+                    }
+                    else {
+                        $('#acs-footer')[0].className = 'acs-footer';
+                    }
                 }
-                else {
-                    $('#acs-footer')[0].className = 'acs-footer';
+                else{
+                    if (($('#s4-bodyContainer').height() + 90) > $('#s4-workspace').height()) {
+                        $('#acs-footer')[0].className = 'acs-footer acs-footer-relative';
+                    }
+                    else {
+                        $('#acs-footer')[0].className = 'acs-footer';
+                    }
                 }
             }
-            
         });
     }
 
     function addFooter(footerArray, search) {
         var footerClass = 'acs-footer';
         if($('#contentRow').height() === 0){
-            if($('.ms-searchCenter-result-main').height()< $('#sideNavBox').height()){
+            if($('.ms-srch-siteSearchResults').height()< $('#sideNavBox').height()){
                 if ($('#sideNavBox').height()+200> $('#s4-workspace').height()) {
                     footerClass += ' acs-footer-relative';
                 }
             }
             else{
-                if ($('.ms-searchCenter-result-main').height()+90> $('#s4-workspace').height()) {
+                if ($('.ms-srch-siteSearchResults').height()+90> $('#s4-workspace').height()) {
                     footerClass += ' acs-footer-relative';
                 }
             }
