@@ -64,7 +64,7 @@ function newsRender(config) {
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
                     let date = new Date(dataInput.d.results[i].ACSPublishedDate);
                     let year = date.getFullYear();
-                    let month = AIC.monthTransform(date.getMonth());
+                    let month = monthTransform(date.getMonth());
                     let day = date.getDate();
                     let hour = date.getHours() >= 12 ? (date.getHours() - 12) : date.getHours();
                     let minute = date.getMinutes() >= 10 ? date.getMinutes() : "0" + date.getMinutes();
@@ -82,6 +82,12 @@ function newsRender(config) {
 
             }
         });
+    }
+
+    function monthTransform (data){
+        var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];  
+        var tempdata = month[data];
+        return tempdata;        
     }
 
     if (config && !config.debug) {

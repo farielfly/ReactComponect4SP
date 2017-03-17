@@ -10,7 +10,7 @@ class Events extends React.Component {
     render() {
         let Events = [];
         this.props.NewInformation.map((item, ind) => {
-            Events.push(<Event key={'Event' + ind} title={item.title} date={item.date} href={item.href} time={item.time} location={item.location} />);
+            Events.push(<Event key={'Event' + ind} title={item.title} month={item.month} day={item.day} href={item.href} time={item.time} location={item.location} />);
         });
         return (
             <div>{Events}</div>

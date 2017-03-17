@@ -144,12 +144,12 @@ var AIC;
         var footerClass = 'acs-footer';
         if($('#contentRow').height() === 0){
             if($('.ms-searchCenter-result-main').height()< $('#sideNavBox').height()){
-                if ($('#sideNavBox').height()> $('#s4-workspace').height()) {
+                if ($('#sideNavBox').height()+200> $('#s4-workspace').height()) {
                     footerClass += ' acs-footer-relative';
                 }
             }
             else{
-                if ($('.ms-searchCenter-result-main').height()> $('#s4-workspace').height()) {
+                if ($('.ms-searchCenter-result-main').height()+90> $('#s4-workspace').height()) {
                     footerClass += ' acs-footer-relative';
                 }
             }
@@ -161,7 +161,7 @@ var AIC;
                 }
             }
             else{
-                if ($('#s4-bodyContainer').height() > $('#s4-workspace').height()) {
+                if ($('#s4-bodyContainer').height()+90 > $('#s4-workspace').height()) {
                     footerClass += ' acs-footer-relative';
                 }
             }

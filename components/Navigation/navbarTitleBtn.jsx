@@ -20,7 +20,8 @@ export default class NavbarTitleBtn extends React.Component{
 
 
 
-    return(<a href={ItemHref === ''?"javascript:void(0);":ItemHref} className={(!isSecond?"acs-titlebtn-noneborder ":" ")+classname + (borderShow?" acs-titlebtn-boxshadow acs-titlebtn-border":"") } style={{height:borderShow?"65px":heightChange}}>
+    return(<a href={ItemHref === ''?"javascript:void(0);":ItemHref} className={(!isSecond?"acs-titlebtn-noneborder ":" ")+classname + (borderShow?" acs-titlebtn-boxshadow acs-titlebtn-border":"") } 
+    style={{height:borderShow?"65px":heightChange,cursor:ItemHref === ''?'default':'pointer'}}>
                      <span className={'acs-titlebtn-span '+ fontColor}>{name}<span className={icon}></span></span>
              </a>
        )   

@@ -10,10 +10,4 @@ var AIC;
             };
         });
     }
-
-     AIC.monthTransform = function(data){
-        var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];  
-        var tempdata = month[data];
-        return tempdata;        
-    }
 })((AIC || (AIC = {})))
