@@ -24,8 +24,9 @@ export default class AccordionFrame extends React.Component {
     }
 
     render() {
-        var contentHeight = this.props.accordionData.Items.length * this.props.itemHeight +"px";
-        var divisionIcon = this.props.accordionData.Items.length===0?'':(this.state.active?"acs-accordionitem-expandicon":"acs-accordionitem-retracticon");
+        let {accordionData,itemHeight,informationEvent,hasInfoPanel} = this.props;
+        let contentHeight =itemHeight==='auto'?itemHeight: accordionData.Items.length * itemHeight +"px";
+        let divisionIcon = accordionData.Items.length===0?'':(this.state.active?"acs-accordionitem-expandicon":"acs-accordionitem-retracticon");
         return (
             <div className="acs-accordion-item">
                 <div className={"acs-accordionitem-head" + (this.state.active?" acs-accordionitem-visited":"")} onClick={this.handleShow.bind(this)}>

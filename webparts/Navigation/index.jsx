@@ -112,7 +112,7 @@ function NavigationRender(config) {
         if (elementDiv) {
             elementDiv.style.minWidth = minWidth + 'px';
             render(
-                <MenuList data={data}>
+                <MenuList data={data} menuStyle={0}>
                 </MenuList>,
                 document.getElementById('navigation')
             );
