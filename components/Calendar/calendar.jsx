@@ -1,12 +1,18 @@
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function getCalendarData(onDataChange, year, month) {
+    let result = getDateRange(year, month);
+    let datas = onDataChange(result.startDate, result.totalDays, result.curYear, result.curMonth);
+    return convertDatas(datas, result.curYear, result.curMonth);
+}
+
+function getDateRange(year, month) {
     let today = new Date();
     let newDate;
     if (year != null && month != null) {
         newDate = new Date(year, month);
     } else {
-        newDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        newDate = new Date(today.getFullYear(), today.getMonth(), 1);
     }
 
     let curYear = newDate.getFullYear(),
@@ -32,10 +38,22 @@ function getCalendarData(onDataChange, year, month) {
         //     endDate = new Date(curYear, curMonth + 1, (7 - ((curDay + monthDays) % 7)));
         // }
     }
+    return {
+        curYear: curYear,
+        curMonth: curMonth,
+        startDate: startDate,
+        totalDays: totalDays,
+    };
+}
 
-    let datas = onDataChange(startDate, totalDays);
+function getDayNumberInMonth(date) {
+    let tempDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    return tempDate.getDate();
+}
 
+function convertDatas(datas, curYear, curMonth) {
     let results = [];
+    let today = new Date();
     let i = 0;
     while (i < datas.length) {
         let row = [];
@@ -57,26 +75,22 @@ function getCalendarData(onDataChange, year, month) {
     };
 }
 
-function getDayNumberInMonth(date) {
-    let tempDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    return tempDate.getDate();
-}
-
 function handlePreMonthClick() {
     this.setState(
-        getCalendarData(this.props.onDataChange, this.state.month == 0 ? this.state.year - 1 : this.state.year, this.state.month == 0 ? this.state.month = 11 : this.state.month - 1)
+        getCalendarData(this.props.onDateRangeChange, this.state.month == 0 ? this.state.year - 1 : this.state.year, this.state.month == 0 ? this.state.month = 11 : this.state.month - 1)
     );
 }
 
 function handleNextMonthClick() {
     this.setState(
-        getCalendarData(this.props.onDataChange, this.state.month == 11 ? this.state.year + 1 : this.state.year, this.state.month == 11 ? this.state.month = 0 : this.state.month + 1)
+        getCalendarData(this.props.onDateRangeChange, this.state.month == 11 ? this.state.year + 1 : this.state.year, this.state.month == 11 ? this.state.month = 0 : this.state.month + 1)
     );
 }
 
-const Calender = React.createClass({
+const Calendar = React.createClass({
     getInitialState() {
-        return getCalendarData(this.props.onDataChange);
+        let result = getDateRange();
+        return getCalendarData(this.props.onDateRangeChange);
     },
 
     render() {
@@ -113,7 +127,7 @@ const Calender = React.createClass({
                                     <span className="acs-calendar-icon-left" onClick={handlePreMonthClick.bind(this)}></span>
                                     <span style={{ float: 'left', marginTop: '5px', width: '180px' }}>{months[month] + " " + year}</span>
                                     <span className="acs-calendar-icon-right" onClick={handleNextMonthClick.bind(this)}></span>
-                                </div >
+                                </div>
                             </td>
                         </tr>
                         <tr className="acs-calendar-week">
@@ -133,4 +147,4 @@ const Calender = React.createClass({
     }
 });
 
-export default Calender;
+export default Calendar;

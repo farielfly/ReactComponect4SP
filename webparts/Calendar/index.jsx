@@ -6,43 +6,46 @@ import EventCalendar from '../../components/Calendar/eventCalendar.jsx';
 
 function calendarRender(config) {
     let param = { title: 'Event Calendar' };
-    let events = [{
-        name: 'Morning Event!',
-        time: new Date(),
-    }, {
-        name: 'Hello World,',
-        time: new Date().setHours(10),
-    }, {
-        name: 'Hello World 123,',
-        time: new Date().setHours(12),
-    }, {
-        name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        time: new Date().setHours(14),
-    }, {
-        name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        time: new Date().setHours(15),
-    }, {
-        name: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        time: new Date().setHours(21),
-    }];
-
-    function handleCalendarDataChange(start, totalDays) {
-        if (config && !config.debug) {
-            return loadData(start, totalDays);
-        } else {
-            let datas = [];
-            while (datas.length < totalDays) {
-                datas.push({
-                    date: new Date(start.getTime()),
-                    hasEvents: start.getDate() % 9 == 0,
-                });
-                start = new Date(start.getTime() + 24 * 60 * 60 * 1000);
-            }
-            return datas;
-        }
+    let data = {
+        events: [{
+            Title: 'Morning Event!',
+            Time: new Date(),
+        }, {
+            Title: 'Hello World,',
+            Time: new Date().setHours(10),
+        }, {
+            Title: 'Hello World 123,',
+            Time: new Date().setHours(12),
+        }, {
+            Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+            Time: new Date().setHours(14),
+        }, {
+            Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+            Time: new Date().setHours(15),
+        }, {
+            Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+            Time: new Date().setHours(21),
+        }],
+        dates: []
     }
 
-    function loadEventsForCalendar(start, totalDays) {
+    function handleDateRangeChanged(start, totalDays) {
+        // if (config && !config.debug) {
+        //     return loadData(start, totalDays);
+        // } else {
+        let datas = [];
+        while (datas.length < totalDays) {
+            datas.push({
+                date: new Date(start.getTime()),
+                hasEvents: start.getDate() % 9 == 0,
+            });
+            start = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+        }
+        return datas;
+        // }
+    }
+
+    function loadData(start, totalDays) {
         $.ajax({
             cache: false,
             type: "POST",
@@ -66,44 +69,12 @@ function calendarRender(config) {
         });
     }
 
-    function loadLastestEvents() {
-        $.ajax({
-            type: "GET",
-            url: config.url,
-            headers: {
-                "Accept": "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-            },
-            dataType: "json",
-            data: {},
-            config: param,
-            async: false,
-            success: function (dataInput) {
-                var eventsResult = new Array();
-                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
-                    eventsResult.push({
-                        name: dataInput.d.results[i].Name,
-                        time: dataInput.d.results[i].Time,
-                    });
-                }
-                renderUI(eventsResult, this.config);
-            },
-            error: function (data) {
-                debugger;
-            }
-        })
-    }
-
-    function renderUI(events, param) {
+    function renderUI(data, param) {
         if (document.getElementById('event-calendar')) {
             render(
-                <WebPartFrame
-                    title={param.title}
-                    hasMore={false}
-                    link={""}
-                    hasTopLine={false}>
-                    <EventCalendar items={events}></EventCalendar>
-                    <Calendar onDataChange={handleCalendarDataChange.bind()}></Calendar>
+                <WebPartFrame title={param.title} hasMore={false} link={""} hasTopLine={false}>
+                    <EventCalendar items={data.events}></EventCalendar>
+                    <Calendar dates={data.dates} onDateRangeChange={handleDateRangeChanged.bind(this)}></Calendar>
                 </WebPartFrame>,
                 document.getElementById('event-calendar')
             )
@@ -112,10 +83,9 @@ function calendarRender(config) {
 
 
     if (config && !config.debug) {
-        loadLastestEvents(param);
-    } else {
-        renderUI(events, param);
+        data.events = config.eventArray;
     }
+    renderUI(data, param);
 }
 
 global.calendarRender = calendarRender;
