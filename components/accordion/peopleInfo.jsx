@@ -16,11 +16,9 @@ export default class PeopleInfo extends React.Component{
         return (
             <div className="acs-personinfo" >
                 <div className="acs-personinfo-headpic">
-                    <span>
                         <div className="acs-headpic-pictute">
                             <img src={linkinfo.Photo} alt=""/>
                         </div>
-                    </span>
                     <span className="ms-imnSpan">
                         <a href="javascript:void(0)" className="ms-imnlink ms-spimn-presenceLink">
                             <span className="ms-spimn-presenceWrapper ms-imnImg ms-spimn-imgSize-10x10">
