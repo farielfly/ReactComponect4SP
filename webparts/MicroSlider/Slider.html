@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -8,15 +8,15 @@
     <script src="../../node_modules/react/dist/react.js"></script>
     <script src="../../node_modules/react-dom/dist/react-dom.js"></script>
     <script src="../../node_modules/jquery/dist/jquery.js"></script>
-    <link href="../../dist/webparts/Event.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/webparts/MicroSlider.css" rel="stylesheet" type="text/css" />
+    <link href="../../dist/webglobal/campusGlobal.css" rel="stylesheet" type="text/css" />
 </head>
-<body style="background-color: #ddd">
-    <div id="eventSlider"></div>
-    <script src="../../dist/webparts/Event.js"></script>
+<body>
+    <div id="slider"></div>
+    <script src="../../dist/webparts/MicroSlider.js"></script>
     <script type="text/javascript">
-        window.onload = function(){
-        window.eventRender();
-    };
+        window.onload = function(){ 
+        window.microSliderRender()};
     </script>
 </body>
 </html>

@@ -22,10 +22,9 @@ export default class SliderEvents extends React.Component {
         super(props);
     }
     render() {
-        let {inputDate, left, speed, nowLocal } = this.props;
+        let {inputDate} = this.props;
         let count = inputDate.length;
         let width = 100 / count + '%';
-
         let SliderEvents = [];
         inputDate.map((item, ind) => {
             SliderEvents.push(
@@ -36,18 +35,9 @@ export default class SliderEvents extends React.Component {
         });
 
         return (
-            //<div>
-            //<div className="acs-corporate-events">
-            //    <span className="acs-eventPic"></span><span className="acs-eventTitle">CORPORATE EVENTS</span><a href="https://www.baidu.com/s" className="acs-more">MORE</a>
-            //</div>
-            <ul style={{
-                left: -100 * nowLocal + "%",
-                transitionDuration: speed + "ms",
-                width: count * 100 + "%"
-            }}>
+            <ul>
                 {SliderEvents}
             </ul>
-            //</div>
         );
     }
 }

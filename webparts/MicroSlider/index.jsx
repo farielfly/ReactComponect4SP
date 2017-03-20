@@ -1,15 +1,15 @@
 import { render } from 'react-dom';
 import SliderFrame from '../../components/slider/sliderFrame.jsx';
-import SliderPics from '../../components/slider/sliderWithBackground.jsx';
+import SliderPics from '../../components/slider/sliderPics.jsx';
 import $ from 'jquery';
 
 function sliderRender(config) {
 
-    let data = [{ 'src': '../../components/img/image1.jpg', 'bgsrc':'../../components/img/image1.jpg', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' },
-    { 'src': '../../components/img/image2.jpg', 'bgsrc':'../../components/img/image1.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
-    { 'src': '../../components/img/image3.jpg', 'bgsrc':'../../components/img/image1.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
+    let data = [{ 'src': '../../components/img/image1.jpg', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' },
+    { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
+    { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
-    let param = { url: '', speed: 1000, delay: 1, pagecount: 1, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true, id: 'slider'};   
+    let param = { url: '', speed: 1000, delay: 1, pagecount: 3, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true};   
     function renderUI(data, param) {
         if (document.getElementById(param.id)) {
             render(
@@ -26,8 +26,7 @@ function sliderRender(config) {
                     <SliderPics items={data} />
                 </SliderFrame>,
                 document.getElementById(param.id)
-            );   
-            window.bannerId = param.id;         
+            );            
         }
     }
 
@@ -64,10 +63,3 @@ function sliderRender(config) {
 }
 
 global.sliderRender = sliderRender;
-
-function autodivheight(){
-    var width =  document.getElementById(window.bannerId).offsetWidth;
-    var height = (width/1.4/16)*9;
-    document.getElementById(window.bannerId).style.height= height +"px";
-}
-window.addEventListener("resize", autodivheight);

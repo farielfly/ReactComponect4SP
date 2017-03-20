@@ -4,14 +4,6 @@ export default class Event extends React.Component {
     }
     render() {
         return (<div className="acs-evnet-container">
-            <div className="acs-event-timePic">
-                <div className="acs-month">
-                    <span>{this.props.month}</span>
-                </div>
-                <div className="acs-date">
-                    <span>{this.props.day}</span>
-                </div>
-            </div>
             <div className="acs-timeDes">
                 <div className="acs-timeDes-title">
                     <a className="acs-title" title={this.props.title} href={this.props.href}>{this.props.title}</a>

@@ -1,7 +1,7 @@
 @import "../../stylelibrary/webpartcommon";
 
 #acclinks {
-    width: 410px;
+    width: 300px;
     height: 350px;
 
     .acs-webpartframe {
@@ -11,139 +11,52 @@
             }
         }
 
-        .acs-sliderframe {
-            ul {
-                display: flex;
-                position: relative;
-                left: 0;
-                margin: 15px 0 0 0 !important;
-                padding: 0px !important;
-                height: 300px;
-                overflow: hidden;
-                transition: left 1s;
-                flex-wrap: nowrap;
+        ul {
+            display: flex;
+            position: relative;
+            left: 0;
+            margin: 15px 0 0 0 !important;
+            padding: 0px !important;
+            height: 300px;
+            flex-wrap: nowrap;
 
-                > li {
-                    display: block;
-                    height: auto;
-                    width: 100%;
-                    padding-left: 1px;
+            > li {
+                display: block;
+                height: auto;
+                width: 100%;
+                padding-left: 1px;
 
-                    > a {
-                        float: left;
-                        margin: 5px;
-                        padding:0 5px;
-                        width: 119px;
-                        height: 90px;
-                        text-decoration: none;
-                        border-radius: 4px;
-                        flex-direction: column;
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: space-around;
-                        align-items: center;
+                > a {
+                    float: left;
+                    width: 90px;
+                    height: 90px;
+                    text-decoration: none;
+                    border-radius: 4px;
+                    margin-top: 5px;
+                    text-align: center;
+                    position: relative;
+
+                    .acs-linkitem-img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .acs-linkitem-title {
+                        display: block;
+                        position: absolute;
+                        bottom: 2px;
                         text-align: center;
-
-                        .acs-linkitem-icon {
-                            display: none;
-                            margin-top: 10px;
-                            width: 26px;
-                            height: 26px;
-                            background-image: @bgimage_path;
-                            background-position: 0 -40px;
-                        }
-
-                        .acs-linkitem-title {
-                            display: block;
-                            margin-bottom: 10px;
-                            color: #fff;
-                            font-size: 14px;
-                            width: 100%;
-                            white-space: normal;
-                            font-family: @common_font_CE_55_ROMAN;
-                            // .text_overflow;
-                        }
+                        color: #fff;
+                        font-size: 14px;
+                        width: 100%;
+                        white-space: normal;
+                        font-family: @common_font_CE_55_ROMAN;                        
                     }
+                }
 
-                    .acs-link-bgcolor:nth-child(3n+1) {
-                        margin-left: 0px;
-                    }
-
-                    .acs-link-bgcolor:nth-child(3n) {
-                        margin-right: 0px;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+1) {
-                        background-color: #449933;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+2) {
-                        background-color: #3466bb;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+3) {
-                        background-color: #f57d30;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+4) {
-                        background-color: #dd3e3e;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+5) {
-                        background-color: #22aa77;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+6) {
-                        background-color: #aa66cc;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+7) {
-                        background-color: #6699ff;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+8) {
-                        background-color: #eebb00;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+9) {
-                        background-color: #2daacc;
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+1):hover {
-                        background-color: rgba(68,153,51,0.5);
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+2):hover {
-                        background-color: rgba(52,102,187,0.5);
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+3):hover {
-                        background-color: rgba(245,125,48,0.5);
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+4):hover {
-                        background-color: rgba(221,62,62,0.5);
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+5):hover {
-                        background-color: rgba(34,170,119,0.5);
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+6):hover {
-                        background-color: rgba(170,102,204,0.5);
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+7):hover {
-                        background-color: rgba(102,153,255,0.5);
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+8):hover {
-                        background-color: rgba(238,187,0,0.5);
-                    }
-
-                    .acs-link-bgcolor:nth-child(9n+9):hover {
-                        background-color: rgba(45,170,204,0.5);
-                    }
+                > a:nth-child(3n+2) {
+                    margin-left: 5px;
+                    margin-right: 5px;
                 }
             }
         }

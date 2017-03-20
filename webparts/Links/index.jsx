@@ -3,59 +3,39 @@ import $ from 'jquery';
 import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
 import SliderLinks from '../../components/slider/sliderLinks.jsx';
 import WebPartFrame from '../../components/Common/webPartFrame.jsx';
+import faker from 'faker';
 
 function linksRender(config) {
-    let data = [{ 'itemhref': 'http://www.baidu.com', 'title': 'LMS' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'PRM' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'eForms' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'I-innovate' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'Webmail' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'LMS' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'PRM' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'eForms' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'I-innovate' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'Webmail' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'App' },
-    { 'itemhref': 'http://www.baidu.com', 'title': 'LMS' }];
-    let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: 'frequently accessed links', moreurl: '' };
+    let data = [{ 'itemhref': 'http://www.baidu.com', 'title': 'LMS', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'PRM', 'src': faker.image.avatar()},
+    { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'eForms', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'I-innovate', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'Webmail', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'App', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'LMS', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'PRM', 'src': faker.image.avatar() },
+    { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS', 'src': faker.image.avatar() }];
+    let param = { url: '', listurl: '', webparttitle: 'birthday', moreurl: '', id: 'acclinks' };
 
     function renderUI(data, param) {
         var itemNodes = [];
-        let maxCount = 9;
-        for (let i = 0, len = data.length; i < len; i += maxCount) {
-            itemNodes.push(data.slice(i, i + maxCount));
-        }
-        if (document.getElementById('acclinks')) {
+        let maxCount = data.length > 9 ? 9 : data.length;        
+        itemNodes.push(data.slice(0, maxCount));
+        
+        if (document.getElementById(param.id)) {
             render(
                 <WebPartFrame
                     title={param.webparttitle}
                     hasMore={false}
                     link={param.moreurl}
-                    hasTopLine={false}
-                    >
-
-                    <SliderFrame
-                        itemCount={itemNodes.length}
-                        speed={param.speed}
-                        delay={param.delay}
-                        pause={param.pause}
-                        autoplay={param.autoplay}
-                        dots={param.dots}
-                        arrows={param.arrows}
-                        >
-                        <SliderLinks items={itemNodes} />
-                    </SliderFrame>
+                    hasTopLine={false}>
+                    <SliderLinks items={itemNodes} />
                 </WebPartFrame>,
-                document.getElementById('acclinks')
-            );
-            AIC.wordLimit('.acs-linkitem-title');
+                document.getElementById(param.id)
+            );;
         }
     }
 
@@ -86,25 +66,16 @@ function linksRender(config) {
         });
     }
 
-    if (config && !config.debug) {
-        param.speed = config.speed ? config.speed : 1;
-        param.delay = config.delay ? config.delay : 1;
-        param.pause = config.pause ? config.pause : true;
-        param.autoplay = config.autoplay ? config.autoplay : false;
-        param.dots = config.dots ? config.dots : true;
-        param.arrows = config.arrows ? config.arrows : true;
+    if (config && !config.debug) {     
         param.listurl = config.listurl ? config.listurl : '';
         param.webparttitle = config.webparttitle ? config.webparttitle : '';
         param.moreurl = config.moreurl ? config.moreurl : '';
+        param.id = config.id ? config.id : 'acclinks';
         loadData(param);
     }
     else {
         renderUI(data, param);
     }
-
-
-
-
 }
 
 global.linksRender = linksRender;

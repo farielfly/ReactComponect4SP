@@ -26,8 +26,8 @@ module.exports = {
             'src': ['webparts/Links/index.jsx'],
             'style': ['webparts/Links/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js': '',
-            'prod_output_css':''
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Birthday/Script',
+            'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Birthday/CSS'
         },
         {
             'name': 'popularList',
@@ -76,6 +76,22 @@ module.exports = {
             'output': 'dist/webparts',
             'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/Script',
             'prod_output_css': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/CSS'
+        },
+        {
+            'name': 'Event',
+            'src': ['webparts/Events/index.jsx'],
+            'style': ['webparts/Events/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Discussion/Script',
+            'prod_output_css': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Discussion/CSS'
+        },
+        {
+            'name': 'MicroSlider',
+            'src': ['webparts/MicroSlider/index.jsx'],
+            'style': ['webparts/MicroSlider/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/MicroSlider/Script',
+            'prod_output_css': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/MicroSlider/CSS'
         }
     ],
 

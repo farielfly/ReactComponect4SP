@@ -1,23 +1,20 @@
 import { render } from 'react-dom';
-import $ from 'jquery'
-import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
+import $ from 'jquery';
 import SliderEvents from '../../components/slider/slideEvents.jsx';
 import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 
 function eventRender(config) {
-    let NewInformation = [{ title: 'AIC Family day', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' },
-    { title: 'Anniversary Celebration', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' },
-    { title: 'Global Conference on Integrated Care', month: 'Jan', day: '03', href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' }];
+    let NewInformation = [{ title: 'AIC Family day',  href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' },
+    { title: 'Anniversary Celebration',  href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' },
+    { title: 'Global Conference on Integrated Care',  href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' }];
     let data = NewInformation;
-    let param = { url: '', speed: 1, delay: 2, pause: true, autoplay: false, dots: true, arrows: true, listurl: '', webparttitle: '', moreurl: '' };
+    let param = { url: '', listurl: 'discussion board', webparttitle: '', moreurl: '' };
 
     function renderUI(data, param) {
         var itemNodes = [];
-        let maxCount = 3;
-        for (let i = 0, len = data.length; i < len; i += maxCount) {
-            let cell = Math.ceil(data.length / maxCount);
-            itemNodes.push(data.slice(i, i + maxCount));
-        }
+        let maxCount = data.length > 3 ? 3 : data.length;        
+        itemNodes.push(data.slice(0, maxCount));
+        debugger;
         if (document.getElementById('eventSlider')) {
             render(
                 <WebPartFrame
@@ -26,17 +23,7 @@ function eventRender(config) {
                     link={param.moreurl}
                     hasTopLine={true}
                     >
-                    <SliderFrame
-                        itemCount={itemNodes.length}
-                        speed={param.speed}
-                        delay={param.delay}
-                        pause={param.pause}
-                        autoplay={param.autoplay}
-                        dots={param.dots}
-                        arrows={param.arrows}
-                        >
-                        <SliderEvents inputDate={itemNodes} />
-                    </SliderFrame>
+                    <SliderEvents inputDate={itemNodes} />                    
                 </WebPartFrame>,
                 document.getElementById('eventSlider')
             );
@@ -81,12 +68,6 @@ function eventRender(config) {
     }
 
     if (config && !config.debug) {
-        param.speed = config.speed ? config.speed : 1;
-        param.delay = config.delay ? config.delay : 1;
-        param.pause = config.pause ? config.pause : true;
-        param.autoplay = config.autoplay ? config.autoplay : false;
-        param.dots = config.dots ? config.dots : true;
-        param.arrows = config.arrows ? config.arrows : true;
         param.listurl = config.listurl ? config.listurl : '';
         param.moreurl = config.moreurl ? config.moreurl : '';
         param.webparttitle = config.webparttitle ? config.webparttitle : '';
@@ -97,4 +78,4 @@ function eventRender(config) {
     }
 }
 
-global.eventRender = eventRender;
+window.eventRender = eventRender;
