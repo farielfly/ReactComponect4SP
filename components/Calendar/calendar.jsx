@@ -52,11 +52,12 @@ function convertDatas(datas, curYear, curMonth) {
     while (i < datas.length) {
         let row = [];
         for (let j = 0; j < 7; j++) {
+            let curDate=new Date(datas[i].Date);
             row.push({
-                date: datas[i].date.getDate(),
-                isCurrentMonth: datas[i].date.getMonth() == curMonth,
-                isToday: datas[i].date.getDate() == today.getDate() && datas[i].date.getMonth() == today.getMonth() && datas[i].date.getFullYear() == today.getFullYear(),
-                hasEvents: datas[i].hasEvents,
+                date: curDate.getDate(),
+                isCurrentMonth: curDate.getMonth() == curMonth,
+                isToday: curDate.getDate() == today.getDate() && curDate.getMonth() == today.getMonth() && curDate.getFullYear() == today.getFullYear(),
+                hasEvents: datas[i].HasEvents,
             });
             i++;
         }
@@ -85,7 +86,7 @@ const Calendar = React.createClass({
     generateCalendar: function (year, month) {
         let dateRange = getDateRange(year, month);
         let temp = this;
-        $.when(this.props.onDateRangeChange(dateRange.startDate, dateRange.totalDays, dateRange.curYear, dateRange.curMonth))
+        this.props.onDateRangeChange(dateRange.startDate, dateRange.totalDays, dateRange.curYear, dateRange.curMonth)
             .done(function (datas) {
                 let result = convertDatas(datas, dateRange.curYear, dateRange.curMonth);
                 temp.setState(result);

@@ -31,13 +31,13 @@ function calendarRender(config) {
 
     function handleDateRangeChanged(start, totalDays) {
         if (config && !config.debug) {
-            return loadData(start, totalDays);
+            return loadCalendarDatas(start, totalDays);
         } else {
             let datas = [];
             while (datas.length < totalDays) {
                 datas.push({
-                    date: new Date(start.getTime()),
-                    hasEvents: start.getDate() % 9 == 0,
+                    Date: start.getTime(),
+                    HasEvents: start.getDate() % 9 == 0,
                 });
                 start = new Date(start.getTime() + 24 * 60 * 60 * 1000);
             }
@@ -45,25 +45,20 @@ function calendarRender(config) {
         }
     }
 
-    function loadData(start, totalDays) {
+    function loadCalendarDatas(start, totalDays) {
         var dtd = $.Deferred();
         $.ajax({
-            cache: false,
-            type: "POST",
             url: config.generateCalendarUrl,
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
             data: JSON.stringify({ startDate: start.getTime(), totalDays: totalDays }),
-            async: true,
-            success: function (dataInput) {
-                var datas = new Array();
-                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
-                    datas.push({
-                        date: new Date(dataInput.d.results[i].Date),
-                        hasEvents: dataInput.d.results[i].HasEvents,
-                    });
-                }
-                dtd.resolve(datas);
+            cache: false,
+            success: function (result) {
+                dtd.resolve(result.GenerateCalendarDataResult);
             },
             error: function (data) {
+                console.log("Generate calendar data failed.");
                 dtd.resolve([]);
             }
         });
