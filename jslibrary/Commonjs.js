@@ -102,7 +102,11 @@ var AIC;
         var config = { url: _spPageContextInfo.siteAbsoluteUrl + "/_layouts/15/APPSAICSolution/NavigationProvider.aspx" }
         window.NavigationRender(config);
 
-        $.get('/_vti_bin/APPSAICSolution/CommonService.svc/GetFooter', function (data) {
+        $.ajax({
+            type:'GET',
+            url:'/_vti_bin/APPSAICSolution/CommonService.svc/GetFooter',
+            cache:false,
+            success:function (data) {
             if (data) {
                 addFooter(data.Footer.Links, data.Footer.Search)
             }
@@ -110,15 +114,21 @@ var AIC;
                 var footerArray = [{ Name: 'link1', Url: 'http://www.baidu.com' }, { Name: 'link2', Url: 'http://www.baidu.com' },
                 { Name: 'link3', Url: 'http://www.baidu.com' }, { Name: 'link4', Url: 'http://www.baidu.com' }, { Name: 'link5', Url: 'http://www.baidu.com' }];
                 addFooter(footerArray, search);
+            }},
+            error: function (data) {
             }
-        })
-        $.get('/_vti_bin/APPSAICSolution/CommonService.svc/GetLogoLink', function (data) {
+        });
+        $.ajax({
+            type:'GET',
+            url:'/_vti_bin/APPSAICSolution/CommonService.svc/GetLogoLink',
+            cache:false,
+            success:function (data) {
             if (data) {
-                $('#DeltaSiteLogo').prepend($('#DeltaSiteLogo').html());
-                $($("a[id$='_onetidProjectPropertyTitleGraphic']")[0]).attr({'id':'acs-logolink','href':data.LogoLinkUrl});
-                $("a[id$='_onetidProjectPropertyTitleGraphic']").css('display','none');
+                $("a[id$='_onetidProjectPropertyTitleGraphic']").attr({'id':'acs-logolink','href':data.LogoLinkUrl});
+            }},
+            error: function (data) {
             }
-        })
+        });
         $('#titleAreaRow>div:nth-child(2)').css('display', 'inline-block');
 
         $('#contentRow').resize(function () {
