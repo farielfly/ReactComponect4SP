@@ -8,14 +8,14 @@ function eventRender(config) {
     { title: 'Anniversary Celebration',  href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' },
     { title: 'Global Conference on Integrated Care',  href: 'https://www.baidu.com/s', time: '10:00 AM', location: 'Meeting Room A' }];
     let data = NewInformation;
-    let param = { url: '', listurl: 'discussion board', webparttitle: '', moreurl: '' };
+    let param = { url: '', listurl: '', webparttitle: 'discussion board', moreurl: '',id: 'discussion' };
 
     function renderUI(data, param) {
         var itemNodes = [];
         let maxCount = data.length > 3 ? 3 : data.length;        
         itemNodes.push(data.slice(0, maxCount));
         debugger;
-        if (document.getElementById('eventSlider')) {
+        if (document.getElementById(param.id)) {
             render(
                 <WebPartFrame
                     title={param.webparttitle}
@@ -25,7 +25,7 @@ function eventRender(config) {
                     >
                     <SliderEvents inputDate={itemNodes} />                    
                 </WebPartFrame>,
-                document.getElementById('eventSlider')
+                document.getElementById(param.id)
             );
         }
     };
@@ -71,6 +71,7 @@ function eventRender(config) {
         param.listurl = config.listurl ? config.listurl : '';
         param.moreurl = config.moreurl ? config.moreurl : '';
         param.webparttitle = config.webparttitle ? config.webparttitle : '';
+        param.id = config.id ? config.id : 'discussion';
         loadData(param);
     }
     else {

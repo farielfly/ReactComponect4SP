@@ -12,11 +12,18 @@
     <link href="../../dist/webglobal/campusGlobal.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div id="slider"></div>
+    <div id="slider" style="width: 800px;"></div>
     <script src="../../dist/webparts/Slider.js"></script>
     <script type="text/javascript">
         window.onload = function(){ 
         window.sliderRender()};
+
+        function autodivheight(){
+            var width =  document.getElementById('slider').offsetWidth;
+            var height = (width/1.4/16)*9;
+            document.getElementById('slider').style.height= height +"px";
+        }
+        window.addEventListener("resize", autodivheight);
     </script>
 </body>
 </html>

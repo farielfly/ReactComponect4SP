@@ -11,7 +11,7 @@ export default class WPFrame extends React.Component {
                 <a className="acs-webpartframe-header" href={link}>
                     <span className="acs-header-icon"></span>
                     <span className="acs-header-title">{title} </span>
-                    <span className="acs-header-more">{hasMore?"More":""}</span>
+                    <span className="acs-header-more">{hasMore?"ViewAll":""}</span>
                 </a>
                 {this.props.children}
             </div>

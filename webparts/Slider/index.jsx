@@ -64,10 +64,3 @@ function sliderRender(config) {
 }
 
 global.sliderRender = sliderRender;
-
-function autodivheight(){
-    var width =  document.getElementById(window.bannerId).offsetWidth;
-    var height = (width/1.4/16)*9;
-    document.getElementById(window.bannerId).style.height= height +"px";
-}
-window.addEventListener("resize", autodivheight);

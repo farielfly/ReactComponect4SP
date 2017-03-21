@@ -3,7 +3,7 @@ module.exports = {
     prod_webpartStyleoutput: 'CSS',
     prod_webpartScriptoutput: 'JS',
     prod_root: '../../../NTUCIncome/',
-    replacepath: '/_layouts/15/APPSAICSolution/Images/',
+    replacepath: '../../Common/Img/',
     webparts: [
         {
             'name': 'Articles',
@@ -146,7 +146,7 @@ module.exports = {
         {
             'src': ['stylelibrary/images/*'],
             output: 'dist/webglobal/images',
-            prod_output: 'Images',
+            prod_output: 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Common/Img',
             'prod_include': true
 
         },

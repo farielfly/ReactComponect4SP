@@ -7,7 +7,7 @@ div[id$="slider"] {
         position: relative;
         width: 100%;
         overflow: hidden;
-
+        height: 100%;
 
         ul {
             position: relative;
@@ -16,15 +16,18 @@ div[id$="slider"] {
             transition: left 1s;
             margin: 0px !important;
             padding: 0px !important;
+            height: 100%;
 
-            .acs-slider-pic {
-                display: none;
+            .acs-slider-pic {                
+                height: 100%;
+                display: inline-block;
 
                 > div {
                     display: block;
                     width: 99%;
                     padding-left: 1px;
                     position: relative;
+                    height: 100%;
 
                     .acs-slider-pic-front{
                         width: 60%;
@@ -32,10 +35,12 @@ div[id$="slider"] {
                         left:0px;
                         top: 0px;
                         z-index: 2;
+                        height: 100%;
                         background:rgba(255,255,0,0.8);                                              
                     }
 
                     .acs-slider-pic-back{
+                        height: 100%;
                         width: 60%;
                         position: absolute;
                         left:40%;;

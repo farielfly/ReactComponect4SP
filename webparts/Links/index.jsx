@@ -18,7 +18,7 @@ function linksRender(config) {
     { 'itemhref': 'http://www.baidu.com', 'title': 'LMS', 'src': faker.image.avatar() },
     { 'itemhref': 'http://www.baidu.com', 'title': 'PRM', 'src': faker.image.avatar() },
     { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS', 'src': faker.image.avatar() }];
-    let param = { url: '', listurl: '', webparttitle: 'birthday', moreurl: '', id: 'acclinks' };
+    let param = { url: '', listurl: '', webparttitle: 'birthday', moreurl: '', id: 'birthday' };
 
     function renderUI(data, param) {
         var itemNodes = [];
