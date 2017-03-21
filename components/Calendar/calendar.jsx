@@ -1,11 +1,5 @@
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-function getCalendarData(onDataChange, year, month) {
-    let result = getDateRange(year, month);
-    let datas = onDataChange(result.startDate, result.totalDays, result.curYear, result.curMonth);
-    return convertDatas(datas, result.curYear, result.curMonth);
-}
-
 function getDateRange(year, month) {
     let today = new Date();
     let newDate;
@@ -75,23 +69,43 @@ function convertDatas(datas, curYear, curMonth) {
     };
 }
 
-function handlePreMonthClick() {
-    this.setState(
-        getCalendarData(this.props.onDateRangeChange, this.state.month == 0 ? this.state.year - 1 : this.state.year, this.state.month == 0 ? this.state.month = 11 : this.state.month - 1)
-    );
-}
-
-function handleNextMonthClick() {
-    this.setState(
-        getCalendarData(this.props.onDateRangeChange, this.state.month == 11 ? this.state.year + 1 : this.state.year, this.state.month == 11 ? this.state.month = 0 : this.state.month + 1)
-    );
-}
-
 const Calendar = React.createClass({
     getInitialState() {
-        let result = getDateRange();
-        return getCalendarData(this.props.onDateRangeChange);
+        return {
+            year: 1900,
+            month: 0,
+            days: []
+        };
     },
+
+    componentWillMount() {
+        this.generateCalendar();
+    },
+
+    generateCalendar: function (year, month) {
+        let dateRange = getDateRange(year, month);
+        let temp = this;
+        $.when(this.props.onDateRangeChange(dateRange.startDate, dateRange.totalDays, dateRange.curYear, dateRange.curMonth))
+            .done(function (datas) {
+                let result = convertDatas(datas, dateRange.curYear, dateRange.curMonth);
+                temp.setState(result);
+            }).fail(function (ex) {
+
+            });
+    },
+
+    handlePreMonthClick: function () {
+        let preYear = this.state.month == 0 ? this.state.year - 1 : this.state.year,
+            preMonth = this.state.month == 0 ? 11 : this.state.month - 1;
+        this.generateCalendar(preYear, preMonth)
+    },
+
+    handleNextMonthClick: function () {
+        let nextYear = this.state.month == 11 ? this.state.year + 1 : this.state.year,
+            nextMonth = this.state.month == 11 ? 0 : this.state.month + 1;
+        this.generateCalendar(nextYear, nextMonth)
+    },
+
 
     render() {
         let year = this.state.year;
@@ -124,9 +138,9 @@ const Calendar = React.createClass({
                         <tr className="acs-calendar-month">
                             <td colSpan="7">
                                 <div style={{ display: 'inline-block' }}>
-                                    <span className="acs-calendar-icon-left" onClick={handlePreMonthClick.bind(this)}></span>
+                                    <span className="acs-calendar-icon-left" onClick={this.handlePreMonthClick}></span>
                                     <span style={{ float: 'left', marginTop: '5px', width: '180px' }}>{months[month] + " " + year}</span>
-                                    <span className="acs-calendar-icon-right" onClick={handleNextMonthClick.bind(this)}></span>
+                                    <span className="acs-calendar-icon-right" onClick={this.handleNextMonthClick}></span>
                                 </div>
                             </td>
                         </tr>
