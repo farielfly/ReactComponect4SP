@@ -102,7 +102,7 @@ var AIC;
         var config = { url: _spPageContextInfo.siteAbsoluteUrl + "/_layouts/15/APPSAICSolution/NavigationProvider.aspx" }
         window.NavigationRender(config);
 
-        $.get('/_vti_bin/APPSAICSolution/CommonService.svc/GetFooter', function (data) {
+        $.post('/_vti_bin/APPSAICSolution/CommonService.svc/GetFooter', function (data) {
             if (data) {
                 addFooter(data.Footer.Links, data.Footer.Search)
             }
@@ -112,7 +112,7 @@ var AIC;
                 addFooter(footerArray, search);
             }
         })
-        $.get('/_vti_bin/APPSAICSolution/CommonService.svc/GetLogoLink', function (data) {
+        $.post('/_vti_bin/APPSAICSolution/CommonService.svc/GetLogoLink', function (data) {
             if (data) {
                 $("a[id$='_onetidProjectPropertyTitleGraphic']").attr({'id':'acs-logolink','href':data.LogoLinkUrl});
             }
