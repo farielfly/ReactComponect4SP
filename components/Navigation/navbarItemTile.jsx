@@ -33,20 +33,20 @@ export default class NavbarItemTile extends React.Component {
             itemNodes.push(menuData.Items.slice(i, i + maxCount));
         }
  
-        let secondMenu = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none", top: this.state.open ? "65px" : "60px", "flexDirection": "row", minWidth: minWidth }}>
+        let secondMenu = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none",  "flexDirection": "row", minWidth: minWidth }}>
             {menuData.Items.map((item, index) => {
                  var content = hasGrandChild?(item.Items.map((els, index) => {
                             return (<a href={els.ItemHref === ''?'javascript:void(0);':els.ItemHref} className="acs-itemlink" style={{cursor:els.ItemHref === ''?'default':'pointer'}}  key={index}>{els.Title}</a>);
                         })):null;
                 
                 return (<div style={{ "display": "inline-block" }}>
-                    <a href={item.ItemHref === ''?'javascript:void(0);':item.ItemHref} className="acs-itemlink" style={{cursor:item.ItemHref === ''?'default':'pointer',"fontWeight":"800"}}  key={index}>{item.Title}</a>
+                    <a  href={item.ItemHref === ''?'javascript:void(0);':item.ItemHref} className="acs-itemlink" style={{cursor:item.ItemHref === ''?'default':'pointer',"fontWeight":"800"}}  key={index}>{item.Title}</a>
                    {content}
                 </div>)
             })}
         </ul>);
 
-        let secondMenuC = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none", top: this.state.open ? "65px" : "60px", "flexDirection": "row", minWidth: minWidth }}>
+        let secondMenuC = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none", "flexDirection": "row", minWidth: minWidth }}>
             {itemNodes.map((item, index) => {
                 return (<div style={{ "flexDirection": "column" }}>
                     {item.map((els, index) => {

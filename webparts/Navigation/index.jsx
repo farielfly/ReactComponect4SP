@@ -1,5 +1,6 @@
 import { render } from 'react-dom';
 import MenuList from '../../components/navigation/navbarMenu.jsx';
+import MenuMobileList from '../../components/navigation/navbarAccordion.jsx';
 import $ from 'jquery';
 
 function NavigationRender(config) {
@@ -108,13 +109,21 @@ function NavigationRender(config) {
 
     function renderUI(data) {
         var minWidth = data.length * 130;
-        var elementDiv = document.getElementById('navigation')
+        var elementDiv = document.getElementById('navigation');
         if (elementDiv) {
             elementDiv.style.minWidth = minWidth+'px';
             render(
-                <MenuList data={data}>
+                <MenuList data={data} menuStyle={1}>
                 </MenuList>,
                 document.getElementById('navigation')
+            );
+        }
+        var mobileDiv =  document.getElementById('mobilenav');
+        if (mobileDiv) {
+            render(
+                <MenuMobileList data={data}>
+                </MenuMobileList>,
+                document.getElementById('mobilenav')
             );
         }
     }

@@ -16,14 +16,14 @@ export default class navbarMenuList extends React.Component{
                         return (
                             <Accordion key={'secnav'+sid} accordionData={thrItem} itemHeight={"auto"} hasInfoPanel={false} informationEvent={null} >
                                 {thrItem.Items.map((itemLink,tid)=>{
-                                    return (<a key={'link'+tid} href={itemLink.ItemHref}>{itemLink.Title}</a>);
+                                    return (<a key={'link'+tid} href={itemLink.ItemHref}><span>{itemLink.Title}</span></a>);
                                 })}
                             </Accordion>);
                     })
                  }
                  else{
                     thirdLevel = secItem.Items.map((itemLink,sid)=>{
-                        return (<a key={'link'+sid} href={itemLink.ItemHref}>{itemLink.Title}</a>);
+                        return (<a key={'link'+sid} href={itemLink.ItemHref}><span>{itemLink.Title}</span></a>);
                     })
                  }
                 return(
@@ -34,7 +34,9 @@ export default class navbarMenuList extends React.Component{
             }
             else{
                 return (
-                    <div key={'firnav'+fid}>{secItem.Title}</div>
+                    <a key={'firnav'+fid} href={secItem.ItemHref} className="acs-accordion-itemlink">
+                        <span>{secItem.Title}</span>
+                    </a>
                 )
             }
         });
