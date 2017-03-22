@@ -136,7 +136,7 @@ var AIC;
         $('#contentRow').resize(function () {
             var maxheight = $('#contentRow').height();
             var additionalHeight = 0;
-            additionalHeight = 90;
+            additionalHeight = 129;
             if ($('.ms-srch-siteSearchResults').height() > maxheight) {
                 maxheight = $('.ms-srch-siteSearchResults').height();
             }
@@ -160,7 +160,7 @@ var AIC;
         var footerClass = 'acs-footer';
         var maxheight = $('#contentRow').height();
         var additionalHeight = 0;
-        additionalHeight = 90;
+        additionalHeight = 129;
         if($('.ms-srch-siteSearchResults').height() > maxheight)
         {
             maxheight = $('.ms-srch-siteSearchResults').height();            
