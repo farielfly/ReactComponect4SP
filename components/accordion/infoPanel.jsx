@@ -3,6 +3,14 @@ export default class DivisionDetail extends React.Component{
         super(props);
     }
 
+    componentDidUpdate(){
+        let imgs = document.getElementsByClassName('ms-spimn-img');
+        for(var i=imgs.length-1;i>-1;i--){
+            imgs[i].setAttribute('sip',imgs[i].getAttribute('data-sip'));
+        }
+        ProcessImn();
+    }
+
     render(){
 
         if(this.props.infoData === null){
