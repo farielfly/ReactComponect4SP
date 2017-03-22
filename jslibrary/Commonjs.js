@@ -124,7 +124,9 @@ var AIC;
             cache:false,
             success:function (data) {
             if (data) {
-                $("a[id$='_onetidProjectPropertyTitleGraphic']").attr({'id':'acs-logolink','href':data.LogoLinkUrl});
+                $('#DeltaSiteLogo').prepend($('#DeltaSiteLogo').html());
+                $($("a[id$='_onetidProjectPropertyTitleGraphic']")[0]).attr({'id':'acs-logolink','href':data.LogoLinkUrl});
+                $("a[id$='_onetidProjectPropertyTitleGraphic']").css('display','none');
             }},
             error: function (data) {
             }
@@ -137,6 +139,9 @@ var AIC;
             additionalHeight = 90;
             if ($('.ms-srch-siteSearchResults').height() > maxheight) {
                 maxheight = $('.ms-srch-siteSearchResults').height();
+            }
+            if ($('.ms-searchCenter-result-main').height() > maxheight) {
+                maxheight = $('.ms-searchCenter-result-main').height();
             }
             if ($('#sideNavBox').height() > maxheight) {
                 maxheight = $('#sideNavBox').height();
@@ -159,6 +164,9 @@ var AIC;
         if($('.ms-srch-siteSearchResults').height() > maxheight)
         {
             maxheight = $('.ms-srch-siteSearchResults').height();            
+        }
+        if ($('.ms-searchCenter-result-main').height() > maxheight) {
+                maxheight = $('.ms-searchCenter-result-main').height();
         }
         if($('#sideNavBox').height() >maxheight)
         {
