@@ -14,55 +14,55 @@ function articleBusinessRender(params) {
             Like: 122,
             HasLiked: false
         },
-        {
-            PicturePath: '../../components/img/image2.jpg',
-            Headline: 'There are some items to show in this view. ',
-            Time: "2/15/2017 15:35 PM",
-            Like: 2344,
-            HasLiked: true
-        },
-        {
-            PicturePath: '../../components/img/image3.jpg',
-            Headline: 'Overview',
-            Time: "2/15/2017 16:35 PM",
-            Like: 204,
-            HasLiked: false
-        },
-        {
-            PicturePath: '../../components/img/image1.jpg',
-            Headline: 'Forbidden: Access is denied.',
-            Time: "2/15/2017 18:35 PM",
-            Like: 199,
-            HasLiked: true
-        },
-        {
-            PicturePath: '../../components/img/image2.jpg',
-            Headline: 'There are some items to show in this view. There are no items to show in this view.',
-            Time: "2/15/2017 15:35 PM",
-            Like: 4656,
-            HasLiked: true
-        },
-        {
-            PicturePath: '../../components/img/image1.jpg',
-            Headline: 'There are some items to show in this view. ',
-            Time: "2/15/2017 15:35 PM",
-            Like: 234,
-            HasLiked: true
-        },
-        {
-            PicturePath: '../../components/img/image3.jpg',
-            Headline: 'Hello WorldHello WorldHello WorldHello WorldHello WorldHello World.',
-            Time: "2/15/2017 15:35 PM",
-            Like: 665,
-            HasLiked: false
-        },
-        {
-            PicturePath: '../../components/img/image2.jpg',
-            Headline: 'There are some items to show in this view. There are no items to show in this view.',
-            Time: "2/15/2017 15:35 PM",
-            Like: 8899,
-            HasLiked: true
-        }];
+            {
+                PicturePath: '../../components/img/image1.jpg',
+                Headline: 'There are some items to show in this view. ',
+                Time: "2/15/2017 15:35 PM",
+                Like: 2344,
+                HasLiked: true
+            },
+            {
+                PicturePath: '../../components/img/image1.jpg',
+                Headline: 'Overview',
+                Time: "2/15/2017 16:35 PM",
+                Like: 204,
+                HasLiked: false
+            },
+            {
+                PicturePath: '../../components/img/image1.jpg',
+                Headline: 'Forbidden: Access is denied.',
+                Time: "2/15/2017 18:35 PM",
+                Like: 199,
+                HasLiked: true
+            },
+            {
+                PicturePath: '../../components/img/image1.jpg',
+                Headline: 'There are some items to show in this view. There are no items to show in this view.',
+                Time: "2/15/2017 15:35 PM",
+                Like: 4656,
+                HasLiked: true
+            },
+            {
+                PicturePath: '../../components/img/image1.jpg',
+                Headline: 'There are some items to show in this view. ',
+                Time: "2/15/2017 15:35 PM",
+                Like: 234,
+                HasLiked: true
+            },
+            {
+                PicturePath: '../../components/img/image1.jpg',
+                Headline: 'Hello WorldHello WorldHello WorldHello WorldHello WorldHello World.',
+                Time: "2/15/2017 15:35 PM",
+                Like: 665,
+                HasLiked: false
+            },
+            {
+                PicturePath: '../../components/img/image1.jpg',
+                Headline: 'There are some items to show in this view. There are no items to show in this view.',
+                Time: "2/15/2017 15:35 PM",
+                Like: 8899,
+                HasLiked: true
+            }];
     }
     renderUI(params);
 
@@ -77,36 +77,36 @@ function articleBusinessRender(params) {
             render(
                 <div>
                     <div>
-                        <table><tbody><tr>
+                        <ul>
                             {
                                 firstParams.map(function (article, i) {
-                                    return <td key={i} style={{ width: width, verticalAlign: 'top', position: 'relative' }}>
+                                    return <li key={i} className={'acs-article-business-ul'}>
                                         <div className={'acs-articleframe'}>
                                             <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
                                             <ArticleHeadline headline={article.Headline}></ArticleHeadline>
                                             <ArticleTime time={article.Time}></ArticleTime>
                                             <ArticleLike like={article.Like} hasLiked={article.HasLiked}></ArticleLike>
                                         </div>
-                                    </td>
+                                    </li>
                                 })
                             }
-                        </tr></tbody></table>
+                        </ul>
                     </div>
-                    <div style={{ marginTop: '50px' }}>
-                        <table><tbody><tr>
+                    <div>
+                        <ul>
                             {
                                 secondParams.map(function (article, i) {
-                                    return <td key={i} style={{ width: width, verticalAlign: 'top', position: 'relative' }}>
+                                    return <li key={i} className={'acs-article-business-ul'}>
                                         <div className={'acs-articleframe'}>
                                             <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
                                             <ArticleHeadline headline={article.Headline}></ArticleHeadline>
                                             <ArticleTime time={article.Time}></ArticleTime>
                                             <ArticleLike like={article.Like} hasLiked={article.HasLiked}></ArticleLike>
                                         </div>
-                                    </td>
+                                    </li>
                                 })
                             }
-                        </tr></tbody></table>
+                        </ul>
                     </div>
                 </div>,
                 document.getElementById('articlesBusiness')

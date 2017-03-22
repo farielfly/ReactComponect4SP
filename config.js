@@ -14,6 +14,14 @@ module.exports = {
             'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Articles/CSS'
         },
         {
+            'name': 'BusinessArticles',
+            'src': ['webparts/Articles/businessArticles.jsx'],
+            'style': ['webparts/Articles/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Articles/Script',
+            'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Articles/CSS'
+        },
+        {
             'name': 'Calendar',
             'src': ['webparts/Calendar/index.jsx'],
             'style': ['webparts/Calendar/style.less'],

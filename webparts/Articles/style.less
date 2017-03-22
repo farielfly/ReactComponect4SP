@@ -1,10 +1,15 @@
-@bgimage_path: url('../../dist/common/images/image.png');
+@bgimage_path: url('../../../../Style%20Library/Custom%20Style/Common/Img/image.png');
 @import "../../stylelibrary/webpartcommon";
 
-#articles, #articlesBusiness, #signleArticles{
-    width:100%;
-    height: 100%;
-    .acs-articleframe{
+.acs-article-business-ul{
+    position: relative;    
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    list-style: none;
+}
+
+.acs-articleframe{
         //min-width: 150px;
         //min-height: 150px;
         // float: left;
@@ -56,24 +61,26 @@
        }
 
        .acs-articleframe-time,.acs-articleframe-like{
-           position: absolute;
-           bottom: 0px;
+           //position: absolute;
+           //bottom: 0px;
        }
 
        .acs-articleframe-time .acs-articleframe-time-icon, .acs-articleframe-like .acs-articleframe-like-icon{
            height: 18px;
            width: 18px;
-           float: left;
+           display: inline-block;
+           //float: left;
            background-image: @bgimage_path;
        }
 
        .acs-articleframe-time .acs-articleframe-time-title, .acs-articleframe-like .acs-articleframe-like-title{
-           float: left;
+           //float: left;
+           display: inline-block;
            margin: 1px 5px;
        }
        
        .acs-articleframe-time{
-           margin-bottom: -30px;
+           //margin-bottom: -30px;
 
            .acs-articleframe-time-icon{
                background-position: -90px -66px;
@@ -81,13 +88,11 @@
        }
 
        .acs-articleframe-like{
-           margin-bottom: -55px;
+           //margin-bottom: -55px;
 
            .acs-articleframe-like-icon{
                cursor: pointer;
                background-position: -108px -66px;
            }
        }
-
-    }
 }
