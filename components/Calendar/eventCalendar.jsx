@@ -11,7 +11,7 @@ export default class EventCalendar extends React.Component {
         let date = new Date(value);
         let hour = date.getHours();
         return this.fillZero(date.getDate()) + "/" + this.fillZero(date.getMonth() + 1) + "/" + date.getFullYear() + " "
-            + this.fillZero(hour % 12) + ":" + this.fillZero(date.getMinutes()) + (hour > 11 ? " PM" : " AM");
+            + (hour % 12 == 0 ? "12" : this.fillZero(hour % 12)) + ":" + this.fillZero(date.getMinutes()) + (hour > 11 ? " PM" : " AM");
     }
 
     render() {
@@ -24,8 +24,8 @@ export default class EventCalendar extends React.Component {
                     {idc < this.props.items.length - 1 ? <div className="acs-eventline-line"></div> : null}
                     {/*<div className="acs-eventline-triangle"></div>*/}
                     <div className="acs-eventline-content">
-                        <div className="acs-eventline-name">{item.Title}</div>
-                        <div className="acs-eventline-time">{this.formatTime(item.Time)}</div>
+                        <div className="acs-eventline-name" title={item.Title}>{item.Title}</div>
+                        <div className="acs-eventline-time">{this.formatTime(item.StartTime)}</div>
                     </div>
                 </div>
             );

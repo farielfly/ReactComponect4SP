@@ -28,10 +28,10 @@ function newsListRender(config) {
     }
 
     function formatDate(value) {
-        let date=new Date(value);
+        let date = new Date(value);
         let hour = date.getHours();
         return months[date.getMonth()] + " " + fillZero(date.getDate()) + ", " + date.getFullYear() +
-            " " + fillZero(hour % 12) + ":" + fillZero(date.getMinutes()) + (hour > 11 ? " PM" : " AM");
+            " " + (hour % 12 == 0 ? "12" : fillZero(hour % 12)) + ":" + fillZero(date.getMinutes()) + (hour > 11 ? " PM" : " AM");
     }
 
     function renderUI(data, param) {
