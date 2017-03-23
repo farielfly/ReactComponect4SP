@@ -115,4 +115,4 @@ function articleBusinessRender(params) {
     }
 }
 
-global.articleBusinessRender = articleBusinessRender;
+global.businessArticleRender = businessArticleRender;

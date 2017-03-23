@@ -8,6 +8,7 @@ import ArticleIntro from '../../components/article/articleIntro.jsx';
 function signleArticlesRender(params) {
     if (!params) {
         params = {
+            ArticleId: 'signleArticles',
             Title: 'Kevin',
             PicturePath: '../../components/img/image1.jpg',
             Headline: 'There are some items to show in this view. There are no items to show in this view.',
@@ -17,7 +18,7 @@ function signleArticlesRender(params) {
     renderUI(params);
 
     function renderUI(params) {
-        if (document.getElementById('signleArticles')) {
+        if (document.getElementById(params.ArticleId)) {
             render(
                 <ArticleTitle
                     title={params.Title}>
@@ -25,7 +26,7 @@ function signleArticlesRender(params) {
                     <ArticleHeadline headline={params.Headline}></ArticleHeadline>
                     <ArticleIntro intro={params.Intro}></ArticleIntro>
                 </ArticleTitle>,
-                document.getElementById('signleArticles')
+                document.getElementById(params.ArticleId)
             )
         }
     }
