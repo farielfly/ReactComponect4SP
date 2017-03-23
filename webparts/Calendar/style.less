@@ -4,85 +4,88 @@
 
 .acs-calendar{
     margin-top: 20px;
-    width: 70%;
-    min-width: 250px;
-    float: right;
+    margin-left: 270px;
 
     .acs-calendar-table{
         width: 100%;
         border-collapse: collapse;
         text-align: center;
         table-layout: fixed;
-        border-top: 1px solid #e9e9e9;
-        border-left: 1px solid #e9e9e9;
+        border-top: 1px solid #dddddd;
+        border-left: 1px solid #dddddd;
         background: #FFF;
 
         .acs-calendar-month{
-            padding: 10px 0;
-            background: #f3f3f3;
+            background-color: #f2f4f6;
             font-weight: bold;
+            font-size: 14px;
             text-transform: uppercase;
-            border-right: 1px solid #e9e9e9;
-            border-bottom: 1px solid #e9e9e9;
+            border-right: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
 
             .acs-calendar-icon-left{
                 float: left;
-                height: 26px;
-                width: 26px;
+                height: 34px;
+                width: 34px;
                 background-image: @bgimage_path;
-                background-position: -26px -40px;
+                background-position: -136px -140px;
                 cursor: pointer;
             }
 
             .acs-calendar-icon-right{
                 float: left;
-                height: 26px;
-                width: 26px;
+                height: 34px;
+                width: 34px;
                 background-image: @bgimage_path;
-                background-position: -52px -40px;
+                background-position: -170px -140px;
                 cursor: pointer;
             }
         }
 
         .acs-calendar-week{
-            background: #f3f3f3;
+            background-color: #f2f4f6;
+            font-size: 12px;
+            font-weight: bold;
             text-transform: uppercase;
-            border-right: 1px solid #e9e9e9;
-            border-bottom: 1px solid #e9e9e9;
+            border-right: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
         }
 
         tr{
             height: 40px;
 
             td.acs-calendar-days{
-                border-right: 1px solid #e9e9e9;
-                border-bottom: 1px solid #e9e9e9;
+                border-right: 1px solid #dddddd;
+                border-bottom: 1px solid #dddddd;
+                font-size: 13px;
+                color: #666666;
 
                 .acs-calendar-day{
                     position: relative;
                     margin: 18px auto;
-                    max-width: 26px;
-                    width: 50%;
+                    width: 24px;
+                    height: 18px;
 
                     .acs-calendar-dot{
                         width: 6px;
                         height: 6px;
                         border-radius: 3px;
-                        background: #FFA500;
+                        background: #ff9c00;
                         position: absolute;
-                        left: 40%;
-                        top: 22px;
+                        left: 9px;
+                        top: 23px;
                     }
                 }
 
                 .acs-calendar-today{
-                    background: #FFA500;
+                    background: #ff9c00;
                     color: #FFF;
                     border-radius: 2px;
+                    height: 100%;
                 }
 
                 .acs-calendar-notcurrent{
-                    color: #e9e9e9;
+                    color: #aaaaaa;
                 }
             }
         }
@@ -90,9 +93,8 @@
 }
 
 .acs-eventline{
-    margin-top: 20px;
-    width: 25%;
-    float: left;
+    margin: 20px 20px 0 0;
+    position: absolute;
     
     .acs-eventline-item{
         margin-left: 10px;
@@ -103,9 +105,9 @@
             width: 10px;
             height: 10px;
             border-radius: 5px;
-            background: #FFA500;
+            background: #ff9c00;
             left: -5px;
-            top: 26px;
+            top: 20px;
         }
 
         .acs-eventline-dot:after{
@@ -122,10 +124,10 @@
         .acs-eventline-line{
             position: absolute;
             width: 0;
-            height: 76px;
-            border-left: 1px dashed rgb(170, 170, 170);
+            height: 56px;
+            border-left: 1px dashed #d7d7d7;
             left: 0;
-            top: 36px;
+            top: 32px;
         }
         
         .acs-eventline-triangle {
@@ -142,25 +144,26 @@
         }
         
         .acs-eventline-content{
-            // color: #FFF;
-            // background: #FFA500;
-            background: #f3f3f3;
-            border-radius: 3px;
-            padding: 10px;
-            margin-left: 25px;
-            margin-bottom: 20px;
-            min-width: 166px;
+            background-color: #f2f4f6;
+            padding: 6px 10px;
+            margin: 0 0 15px 15px;
+            width: 205px;
+            height: 38px;
+            font-size: 13px;
 
             .acs-eventline-name{
-                font-weight: bold;
+                font-family: "Open Sans Semibold","Open Sans";
+                font-weight: 600;
+                color: #333;
                 text-overflow: ellipsis;
                 overflow: hidden;
                 white-space: nowrap;
             }
 
             .acs-eventline-time{
-                color: #bbb;
-                margin-top: 10px;
+                font-family: Open Sans;
+                color: #888888;
+                margin-top: 6px;
             }
         }
 

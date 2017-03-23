@@ -86,7 +86,7 @@ const Calendar = React.createClass({
     generateCalendar: function (year, month) {
         let dateRange = getDateRange(year, month);
         let temp = this;
-        this.props.onDateRangeChange(dateRange.startDate, dateRange.totalDays, dateRange.curYear, dateRange.curMonth)
+        $.when(this.props.onDateRangeChange(dateRange.startDate, dateRange.totalDays, dateRange.curYear, dateRange.curMonth))
             .done(function (datas) {
                 let result = convertDatas(datas, dateRange.curYear, dateRange.curMonth);
                 temp.setState(result);
@@ -138,9 +138,9 @@ const Calendar = React.createClass({
                     <tbody>
                         <tr className="acs-calendar-month">
                             <td colSpan="7">
-                                <div style={{ display: 'inline-block' }}>
+                                <div style={{ display: 'inline-block',lineHeight:'34px' }}>
                                     <span className="acs-calendar-icon-left" onClick={this.handlePreMonthClick}></span>
-                                    <span style={{ float: 'left', marginTop: '5px', width: '180px' }}>{months[month] + " " + year}</span>
+                                    <span style={{ float: 'left', width: '140px' }}>{months[month] + " " + year}</span>
                                     <span className="acs-calendar-icon-right" onClick={this.handleNextMonthClick}></span>
                                 </div>
                             </td>

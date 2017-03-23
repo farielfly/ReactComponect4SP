@@ -9,22 +9,22 @@ function calendarRender(config) {
     let data = {
         events: [{
             Title: 'Morning Event!',
-            Time: new Date(),
+            StartTime: new Date(),
         }, {
             Title: 'Hello World,',
-            Time: new Date().setHours(10),
+            StartTime: new Date().setHours(10),
         }, {
             Title: 'Hello World 123,',
-            Time: new Date().setHours(12),
+            StartTime: new Date().setHours(12),
         }, {
             Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-            Time: new Date().setHours(14),
+            StartTime: new Date().setHours(14),
         }, {
             Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-            Time: new Date().setHours(15),
+            StartTime: new Date().setHours(15),
         }, {
             Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-            Time: new Date().setHours(21),
+            StartTime: new Date().setHours(21),
         }],
         dates: []
     }
