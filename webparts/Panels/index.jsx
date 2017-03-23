@@ -6,12 +6,12 @@ function panelRender(config) {
     let panels = [{
         title: 'My Task',
         msgCount: 3,
-        iconClass: 'acs-header-icon',
+        iconPosition: '0 -214px',
         url: 'www.baidu.com'
     }, {
         title: 'HR Connect',
         msgCount: 0,
-        iconClass: 'acs-header-icon',
+        iconPosition: '-66px -214px',
         url: 'www.baidu.com'
     }];
 
@@ -20,7 +20,7 @@ function panelRender(config) {
             return (<PanelFrame
                 title={panel.title}
                 msgCount={panel.msgCount}
-                iconClass={panel.iconClass}
+                iconPosition={panel.iconPosition}
                 url={panel.url}>
             </PanelFrame>)
         });
