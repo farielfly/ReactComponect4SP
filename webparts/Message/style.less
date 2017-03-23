@@ -1,30 +1,40 @@
 @import "../../stylelibrary/webpartcommon";
 @import "../../stylelibrary/commonstyle";
 
-.acs-message{
-    margin-top: 10px;
-    background-color: #f2f4f6;
-    text-align: center;
-    padding: 15px;
-
-    img{
-        width: 200px;
+#message{
+    .acs-header-icon{
+        width: 26px;
+        height: 26px;
+        background-position: -26px -36px;
     }
 
-    .acs-message-title{
+    .acs-message{
         margin-top: 10px;
-        font-size: 14px;
-        font-weight: bold;
-        color: #333;
-    }
+        background-color: #f2f4f6;
+        text-align: center;
+        padding: 15px 0;
+        width: 310px;
 
-    .acs-message-date{
-        color: #666;
-        margin: 10px 0;
-    }
+        img{
+            width: 200px;
+            height: 112.5px;
+        }
 
-    .acs-message-content{
-        color: #333;
-        text-transform: uppercase;
+        .acs-message-title{
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .acs-message-date{
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .acs-message-content{
+            color: #333;
+            text-transform: uppercase;
+        }
     }
 }
