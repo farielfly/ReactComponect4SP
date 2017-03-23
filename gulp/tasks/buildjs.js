@@ -67,7 +67,7 @@ gulp.task('buildjs-webglobal', function () {
             srcs.add(path.join(config.rootpath, src));
         }
         let stream = bundleJs(web.name + '.js', Array.from(srcs),
-            debug ? path.join(config.rootpath, web.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput));
+            debug ? path.join(config.rootpath, web.output) : path.join(config.rootpath, config.prod_root, web.prod_output));
         streamArr.push(stream);       
     }
     return es.merge(streamArr);

@@ -16,7 +16,9 @@
     <script src="../../dist/webparts/Slider.js"></script>
     <script type="text/javascript">
         window.onload = function(){ 
-        window.sliderRender()};
+            window.sliderRender();
+            autodivheight();
+        };
 
         function autodivheight(){
             var width =  document.getElementById('slider').offsetWidth;

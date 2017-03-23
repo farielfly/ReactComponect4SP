@@ -39,7 +39,8 @@ function sliderRender(config) {
                 'alt': param.data[i].Title,
                 'itemhref': param.data[i].LinkUrl,
                 'title': param.data[i].Title,
-                'description': param.data[i].Description
+                'description': param.data[i].Description,
+                'bgsrc': param.data[i].BackgroundUrl
             })
         }        
         renderUI(data, param);

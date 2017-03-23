@@ -9,7 +9,7 @@ function sliderRender(config) {
     { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
     { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
-    let param = { url: '', speed: 1000, delay: 1, pagecount: 3, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true};   
+    let param = { url: '', speed: 1000, delay: 1, pagecount: 3, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true,id: 'microslider'};   
     function renderUI(data, param) {
         if (document.getElementById(param.id)) {
             render(
@@ -62,4 +62,4 @@ function sliderRender(config) {
     }
 }
 
-global.sliderRender = sliderRender;
+global.microSliderRender = sliderRender;

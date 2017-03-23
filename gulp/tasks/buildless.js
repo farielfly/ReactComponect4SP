@@ -69,7 +69,7 @@ gulp.task('buildless-webglobal', function () {
             srcs.add(path.join(config.rootpath, style));
         }
         buildless(Array.from(srcs), web.name + '.css',
-            debug ? path.join(config.rootpath, web.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
+            debug ? path.join(config.rootpath, web.output) : path.join(config.rootpath, config.prod_root, web.prod_output));
     }
 })
 

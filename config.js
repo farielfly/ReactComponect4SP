@@ -100,7 +100,15 @@ module.exports = {
             'output': 'dist/webparts',
             'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/MicroSlider/Script',
             'prod_output_css': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/MicroSlider/CSS'
-        }
+        },
+        {
+            'name': 'Navigation',
+            'src': ['webparts/Navigation/index.jsx'],
+            'style': ['webparts/Navigation/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': 'AvePointSP2013HomePageSuiteBar/ConfigFile/AvePoint/Script',
+            'prod_output_css': 'AvePointSP2013HomePageSuiteBar/ConfigFile/AvePoint/CSS'
+        },
     ],
 
     layouts: [
@@ -109,7 +117,7 @@ module.exports = {
             'src': ['layouts/flexlayout/script.jsx'],
             'style': ['layouts/flexlayout/style.less'],
             'output': 'dist/layouts',
-            'prod_include': true
+            'prod_include': false
         }
     ],
 
@@ -118,18 +126,21 @@ module.exports = {
             'name': 'react.min',
             'src': 'node_modules/react/dist/react.min.js',
             'output': 'dist/jslibrary',
+            'prod_output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Common/Script',
             'prod_include': true
         },
         {
             'name': 'react-dom.min',
             'src': 'node_modules/react-dom/dist/react-dom.min.js',
             'output': 'dist/jslibrary',
+            'prod_output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Common/Script',
             'prod_include': true
         },
         {
             'name': 'jquery.min',
             'src': 'node_modules/jquery/dist/jquery.min.js',
             'output': 'dist/jslibrary',
+            'prod_output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Common/Script',
             'prod_include': true
         },
     ],
@@ -138,17 +149,13 @@ module.exports = {
         {
             'name': 'campusGlobal',
             'src': ['webparts/Navigation/index.jsx'],
-            'style': ['stylelibrary/commonstyle.less', 'webparts/Navigation/style.less'],
+            'style': ['stylelibrary/commonstyle.less'],
             'output': 'dist/webglobal',
+            'prod_output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Common/CSS',
             'prod_include': true
         },
     ],
-    concats:[
-        {
-            'name': 'aicGlobal',
-            'src': ['../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution/JS/aicGlobal.js','jslibrary/Commonjs.js'],
-            'output': 'dist/jslibrary',
-        }
+    concats:[       
     ],
     images: [
         {

@@ -153,4 +153,4 @@ function NavigationRender(config) {
 
 }
 
-global.NavigationRender = NavigationRender;
+window.NavigationRender = NavigationRender;
