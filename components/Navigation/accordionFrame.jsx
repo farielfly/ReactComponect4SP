@@ -24,14 +24,15 @@ export default class AccordionFrame extends React.Component {
     }
 
     render() {
-        let {accordionData,itemHeight,informationEvent,hasInfoPanel} = this.props;
+        let {accordionData,itemHeight,informationEvent,hasInfoPanel,isFirst} = this.props;
+        let firstColor="#f58220",secondColor="#f2f4f6";
         let contentHeight =itemHeight==='auto'?itemHeight: accordionData.Items.length * itemHeight +"px";
         let divisionIcon = accordionData.Items.length===0?'':(this.state.active?"acs-accordionitem-expandicon":"acs-accordionitem-retracticon");
         return (
             <div className="acs-accordion-item">
-                <div className={"acs-accordionitem-head" + (this.state.active?" acs-accordionitem-visited":"")} onClick={this.handleShow.bind(this)}>
+                <div className={"acs-accordionitem-head" } onClick={this.handleShow.bind(this)} style={{"backgroundColor":isFirst?firstColor:secondColor}}>
                     <span className={divisionIcon}></span>
-                    <span className="acs-divisionhead-title">{this.props.accordionData.Title}</span>
+                    <span className="acs-divisionhead-title" style={{color:isFirst?"#fff":"#333"}}>{this.props.accordionData.Title}</span>
                 </div>
                 <div className="acs-accordionitem-content" style={{ height: this.state.active ? contentHeight : "0" }}>
                     {this.props.children}

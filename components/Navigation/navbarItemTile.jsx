@@ -33,7 +33,7 @@ export default class NavbarItemTile extends React.Component {
             itemNodes.push(menuData.Items.slice(i, i + maxCount));
         }
  
-        let secondMenu = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none",  "flexDirection": "row", minWidth: minWidth }}>
+        let secondMenu = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none",  "flexDirection": "row"}}>
             {menuData.Items.map((item, index) => {
                  var content = hasGrandChild?(item.Items.map((els, index) => {
                             return (<a href={els.ItemHref === ''?'javascript:void(0);':els.ItemHref} className="acs-itemlink" style={{cursor:els.ItemHref === ''?'default':'pointer'}}  key={index}>{els.Title}</a>);
@@ -46,11 +46,11 @@ export default class NavbarItemTile extends React.Component {
             })}
         </ul>);
 
-        let secondMenuC = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none", "flexDirection": "row", minWidth: minWidth }}>
+        let secondMenuC = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none", "flexDirection": "row"}}>
             {itemNodes.map((item, index) => {
                 return (<div style={{ "flexDirection": "column" }}>
                     {item.map((els, index) => {
-                        return (<a href={els.ItemHref === ''?'javascript:void(0);':els.ItemHref} className="acs-itemlink" style={{cursor:els.ItemHref === ''?'default':'pointer'}}  key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
+                        return (<a href={els.ItemHref === ''?'javascript:void(0);':els.ItemHref} className="acs-itemlink" style={{cursor:els.ItemHref === ''?'default':'pointer'}}  key={index}>{els.Title}</a>)
                     })}
                 </div>)
             })}

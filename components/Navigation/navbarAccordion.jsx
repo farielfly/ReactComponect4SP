@@ -14,7 +14,7 @@ export default class navbarMenuList extends React.Component{
                 if(secItem.hasGrandChild){
                     thirdLevel=thirdLevel = secItem.Items.map((thrItem,sid)=>{
                         return (
-                            <Accordion key={'secnav'+sid} accordionData={thrItem} itemHeight={"auto"} hasInfoPanel={false} informationEvent={null} >
+                            <Accordion isFirst={false} key={'secnav'+sid} accordionData={thrItem} itemHeight={"auto"} hasInfoPanel={false} informationEvent={null} >
                                 {thrItem.Items.map((itemLink,tid)=>{
                                     return (<a key={'link'+tid} href={itemLink.ItemHref}><span>{itemLink.Title}</span></a>);
                                 })}
@@ -27,7 +27,7 @@ export default class navbarMenuList extends React.Component{
                     })
                  }
                 return(
-                    <Accordion key={'firnav'+fid} accordionData={secItem} itemHeight={"auto"} hasInfoPanel={false} informationEvent={null} >
+                    <Accordion isFirst={true} key={'firnav'+fid} accordionData={secItem} itemHeight={"auto"} hasInfoPanel={false} informationEvent={null} >
                         {thirdLevel}
                     </Accordion>
                 );
