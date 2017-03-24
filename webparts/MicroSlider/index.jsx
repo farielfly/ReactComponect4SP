@@ -1,6 +1,8 @@
 import { render } from 'react-dom';
 import SliderFrame from '../../components/slider/sliderFrame.jsx';
 import SliderPics from '../../components/slider/sliderPics.jsx';
+import WebPartFrame from '../../components/Common/webPartFrame.jsx';
+
 import $ from 'jquery';
 
 function sliderRender(config) {
@@ -9,22 +11,28 @@ function sliderRender(config) {
     { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
     { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
-    let param = { url: '', speed: 1000, delay: 1, pagecount: 3, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true,id: 'microslider'};   
+    let param = { url: '', speed: 1000, delay: 1, pagecount: 3, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true,id: 'microslider',webparttitle:"Photo Gallery"};   
     function renderUI(data, param) {
         if (document.getElementById(param.id)) {
             render(
-                <SliderFrame
-                    itemCount={data.length}
-                    speed={param.speed}
-                    delay={param.delay}
-                    pause={param.pause}
-                    autoplay={param.autoplay}
-                    dots={param.dots}
-                    arrows={param.arrows}
-                    pagecount={param.pagecount}
-                    >
-                    <SliderPics items={data} />
-                </SliderFrame>,
+                 <WebPartFrame
+                    title={param.webparttitle}
+                    hasMore={false}
+                    link={param.moreurl}
+                    hasTopLine={false}>
+                    <SliderFrame
+                        itemCount={data.length}
+                        speed={param.speed}
+                        delay={param.delay}
+                        pause={param.pause}
+                        autoplay={param.autoplay}
+                        dots={param.dots}
+                        arrows={param.arrows}
+                        pagecount={param.pagecount}
+                        >
+                        <SliderPics items={data} />
+                    </SliderFrame>
+                </WebPartFrame>,                
                 document.getElementById(param.id)
             );            
         }
@@ -49,7 +57,7 @@ function sliderRender(config) {
         param.delay = config.delay ? config.delay : 1000;
         param.pause = config.pause ? config.pause : true;
         param.autoplay = config.autoplay ? config.autoplay : false;
-        param.dots = config.dots ? config.dots : true;
+        param.dots = config.dots ? config.dots : false;
         param.arrows = config.arrows ? config.arrows : true;
         param.listurl = config.listurl ? config.listurl : '';
         param.pagecount = config.pagecount ? config.pagecount : 1;

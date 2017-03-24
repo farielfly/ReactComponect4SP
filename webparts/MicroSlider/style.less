@@ -3,6 +3,23 @@
 div[id$="microslider"] {
     width: 100%;    
 
+     .acs-webpartframe {
+        position: relative;
+        .acs-webpartframe-header {
+            .acs-header-icon {
+                width: 26px;
+                height: 26px;
+                background-position: -104px -36px;
+            }
+
+            .acs-header-more{
+                position: absolute;
+                bottom: 20px;
+                left: 20px;                
+            }
+        }
+     }
+
     .acs-sliderframe {
         position: relative;
         width: 100%;
@@ -22,6 +39,7 @@ div[id$="microslider"] {
             .acs-slider-pic {
                 display: inline-block;
                 height: 100%;
+                margin-right: 0.8%;
 
                 > a {
                     display: block;
@@ -74,6 +92,10 @@ div[id$="microslider"] {
                     }
                 }
             }
+
+            .acs-slider-pic:nth-child(3n) {
+                margin-right: 0px;
+            }
         }
 
         .acs-slider-arrow-wrap {
@@ -87,29 +109,44 @@ div[id$="microslider"] {
             z-index: 100;
             width: 100%;
             cursor: pointer;
+        }        
+        
+        .acs-slider-arrow-right {
+            right: 0;
+            position: absolute;
+            div{                
+                background-position: -102px -140px;
+            }
         }
 
-        [class="acs-slider-arrow-left"], [class="acs-slider-arrow-right"] {
-            /* use !important to prevent issues with browser extensions that change fonts */
-            font-family: 'icomoon' !important;
-            speak: none;
-            font-style: normal;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            /* Better Font Rendering =========== */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .acs-slider-arrow-right:before {
-            content: "\ea42";
-        }
-        .acs-slider-arrow-left:before {
-             content: "\ea44";
+        .acs-slider-arrow-left {
+            left: 0;
+            position: absolute;
+            div{
+                background-position: -68px -140px;
+            }            
         }
         
+         .acs-slider-arrow-left, .acs-slider-arrow-right{
+            width: 34px;
+            height: 34px;
+            background: rgba(68,68,68,0.2);            
+            line-height: 34px; 
+        } 
+
+        .acs-slider-arrow-left:hover, .acs-slider-arrow-right:hover{
+            background: rgba(68,68,68,0.5)
+        } 
+
+        .acs-slider-arrow-left div, .acs-slider-arrow-right div{
+                width: 26px;
+                height: 26px;
+                background-image: @bgimage_path;
+                z-index: 100;
+                cursor: pointer;
+                display: inline-block;
+        }
+
         .acs-slider-arrow-right {
             right: 0;
             position: absolute;

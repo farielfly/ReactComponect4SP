@@ -1,6 +1,6 @@
 @bgimage_path: url('../../dist/common/images/image.png');
-@common_font_CE_55_ROMAN: 'Frutiger CE 55 Roman';
-@common_font_LT_55_ROMAN: 'Frutiger LT 55 Roman';
+@common_font_CE_55_ROMAN: 'Open Sans';
+@common_font_LT_55_ROMAN: 'Open Sans';
 
 .text_overflow {
     white-space: nowrap;
@@ -12,6 +12,7 @@
 
 .acs-webpartframe {
     height: 100%;
+    font-family: "Open Sans";
 
     .acs-webpartframe-header {
         display: flex;
@@ -20,8 +21,6 @@
         text-decoration: none;
 
         .acs-header-icon {
-            width: 40px;
-            height: 40px;
             display: inline-block;
             background-image: @bgimage_path;
         }
@@ -39,12 +38,6 @@
             font-size: 16px;
             flex-grow: 2;
         }
-
-        .acs-header-more {
-            display: inline-block;
-            text-align: right;
-            flex-grow: 1;
-        }
     }
 
     .acs-sliderframe {
@@ -52,56 +45,7 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-
-        .acs-slider-arrow-wrap {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center;
-
-            .acs-slider-arrow-left, .acs-slider-arrow-right {
-                width: 26px;
-                height: 26px;
-                background-image: @bgimage_path;
-                z-index: 100;
-                cursor: pointer;
-                display: inline-block;
-            }
-
-            .acs-slider-arrow-left {
-                background-position: -26px -40px;
-            }
-
-            .acs-slider-arrow-right {
-                background-position: -52px -40px;
-            }
-
-            .acs-slider-arrow:hover {
-                background: rgba(0, 0, 0, 0.2);
-            }
-
-            .acs-slider-dots {
-                margin-bottom: 15px;
-                height: 26px;
-                text-align: center;
-                z-index: 99;
-
-
-                .acs-slider-dot {
-                    display: inline-block;
-                    margin: 10px;
-                    width: 9px;
-                    height: 9px;
-                    background-color: #ccc;
-                    cursor: pointer;
-                    border-radius: 20px;
-                }
-
-                .acs-slider-dot-selected {
-                    background: #f57d30;
-                }
-            }
-        }
+        font-family: "Open Sans";
     }
 }
 

@@ -21,7 +21,7 @@ function eventRender(config) {
                     title={param.webparttitle}
                     hasMore={true}
                     link={param.moreurl}
-                    hasTopLine={true}
+                    hasTopLine={false}
                     >
                     <SliderEvents inputDate={itemNodes} />                    
                 </WebPartFrame>,

@@ -5,9 +5,9 @@ import $ from 'jquery';
 
 function sliderRender(config) {
 
-    let data = [{ 'src': '../../components/img/image1.jpg', 'bgsrc':'../../components/img/image1.jpg', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' },
-    { 'src': '../../components/img/image2.jpg', 'bgsrc':'../../components/img/image1.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
-    { 'src': '../../components/img/image3.jpg', 'bgsrc':'../../components/img/image1.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
+    let data = [{ 'src': '../../components/img/image1.jpg', 'bgsrc':'../../components/img/imagebg.png', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' },
+    { 'src': '../../components/img/image2.jpg', 'bgsrc':'../../components/img/imagebg.png', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
+    { 'src': '../../components/img/image3.jpg', 'bgsrc':'../../components/img/imagebg.png', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
     let param = { url: '', speed: 1000, delay: 1, pagecount: 1, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true, id: 'slider'};   
     function renderUI(data, param) {
@@ -51,7 +51,7 @@ function sliderRender(config) {
         param.delay = config.delay ? config.delay : 1000;
         param.pause = config.pause ? config.pause : true;
         param.autoplay = config.autoplay ? config.autoplay : false;
-        param.dots = config.dots ? config.dots : true;
+        param.dots = config.dots ? config.dots : false;
         param.arrows = config.arrows ? config.arrows : true;
         param.listurl = config.listurl ? config.listurl : '';
         param.pagecount = config.pagecount ? config.pagecount : 1;

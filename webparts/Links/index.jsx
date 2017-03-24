@@ -29,7 +29,7 @@ function linksRender(config) {
             render(
                 <WebPartFrame
                     title={param.webparttitle}
-                    hasMore={false}
+                    hasMore={true}
                     link={param.moreurl}
                     hasTopLine={false}>
                     <SliderLinks items={itemNodes} />
