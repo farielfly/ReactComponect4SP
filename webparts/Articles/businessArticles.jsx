@@ -1,118 +1,51 @@
 import { render } from 'react-dom';
 import $ from 'jquery';
-import ArticlePicture from '../../components/article/articlePicture.jsx';
-import ArticleHeadline from '../../components/article/articleHeadline.jsx';
-import ArticleTime from '../../components/article/articleTime.jsx';
-import ArticleLike from '../../components/article/articleLike.jsx';
+import SingleArticle from './singleArticles.jsx';
 
-function articleBusinessRender(params) {
-    if (!params) {
-        params = [{
-            PicturePath: '../../components/img/image1.jpg',
-            Headline: 'There are some items to show in this view. There are no items to show in this view.',
-            Time: "1/11/2017 10:39 AM",
-            Like: 122,
-            HasLiked: false
-        },
-            {
-                PicturePath: '../../components/img/image1.jpg',
-                Headline: 'There are some items to show in this view. ',
-                Time: "2/15/2017 15:35 PM",
-                Like: 2344,
-                HasLiked: true
-            },
-            {
-                PicturePath: '../../components/img/image1.jpg',
-                Headline: 'Overview',
-                Time: "2/15/2017 16:35 PM",
-                Like: 204,
-                HasLiked: false
-            },
-            {
-                PicturePath: '../../components/img/image1.jpg',
-                Headline: 'Forbidden: Access is denied.',
-                Time: "2/15/2017 18:35 PM",
-                Like: 199,
-                HasLiked: true
-            },
-            {
-                PicturePath: '../../components/img/image1.jpg',
-                Headline: 'There are some items to show in this view. There are no items to show in this view.',
-                Time: "2/15/2017 15:35 PM",
-                Like: 4656,
-                HasLiked: true
-            },
-            {
-                PicturePath: '../../components/img/image1.jpg',
-                Headline: 'There are some items to show in this view. ',
-                Time: "2/15/2017 15:35 PM",
-                Like: 234,
-                HasLiked: true
-            },
-            {
-                PicturePath: '../../components/img/image1.jpg',
-                Headline: 'Hello WorldHello WorldHello WorldHello WorldHello WorldHello World.',
-                Time: "2/15/2017 15:35 PM",
-                Like: 665,
-                HasLiked: false
-            },
-            {
-                PicturePath: '../../components/img/image1.jpg',
-                Headline: 'There are some items to show in this view. There are no items to show in this view.',
-                Time: "2/15/2017 15:35 PM",
-                Like: 8899,
-                HasLiked: true
-            }];
+export default class ArticlesBusiness extends  React.Component{
+    constructor(props){
+        super(props);
     }
-    renderUI(params);
 
-    function renderUI(params) {
-        if (document.getElementById('articlesBusiness')) {
-            let firstParams = []; let secondParams = [];
-            let width = '20%';
-            if (params.length >= 4) {
-                firstParams = params.slice(0, 4);
-                secondParams = params.slice(4, 8);
-            }
-            render(
-                <div>
-                    <div>
-                        <ul>
-                            {
-                                firstParams.map(function (article, i) {
-                                    return <li key={i} className={'acs-article-business-ul'}>
-                                        <div className={'acs-articleframe'}>
-                                            <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
-                                            <ArticleHeadline headline={article.Headline}></ArticleHeadline>
-                                            <ArticleTime time={article.Time}></ArticleTime>
-                                            <ArticleLike like={article.Like} hasLiked={article.HasLiked}></ArticleLike>
-                                        </div>
-                                    </li>
-                                })
-                            }
-                        </ul>
-                    </div>
-                    <div>
-                        <ul>
-                            {
-                                secondParams.map(function (article, i) {
-                                    return <li key={i} className={'acs-article-business-ul'}>
-                                        <div className={'acs-articleframe'}>
-                                            <ArticlePicture picturePath={article.PicturePath}></ArticlePicture>
-                                            <ArticleHeadline headline={article.Headline}></ArticleHeadline>
-                                            <ArticleTime time={article.Time}></ArticleTime>
-                                            <ArticleLike like={article.Like} hasLiked={article.HasLiked}></ArticleLike>
-                                        </div>
-                                    </li>
-                                })
-                            }
-                        </ul>
-                    </div>
-                </div>,
-                document.getElementById('articlesBusiness')
-            )
+    initData(data){
+        let temp = [],aveCount =this.props.aveCount;
+        if(data.length <= aveCount){
+            temp.push(data);
         }
+        else{
+            var arrCount = (data.length / aveCount) >2?(data.length / aveCount):2;
+            if(arrCount === 2){
+                temp.push(data.slice(0,aveCount));
+                temp.push(data.slice(aveCount,data.length));
+            }
+            else{
+                var arrCountTemp = 2+this.props.loadmore;
+                arrCountTemp = arrCountTemp < arrCount?arrCountTemp:arrCount;
+                for(var i = 0; i< arrCountTemp;i++){
+                    temp.push(data.slice(i *aveCount,(i+1)*aveCount));
+                }
+                if(( data.length % aveCount) !== 0 && arrCountTemp===arrCount){
+                    temp.push(data.slice(arrCount *aveCount,data.length));
+                }
+            }
+        }
+        return temp;
+    }
+
+    render(){
+        let data = this.initData(this.props.data),width = 100/this.props.aveCount;
+        return(<div className="acs-articles-content">
+            {
+                data.map((rowData,index)=>{
+                    return <div className="acs-articles-contentrow" key={"articlerow"+index}>{rowData.map((itemData,index)=>{
+                        return <SingleArticle hasTitle={true} hasIntro={false} hasTime={true} hasLike={true} itemWidth={width} dataItem={itemData} key={"article"+index}></SingleArticle>
+                    })}
+                    </div>
+                })
+            }
+        </div>)
+        
     }
 }
 
-global.businessArticleRender = businessArticleRender;
+  
