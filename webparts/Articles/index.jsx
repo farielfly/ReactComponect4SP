@@ -125,7 +125,7 @@ function articleBusinessRender(params) {
 global.articleBusinessRender = articleBusinessRender;
 
 
-function signleArticlesRender(params) {
+function singleArticlesRender(params) {
     if (!params) {
         params = {
             ArticleId: 'signleArticles',
