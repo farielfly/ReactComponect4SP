@@ -7,7 +7,7 @@ module.exports = {
     webparts: [
         {
             'name': 'Articles',
-            'src': ['webparts/Articles/signleArticles.jsx'],
+            'src': ['webparts/Articles/index.jsx'],
             'style': ['webparts/Articles/style.less'],
             'output': 'dist/webparts',
             'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Articles/Script',
