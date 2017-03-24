@@ -7,7 +7,8 @@ export default class DivisionDetail extends React.Component{
         let imgs = document.getElementsByClassName('ms-spimn-img');
         for(var i=imgs.length-1;i>-1;i--){
             imgs[i].setAttribute('sip',imgs[i].getAttribute('data-sip'));
-        }
+        }   
+        AIC.wordLimit(".acs-infohead-description",5)
         ProcessImn();
     }
 
@@ -23,7 +24,7 @@ export default class DivisionDetail extends React.Component{
                         <div className="acs-infohead-commontitle">{this.props.commonTitle}</div>
                         <div className="acs-infohead-titlecontent">
                            <div className="acs-infohead-title">{this.props.infoData.Title}</div>
-                           <div className="acs-infohead-description">{this.props.infoData.Description}</div>  
+                           <div className="acs-infohead-description" title={this.props.infoData.Description}>{this.props.infoData.Description}</div>  
                         </div>
                         
                     </div>

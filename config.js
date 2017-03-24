@@ -77,7 +77,7 @@ module.exports = {
     concats: [
         {
             'name': 'aicGlobal',
-            'src': ['../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution/JS/aicGlobal.js', 'jslibrary/Commonjs.js'],
+            'src': ['../APPSAICSolution/APPSAICSolution/Layouts/APPSAICSolution/JS/aicGlobal.js', 'jslibrary/Commonjs.js', 'jslibrary/WebpartCommonjs.js'],
             'output': 'dist/jslibrary',
         },
         {
