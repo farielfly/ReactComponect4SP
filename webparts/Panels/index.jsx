@@ -7,12 +7,12 @@ function panelRender(config) {
         title: 'My Task',
         msgCount: 3,
         iconPosition: '0 -214px',
-        url: 'www.baidu.com'
+        url: '#'
     }, {
         title: 'HR Connect',
         msgCount: 0,
         iconPosition: '-66px -214px',
-        url: 'www.baidu.com'
+        url: '#'
     }];
 
     function renderUI(panels) {
