@@ -1,0 +1,66 @@
+@import "../../stylelibrary/webpartcommon";
+
+.acs-listframe {
+  width: 100%;
+  margin: 10px;
+
+  .acs-listframe-title {
+    font-size: 14px;
+    color: #888;
+    height: 20px;
+    padding: 10px 0;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    border: 1px solid #ddd;
+    border-top: 2px solid #ff9c00;
+
+    span {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+  }
+
+  .acs-listframe-content {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-height: 100px;
+
+    .content-item {
+      padding-top: 5px;
+      margin-bottom: 20px;
+
+      .content-left {
+        vertical-align: top;
+        width: 25%;
+        display: inline-block;
+
+        > img {
+          width: 100%;
+        }
+      }
+
+      .conent-right {
+        width: 75%;
+        display: inline-block;
+
+        .content-title {
+          font-size: 14px;
+          color: #333;
+          padding-left: 15px;
+        }
+
+        .content-footer {
+          padding-left: 15px;
+          margin-top: 15px;
+          color: #888;
+          font-size: 13px;
+        }
+      }
+    }
+
+  }
+}
