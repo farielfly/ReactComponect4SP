@@ -2,7 +2,7 @@ export default class SearchBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = { searchContent: '' }
-        this.onSearchClick = this.onSearchClick.bind(this);
+        // this.onSearchClick = this.onSearchClick.bind(this);
     }
 
     onSearchClick(event) {
@@ -14,13 +14,13 @@ export default class SearchBox extends React.Component {
 
     render() {
         let { iconPosition, placeHolder, link } = this.props;
-        let searchContent = this.state.searchContent;
+        // let searchContent = this.state.searchContent;
 
         return (
             <div className={"acs-searchbox"}>
                 <div className={"acs-searchbox-headericon"} style={{ backgroundPosition: iconPosition }}></div>
+                <div className={"acs-searchbox-tailicon"} onClick={this.onSearchClick.bind(this, event)}></div>
                 <input className={"acs-searchbox-input"} type="text" placeholder={placeHolder} ref="mSearchBox"></input>
-                <div className={"acs-searchbox-tailicon"} onClick={this.onSearchClick}></div>
             </div>
         );
     }

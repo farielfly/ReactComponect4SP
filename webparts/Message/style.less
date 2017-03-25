@@ -1,5 +1,4 @@
 @import "../../stylelibrary/webpartcommon";
-@import "../../stylelibrary/commonstyle";
 
 #message{
     .acs-header-icon{
@@ -35,6 +34,12 @@
         .acs-message-content{
             color: #333;
             text-transform: uppercase;
+        }
+    }
+
+    @media(max-width:768px) {
+        .acs-message{
+            width: 100%;
         }
     }
 }
