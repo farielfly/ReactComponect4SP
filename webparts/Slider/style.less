@@ -1,7 +1,7 @@
 ﻿@import "../../stylelibrary/webpartcommon";
 
-div[id$="slider"] {
-    width: 100%;    
+div[id$="newsslider"] {
+    width: 100%;   
 
     .acs-sliderframe {
         position: relative;
@@ -148,6 +148,38 @@ div[id$="slider"] {
                 z-index: 100;
                 cursor: pointer;
                 display: inline-block;
+        }
+    }
+
+    @media(max-width:767px) {
+        .acs-slider-pic-front{
+            img{
+                display: none !important;
+            }
+
+            .acs-titledescriptionpanel-wrap{
+                left: 0px !important;
+                top: 70% !important;
+                max-width: 100% !important;
+
+                .acs-titledescriptionpanel-title{
+                    font-size: 16px !important;                    
+                }
+
+                .acs-titledescriptionpanel-description{
+                    margin-top: 12px !important;
+                    font-size: 13px !important;
+                }
+            }
+        }
+
+        .acs-slider-pic-back{            
+            left: 0px !important;
+            width: 100% !important;
+        }
+
+        .acs-slider-arrow-wrap{
+            top: e('calc(50% - 77px)') !important;
         }
     }
 }

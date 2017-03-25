@@ -10,6 +10,7 @@ export default class titleDescriptionPanel extends React.Component {
                 <a href={itemhref}>
                     <span className='acs-titledescriptionpanel-title'>{title}</span>
                     <span className='acs-titledescriptionpanel-description'>{description}</span>
+                    <span className='acs-titledescriptionpanel-play'><div></div></span>
                 </a>
             </div>
         );

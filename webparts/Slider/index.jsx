@@ -9,7 +9,7 @@ function sliderRender(config) {
     { 'src': '../../components/img/image2.jpg', 'bgsrc':'../../components/img/imagebg.png', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
     { 'src': '../../components/img/image3.jpg', 'bgsrc':'../../components/img/imagebg.png', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
 
-    let param = { url: '', speed: 1000, delay: 1, pagecount: 1, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true, id: 'slider'};   
+    let param = { url: '', speed: 1000, delay: 1, pagecount: 1, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true, id: 'newsslider'};   
     function renderUI(data, param) {
         if (document.getElementById(param.id)) {
             render(
