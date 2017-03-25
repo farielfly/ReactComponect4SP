@@ -3,7 +3,7 @@ import $ from 'jquery';
 import ListFrame from '../../components/Common/listFrame.jsx';
 
 function newsListRender(config) {
-    let param = { title: 'Latest News', hasPager: false };
+    let param = { title: 'ARTICLES YOU MAY ALSO LIKE', hasPager: false };
     let data = [{
         newsImg: 'http://www.baidu.com/img/bd_logo1.png',
         title: 'Verizon is bringing back unlimited data',

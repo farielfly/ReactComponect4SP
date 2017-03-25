@@ -2,36 +2,36 @@
 
 .acs-listframe {
   width: 100%;
-  margin: 10px;
 
   .acs-listframe-title {
     font-size: 14px;
     color: #888;
-    height: 20px;
-    padding: 10px 0;
-    margin-left: 20px;
-    margin-right: 20px;
-
+    height: 55px;
     border: 1px solid #ddd;
     border-top: 2px solid #ff9c00;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     span {
       text-transform: uppercase;
       font-weight: bold;
       margin-left: 20px;
+      line-height: 55px;
     }
   }
 
   .acs-listframe-content {
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    margin-left: 20px;
-    margin-right: 20px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     min-height: 100px;
+    padding-bottom: 25px;
 
     .content-item {
-      padding-top: 5px;
-      margin-bottom: 20px;
+      padding-top: 25px;
+      margin-left: 20px;
+      margin-right: 20px;
 
       .content-left {
         vertical-align: top;
