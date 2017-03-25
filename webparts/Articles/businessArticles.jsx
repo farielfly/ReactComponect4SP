@@ -38,7 +38,7 @@ export default class ArticlesBusiness extends  React.Component{
             {
                 data.map((rowData,index)=>{
                     return <div className="acs-articles-contentrow" key={"articlerow"+index}>{rowData.map((itemData,index)=>{
-                        return <SingleArticle hasTitle={true} hasIntro={false} hasTime={true} hasLike={true} itemWidth={width} dataItem={itemData} key={"article"+index}></SingleArticle>
+                        return <SingleArticle colleUrl={"http://www.bing.com"} hasTitle={false} hasIntro={false} hasTime={true} hasLike={true} itemWidth={width} dataItem={itemData} key={"article"+index}></SingleArticle>
                     })}
                     </div>
                 })
