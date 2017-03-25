@@ -56,12 +56,12 @@ export default class NavbarItemTile extends React.Component {
             })}
         </ul>);
         secondMenu = hasGrandChild ? secondMenu : secondMenuC;
-        secondMenu = menuData.hasChild?secondMenu:null;
+        secondMenu = menuData.HasChild?secondMenu:null;
         
 
         return (
             <div className="acs-navbar-item" style={{cursor:'default'}} onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)}>
-                <NavTitleBtn classname={"acs-navbaritem-titlebtn"} isSecond={false} name={menuData.Title} open={this.state.open} hasChild={menuData.hasChild} ItemHref={menuData.ItemHref} />
+                <NavTitleBtn classname={"acs-navbaritem-titlebtn"} isSecond={false} name={menuData.Title} open={this.state.open} hasChild={menuData.HasChild} ItemHref={menuData.ItemHref} />
                 {secondMenu}
             </div>)
     }

@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 function NavigationRender(config) {
     let param = {};
-    let data = [
+    let datatest = [
         {
             Title: "Home", ItemHref: "", Items: [], hasChild: false, hasGrandChild: false,
         },
@@ -128,27 +128,11 @@ function NavigationRender(config) {
         }
     }
 
-    function loadData() {
-        $.ajax({
-            cache: false,
-            type: "GET",
-            url: config.url,
-            headers: { "accept": "application/json;odata=verbose" },
-            async: false,
-            success: function(data) {
-                renderUI(data);
-            },
-            error: function(data) {
-
-            }
-        });
-    }
-
-    if (config && !config.debug) {
-        loadData();
+    if (!config.debug) {
+        renderUI(config.data);
     }
     else {
-        renderUI(data);
+        renderUI(datatest);
     }
 
 }

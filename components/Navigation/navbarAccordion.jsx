@@ -9,9 +9,9 @@ export default class navbarMenuList extends React.Component{
         let {data} = this.props;
 
         let mobileNav = data.map((secItem,fid)=>{
-            if(secItem.hasChild){
+            if(secItem.HasChild){
                 let thirdLevel = null;
-                if(secItem.hasGrandChild){
+                if(secItem.HasGrandChild){
                     thirdLevel=thirdLevel = secItem.Items.map((thrItem,sid)=>{
                         return (
                             <Accordion isFirst={false} key={'secnav'+sid} accordionData={thrItem} itemHeight={"auto"} hasInfoPanel={false} informationEvent={null} >

@@ -13,10 +13,10 @@ export default class navbarMenuList extends React.Component{
                     {data.map((el ,index)=>{
                         switch(menuStyle){
                             case 0:{
-                                return (<MenuItem key={index} menuData={el} hasGrandChild={el.hasGrandChild}/>)
+                                return (<MenuItem key={index} menuData={el} hasGrandChild={el.HasGrandChild}/>)
                             }
                             case 1:{
-                                return (<MenuItemTile key={index} menuData={el} hasGrandChild={el.hasGrandChild}/>)
+                                return (<MenuItemTile key={index} menuData={el} hasGrandChild={el.HasGrandChild}/>)
                             }
                         }
                     })}
