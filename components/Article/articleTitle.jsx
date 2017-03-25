@@ -21,9 +21,13 @@ export default class ArticleTitle extends React.Component {
         window.removeEventListener('resize', this.handleResize.bind(this));  
     } 
 
+    openCollection(url){
+        window.open(url);
+    }
+
     render() {
-        let {hasTitle, title, iconPath, link,width} = this.props;
-        let lineHead = !hasTitle? null:(<div className={"acs-articleframe-header"}>
+        let {hasTitle, title, iconPath, link,width,partUrl} = this.props;
+        let lineHead = !hasTitle? null:(<div className={"acs-articleframe-header"} onClick={this.openCollection.bind(this,partUrl)}> 
                                             <div className={"acs-articleframe-header-icon"}></div>
                                             <div className={"acs-articleframe-header-title"}>{title}</div>
                                         </div>);

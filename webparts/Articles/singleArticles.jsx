@@ -13,21 +13,27 @@ export default class SingleArticle extends React.Component{
         super(props);
     }
 
+    openItem(url){
+        window.open(url);
+    }
+
     render(){
-        let {hasTitle,hasIntro,hasTime,hasLike,dataItem,itemWidth} = this.props;
+        let {hasTitle,hasIntro,hasTime,hasLike,dataItem,itemWidth,colleUrl} = this.props;
         let intro = hasIntro ? (<ArticleIntro intro={dataItem.Intro}></ArticleIntro>) : null;
         let time = hasTime ? (<ArticleTime time={dataItem.Time}></ArticleTime>) : null;
         let like = hasLike ? (<ArticleLike like={dataItem.Like}></ArticleLike>) : null;
 
         
         return (
-            <ArticleTitle title={dataItem.Title} width={itemWidth} hasTitle={hasTitle}>
-                <ArticlePicture picturePath={dataItem.PicturePath}></ArticlePicture>
-                <div className="asc-article-content">
-                    <ArticleHeadline headline={dataItem.Headline}></ArticleHeadline>
-                    {intro}
-                    {time}
-                    {like}
+            <ArticleTitle title={dataItem.Title} width={itemWidth} hasTitle={hasTitle} partUrl={colleUrl}> 
+                <div onClick={this.openItem.bind(this,dataItem.itemUrl)} style={{heigh:"auto"}}>
+                    <ArticlePicture picturePath={dataItem.PicturePath}></ArticlePicture>
+                    <div className="asc-article-content">
+                        <ArticleHeadline headline={dataItem.Headline}></ArticleHeadline>
+                        {intro}
+                        {time}
+                        {like}
+                    </div>
                 </div>
             </ArticleTitle>
         );

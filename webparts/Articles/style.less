@@ -2,107 +2,159 @@
 @import "../../stylelibrary/webpartcommon";
 
  .acs-articleframe{
-                    display: inline-block;
-                    vertical-align: top;
+    display: inline-block;
+    vertical-align: top;
 
-                    > div{
-                        position: relative;
-                        padding:20px 15px;
-                    }
+    > div{
+        position: relative;
+        padding:0 15px;
+    }
 
-                    .acs-articleframe-header{
-                        height: 0;
+    .acs-articleframe-header{
+        height: 0;
 
-                        .acs-articleframe-header-icon{
-                            display: none;
-                            width: 40px;
-                            height: 40px;
-                            float: left;
-                            background-image: @bgimage_path;
-                        }
+        .acs-articleframe-header-icon{
+            display: none;
+            width: 40px;
+            height: 40px;
+            float: left;
+            background-image: @bgimage_path;
+            background-position: 0 -174px;
+        }
+        
+        .acs-articleframe-header-title{
+            position: absolute;
+            top:90px;
+            float: none;
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #9292b2;
+        }
+    }
 
-                        .acs-articleframe-header-title{
-                            position: absolute;
-                            top:90px;
-                            float: none;
-                            margin: 0;
-                            font-size: 16px;
-                            font-weight: bold;
-                            color: #9292b2;
-                        }
-                    }
+    .acs-articleframe-picture{
+        display: inline-block;
+        width: 112px;
+        height: 63px;
+        margin-bottom: 15px;
+        vertical-align: top;
 
-                    .acs-articleframe-picture{
-                        display: inline-block;
-                        width: 112px;
-                        height: 63px;
-                        margin-bottom: 15px;
-                        vertical-align: top;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
 
-                        img{
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
+    .asc-article-content{
+        display: inline-block;
+        margin-left: 20px;
+        width: e('calc(100% - 132px)');
 
-                    .asc-article-content{
-                        display: inline-block;
-                        margin-left: 20px;
-                        width: e('calc(100% - 132px)');
+        
+        .acs-articleframe-headline{
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .acs-articleframe-intro,.acs-articleframe-time, .acs-articleframe-like{
+            font-size: 13px;
+            color: #655e5e;
+        }
+        
+        .acs-articleframe-intro{
+            margin-top: 5px
+        }
 
-                        
-                        .acs-articleframe-headline{
-                            margin-bottom: 10px;
-                            font-size: 14px;
-                            font-weight: bold;
-                            color: #333;
-                        }
-                        
-                        .acs-articleframe-intro,.acs-articleframe-time, .acs-articleframe-like{
-                            font-size: 13px;
-                            color: #655e5e;
-                        }
-                        
-                        .acs-articleframe-intro{
-                            margin-top: 5px
-                        }
+        .acs-articleframe-time-icon, .acs-articleframe-like-icon{
+            display: inline-block;
+            margin-right: 5px;
+            height: 18px;
+            width: 18px;
+            background-image: @bgimage_path;
+        }
 
-                        .acs-articleframe-time-icon, .acs-articleframe-like-icon{
-                            display: inline-block;
-                            margin-right: 5px;
-                            height: 18px;
-                            width: 18px;
-                            background-image: @bgimage_path;
-                        }
+        .acs-articleframe-time{
+            .acs-articleframe-time-title{
+                display: inline-block;
+                font-size: 13px;
+                color:#888;
+                vertical-align: top;
+            }
 
-                        .acs-articleframe-time{
-                            .acs-articleframe-time-title{
-                                display: inline-block;
-                                font-size: 13px;
-                                color:#888;
-                                vertical-align: top;
-                            }
+            .acs-articleframe-time-icon{
+                background-position: -36px -18px;
+            }
+        }
 
-                            .acs-articleframe-time-icon{
-                                background-position: -90px -66px;
-                            }
-                        }
+        .acs-articleframe-like{
+            .acs-articleframe-like-title{
+                display: inline-block;
+                font-size: 13px;
+                color:#888;
+                vertical-align: top;
+            }
 
-                        .acs-articleframe-like{
-                            .acs-articleframe-like-title{
-                                display: inline-block;
-                                font-size: 13px;
-                                color:#888;
-                                vertical-align: top;
-                            }
+            .acs-articleframe-like-icon{
+                cursor: pointer;
+                background-position: -54px -18px;
+            }
+        }
+    }
+}
 
-                            .acs-articleframe-like-icon{
-                                cursor: pointer;
-                                background-position: -108px -66px;
-                            }
-                        }
-                    }
-                }
+.acs-articleframe-header-icon-BUSINESS{
+     .acs-articleframe{
+         .acs-articleframe-header{
+            .acs-articleframe-header-icon{
+                background-position: 0 -174px;
+            }
+         }
+     }
+}
+
+.acs-articleframe-header-icon-INNOVATION{
+    .acs-articleframe{
+         .acs-articleframe-header{
+           .acs-articleframe-header-icon{
+                background-position: -40px -174px;
+            }  
+         }
+     }
+}
+
+.acs-articleframe-header-icon-SOCIAL_IMPACT{
+    .acs-articleframe{
+         .acs-articleframe-header{
+            .acs-articleframe-header-icon{
+                background-position: -80px -174px;
+            } 
+         }
+     }
+}
+
+.acs-articleframe-header-icon-PEOPLE_CULTURE{
+    .acs-articleframe{
+         .acs-articleframe-header{
+            .acs-articleframe-header-icon{
+                background-position: -120px -174px;
+            } 
+         }
+     }
+}
+
+.acs-articleframe-header-icon-WORK_SMART{
+    .acs-articleframe{
+         .acs-articleframe-header{
+             .acs-articleframe-header-icon{
+                background-position: -160px -174px;
+            }
+         }
+     }
+}
+
 
 
 body{
@@ -210,108 +262,8 @@ body{
                 width: 100%;
                 height: auto;
 
-                 .acs-articleframe{
-                    display: inline-block;
-                    vertical-align: top;
+                //.acs-articleframe;
 
-                    > div{
-                        position: relative;
-                        padding:20px 15px;
-                    }
-
-                    .acs-articleframe-header{
-                        height: 0;
-
-                        .acs-articleframe-header-icon{
-                            display: none;
-                            width: 40px;
-                            height: 40px;
-                            float: left;
-                            background-image: @bgimage_path;
-                        }
-
-                        .acs-articleframe-header-title{
-                            position: absolute;
-                            top:90px;
-                            float: none;
-                            margin: 0;
-                            font-size: 16px;
-                            font-weight: bold;
-                            color: #9292b2;
-                        }
-                    }
-
-                    .acs-articleframe-picture{
-                        display: inline-block;
-                        width: 112px;
-                        height: 63px;
-                        margin-bottom: 15px;
-                        vertical-align: top;
-
-                        img{
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-
-                    .asc-article-content{
-                        display: inline-block;
-                        margin-left: 20px;
-                        width: e('calc(100% - 132px)');
-
-                        
-                        .acs-articleframe-headline{
-                            margin-bottom: 10px;
-                            font-size: 14px;
-                            font-weight: bold;
-                            color: #333;
-                        }
-                        
-                        .acs-articleframe-intro,.acs-articleframe-time, .acs-articleframe-like{
-                            font-size: 13px;
-                            color: #655e5e;
-                        }
-                        
-                        .acs-articleframe-intro{
-                            margin-top: 5px
-                        }
-
-                        .acs-articleframe-time-icon, .acs-articleframe-like-icon{
-                            display: inline-block;
-                            margin-right: 5px;
-                            height: 18px;
-                            width: 18px;
-                            background-image: @bgimage_path;
-                        }
-
-                        .acs-articleframe-time{
-                            .acs-articleframe-time-title{
-                                display: inline-block;
-                                font-size: 13px;
-                                color:#888;
-                                vertical-align: top;
-                            }
-
-                            .acs-articleframe-time-icon{
-                                background-position: -90px -66px;
-                            }
-                        }
-
-                        .acs-articleframe-like{
-                            .acs-articleframe-like-title{
-                                display: inline-block;
-                                font-size: 13px;
-                                color:#888;
-                                vertical-align: top;
-                            }
-
-                            .acs-articleframe-like-icon{
-                                cursor: pointer;
-                                background-position: -108px -66px;
-                            }
-                        }
-                    }
-                }
             }
         }
 
@@ -388,38 +340,7 @@ body{
                  margin-bottom: 20px;
 
                 .acs-articles-contentrow{
-                    .acs-articleframe{
-                        >div{
-                            padding:0 10px;
-                        }
-
-                        .acs-articleframe-header{
-                            height: 40px;
-
-                            .acs-articleframe-header-icon{
-                                display: block;
-                            }
-
-                             .acs-articleframe-header-title{
-                                position: unset;
-                                margin: 12px 10px;
-                                float: left;
-                            }
-                        }
-
-                        .acs-articleframe-picture{
-                            display: block;
-                            width: 100%;
-                            height: auto;
-                        }
-
-                        .asc-article-content{
-                            display: block;
-                            margin-left: 0;
-                            width:100%;
-                            height: auto;
-                        }
-                    }
+                   // .acs-articleframe;
                 }
             }
         }

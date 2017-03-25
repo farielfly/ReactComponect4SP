@@ -6,12 +6,14 @@ import SingleArticle from './singleArticles.jsx';
 function articleBusinessRender(params) {
     if (!params) {
         params = [{
+            ItemUrl:"http://www.baidu.com",
             Title: 'Kevin',
             PicturePath: '../../components/img/image1.jpg',
             Headline: 'There are some items to show in this view. There are no items to show in this view.',
             Intro: "its security certificate is not trusted by your computer's operating system. This may be caused by a misconfiguration or an attacker intercepting your connection."
         },
         {
+            ItemUrl:"http://www.baidu.com",
             PicturePath: '../../components/img/image1.jpg',
             Headline: 'There are some items to show in this view. There are no items to show in this view.',
             Time: "1/11/2017 10:39 AM",
@@ -19,12 +21,14 @@ function articleBusinessRender(params) {
             HasLiked: false
         },
         {
+            ItemUrl:"http://www.baidu.com",
             Title: 'Tom',
             PicturePath: '../../components/img/image2.jpg',
             Headline: 'There are some items to show in this view. ',
             Intro: "its security certificate is not trusted by your computer's operating system."
         },
         {
+            ItemUrl:"http://www.baidu.com",
             Title: 'Justin',
             PicturePath: '../../components/img/image3.jpg',
             Headline: 'Overview',
@@ -128,6 +132,7 @@ global.articleBusinessRender = articleBusinessRender;
 function singleArticlesRender(params) {
     if (!params) {
         params = {
+            ItemUrl:"http://www.baidu.com",
             ArticleId: 'signleArticles',
             Title: 'Kevin',
             PicturePath: '../../components/img/image1.jpg',
@@ -140,7 +145,7 @@ function singleArticlesRender(params) {
     function renderUI(params) {
         if (document.getElementById(params.ArticleId)) {
             render(
-                <SingleArticle hasTitle={true} hasIntro={true} hasTime={false} hasLike={false} itemWidth={100} dataItem={params}></SingleArticle>,
+                <SingleArticle colleUrl={"http://www.bing.com"} hasTitle={true} hasIntro={true} hasTime={false} hasLike={false} itemWidth={100} dataItem={params}></SingleArticle>,
                 document.getElementById(params.ArticleId)
             )
         }
