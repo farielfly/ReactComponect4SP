@@ -1,50 +1,50 @@
 @import "../../stylelibrary/webpartcommon";
 
-.acs-panelframe{
-    width: 270px;
-    height: 120px;
-    line-height: 120px;
-    border: 1px solid #ff9c00;
-    padding:0 20px;
-    margin-bottom: 15px;
-    background-image: -webkit-linear-gradient(left, rgb(255,247,226), rgb(255,255,255));
-    background-image: -ms-linear-gradient(right, rgb(255,247,226), rgb(255,255,255));
-    background-image: -moz-linear-gradient(right, rgb(255,247,226), rgb(255,255,255));
-    background-image: linear-gradient(to right, rgb(255,247,226), rgb(255,255,255)); /* 标准的语法（必须放在最后） */
-    cursor: pointer;
+#panel{
+    .acs-panelframe{
+        width: 270px;
+        height: 120px;
+        line-height: 120px;
+        border: 1px solid #ff9c00;
+        padding:0 20px;
+        margin-bottom: 15px;
+        background-image: -webkit-linear-gradient(left, rgb(255,247,226), rgb(255,255,255));
+        background-image: -ms-linear-gradient(right, rgb(255,247,226), rgb(255,255,255));
+        background-image: -moz-linear-gradient(right, rgb(255,247,226), rgb(255,255,255));
+        background-image: linear-gradient(to right, rgb(255,247,226), rgb(255,255,255)); /* 标准的语法（必须放在最后） */
+        cursor: pointer;
 
-    .acs-panelframe-title{
-        font-size: 16px;
-        font-weight: bold;
-        font-family: "Open Sans";
-        color: #333;
-        float: left;
+        .acs-panelframe-title{
+            font-size: 16px;
+            font-weight: bold;
+            font-family: "Open Sans";
+            color: #333;
+            float: left;
 
-        .acs-panelframe-alert{
-            margin-left: 10px;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 4px;
-            background-color: #ff4444;
-            color: #fff;
-            display: inline-block;
-            text-align: center;
-            vertical-align: middle;
+            .acs-panelframe-alert{
+                margin-left: 10px;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                border-radius: 4px;
+                background-color: #ff4444;
+                color: #fff;
+                display: inline-block;
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
+
+        .acs-panelframe-ico{
+            float: right;
+            margin-top: 27px;
+            width: 66px;
+            height: 66px;
+            background-image: url(../../dist/common/images/image.png);
         }
     }
 
-    .acs-panelframe-ico{
-        float: right;
-        margin-top: 27px;
-        width: 66px;
-        height: 66px;
-        background-image: url(../../dist/common/images/image.png);
-    }
-}
-
-@media(max-width:768px) {
-    #panel{
+    @media(max-width:768px) {
         display: none;
     }
 }

@@ -7,8 +7,9 @@ export default class SearchBox extends React.Component {
 
     onSearchClick(event) {
         let inputValue = this.refs.mSearchBox.value;
-        alert("SearchContent: " + inputValue);
-        this.setState({ searchContent: inputValue });
+        // alert("SearchContent: " + inputValue);
+        // this.setState({ searchContent: inputValue });
+        window.open(this.props.searchUrl + inputValue);
     }
 
     render() {
