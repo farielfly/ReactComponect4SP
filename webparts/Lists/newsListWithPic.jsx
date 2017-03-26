@@ -8,22 +8,22 @@ function newsListRender(config) {
         newsImg: 'http://www.baidu.com/img/bd_logo1.png',
         title: 'Verizon is bringing back unlimited data',
         modifiedOn: (new Date()).setHours(14),
-        url: 'www.baidu.com'
+        url: 'http://www.baidu.com'
     }, {
         newsImg: 'http://www.baidu.com/img/bd_logo1.png',
         title: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
         modifiedOn: (new Date()).setHours(12),
-        url: 'www.baidu.com'
+        url: 'http://www.baidu.com'
     }, {
         newsImg: 'http://www.baidu.com/img/bd_logo1.png',
         title: 'There are many variations of passages of Lorem Ipsum available',
         modifiedOn: (new Date()).setHours(5),
-        url: 'www.baidu.com'
+        url: 'http://www.baidu.com'
     }, {
         newsImg: 'http://www.baidu.com/img/bd_logo1.png',
         title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         modifiedOn: (new Date()).setHours(0),
-        url: 'www.baidu.com'
+        url: 'http://www.baidu.com'
     }];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -46,14 +46,14 @@ function newsListRender(config) {
                         <img src={item.newsImg} />
                     </div>
                     <div className="conent-right">
-                        <div className="content-title">{item.title}</div>
+                        <a className="content-title" href={item.url}>{item.title}</a>
                         <div className="content-footer">{formatDate(item.modifiedOn)}</div>
                     </div>
                 </div>)
             });
             render(
-                <ListFrame title={param.title} hasPager={param.hasPager}>                    
-                        {listItems}
+                <ListFrame title={param.title} hasPager={param.hasPager}>
+                    {listItems}
                 </ListFrame>,
                 document.getElementById('news-list')
             )
