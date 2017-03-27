@@ -9,6 +9,10 @@ export default class ArticlesBusiness extends  React.Component{
 
     initData(data){
         let temp = [],aveCount =this.props.aveCount;
+        data.map((item)=>{
+            item.ItemUrl = item.ItemUrl + '?categorypage='+document.URL+'&category='+document.getElementById('DeltaPlaceHolderPageTitleInTitleArea').innerText;
+        })
+
         if(data.length <= aveCount){
             temp.push(data);
         }
@@ -19,12 +23,10 @@ export default class ArticlesBusiness extends  React.Component{
                 temp.push(data.slice(aveCount,data.length));
             }
             else{
-                var arrCountTemp = 2+this.props.loadmore;
-                arrCountTemp = arrCountTemp < arrCount?arrCountTemp:arrCount;
-                for(var i = 0; i< arrCountTemp;i++){
+                 for(var i = 0; i< arrCount;i++){
                     temp.push(data.slice(i *aveCount,(i+1)*aveCount));
                 }
-                if(( data.length % aveCount) !== 0 && arrCountTemp===arrCount){
+                if(( data.length % aveCount) !== 0){
                     temp.push(data.slice(arrCount *aveCount,data.length));
                 }
             }
@@ -38,7 +40,7 @@ export default class ArticlesBusiness extends  React.Component{
             {
                 data.map((rowData,index)=>{
                     return <div className="acs-articles-contentrow" key={"articlerow"+index}>{rowData.map((itemData,index)=>{
-                        return <SingleArticle colleUrl={"http://www.bing.com"} hasTitle={false} hasIntro={false} hasTime={true} hasLike={true} itemWidth={width} dataItem={itemData} key={"article"+index}></SingleArticle>
+                        return <SingleArticle hasTitle={false} hasIntro={false} hasTime={true} hasLike={true} itemWidth={width} dataItem={itemData} key={"article"+index}></SingleArticle>
                     })}
                     </div>
                 })

@@ -4,6 +4,7 @@
  .acs-articleframe{
     display: inline-block;
     vertical-align: top;
+    font-family:@common_font_CE_55_ROMAN;
 
     > div{
         position: relative;
@@ -158,7 +159,8 @@
 
 
 body{
-    #articles{
+    font-family:@common_font_CE_55_ROMAN;
+    #articlesBusiness{
         .acs-searchpanel{
             position: relative;
             padding:0 15px;
@@ -207,6 +209,7 @@ body{
                 height:30px;
                 border:1px solid #d7d7d7;
                 border-radius: 15px;
+                background-color: #fff;
 
                 input{
                     display:block;
@@ -230,7 +233,7 @@ body{
                     width:18px;
                     height: 18px;
                     background-image: @bgimage_path;
-                    background-position: -72px -66px;
+                    background-position: -90px 0;
                     cursor: pointer;
                 }
 
@@ -249,7 +252,18 @@ body{
                 margin-top: 5px;
                 width: 30px;
                 height: 30px;
-                background-color: #9292b2;
+                border:1px solid #9292b2;
+                border-radius: 15px;
+
+                .acs-searchicon{
+                    display: block;
+                    margin: auto;
+                    margin-top: 5px;
+                    width:18px;
+                    height: 18px;
+                    background-image: @bgimage_path;
+                    background-position: -90px 0;
+                }
             }
         }
 
@@ -319,7 +333,7 @@ body{
 
 
     body{
-        #articles{
+        #articlesBusiness{
             .acs-searchpanel{
                 position: unset;
                 padding:0;
