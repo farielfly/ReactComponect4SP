@@ -46,7 +46,8 @@ function sliderRender(config) {
                 'alt': param.data[i].Title,
                 'itemhref': param.data[i].LinkUrl,
                 'title': param.data[i].Title,
-                'description': param.data[i].Description
+                'description': param.data[i].Description,
+                'isVideo': param.data[i].IsVideo
             })
         }        
         renderUI(data, param);
@@ -63,6 +64,7 @@ function sliderRender(config) {
         param.pagecount = config.pagecount ? config.pagecount : 1;
         param.id = config.id? config.id: "";
         param.data = config.data? config.data: [];
+        parma.webparttitle = confg.webparttitle?config.webparttitle: "Photo Gallery";
         loadData(param);
     }
     else {

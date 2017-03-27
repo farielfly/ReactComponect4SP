@@ -15,7 +15,7 @@ export default class SliderPics extends React.Component {
         let itemNodes = this.props.items.map((item, idx) => {
             let panel = <div></div>
             if (item.title || item.description) {
-                panel = <TitleDescriptionPanel title={item.title} description={item.description} itemhref={item.itemhref} />
+                panel = <TitleDescriptionPanel title={item.title} description={item.description} itemhref={item.itemhref} isVideo={item.isVideo}/>
             }
             return <li key={'pic' + idx} className="acs-slider-pic" style={{ width: width }}>
                 <a href={item.itemhref}>
@@ -29,7 +29,7 @@ export default class SliderPics extends React.Component {
             <ul style={{
                 left: -100 * nowLocal / pagecount + "%",
                 transitionDuration: speed + "ms",
-                width: count * 100 / pagecount + "%"
+                width: (count<pagecount) ? "100%" : count * 100 / pagecount + "%"
             }}>
                 {itemNodes}
             </ul>

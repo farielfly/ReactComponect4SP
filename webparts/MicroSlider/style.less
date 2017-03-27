@@ -9,7 +9,6 @@ div[id$="microslider"] {
             .acs-header-icon {
                 width: 26px;
                 height: 26px;
-                background-position: -104px -36px;
             }
 
             .acs-header-more{
@@ -44,7 +43,7 @@ div[id$="microslider"] {
 
                 > a {
                     display: block;
-                    width: 99%;
+                    width: 100%;
                     padding-left: 1px;
 
                     img {
@@ -118,7 +117,7 @@ div[id$="microslider"] {
                     }
                 }
 
-                .acs-titledescriptionpanel-wrap:hover{
+                .acs-titledescriptionpanel-wrap.play:hover{
                     animation-name: hover-up;
                     animation-duration: 0.3s;
                     animation-timing-function:linear;
@@ -161,10 +160,11 @@ div[id$="microslider"] {
         }
         
          .acs-slider-arrow-left, .acs-slider-arrow-right{
-            width: 34px;
-            height: 34px;
+            width: 34px !important;
+            height: 34px !important;
             background: rgba(68,68,68,0.2);            
             line-height: 34px; 
+            background-image: none !important;
         } 
 
         .acs-slider-arrow-left:hover, .acs-slider-arrow-right:hover{
@@ -195,12 +195,16 @@ div[id$="microslider"] {
         }
 
         @media(max-width:767px) {
-            .acs-titledescriptionpanel-wrap{
+            .acs-titledescriptionpanel-wrap.play{
                 top: 0px !important;
             }
 
-            .acs-titledescriptionpanel-wrap:hover{
+            .acs-titledescriptionpanel-wrap.play:hover{
                 animation: none !important;
+            }
+
+            .acs-slider-pic{
+                margin-right:0px !important;
             }
         }
     }
@@ -218,3 +222,15 @@ div[id$="microslider"] {
         }
     }
 }
+
+.acs-picture{
+    .acs-header-icon {
+        background-position: -104px -36px;
+    }
+} 
+
+.acs-video{
+    .acs-header-icon {
+        background-position: -130px -36px;
+    }
+} 

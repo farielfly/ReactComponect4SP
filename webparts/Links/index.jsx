@@ -40,30 +40,14 @@ function linksRender(config) {
     }
 
     function loadData(param) {
-        $.ajax({
-            type: "GET",
-            url: config.url,
-            headers: {
-                "Accept": "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-            },
-            dataType: "json",
-            data: {},
-            config: param,
-            async: false,
-            success: function(dataInput) {
-                var data = new Array();
-                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
-                    data.push({
-                        'itemhref': dataInput.d.results[i].ACSUrl ? dataInput.d.results[i].ACSUrl.Url : '',
-                        'title': dataInput.d.results[i].Title
-                    })
-                }
-                renderUI(data, this.config);
-            },
-            error: function(data) {
-            }
-        });
+        var data = new Array();
+        for (var i = 0, l = param.data.length; i < l; i++) {
+            data.push({
+                'itemhref': param.data[i].PersonSite,
+                'title': param.data[i].DisplayName
+            })
+        }  
+        renderUI(data, this.config);        
     }
 
     if (config && !config.debug) {     
@@ -71,6 +55,7 @@ function linksRender(config) {
         param.webparttitle = config.webparttitle ? config.webparttitle : '';
         param.moreurl = config.moreurl ? config.moreurl : '';
         param.id = config.id ? config.id : 'acclinks';
+        param.data = config.data? config.data: [];
         loadData(param);
     }
     else {
