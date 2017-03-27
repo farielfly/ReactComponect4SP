@@ -58,39 +58,10 @@ function newsListRender(config) {
                 document.getElementById('news-list')
             )
         }
-    }
-
-    function loadData(param) {
-        $.ajax({
-            type: "GET",
-            url: config.url,
-            headers: {
-                "Accept": "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-            },
-            dataType: "json",
-            data: {},
-            config: param,
-            async: false,
-            success: function (dataInput) {
-                var data = new Array();
-                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
-                    data.push({
-                        title: dataInput.d.results[i].Title,
-                        modifiedOn: dataInput.d.results[i].ModifiedOn,
-                        url: dataInput.d.results[i].Url,
-                    });
-                }
-                renderUI(data, this.config);
-            },
-            error: function (data) {
-                debugger;
-            }
-        })
-    }
+    }    
 
     if (config && !config.debug) {
-        loadData(param);
+        renderUI(config.data, config.param);
     }
     else {
         renderUI(data, param);
