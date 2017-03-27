@@ -26,8 +26,9 @@
 
       #contentBox {
 
-        margin-left: 40px !important;
-        margin-right: 40px !important;
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+        min-width: 0;
 
         #DeltaPlaceHolderMain {
           #acs-article {
@@ -159,7 +160,7 @@
             }
 
             #news-list {
-              margin-left: 40px;
+              margin-left: 0;
               margin-top: 40px;
             }
           }
@@ -169,6 +170,38 @@
   }
 }
 @media(min-width:768px) {
+  #s4-workspace {
+    #s4-bodyContainer {
+      #s4-titlerow {
+        display: none !important;
+      }
+
+      #contentRow {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+
+        #sideNavBox {
+          display: none;
+        }
+
+        #contentBox {
+          margin-left: 40px !important;
+          margin-right: 40px !important;
+          min-width: 0;
+
+          #DeltaPlaceHolderMain {
+            #acs-article {
+              #news-list {
+                margin-left: 40px;
+                margin-top: 40px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .acs-row > div[class*='acs-col-'] {
     float: left;
     position: relative;
@@ -221,10 +254,4 @@
   .acs-col-1 {
     width: 8.33333333%;
   }
-}
-
-.campus-row {
-  margin: auto;
-  width: 100%;
-  float: none;
 }
