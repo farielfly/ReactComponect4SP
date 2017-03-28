@@ -102,7 +102,8 @@ export default class ArticlesSearchFrame extends React.Component{
         let children = React.Children.map(this.props.children, (item, i) => {
             return React.cloneElement(item, {
                 data: this.state.businessArticles,
-                articlePageCount:this.state.articlePageCount
+                articlePageCount:this.state.articlePageCount,
+                category:this.props.config.categoryType
             });
         });
 

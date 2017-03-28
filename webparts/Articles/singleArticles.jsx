@@ -26,7 +26,7 @@ export default class SingleArticle extends React.Component{
         
         return (
             <ArticleTitle title={dataItem.Title} width={itemWidth} hasTitle={hasTitle} partUrl={dataItem.colleUrl}> 
-                <div onClick={this.openItem.bind(this,dataItem.itemUrl)} style={{heigh:"auto"}}>
+                <div onClick={this.openItem.bind(this,dataItem.ItemUrl)} style={{heigh:"auto"}}>
                     <ArticlePicture picturePath={dataItem.PicturePath}></ArticlePicture>
                     <div className="asc-article-content">
                         <ArticleHeadline headline={dataItem.Headline}></ArticleHeadline>

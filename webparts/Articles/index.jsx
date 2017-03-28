@@ -124,7 +124,7 @@ function articleBusinessRender(config) {
         if (document.getElementById('articlesBusiness')) {
             render(
                 <ArticlesSearchFrame config = {config}>
-                    <BusinessArticles data={data} aveCount={4} loadmore={0}></BusinessArticles>
+                    <BusinessArticles data={data} aveCount={4} category={config.categoryType}></BusinessArticles>
                  </ArticlesSearchFrame>
                 ,
                 document.getElementById('articlesBusiness')

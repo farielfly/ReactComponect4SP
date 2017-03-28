@@ -10,7 +10,7 @@ export default class ArticlesBusiness extends  React.Component{
     initData(data){
         let temp = [],aveCount =this.props.aveCount;
         data.map((item)=>{
-            item.ItemUrl = item.ItemUrl + '?categorypage='+document.URL+'&category='+document.getElementById('DeltaPlaceHolderPageTitleInTitleArea').innerText;
+            item.ItemUrl = item.ItemUrl + '?categorypage='+document.URL+'&category='+this.props.category;
         })
 
         if(data.length <= aveCount){
