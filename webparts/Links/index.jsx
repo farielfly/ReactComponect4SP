@@ -44,15 +44,16 @@ function linksRender(config) {
         for (var i = 0, l = param.data.length; i < l; i++) {
             data.push({
                 'itemhref': param.data[i].PersonSite,
-                'title': param.data[i].DisplayName
+                'title': param.data[i].DisplayName,
+                'src': param.data[i].PictureUrl
             })
         }  
-        renderUI(data, this.config);        
+        renderUI(data, param);        
     }
 
     if (config && !config.debug) {     
         param.listurl = config.listurl ? config.listurl : '';
-        param.webparttitle = config.webparttitle ? config.webparttitle : '';
+        param.webparttitle = config.webparttitle ? config.webparttitle : 'birthday';
         param.moreurl = config.moreurl ? config.moreurl : '';
         param.id = config.id ? config.id : 'acclinks';
         param.data = config.data? config.data: [];

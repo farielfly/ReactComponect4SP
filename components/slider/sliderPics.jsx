@@ -7,8 +7,8 @@ export default class SliderPics extends React.Component {
     render() {
         let {items, left, speed, nowLocal, pagecount } = this.props;
         let count = items.length;
-        let width = 100 / count + '%';        
-        if(pagecount == 3 ){
+        let width = 100 / count - 0.8 + '%';        
+        if(count<pagecount){
             width = '32.8%';                        
         }
 
