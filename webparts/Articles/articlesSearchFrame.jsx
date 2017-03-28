@@ -61,7 +61,7 @@ export default class ArticlesSearchFrame extends React.Component{
          let dataConfig={
             condition: tempConfig.condition,
             order: JSON.stringify(tempConfig.order),
-            pageNo:clearData?0:this.state.articlePageCount,
+            pageNo:clearData?1:this.state.articlePageCount,
             pageSize:clearData?8:4
         }
         $.ajax({
