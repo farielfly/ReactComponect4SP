@@ -3,8 +3,6 @@ import SliderFrame from '../../components/slider/sliderFrame.jsx';
 import SliderPics from '../../components/slider/sliderPics.jsx';
 import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 
-import $ from 'jquery';
-
 function sliderRender(config) {
 
     let data = [{ 'src': '../../components/img/image1.jpg', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' },

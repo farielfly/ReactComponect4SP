@@ -7,12 +7,12 @@ export default class SliderPics extends React.Component {
     render() {
         let {items, left, speed, nowLocal, pagecount } = this.props;
         let count = items.length;
-        let width = 100 / count - 0.8 + '%'; 
+        let width = 100 / count + '%'; 
         if(pagecount == 1){
             width = 100 / count + '%'; 
         }       
         if(count<pagecount){
-            width = '32.8%';                        
+            width = '33.3%';                        
         }
 
         let itemNodes = this.props.items.map((item, idx) => {
