@@ -10,17 +10,17 @@
 
     .acs-searchbox-container{
         margin-top: 10px;
-        width: 280px;
+        width: 100%;
         background-color: #f2f4f6;
-        padding: 15px;
+        padding: 15px 0;
     }
 
     .acs-searchbox{
-        width: 100%;
+        width: e('calc(100% - 30px)');
         height: 30px;
         display: inline-block;
         background-color: #FFFFFF;
-        margin: 10px 0;
+        margin: 10px 15px;
 
         .acs-searchbox-headericon{
             width: 26px;
@@ -31,7 +31,7 @@
         
         }
         .acs-searchbox-input{
-            width: 206px;
+            width: e('calc(100% - 70px)');
             height: 30px;
             padding: 0;
             border: none;

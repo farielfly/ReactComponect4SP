@@ -1,6 +1,5 @@
 import { render } from 'react-dom';
 import $ from 'jquery';
-import SliderFrame from '../../components/slider/sliderFrameArrowOnBottom.jsx';
 import SliderLinks from '../../components/slider/sliderLinks.jsx';
 import WebPartFrame from '../../components/Common/webPartFrame.jsx';
 import faker from 'faker';

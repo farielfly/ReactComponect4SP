@@ -66,8 +66,8 @@ module.exports = {
             'src': ['webparts/QuickSearch/index.jsx'],
             'style': ['webparts/QuickSearch/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js': '',
-            'prod_output_css':''
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/QuickSearch/Script',
+            'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/QuickSearch/CSS'
         },
         {
             'name': 'Slider',

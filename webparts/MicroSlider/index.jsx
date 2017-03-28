@@ -65,6 +65,7 @@ function sliderRender(config) {
         param.id = config.id? config.id: "";
         param.data = config.data? config.data: [];
         param.webparttitle = config.webparttitle?config.webparttitle: "Photo Gallery";
+        param.moreurl = config.link?config.link: "";
         loadData(param);
     }
     else {
