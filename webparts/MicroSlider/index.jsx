@@ -64,7 +64,7 @@ function sliderRender(config) {
         param.pagecount = config.pagecount ? config.pagecount : 1;
         param.id = config.id? config.id: "";
         param.data = config.data? config.data: [];
-        parma.webparttitle = confg.webparttitle?config.webparttitle: "Photo Gallery";
+        param.webparttitle = config.webparttitle?config.webparttitle: "Photo Gallery";
         loadData(param);
     }
     else {
