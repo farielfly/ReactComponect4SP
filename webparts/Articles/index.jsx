@@ -137,8 +137,8 @@ global.articleBusinessRender = articleBusinessRender;
 
 
 function singleArticlesRender(params) {
-    if (!params) {
-        params = {
+    if (!params.data) {
+        params.data= {
             ItemUrl:"http://www.baidu.com",
             ArticleId: 'signleArticles',
             Title: 'Kevin',
@@ -148,12 +148,13 @@ function singleArticlesRender(params) {
             colleUrl:"http://www.baidu.com"
         };
     }
+    
     renderUI(params);
 
     function renderUI(params) {
         if (document.getElementById(params.ArticleId)) {
             render(
-                <SingleArticle hasTitle={true} hasIntro={true} hasTime={false} hasLike={false} itemWidth={100} dataItem={params}></SingleArticle>,
+                <SingleArticle hasTitle={true} hasIntro={true} hasTime={false} hasLike={false} itemWidth={100} dataItem={params.data}></SingleArticle>,
                 document.getElementById(params.ArticleId)
             )
         }
