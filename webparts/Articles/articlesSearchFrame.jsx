@@ -6,8 +6,13 @@ export default class ArticlesSearchFrame extends React.Component{
             articlePageCount:2
         }
     }
+    
+    componentDidMount() {  
+        window.addEventListener('keydown', this.enterSearch.bind(this,this.event));
+    }  
 
     componentWillMount(){
+        window.removeEventListener('keydown', this.enterSearch.bind(this,this.event)); 
         this.setState({
             businessArticles:this.props.config.data
         })
@@ -23,13 +28,21 @@ export default class ArticlesSearchFrame extends React.Component{
     }
 
     searchArticles(){
-        if(this.refs.latest.className.contains('acs-searchpanel-tabbtn')){
-            searchUrl + '&type=latest&searchinfo='+this.refs.searchInfo.innerText;
+        if(this.refs.searchInfo.value !==''){ 
+            global.searchTitle = "Title";
+            this.state.articlePageCount =1;
+            $('#searchinput').css('display','none');
+            $('#clearsearch').css('display','block');
+            this.loadDataCommon(true);
         }
-        else{
-            searchUrl + '&type=popular&searchinfo='+this.refs.searchInfo.innerText;
-        }
-        this.loadData(searchUrl);
+    }
+
+    clearSearchArticles(){
+        global.searchTitle = "";
+         $('#searchinput').css('display','block');
+        $('#clearsearch').css('display','none');
+        $('.acs-searchpanel-div input').val('');
+        this.loadDataCommon(true);
     }
 
     tabTitleSearch(condition){
@@ -43,7 +56,8 @@ export default class ArticlesSearchFrame extends React.Component{
             this.refs.popular.className = 'acs-searchpanel-tabbtn acs-searchpanel-tabselect';
             global.articleType = "LikesCount";
         }
-        this.loadData(true);
+        this.state.articlePageCount =1;
+        this.loadDataCommon(true);
     }
 
     loadMore(){
@@ -51,7 +65,55 @@ export default class ArticlesSearchFrame extends React.Component{
         this.setState({
             articlePageCount:loadmore
         });
-        this.loadData(false);
+        this.loadDataCommon(false);
+    }
+
+    loadDataCommon(clearData){
+        let reactThis = this;
+        let tempConfig = this.props.config;
+         let filterObj={
+             filter:{
+                CategoryName: "ACSArticleHightLightCategory",
+                CategoryValue: this.props.category,
+                OrderBy: global.articleType,
+                Ascending: false,
+                SearchTitle: global.searchTitle===''?null:global.searchTitle,
+                SearchValue: this.refs.searchInfo.value === ''?null:this.refs.searchInfo.value,
+                PageNo: clearData?1:this.state.articlePageCount,
+                PageSize: clearData?8:4
+             }
+        }
+        EnsureScriptFunc("SP.UI.Dialog.js", "SP.UI.ModalDialog.showModalDialog", function () {
+              var waitDialog = SP.UI.ModalDialog.showWaitScreenWithNoClose('loading...');
+                $.ajax({
+                    url: reactThis.props.config.searchUrl,
+                    headers: {
+                        "Accept": "application/json;odata=verbose",
+                        "Content-Type": "application/json;odata=verbose",
+                    },
+                    type: "POST",
+                    dataType:'json',
+                    data: JSON.stringify(filterObj),
+                    success:function(data){
+                        var tempData =[];
+                        if(!clearData){
+                            tempData = reactThis.state.businessArticles;
+                        }
+                        else{
+                            reactThis.state.articlePageCount = 2;
+                        }
+                        tempData.push.apply(tempData,data.SearchArticlesResult);
+                        reactThis.setState(
+                            {businessArticles:tempData}
+                        );
+                        waitDialog.close(SP.UI.DialogResult.OK);
+                    },
+                    error:function(er){
+                        console.log(er);
+                        waitDialog.close(SP.UI.DialogResult.OK);
+                    }
+                });
+        })
     }
 
     loadData(clearData){
@@ -64,6 +126,7 @@ export default class ArticlesSearchFrame extends React.Component{
             pageNo:clearData?1:this.state.articlePageCount,
             pageSize:clearData?8:4
         }
+
         $.ajax({
             url: this.props.config.url,
             headers: {
@@ -94,7 +157,7 @@ export default class ArticlesSearchFrame extends React.Component{
             e = window.event;
         }
         if ((e.keyCode || e.which) == 13) {
-            searchClick(false);
+            this.searchArticles();
         }
     }
 
@@ -108,6 +171,7 @@ export default class ArticlesSearchFrame extends React.Component{
         });
 
         global.articleType = "Created";
+        global.searchTitle = "";
 
         return (<div>
                     <div className="acs-searchpanel">
@@ -121,8 +185,8 @@ export default class ArticlesSearchFrame extends React.Component{
                         </div>
                         <div ref="searchInput" className="acs-searchpanel-div">
                             <input type="text" ref="searchInfo" onKeyDown={this.enterSearch.bind(this,event)} placeholder="Search business news"/>
-                            <span id="searchinput" className="acs-searchicon" onClick={this.searchArticles}  ></span>
-                            <span id="clearsearch" className="acs-clearsearchicon" onClick={this.searchArticles}>X</span>
+                            <span id="searchinput" className="acs-searchicon" onClick={this.searchArticles.bind(this)}  ></span>
+                            <span id="clearsearch" className="acs-clearsearchicon" onClick={this.clearSearchArticles.bind(this)}>X</span>
                         </div>
                         <div className="acs-searchpanel-ctrlbtn" onClick={this.showMobileSearch.bind(this)}>
                             <span id="mobile-searchinput" className="acs-searchicon"></span>

@@ -123,7 +123,7 @@ function articleBusinessRender(config) {
     function renderUI(data) {
         if (document.getElementById('articlesBusiness')) {
             render(
-                <ArticlesSearchFrame config = {config}>
+                <ArticlesSearchFrame config = {config} category={config.categoryType}>
                     <BusinessArticles data={data} aveCount={4} category={config.categoryType}></BusinessArticles>
                  </ArticlesSearchFrame>
                 ,
