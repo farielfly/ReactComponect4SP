@@ -43,7 +43,7 @@ function newsListRender(config) {
             let listItems = data.map((item, idn) => {
                 return (<div className="content-item">
                     <div className="content-left">
-                        <img src={item.newsImg} />
+                        <img width='100%' height='100%' src={item.newsImg} />
                     </div>
                     <div className="conent-right">
                         <a className="content-title" href={item.url}>{item.title}</a>
