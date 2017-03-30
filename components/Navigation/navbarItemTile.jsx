@@ -33,22 +33,22 @@ export default class NavbarItemTile extends React.Component {
             itemNodes.push(menuData.Items.slice(i, i + maxCount));
         }
  
-        let secondMenu = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none",  "flexDirection": "row"}}>
+        let secondMenu = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "block" : "none"}}>
             {menuData.Items.map((item, index) => {
                  var content = hasGrandChild?(item.Items.map((els, index) => {
                             return (<a href={els.ItemHref === ''?'javascript:void(0);':els.ItemHref} className="acs-itemlink" style={{cursor:els.ItemHref === ''?'default':'pointer'}}  key={index}>{els.Title}</a>);
                         })):null;
                 
-                return (<div style={{ "display": "inline-block" }}>
+                return (<div style={{ "display": "inline-block","verticalAlign":"top"}}>
                     <a  href={item.ItemHref === ''?'javascript:void(0);':item.ItemHref} className="acs-itemlink" style={{cursor:item.ItemHref === ''?'default':'pointer',"fontWeight":"800"}}  key={index}>{item.Title}</a>
                    {content}
                 </div>)
             })}
         </ul>);
 
-        let secondMenuC = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "flex" : "none", "flexDirection": "row"}}>
+        let secondMenuC = (<ul onMouseOver={this.menushow.bind(this)} onMouseOut={this.menuhidden.bind(this)} className="acs-navbaritem-second" style={{ display: this.state.open ? "block" : "none"}}>
             {itemNodes.map((item, index) => {
-                return (<div style={{ "flexDirection": "column" }}>
+                return (<div>
                     {item.map((els, index) => {
                         return (<a href={els.ItemHref === ''?'javascript:void(0);':els.ItemHref} className="acs-itemlink" style={{cursor:els.ItemHref === ''?'default':'pointer'}}  key={index}>{els.Title}</a>)
                     })}

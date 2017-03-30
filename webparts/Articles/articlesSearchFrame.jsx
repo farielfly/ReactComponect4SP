@@ -31,17 +31,17 @@ export default class ArticlesSearchFrame extends React.Component{
         if(this.refs.searchInfo.value !==''){ 
             global.searchTitle = "Title";
             this.state.articlePageCount =1;
-            $('#searchinput').css('display','none');
-            $('#clearsearch').css('display','block');
+            document.getElementById('searchinput').style.display = 'none';
+            document.getElementById('clearsearch').style.display = 'block';
             this.loadDataCommon(true);
         }
     }
 
     clearSearchArticles(){
         global.searchTitle = "";
-         $('#searchinput').css('display','block');
-        $('#clearsearch').css('display','none');
-        $('.acs-searchpanel-div input').val('');
+        document.getElementById('searchinput').style.display = 'block';
+        document.getElementById('clearsearch').style.display = 'none';
+        this.refs.searchInfo.value = '';
         this.loadDataCommon(true);
     }
 
