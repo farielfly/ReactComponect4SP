@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
 import $ from 'jquery';
-import SingleArticle from './singleArticles.jsx';
+import SingleArticle from '../../components/article/singleArticles.jsx';
 
 export default class CategoryArticles extends  React.Component{
     constructor(props){

@@ -1,5 +1,3 @@
-import { render } from 'react-dom';
-import $ from 'jquery';
 import ArticleTitle from './articleTitle.jsx';
 import ArticlePicture from './articlePicture.jsx';
 import ArticleHeadline from './articleHeadline.jsx';

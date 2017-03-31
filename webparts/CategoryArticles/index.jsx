@@ -1,9 +1,8 @@
 import { render } from 'react-dom';
 import $ from 'jquery';
 import ArticlesSearchFrame from './articlesSearchFrame.jsx';
-import BusinessArticles from './businessArticles.jsx';
-import SingleArticle from './singleArticles.jsx';
-function articleBusinessRender(config) {
+import CategoryArticles from './categoryArticles.jsx';
+function categoryArticlesRender(config) {
     if (!config.data) {
         config.data = [{
             ItemUrl:"http://www.baidu.com",
@@ -121,17 +120,26 @@ function articleBusinessRender(config) {
     }
 
     function renderUI(data) {
-        if (document.getElementById('articlesBusiness')) {
+        if (document.getElementById('categoryArticles')) {
             render(
                 <ArticlesSearchFrame config = {config} category={config.categoryType}>
-                    <BusinessArticles data={data} aveCount={4} category={config.categoryType}></BusinessArticles>
+                    <CategoryArticles data={data} aveCount={4} category={config.categoryType}></CategoryArticles>
                  </ArticlesSearchFrame>
                 ,
-                document.getElementById('articlesBusiness')
+                document.getElementById('categoryArticles')
             );
-            wordLimit('.acs-articleframe-headline',2);
+            //wordLimit('.acs-articleframe-headline',2);
         }
     }
 }
 
-global.articleBusinessRender = articleBusinessRender;
+global.categoryArticlesRender = categoryArticlesRender;
+
+function wordLimit(query,rowCount){
+     $(query).each(function () {
+        var fontSize = parseInt($(this).css('font-size').replace('px',''));
+        while ($(this).height() > fontSize * rowCount * 1.4) {
+            $(this).text($(this).text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+        };
+    });
+}
