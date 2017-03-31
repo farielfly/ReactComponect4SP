@@ -1,3 +1,4 @@
+import $ from 'jquery';
 export default class ArticlesSearchFrame extends React.Component{
      constructor(props){
         super(props);
