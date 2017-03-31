@@ -147,7 +147,12 @@ module.exports = {
             'prod_include': true
         },
     ],
-    concats:[       
+    concats:[  
+        {
+            'name': 'Slider',
+            'src': ['../NTUCIncome/APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/Script/Slider.js','jslibrary/Commonjs.js'],
+            'output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/Script',
+        } 
     ],
     images: [
         {
