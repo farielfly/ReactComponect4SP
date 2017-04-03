@@ -2,7 +2,7 @@ module.exports = {
     rootpath: __dirname,
     prod_webpartStyleoutput: 'CSS',
     prod_webpartScriptoutput: 'JS',
-    prod_root: '../../../NTUCIncome/',
+    prod_root: '../NTUCIncome/',
     replacepath: '../../Common/Img/',
     webparts: [
         {
@@ -167,7 +167,7 @@ module.exports = {
     font: {
         'src': ['stylelibrary/fonts/*'],
         'output': 'dist/webglobal/fonts',
-         prod_output: 'Fonts',
+         prod_output: 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Common/Fonts',
         'prod_include': false
     }
 }
