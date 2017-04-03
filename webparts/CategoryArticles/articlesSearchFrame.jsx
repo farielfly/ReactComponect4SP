@@ -20,11 +20,13 @@ export default class ArticlesSearchFrame extends React.Component{
     }
 
     showMobileSearch(){
-      if(this.refs.searchInput.style.display ==='none' ||this.refs.searchInput.style.display ===''){
-          this.refs.searchInput.style.display = 'flex';
+      if(this.refs.searchInput.style.left ==='-300px' ||this.refs.searchInput.style.display ===''){
+          this.refs.searchInput.style.display ='flex';
+          this.refs.searchInput.style.left = '0';
       } 
       else{
-          this.refs.searchInput.style.display = 'none';
+          this.refs.searchInput.style.left = '-300px';
+           // this.refs.searchInput.style.display ='none';
       }
     }
 
