@@ -11,8 +11,10 @@ import del from 'del';
 import gulpconcat from 'gulp-concat';
 import es from 'event-stream';
 import streamify from 'gulp-streamify';
+import gulpif from 'gulp-if';
 
 let debug = false;
+let compress = true;
 
 gulp.task('buildjs-dev', function () {
     debug = true;
@@ -20,6 +22,11 @@ gulp.task('buildjs-dev', function () {
 });
 
 gulp.task('buildjs', function () {
+    build();
+});
+
+gulp.task('buildjs-debug', function () {
+    compress = false;
     build();
 });
 
@@ -92,7 +99,7 @@ gulp.task('concat-js',['buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'cop
             //     return path.join(config.rootpath,item);
             // })
             gulp.src(concat.src)
-                .pipe(streamify(uglify()))
+                .pipe(gulpif(compress, streamify(uglify())))
                 .pipe(gulpconcat(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput, concat.name + '.tmp.js')))
                 .pipe(rename(concat.name + '.js'))
                 .pipe(gulp.dest(path.join(config.rootpath, config.prod_root, concat.output),{overwrite:true}));
@@ -118,7 +125,7 @@ function bundleJs(name, srcs, dest) {
         .transform(shim)
         .bundle()
         .pipe(source(name))
-    if (!debug) {
+    if (compress) {
         stream.pipe(streamify(uglify()));
     }       
     return stream.pipe(gulp.dest(dest));

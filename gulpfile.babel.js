@@ -12,11 +12,11 @@ requireDir('./gulp/tasks', { recurse: true });
 
 gulp.task('build', function () {
     if (options.env === 'debug') {
-        gulp.start('buildjs-dev', 'buildless-dev', 'buildfile-dev');
+        gulp.start('buildjs-debug', 'buildless', 'buildfile');
     }
-    else {
+    else{
         gulp.start('buildjs', 'buildless', 'buildfile');
-    }
+    }    
 })
 
 gulp.task('build-dev', function () {
