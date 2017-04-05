@@ -61,7 +61,7 @@ body {
                     .acs-titlebtn-span {
                         line-height: 3;
                         margin: 0 20px;
-                        font-family: 'Open Sans' !important;
+                        font-family: Open Sans;
                         font-size: 14px;
                         font-weight: blod;
                         color: #fff;
@@ -167,7 +167,7 @@ body {
                     margin-right: 25px;
                     min-width: 250px;
                     cursor: pointer;
-                    font-family: Frutiger LT 55;
+                    font-family:Open Sans;
                     font-size: 13px;
                 color: #444;
 
@@ -245,11 +245,12 @@ body {
         width:100%;
         height:auto;
         min-height: 48px;
-        border-bottom:1px solid #e6e6e6;
         cursor:pointer;
 
-        .acs-accordionitem-retracticonw, .acs-accordionitem-expandiconw, .acs-accordionitem-retracticong, .acs-accordionitem-expandicong{
-            float:right;
+        .acs-accordionitem-retracticonw, .acs-accordionitem-expandiconw, 
+        .acs-accordionitem-retracticong, .acs-accordionitem-expandicong,
+        .acs-accordionitem-linkarrow{
+            float: right;
             margin-top: 15px;
             margin-right: 15px;
             margin-left: auto;
@@ -260,16 +261,26 @@ body {
 
         .acs-accordionitem-retracticonw{
              background-position: -26px -280px;
+             background-color: gray;
         }
         .acs-accordionitem-expandiconw{
-           
              background-position: 0 -280px;
+             background-color: gray;
         }
         .acs-accordionitem-retracticong{
              background-position: -78px -280px;
            
         }
         .acs-accordionitem-expandicong{
+            background-position: -52px -280px;
+        }
+
+        .acs-accordionitem-linkarrow{
+            display: inline-block;
+            float:none;
+            margin-right: 0;
+            margin-top: 0;
+            vertical-align: middle;
             background-position: -52px -280px;
         }
 
@@ -281,8 +292,9 @@ body {
 
             .acs-divisionhead-title{
                 margin-left: 10px;
-                font-family: Frutiger CE 55 Roman;
+                font-family: Open Sans;
                 font-size: 16px;
+                font-weight:bold;
                 color:#333;
             }
         }
@@ -306,7 +318,7 @@ body {
                 height:60px;
                 background-color:#fff;
                 color:#444;
-                font-family: Frutiger CE 55 Roman;
+                font-family: Open Sans;
                 font-size: 14px;
                 cursor:pointer;
                 line-height: 4;
@@ -323,13 +335,13 @@ body {
         margin-top: 2px;
         width:100%;
         height:48px;
-        background-color:#f58220;
-        color:#fff;
-        font-family: Frutiger CE 55 Roman;
+        background-color:#f2f4f6;
+        color:#333;
+        font-family: Open Sans;
         font-size: 16px;
+        font-weight: bold;
         cursor:pointer;
         text-decoration: none;
-        border-bottom: 1px solid #e6e6e6;
         line-height: 3;
 
         span{

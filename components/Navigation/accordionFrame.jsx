@@ -25,7 +25,8 @@ export default class AccordionFrame extends React.Component {
 
     render() {
         let {accordionData,itemHeight,informationEvent,hasInfoPanel,isFirst} = this.props;
-        let firstColor="#f58220",secondColor="#f2f4f6";
+        let firstColor="#f58220",secondColor="#f2f4f6",whiteColor ="#fff",blackColor = "#333";
+        let titleBgcolor = isFirst?secondColor:whiteColor,fontcolor = isFirst?blackColor:firstColor,borderColor = isFirst?"none":"1px solid #f58220";
         let contentHeight =itemHeight==='auto'?itemHeight: accordionData.Items.length * itemHeight +"px";
         let divisionIcon = '';
         if(isFirst){
@@ -36,8 +37,9 @@ export default class AccordionFrame extends React.Component {
         }
         return (
             <div className="acs-accordion-item">
-                <div className={"acs-accordionitem-head" } onClick={this.handleShow.bind(this)} style={{"backgroundColor":isFirst?firstColor:secondColor}}>
-                    <span className="acs-divisionhead-title" style={{color:isFirst?"#fff":"#333"}}>{this.props.accordionData.Title}</span>
+                <div className={"acs-accordionitem-head" } onClick={this.handleShow.bind(this)} 
+                style={{"backgroundColor":titleBgcolor,"borderBottom":borderColor}}>
+                    <span className="acs-divisionhead-title" style={{color:fontcolor}}>{this.props.accordionData.Title}</span>
                     <span className={divisionIcon}></span>
                 </div>
                 <div className="acs-accordionitem-content" style={{ height: this.state.active ? contentHeight : "0" }}>
