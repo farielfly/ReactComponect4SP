@@ -7,7 +7,7 @@ import PaginationTable from '../../components/gridtable/table.jsx';
 function staffDirectoryRender(config){
 
     let param={},data=[],canTurning = false;
-    let tableColumn=[{name:"Photo",width:5},{name:"Name",width:13},{name:"Division & Department",width:35},{name:"Designation",width:10},{name:"Email Me",width:17},{name:"Contact Me",width:20}];
+    let tableColumn=[{name:"Photo",width:5},{name:"Name",width:18},{name:"Division & Department",width:35},{name:"Designation",width:10},{name:"Email Me",width:17},{name:"Contact Me",width:15}];
 
     function renderUI(data) {
         if (document.getElementById('staff')) {

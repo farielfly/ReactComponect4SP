@@ -73,7 +73,7 @@ body{
             .acs-table-body{
                 .acs-tbody-row{
                     display: flex;
-                    height: 58px;
+                    min-height: 58px;
                     align-items: center;
 
                     .acs-tobdy-cell{
@@ -84,9 +84,7 @@ body{
 
                         .acs-cellvalue-style{
                             width:100%;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
+                            word-break:break-all;
                             display: block;
                         }
 
@@ -107,10 +105,8 @@ body{
                             }
 
                             span:nth-child(2){
-                                width:80%;
-                                white-space: nowrap;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
+                                width:100%;
+                                word-break:break-all;
                             }
                         }
                     }
