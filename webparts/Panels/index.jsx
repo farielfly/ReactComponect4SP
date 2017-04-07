@@ -32,7 +32,9 @@ function panelRender(config) {
 
     if (config && !config.debug) {
         panels[0].msgCount = config.myTaskCount;
+        panels[0].url = config.myTaskUrl;
         panels[1].msgCount = config.hrConnectCount;
+        panels[1].url = config.hrConnectUrl;
     }
     renderUI(panels);
 }

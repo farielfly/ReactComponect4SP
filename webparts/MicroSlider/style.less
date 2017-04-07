@@ -196,6 +196,29 @@ div[id$="microslider"] {
         .acs-slider-arrow:hover {
             background: rgba(0, 0, 0, 0.2);
         }
+        
+        .acs-slider-dots {
+                position: absolute;
+                bottom: 15px;
+                height: 26px;
+                text-align: center;
+                z-index: 99;
+                width: 100%;
+
+                .acs-slider-dot {
+                    display: inline-block;
+                    margin: 10px;
+                    width: 9px;
+                    height: 9px;
+                    background-color: #ccc;
+                    cursor: pointer;
+                    border-radius: 20px;
+                }
+
+                .acs-slider-dot-selected {
+                    background: #f57d30;
+                }
+        }
 
         @media(max-width:767px) {
             .acs-titledescriptionpanel-wrap.play{

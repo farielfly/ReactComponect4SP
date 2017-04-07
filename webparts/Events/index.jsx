@@ -14,7 +14,6 @@ function eventRender(config) {
         var itemNodes = [];
         let maxCount = data.length > 3 ? 3 : data.length;        
         itemNodes.push(data.slice(0, maxCount));
-        debugger;
         if (document.getElementById(param.id)) {
             render(
                 <WebPartFrame
