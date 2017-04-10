@@ -2,7 +2,7 @@ module.exports = {
     rootpath: __dirname,
     prod_webpartStyleoutput: 'CSS',
     prod_webpartScriptoutput: 'JS',
-    prod_root: '../NTUCIncome/',
+    prod_root: '../../../APPS-NTUCIncome/',
     replacepath: '../../Common/Img/',
     webparts: [
         {
@@ -12,6 +12,14 @@ module.exports = {
             'output': 'dist/webparts',
             'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Articles/Script',
             'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/Articles/CSS'
+        },
+        {
+            'name': 'CategoryArticles',
+            'src': ['webparts/CategoryArticles/index.jsx'],
+            'style': ['webparts/Articles/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/Script',
+            'prod_output_css':'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/CSS'
         },
         {
             'name': 'Calendar',
@@ -41,6 +49,14 @@ module.exports = {
             'name': 'newsList',
             'src': ['webparts/Lists/newsList.jsx'],
             'style': ['webparts/Lists/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': '',
+            'prod_output_css':''
+        },
+        {
+            'name': 'ServiceRequest',
+            'src': ['webparts/ServiceRequest/index.jsx'],
+            'style': ['webparts/ServiceRequest/style.less'],
             'output': 'dist/webparts',
             'prod_output_js': '',
             'prod_output_css':''
@@ -149,9 +165,9 @@ module.exports = {
     ],
     concats:[  
         {
-            'name': 'Slider',
-            'src': ['../NTUCIncome/APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/Script/Slider.js','jslibrary/Commonjs.js'],
-            'output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/Script',
+            'name': 'CategoryArticles',
+            'src': ['../../../APPS-NTUCIncome/APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/Script/CategoryArticles.js','jslibrary/Commonjs.js'],
+            'output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/Script',
         } 
     ],
     images: [

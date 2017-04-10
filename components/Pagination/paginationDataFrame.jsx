@@ -4,7 +4,7 @@ export default class PaginationDataFrame extends React.Component{
     }
 
     render(){
-        return  <div className={"acs-turningframe-contentbody acs-turningframe-contentborder"}>
+        return  <div className="acs-turningframe-contentbody acs-turningframe-contentborder">
                     <div className="acs-turningframe-head">
                         <span>{this.props.frameTitle}</span>
                     </div>

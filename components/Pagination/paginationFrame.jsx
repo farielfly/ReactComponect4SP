@@ -56,9 +56,9 @@ export default class PaginationFrame extends React.Component {
 
     render() {
         let {hasTitle,frameTitle,config,hasTurning,countInPage,hasSearch} = this.props;
-        let currentpage = this.state.currentPage;
+        let currentpage = this.state.nowPage;
         let child =  React.cloneElement(this.props.children, {
-            data: this.state.currentItems,
+            listData: this.state.currentItems,
         });
 
 
@@ -69,6 +69,7 @@ export default class PaginationFrame extends React.Component {
 
         return <div className="acs-turningframe">
                     {searchPanel}
+                    <div style={{clear:both}}></div>
                     {dataFrame}
                     {turningPanel}
                 </div>
