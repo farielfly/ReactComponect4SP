@@ -3,20 +3,18 @@ import Accordion from './accordion.jsx';
 import ChiefUser from './peopleInfo.jsx';
 
 export default class AccordionComplex extends React.Component {
-    constructor(props) {
+     constructor(props) {
         super(props);
         this.state = {
-            informationPanel: null,
-            showInformation: false,
+            informationPanel: this.props.data[0]
         }
     }
 
   
 
-    handleDataClick(object, isShow) {
+    handleDataClick(object) {
         this.setState({
-            informationPanel: object,
-            showInformation: isShow
+            informationPanel: object
         });
     }
 
