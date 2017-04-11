@@ -4,6 +4,6 @@ export default class StringCell extends React.Component {
     }
 
     render() {
-       return <div className="acs-table-stringcell" style={{width:this.props.itemWidth+"%"}}><span>{this.props.itemData}</span></div>
+       return <div className="acs-table-stringcell" style={{width:this.props.itemWidth+"%"}}><span>{this.props.itemTitle+": "}</span><span>{this.props.itemData}</span></div>
     }
 }

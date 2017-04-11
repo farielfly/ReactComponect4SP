@@ -32,7 +32,7 @@ export default class PaginationFrame extends React.Component {
         var tempConfig = this.props.config , reactThis = this;
         var filterObj={
             PageNo: this.state.nowPage,
-            PageSize: this.props.countInPage
+            PageSize: tempConfig.countInPage
         };
          $.ajax({
             url: tempConfig.url,
@@ -55,7 +55,7 @@ export default class PaginationFrame extends React.Component {
     }
 
     render() {
-        let {hasTitle,frameTitle,config,hasTurning,countInPage,hasSearch} = this.props;
+        let {hasTitle,frameTitle,config,hasTurning,hasSearch} = this.props;
         let currentpage = this.state.nowPage;
         let child =  React.cloneElement(this.props.children, {
             listData: this.state.currentItems,
@@ -69,7 +69,7 @@ export default class PaginationFrame extends React.Component {
 
         return <div className="acs-turningframe">
                     {searchPanel}
-                    <div style={{clear:both}}></div>
+                    <div style={{clear:"both"}}></div>
                     {dataFrame}
                     {turningPanel}
                 </div>

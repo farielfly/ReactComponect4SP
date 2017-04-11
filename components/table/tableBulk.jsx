@@ -15,7 +15,7 @@ export default class TableBulk extends React.Component {
     render() {
         let tempData = this.creatList();
         let dataDiv = tempData.map((itemList,arrIndex)=>{
-                return <div key={"list"+arrIndex} className="acs-tablebulk-list">
+                return <div key={"list"+arrIndex} className={tempData.length>1?"acs-tablebulk-twolist":"acs-tablebulk-onelist"}>
                     {itemList.map((item)=>{
                         return React.cloneElement(this.props.children, {
                                 itemData:item
