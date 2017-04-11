@@ -4,10 +4,22 @@ export default class TableBulk extends React.Component {
     }
 
     creatList(){
-        let {countInColumn, columnCount, listData} = this.props;
-        let tempList = [];
-        for(var i=0;i<columnCount;i++){
-            tempList[i] = listData.slice(countInColumn*i,countInColumn*(i+1));
+        let {columnCount, listData} = this.props;
+        let tempList = [],tempLeft=[],tempRight=[];
+        if(columnCount>1){
+            for(var i= 0 ; i<listData.length;i++)
+            {
+                if(i%2 === 0){
+                    tempLeft.push(listData[i]);
+                }
+                else{
+                    tempRight.push(listData[i]);         
+                }
+            }
+            tempList.push(tempLeft,tempRight);
+        }
+        else{
+            tempList[0] = listData;
         }
         return tempList;
     }

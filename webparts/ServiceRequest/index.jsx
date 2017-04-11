@@ -1,10 +1,12 @@
 import { render } from 'react-dom';
 import PaginationFrame from '../../components/pagination/paginationFrame.jsx';
+import LetterSearchFrame from '../../components/pagination/letterSearchFrame.jsx';
 import TableListFrame from '../../components/table/table.jsx';
 import StringCell from '../../components/table/stringCell.jsx';
 
 import TableBulk from '../../components/table/tableBulk.jsx';
 import ServiceItem from '../../components/table/serviceItem.jsx';
+import LyncItem from '../../components/table/lyncHeadCell.jsx';
 
 import $ from 'jquery';
 
@@ -12,9 +14,9 @@ function serviceRequestTypeRender(config) {
     const serviceData=[
         {serviceTitle:"test1",serviceList:[{href:'',value:'itemData1'},{href:'',value:'itemData1'},{href:'',value:'itemData13'},{href:'',value:'itemData14'},{href:'',value:'itemData15'},{href:'',value:'itemData16'}]},
         {serviceTitle:"test1",serviceList:[{href:'',value:'itemData1'},{href:'',value:'itemData1'},{href:'',value:'itemData13'},{href:'',value:'itemData14'},{href:'',value:'itemData15'},{href:'',value:'itemData16'}]},
+        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData16'}]},
         {serviceTitle:"test1",serviceList:[{href:'',value:'itemData1'},{href:'',value:'itemData1'},{href:'',value:'itemData13'},{href:'',value:'itemData14'},{href:'',value:'itemData15'},{href:'',value:'itemData16'}]},
-        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData1'},{href:'',value:'itemData1'},{href:'',value:'itemData13'},{href:'',value:'itemData14'},{href:'',value:'itemData15'},{href:'',value:'itemData16'}]},
-        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData1'},{href:'',value:'itemData1'},{href:'',value:'itemData13'},{href:'',value:'itemData14'},{href:'',value:'itemData15'},{href:'',value:'itemData16'}]}
+        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData15'},{href:'',value:'itemData16'}]}
         ];
 
     let param = { };
@@ -23,7 +25,7 @@ function serviceRequestTypeRender(config) {
         let serviceType = data.map((item,index)=>{
             return <div className="acs-servicerequest-type" key={"servicetype"+index}>
                         <PaginationFrame hasTitle={true} frameTitle={item.serviceTitle} hasSearch={false} config={{data:item.serviceList}} hasTurning={false}>
-                            <TableBulk countInColumn={3} columnCount={2} listData={item.serviceList}>
+                            <TableBulk columnCount={2} listData={item.serviceList}>
                                 <ServiceItem></ServiceItem>
                             </TableBulk>
                         </PaginationFrame>
@@ -130,3 +132,64 @@ function serviceRequestListRender(config){
 }
 
 global.serviceRequestListRender = serviceRequestListRender;
+
+function serviceLyncListRender(config) {
+    const serviceData=[
+        {Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
+        {Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
+        {Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'}];
+
+    let param = { };
+
+    function renderUI(data) {
+        if (document.getElementById('serviceType')) {
+            render(
+                <PaginationFrame hasLetterSearch={true} hasTitle={true} frameTitle={"dfsfs"} hasSearch={false} config={{data:serviceData}} hasTurning={true}>
+                    <TableBulk columnCount={2} listData={serviceData}>
+                        <LyncItem itemData={null}></LyncItem>
+                    </TableBulk>   
+                </PaginationFrame>,
+                document.getElementById('serviceType')
+            );
+            setStatus();
+        }
+    }
+
+    function loadData(param) {
+        $.ajax({
+            type: "GET",
+            url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose",
+            },
+            dataType: "json",
+            data: {},
+            config: param,
+            async: false,
+            success: function (dataInput) {
+                renderUI(data);
+            },
+            error: function (data) {
+
+            }
+        });
+    }
+
+    if (config && !config.debug) {
+        loadData(param);
+    }
+    else {
+        renderUI(serviceData);
+    }
+}
+
+global.serviceLyncListRender = serviceLyncListRender;
+
+function setStatus(){
+    let imgs = document.getElementsByClassName('ms-spimn-img');
+    for(var i=imgs.length-1;i>-1;i--){
+        imgs[i].setAttribute('sip',imgs[i].getAttribute('data-sip'));
+    }
+    ProcessImn();
+}

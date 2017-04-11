@@ -1,6 +1,7 @@
 import PaginationArrows from './paginationArrows.jsx';
 import PaginationDataFrame from './paginationDataFrame.jsx';
 import PaginationSearch from './paginationSearch.jsx';
+import LetterSearchFrame from './letterSearchFrame.jsx';
 
 export default class PaginationFrame extends React.Component {
     constructor(props) {
@@ -25,6 +26,10 @@ export default class PaginationFrame extends React.Component {
     }
 
     searchFun(cond1,cond2){
+
+    }
+
+    letterFun(letter){
 
     }
 
@@ -55,12 +60,13 @@ export default class PaginationFrame extends React.Component {
     }
 
     render() {
-        let {hasTitle,frameTitle,config,hasTurning,hasSearch} = this.props;
+        let {hasTitle,frameTitle,config,hasTurning,hasSearch,hasLetterSearch} = this.props;
         let currentpage = this.state.nowPage;
         let child =  React.cloneElement(this.props.children, {
             listData: this.state.currentItems,
         });
 
+        child = hasLetterSearch?<LetterSearchFrame letterSearch={this.letterFun.bind(this)}>{child} </LetterSearchFrame>:child;
 
         let turningPanel = hasTurning?<PaginationArrows turnPage={this.turnPage.bind(this)} currentPage={currentpage} countInPage={config.pageSize} totalItems={config.totalCount}></PaginationArrows>:null;
         let dataFrame = hasTitle?<PaginationDataFrame frameTitle={frameTitle}>{child}</PaginationDataFrame>:<div>{child}</div>;
