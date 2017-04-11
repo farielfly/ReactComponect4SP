@@ -30,40 +30,16 @@ function eventRender(config) {
     };
 
     function loadData(param) {
-        $.ajax({
-            type: "GET",
-            url: config.url,
-            headers: {
-                "Accept": "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-            },
-            dataType: "json",
-            data: {},
-            config: param,
-            async: false,
-            success: function (dataInput) {
-                let month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-                var data = new Array();
-                for (var i = 0, l = dataInput.d.results.length; i < l; i++) {
-                    let date = dataInput.d.results[i].EventDate ? new Date(dataInput.d.results[i].EventDate) : '';
-                    let day = date.getDate() > 10 ? date.getDate() : "0" + date.getDate();
-                    let hour = date.getHours() >= 12 ? (date.getHours() - 12) : date.getHours();
-                    let minute = date.getMinutes() > 10 ? date.getMinutes() : "0" + date.getMinutes();
-                    let pmOrAm = date.getHours() > 12 ? "PM" : "AM";
-                    data.push({
-                        'href': param.listurl + '/DispForm.aspx?ID=' + dataInput.d.results[i].ID,
-                        'month': date === '' ? '' : month[date.getMonth()],
-                        'day': day,
-                        'time': hour + ":" + minute + " " + pmOrAm,
-                        'location': dataInput.d.results[i].Location,
-                        'title': dataInput.d.results[i].Title
-                    })
-                }
-                renderUI(data, this.config);
-            },
-            error: function (data) {
-            }
-        });
+         var data = new Array();
+        for (var i = 0, l = param.data.length; i < l; i++) {
+            data.push({
+                'title': param.data[i].Title,
+                'href': param.data[i].User,
+                'time': param.data[i].DateTime,
+                'location': param.data[i].User
+            })
+        }
+        renderUI(data, param);
     }
 
     if (config && !config.debug) {
@@ -71,6 +47,7 @@ function eventRender(config) {
         param.moreurl = config.moreurl ? config.moreurl : '';
         param.webparttitle = config.webparttitle ? config.webparttitle : '';
         param.id = config.id ? config.id : 'discussion';
+        param.data = config.data ? config.data: data;
         loadData(param);
     }
     else {
