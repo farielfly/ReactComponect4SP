@@ -11,7 +11,7 @@ export default class TableCell extends React.Component {
                 break;}
             case 'photo':{
                 cell=(<div className="acs-person-headpic">
-                            <img src={data} alt=""/>
+                            <a href={data.url} target="_blank"><img src={data.photo} alt=""/></a>
                         </div>);
                 break;}
             case 'name':{
@@ -24,7 +24,7 @@ export default class TableCell extends React.Component {
                                 </span>
                             </a>
                         </span>
-                        <span title={data.name}>{data.name}</span>
+                        <a href={data.url} target="_blank"><span title={data.name}>{data.name}</span></a>
                     </div>
                 );
                 break;}

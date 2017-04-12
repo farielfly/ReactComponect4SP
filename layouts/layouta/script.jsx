@@ -24,8 +24,8 @@ function staffDirectoryRender(config){
             var dividep = (item.Division ===''||item.Department==='')?'':';';
             var telmob = (item.ContactMe ===''||item.MyMobile==='')?'':'/';
             newData.push([
-                {data:item.Photo,type:'photo'},
-                {data:{email:item.Email,name: item.Name,id:item.ItemId},type:'name'},
+                {data:{photo:item.Photo,url:item.MySite},type:'photo'},
+                {data:{email:item.Email,name: item.Name,id:item.ItemId,url:item.MySite},type:'name'},
                 {data:item.Division + dividep + item.Department,type:'text'},
                 {data:item.Designation,type:'text'},
                 {data:item.Email,type:'text'},

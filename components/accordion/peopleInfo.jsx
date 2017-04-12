@@ -17,7 +17,7 @@ export default class PeopleInfo extends React.Component{
             <div className="acs-personinfo" >
                 <div className="acs-personinfo-headpic">
                         <div className="acs-headpic-pictute">
-                            <img src={linkinfo.Photo} alt=""/>
+                     <a href={linkinfo.MySite} target="_blank"><img src={linkinfo.Photo} alt="" /></a>
                         </div>
                     <span className="ms-imnSpan">
                         <a href="javascript:void(0)" className="ms-imnlink ms-spimn-presenceLink">
@@ -26,7 +26,7 @@ export default class PeopleInfo extends React.Component{
                             </span>
                         </a>
                     </span>
-                    <span>{linkinfo.Name}</span>
+                    <a href={linkinfo.MySite} target="_blank"><span>{linkinfo.Name}</span></a>
                 </div>
 
                 <div className="acs-personinfo-introduction">
