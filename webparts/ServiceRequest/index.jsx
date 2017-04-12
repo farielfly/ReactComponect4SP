@@ -24,8 +24,8 @@ function serviceRequestTypeRender(config) {
     function renderUI(data) {
         let serviceType = data.map((item,index)=>{
             return <div className="acs-servicerequest-type" key={"servicetype"+index}>
-                        <PaginationFrame hasTitle={true} frameTitle={item.serviceTitle} hasSearch={false} config={{data:item.serviceList}} hasTurning={false}>
-                            <TableBulk columnCount={2} listData={item.serviceList}>
+                        <PaginationFrame hasTitle={true} frameTitle={item.Title} hasSearch={false} config={{data:item.Items}} hasTurning={false}>
+                            <TableBulk columnCount={2} listData={item.Items}>
                                 <ServiceItem></ServiceItem>
                             </TableBulk>
                         </PaginationFrame>
@@ -55,7 +55,7 @@ function serviceRequestTypeRender(config) {
             config: param,
             async: false,
             success: function (dataInput) {
-                renderUI(data);
+                renderUI(dataInput);
             },
             error: function (data) {
 
@@ -115,7 +115,7 @@ function serviceRequestListRender(config){
             config: param,
             async: false,
             success: function (dataInput) {
-                renderUI(data, this.config);
+                renderUI(dataInput);
             },
             error: function (data) {
 
@@ -168,7 +168,7 @@ function serviceLyncListRender(config) {
             config: param,
             async: false,
             success: function (dataInput) {
-                renderUI(data);
+                renderUI(dataInput);
             },
             error: function (data) {
 
