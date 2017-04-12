@@ -52,13 +52,14 @@ function serviceRequestTypeRender(config) {
             },
             dataType: "json",
             data: {},
+            cache:false,
             config: param,
             async: false,
             success: function (dataInput) {
                 renderUI(dataInput);
             },
-            error: function (data) {
-
+            error: function (error) {
+                console.log(error);
             }
         });
     }
@@ -74,14 +75,14 @@ function serviceRequestTypeRender(config) {
 global.serviceRequestTypeRender = serviceRequestTypeRender;
 
 
-function serviceRequestListRender(config){
+function tableListRender(config){
      const data = [
-         { 'Title': 'Projector Request', 'Request Date': '9/3/1021', 'Status': 'Open', 'Processed By': 'Bill','Processed Date':'9/3/1021' },
-        { 'Title': 'Projector Request', 'Request Date': '9/3/1021', 'Status': 'Open', 'Processed By': 'Bill','Processed Date':'9/3/1021' },
-        { 'Title': 'Projector Request', 'Request Date': '9/3/1021', 'Status': 'Open', 'Processed By': 'Bill','Processed Date':'9/3/1021' },
-        { 'Title': 'Projector Request', 'Request Date': '9/3/1021', 'Status': 'Open', 'Processed By': 'Bill','Processed Date':'9/3/1021' },
-        { 'Title': 'Projector Request', 'Request Date': '9/3/1021', 'Status': 'Open', 'Processed By': 'Bill','Processed Date':'9/3/1021' },
-        { 'Title': 'Projector Request', 'Request Date': '9/3/1021', 'Status': 'Open', 'Processed By': 'Bill','Processed Date':'9/3/1021' }];
+         { 'RequestType': 'Projector Request1', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10211' },
+        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Pending', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
+        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10421' },
+        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Closed', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
+        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/5/1021' },
+        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/1/1021' }];
 
     const titleData =[{value:'Title',width:20},{value:'Request Date',width:20},{value:'Status',width:20},{value:'Processed By',width:20},{value:'Processed Date',width:20}];
     let param = {};
@@ -90,14 +91,14 @@ function serviceRequestListRender(config){
         let titleArrary = config.titleArrary.map((item,index)=>{
             return <StringCell itemData={null} key={"head"+index}></StringCell>
         })
-        if (document.getElementById('serviceRequest')) {
+        if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={true} config={{data:data,pageSize:config.pageSize,totalCount:50}} hasTurning={true}>
+                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={true} config={{data:data,pageSize:config.pageSize,totalCount:data.length}} hasTurning={config.hasPagination}>
                     <TableListFrame titleData={config.titleArrary}  listData={data}>
                         {titleArrary}
                     </TableListFrame>
                 </PaginationFrame>,
-                document.getElementById('serviceRequest')
+                document.getElementById(config.divId)
             );
         }
     }
@@ -112,13 +113,14 @@ function serviceRequestListRender(config){
             },
             dataType: "json",
             data: {},
+            cache:false,
             config: param,
             async: false,
             success: function (dataInput) {
                 renderUI(dataInput);
             },
-            error: function (data) {
-
+            error: function (error) {
+                console.log(error);
             }
         });
     }
@@ -131,7 +133,7 @@ function serviceRequestListRender(config){
     }
 }
 
-global.serviceRequestListRender = serviceRequestListRender;
+global.tableListRender = tableListRender;
 
 function serviceLyncListRender(config) {
     const serviceData=[
@@ -166,6 +168,7 @@ function serviceLyncListRender(config) {
             dataType: "json",
             data: {},
             config: param,
+            cache:false,
             async: false,
             success: function (dataInput) {
                 renderUI(dataInput);

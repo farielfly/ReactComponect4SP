@@ -11,16 +11,17 @@ export default class Table extends React.Component {
     componentWillMount(){
         this.setState({
             tableData:this.props.listData
-        })
+        });
     }
 
 
     render() {
         let {titleData,listData} = this.props;
         let headList = <div className="acs-table-titlehead">{titleData.map((item)=>{
+                item.value = item.value.replace(/\s+/g,"");
                 return <div style={{width:item.width+"%"}}>{item.value}</div>
             })}</div>;
-        let dataList = this.state.tableData.map((dataItem,index)=>{
+        let dataList = listData.map((dataItem,index)=>{
             return <div className="acs-table-row" style={{"backgroundColor":index%2===0?"#f2f4f6":"#fff"}}>
                         { React.Children.map(this.props.children, (item, i) => {
                             let width = document.body.clientWidth > 768?titleData[i].width:100;

@@ -9,24 +9,66 @@ export default class PaginationFrame extends React.Component {
         this.state = {
             nowPage: 1,
             searchInfo:'',
-            currentItems:null
+            currentItems:null,
+            tempTotalItems:null
         };
     }
 
     componentWillMount(){
+        let listData = this.props.config.data.slice(0,5);
         this.setState({
-            currentItems:this.props.config.data
+            currentItems:listData,
+            tempTotalItems:this.props.config.data
         })
     }
 
     turnPage(n){
-        var pageCount = this.state.nowPage + n;
-        this.setState({nowPage:pageCount});
-        this.getData();
+        let pageCount = this.state.nowPage + n;
+        let startCount = (pageCount-1)*5;
+        let endCount = pageCount*5 > this.state.tempTotalItems.length?this.state.tempTotalItems.length:pageCount*5;
+        let listData = this.state.tempTotalItems.slice(startCount,endCount);
+        this.state.nowPage = pageCount;
+        this.setState({currentItems:listData});
+        //this.getData();
     }
 
     searchFun(cond1,cond2){
-
+        let tempData = global.allItems;
+        let searchResultFirst = [],searchResultSecond = [],finalResult=[];
+        if(cond1!==''){
+            tempData.map((item)=>{
+                if(item['Status'] === cond1){
+                    searchResultFirst.push(item);
+                }
+            })
+            if(cond2!==''){
+                searchResultFirst.map((item)=>{
+                    if(item['RequestType'].indexOf(cond2) !== -1 ||item['RequestDate'].indexOf(cond2) !== -1 ||item['ProcessedDate'].indexOf(cond2) !== -1 ||
+                        item['ProcessedBy'].indexOf(cond2) !== -1){
+                            searchResultSecond.push(item);
+                        }
+                });
+                finalResult = searchResultSecond;
+            }
+            else{
+                finalResult = searchResultFirst;
+            }
+        }
+        else{
+            if(cond2!==''){
+                 tempData.map((item)=>{
+                    if(item['RequestType'].indexOf(cond2) !== -1 ||item['RequestDate'].indexOf(cond2) !== -1 ||item['ProcessedDate'].indexOf(cond2) !== -1 ||
+                        item['ProcessedBy'].indexOf(cond2) !== -1){
+                            searchResultSecond.push(item);
+                        }
+                });
+                finalResult = searchResultSecond;
+            }
+        }
+        this.setState({
+            currentItems:finalResult.slice(0,5),
+            tempTotalItems:finalResult
+        })
     }
 
     letterFun(letter){
@@ -66,9 +108,11 @@ export default class PaginationFrame extends React.Component {
             listData: this.state.currentItems,
         });
 
+        global.allItems =  this.props.config.data;
+
         child = hasLetterSearch?<LetterSearchFrame letterSearch={this.letterFun.bind(this)}>{child} </LetterSearchFrame>:child;
 
-        let turningPanel = hasTurning?<PaginationArrows turnPage={this.turnPage.bind(this)} currentPage={currentpage} countInPage={config.pageSize} totalItems={config.totalCount}></PaginationArrows>:null;
+        let turningPanel = hasTurning?<PaginationArrows turnPage={this.turnPage.bind(this)} currentPage={currentpage} countInPage={config.pageSize} totalCount={this.state.tempTotalItems.length}></PaginationArrows>:null;
         let dataFrame = hasTitle?<PaginationDataFrame frameTitle={frameTitle}>{child}</PaginationDataFrame>:<div>{child}</div>;
         let searchPanel = hasSearch?<PaginationSearch searchFun={this.searchFun.bind(this)}></PaginationSearch>:null;
      
