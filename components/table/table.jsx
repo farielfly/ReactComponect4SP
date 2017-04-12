@@ -18,8 +18,14 @@ export default class Table extends React.Component {
     render() {
         let {titleData,listData} = this.props;
         let headList = <div className="acs-table-titlehead">{titleData.map((item)=>{
-                item.value = item.value.replace(/\s+/g,"");
-                return <div style={{width:item.width+"%"}}>{item.value}</div>
+               let titleValue = item.value;
+               if(item.value === "Request Type"){
+                   item.value = "Title";
+               }
+               else{
+                    item.value = item.value.replace(/\s+/g,"");
+               }
+                return <div style={{width:item.width+"%"}}>{titleValue}</div>
             })}</div>;
         let dataList = listData.map((dataItem,index)=>{
             return <div className="acs-table-row" style={{"backgroundColor":index%2===0?"#f2f4f6":"#fff"}}>
