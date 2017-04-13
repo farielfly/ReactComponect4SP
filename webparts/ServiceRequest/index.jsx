@@ -93,7 +93,7 @@ function tableListRender(config){
         })
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={true} config={{data:data,pageSize:config.pageSize,totalCount:data.length}} hasTurning={config.hasPagination}>
+                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={config.hasSearch} config={{data:data,pageSize:config.pageSize,totalCount:data.length}} hasTurning={config.hasPagination}>
                     <TableListFrame titleData={config.titleArrary}  listData={data}>
                         {titleArrary}
                     </TableListFrame>
