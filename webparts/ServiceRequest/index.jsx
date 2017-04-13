@@ -88,13 +88,14 @@ function tableListRender(config){
     let param = {};
 
     function renderUI(data) {
-        let titleArrary = config.titleArrary.map((item,index)=>{
+        
+        let titleArrary =data.Header.map((item,index)=>{
             return <StringCell itemData={null} key={"head"+index}></StringCell>
         })
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={config.hasSearch} config={{data:data,pageSize:config.pageSize,totalCount:data.length}} hasTurning={config.hasPagination}>
-                    <TableListFrame titleData={config.titleArrary}  listData={data}>
+                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={config.hasSearch} config={{data:data.Items,pageSize:config.pageSize,totalCount:data.Items.length}} hasTurning={config.hasPagination}>
+                    <TableListFrame titleData={data.Header}  listData={data.Items}>
                         {titleArrary}
                     </TableListFrame>
                 </PaginationFrame>,
