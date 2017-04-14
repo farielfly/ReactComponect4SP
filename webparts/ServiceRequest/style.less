@@ -258,31 +258,129 @@
         width:e('calc(100% - 40px)');
     }
 
-     .acs-tablebulk-serviceitem{
+
+    .acs-tablebulkcommon-itemtitle{
+        display: inline-block;
+        margin-left: 10px;
+        max-width: 240px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: "Open Sans Semibold" "Open Sans";
+        font-size: 14px;
+        color:#333;
+        font-weight: 600;
+        vertical-align: middle;
+    }
+
+    .acs-tablebulkcommon-itemicon{
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: #ffa800;
+        vertical-align: middle;
+    }
+
+    .acs-tablebulkcommon-itemurl{
+        >span{
+            display: block;
+        }
+
+        >span:nth-child(1){
+            max-width: 240px;
+            font-family: "Open Sans Semibold" "Open Sans";
+            font-size: 14px;
+            font-weight: 600;
+            color:#333;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        >span:nth-child(2){
+            float: none;
+            font-size: 13px;
+            color:#444;
+            margin-left: 15px;
+        }
+    }
+
+    .acs-tablebulk-serviceitem{
         display: block;
         margin-bottom: 30px;
         width:100%;
 
         .acs-serviceitem-itemicon{
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            background-color: #ffa800;
-            vertical-align: middle;
+            .acs-tablebulkcommon-itemicon;
         }
 
         .acs-serviceitem-itemtitle{
+            .acs-tablebulkcommon-itemtitle;
+        }
+    }
+
+    .acs-lynchead{
+        margin-bottom: 40px;
+
+        .acs-lynchead-headpicture{
             display: inline-block;
-            margin-left: 10px;
-            max-width: 240px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-family: "Open Sans Semibold" "Open Sans";
-            font-size: 14px;
-            color:#333;
-            font-weight: 600;
-            vertical-align: middle;
+            width: 77px;
+            height: 77px;
+            vertical-align: top;
+        }
+
+        .acs-lynchead-personinfo{
+            display: inline-block;
+        }
+    }
+
+    .acs-tablebulk-siteitem{
+        padding-top: 20px;
+        height: 70px;
+        .acs-siteitem-title{
+            display: block;
+            margin-bottom: 5px;
+
+            .acs-siteitem-itemicon{
+                .acs-tablebulkcommon-itemicon;
+            }
+
+            .acs-siteitem-itemtitle{
+                .acs-tablebulkcommon-itemtitle;
+            }
+        }
+
+        .acs-siteitem-description{
+            .acs-tablebulkcommon-itemurl;
+            >span:nth-child(1){
+                margin-left: 15px;
+            }
+        }
+    }
+
+    .acs-tablebulk-documentitem{
+        .acs-tablebulk-siteitem;
+
+         .acs-documentitem-title{
+            .acs-documentitem-itemtitle{
+                .acs-tablebulkcommon-itemtitle;
+            }
+
+            .acs-documentitem-itemicon{
+                display: inline-block;
+                width:18px;
+                height: 18px;
+                background-color: #ddd;
+                vertical-align: middle;
+            }
+         }
+       
+
+        .acs-documentitem-description{
+            .acs-tablebulkcommon-itemurl;
+            >span:nth-child(1){
+                margin-left: 28px;
+            }
         }
     }
 
@@ -306,8 +404,9 @@
 
 .acs-lettersearch{
     .acs-lettersearch-btnpanel{
-        margin: auto;
+        padding: 0 40px;
         width:e('calc(100% - 80px)');
+        border-bottom: 1px solid #ddd;
 
         .acs-lettersearch-item{
             display: inline-block;
@@ -326,6 +425,8 @@
 
         .acs-lettersearch-all, .acs-lettersearch-letters{
             display: inline-block;
+            margin-top: 7px;
+            margin-bottom: 6px;
         }
 
         .acs-lettersearch-letters{
@@ -343,14 +444,10 @@
         .acs-tablebulk-twolist{
             margin: 0;
             margin-top: 25px;
-            width:e('calc(50% - 50px)');
-            vertical-align: top;
-        }
-
-        .acs-tablebulk-twolist:nth-child(1){
-            margin-top: 25px;
             margin-left: 30px;
             margin-right: 40px;
+            width:100%;
+            vertical-align: top;
         }
     }
 }
@@ -446,6 +543,29 @@
             margin-left: 20px;
             margin-right: 30px;
         }
+        .acs-tablebulk-siteitem{
+            .acs-siteitem-description{
+                >span{
+                    display: inline-block;
+                }
+                >span:nth-child(2){
+                    float:right;
+                    margin-left: 0;
+                }
+            }
+        }
     }
 
+    .acs-lettersearch{
+        .acs-tablebulk{
+            .acs-tablebulk-twolist{
+                 width:e('calc(50% - 50px)');
+            }
+
+            .acs-tablebulk-twolist:nth-child(2){
+                margin: 0;
+                margin-top: 25px;
+            }
+        }
+    }
 }

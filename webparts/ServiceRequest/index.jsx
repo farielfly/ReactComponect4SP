@@ -7,6 +7,8 @@ import StringCell from '../../components/table/stringCell.jsx';
 import TableBulk from '../../components/table/tableBulk.jsx';
 import ServiceItem from '../../components/table/serviceItem.jsx';
 import LyncItem from '../../components/table/lyncHeadCell.jsx';
+import DocumentItem from '../../components/table/documentItem.jsx';
+import SiteItem from '../../components/table/siteItem.jsx';
 
 import $ from 'jquery';
 
@@ -32,12 +34,12 @@ function serviceRequestTypeRender(config) {
                     </div>
         });
 
-        if (document.getElementById('serviceType')) {
+        if (document.getElementById(config.divId)) {
             render(
                 <div>
                     {serviceType}
                 </div>,
-                document.getElementById('serviceType')
+                document.getElementById(config.divId)
             );
         }
     }
@@ -71,7 +73,6 @@ function serviceRequestTypeRender(config) {
         renderUI(serviceData);
     }
 }
-
 global.serviceRequestTypeRender = serviceRequestTypeRender;
 
 
@@ -94,7 +95,7 @@ function tableListRender(config){
         })
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={config.hasSearch} config={{data:data.Items,pageSize:config.pageSize,totalCount:data.Items.length}} hasTurning={config.hasPagination}>
+                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={config.hasSearch} config={{data:data.Items,pageSize:config.pageSize}} hasTurning={config.hasPagination}>
                     <TableListFrame titleData={data.Header}  listData={data.Items}>
                         {titleArrary}
                     </TableListFrame>
@@ -133,8 +134,8 @@ function tableListRender(config){
         renderUI(data);
     }
 }
-
 global.tableListRender = tableListRender;
+
 
 function serviceLyncListRender(config) {
     const serviceData=[
@@ -145,14 +146,14 @@ function serviceLyncListRender(config) {
     let param = { };
 
     function renderUI(data) {
-        if (document.getElementById('serviceType')) {
+        if (document.getElementById(config.divId)) {
             render(
                 <PaginationFrame hasLetterSearch={true} hasTitle={true} frameTitle={"dfsfs"} hasSearch={false} config={{data:serviceData}} hasTurning={true}>
                     <TableBulk columnCount={2} listData={serviceData}>
                         <LyncItem itemData={null}></LyncItem>
                     </TableBulk>   
                 </PaginationFrame>,
-                document.getElementById('serviceType')
+                document.getElementById(config.divId)
             );
             setStatus();
         }
@@ -187,8 +188,60 @@ function serviceLyncListRender(config) {
         renderUI(serviceData);
     }
 }
-
 global.serviceLyncListRender = serviceLyncListRender;
+
+
+function itemListRender(config) {
+    const serviceData=[{Href:'http://www.baidu.com',Value:'itemData1'},{Href:'http://www.baidu.com',Value:'itemData1'},
+    {Href:'http://www.baidu.com',Value:'itemData13'},{Href:'http://www.baidu.com',Value:'itemData14'},
+    {Href:'http://www.baidu.com',Value:'itemData15'},{Href:'http://www.baidu.com',Value:'itemData16'}];
+
+    let param = { };
+
+    function renderUI(data) {
+        let item = config.itemType === 'site'?<SiteItem></SiteItem>:<DocumentItem></DocumentItem>;
+        if (document.getElementById(config.divId)) {
+            render(
+               <PaginationFrame hasTitle={true} frameTitle={config.Title} hasSearch={false} config={{data:data,pageSize:5}} hasTurning={true}>
+                    <TableBulk columnCount={1} listData={data}>
+                        {item}
+                    </TableBulk>
+                </PaginationFrame>,
+                document.getElementById(config.divId)
+            );
+        }
+    }
+
+    function loadData(param) {
+        $.ajax({
+            type: "GET",
+            url: config.url,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose",
+            },
+            dataType: "json",
+            data: {},
+            cache:false,
+            config: param,
+            async: false,
+            success: function (dataInput) {
+                renderUI(dataInput);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    if (config && !config.debug) {
+        loadData(param);
+    }
+    else {
+        renderUI(serviceData);
+    }
+}
+global.itemListRender = itemListRender;
 
 function setStatus(){
     let imgs = document.getElementsByClassName('ms-spimn-img');

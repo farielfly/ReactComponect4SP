@@ -7,7 +7,7 @@ export default class LyncHeadCell extends React.Component{
     render(){
         let itemData = this.props.itemData;
 
-        return <div>
+        return <div className="acs-lynchead">
                     <span className="ms-imnSpan">
                         <a href="javascript:void(0)" className="ms-imnlink ms-spimn-presenceLink">
                             <span className="ms-spimn-presenceWrapper ms-spimn-imgSize-8x72">
@@ -15,10 +15,10 @@ export default class LyncHeadCell extends React.Component{
                             </span>
                         </a>
                     </span>
-                    <div className="acs-headpic-picture">
+                    <div className="acs-lynchead-headpicture">
                         <img src={itemData.Photo} alt=""/>
                     </div>
-                    <div className="acs-headpic-personinfo">
+                    <div className="acs-lynchead-personinfo">
                         <div>{itemData.Name}</div>
                         <div>Department: {itemData.Department}</div>
                     </div>
