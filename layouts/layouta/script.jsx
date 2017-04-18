@@ -7,7 +7,7 @@ import PaginationTable from '../../components/gridtable/table.jsx';
 function staffDirectoryRender(config){
 
     let param={},data=[],canTurning = false;
-    let tableColumn=[{name:"Photo",width:5},{name:"Name",width:18},{name:"Division & Department",width:35},{name:"Designation",width:10},{name:"Email Me",width:17},{name:"Contact Me",width:15}];
+    let tableColumn=[{name:"Photo",width:5},{name:"Name",width:20},{name:"Division & Department",width:33},{name:"Designation",width:10},{name:"Email Me",width:17},{name:"Contact Me",width:15}];
 
     function renderUI(data) {
         if (document.getElementById('staff')) {
@@ -21,7 +21,7 @@ function staffDirectoryRender(config){
     function integration(data){
         var newData = [];
         data.map((item)=>{
-            var dividep = (item.Division ===''||item.Department==='')?'':';';
+            var dividep = (item.Division ===''||item.Department==='')?'':' / ';
             var telmob = (item.ContactMe ===''||item.MyMobile==='')?'':'/';
             newData.push([
                 {data:{photo:item.Photo,url:item.MySite},type:'photo'},
