@@ -1,0 +1,116 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
+
+#acs-line {
+  height: 1px;
+  background-color: #ff9c00;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+#acs-requestType {
+  font-size: 24px;
+  color: #444;
+  margin-top: 35px;
+  margin-left: 40px;
+}
+
+#s4-bodyContainer {
+  #s4-titlerow {
+    display: none !important;
+  }
+
+  #contentRow {
+    #sideNavBox {
+      display: none !important;
+    }
+
+    #contentBox {
+      margin-left: 40px;
+      margin-right: 40px;
+
+      #DeltaPlaceHolderMain {
+        .ms-formtable {
+          display: block;
+
+          > tbody {
+            display: block;
+
+            > tr {
+              display: block;
+
+              .ms-formlabel {
+                display: block;
+
+                .ms-standardheader {
+                  text-align: left;
+                  word-break: break-word;
+                  white-space: normal !important;
+                }
+              }
+
+              .ms-formbody {
+                display: block;
+
+                #attachmentsOnClient {
+                  padding-top: 1px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media(min-width:768px) {
+  #s4-bodyContainer {
+    #s4-titlerow {
+      display: none !important;
+    }
+
+    #contentRow {
+      #sideNavBox {
+        display: none !important;
+      }
+
+      #contentBox {
+        margin-right: 20px;
+        margin-left: 220px;
+
+        #DeltaPlaceHolderMain {
+          .ms-formtable {
+            display: block;
+
+            > tbody {
+              display: block;
+
+              > tr {
+                display: block;
+
+                .ms-formlabel {
+                  display: inline-block;
+                  min-width: 229px;
+
+                  .ms-standardheader {
+                    text-align: right;
+                    word-break: break-word;
+                    white-space: normal !important;
+                  }
+                }
+
+                .ms-formbody {
+                  display: inline-block;
+
+                  #attachmentsOnClient {
+                    padding-top: 1px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
