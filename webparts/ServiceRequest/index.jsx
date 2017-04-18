@@ -26,7 +26,7 @@ function serviceRequestTypeRender(config) {
     function renderUI(data) {
         let serviceType = data.map((item,index)=>{
             return <div className="acs-servicerequest-type" key={"servicetype"+index}>
-                        <PaginationFrame hasTitle={true} frameTitle={item.Title} hasSearch={false} config={{data:item.Items}} hasTurning={false}>
+                        <PaginationFrame hasTitle={true} hasSearch={false} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
                             <TableBulk columnCount={2} listData={item.Items}>
                                 <ServiceItem></ServiceItem>
                             </TableBulk>
@@ -95,7 +95,7 @@ function tableListRender(config){
         })
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasTitle={false} frameTitle={""} hasSearch={config.hasSearch} config={{data:data.Items,pageSize:config.pageSize}} hasTurning={config.hasPagination}>
+                <PaginationFrame hasTitle={false} hasSearch={config.hasSearch} config={{data:data.Items,pageSize:config.pageSize,frameTitle:''}} hasTurning={config.hasPagination}>
                     <TableListFrame titleData={data.Header}  listData={data.Items}>
                         {titleArrary}
                     </TableListFrame>
@@ -139,16 +139,19 @@ global.tableListRender = tableListRender;
 
 function serviceLyncListRender(config) {
     const serviceData=[
-        {Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
-        {Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
-        {Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'}];
+        {Email:"test1",ItemId:1,Photo:'Ddd',Name:'Sdds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
+        {Email:"test1",ItemId:1,Photo:'Fdd',Name:'Ddds',Department:'Acss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
+        {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},
+        {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},
+        {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},
+        {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'}];
 
     let param = { };
 
     function renderUI(data) {
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasLetterSearch={true} hasTitle={true} frameTitle={"dfsfs"} hasSearch={false} config={{data:serviceData}} hasTurning={true}>
+                <PaginationFrame hasLetterSearch={true} hasTitle={true} hasSearch={false} config={{data:serviceData,pageSize:6,frameTitle:"dfsfs"}} hasTurning={true}>
                     <TableBulk columnCount={2} listData={serviceData}>
                         <LyncItem itemData={null}></LyncItem>
                     </TableBulk>   
@@ -202,7 +205,7 @@ function itemListRender(config) {
         let item = config.itemType === 'site'?<SiteItem></SiteItem>:<DocumentItem></DocumentItem>;
         if (document.getElementById(config.divId)) {
             render(
-               <PaginationFrame hasTitle={true} frameTitle={config.Title} hasSearch={false} config={{data:data,pageSize:5}} hasTurning={true}>
+               <PaginationFrame hasTitle={true} hasSearch={false} config={{data:data,pageSize:5,frameTitle:config.Title}} hasTurning={true}>
                     <TableBulk columnCount={1} listData={data}>
                         {item}
                     </TableBulk>

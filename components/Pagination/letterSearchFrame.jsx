@@ -2,10 +2,15 @@
 export default class LetterSearchFrame extends React.Component {
     constructor(props){
         super(props);
+        this.state={
+            selectedIndex:-1
+        }
     }
 
-    letterSearch(letter){
-        this.props.letterSearch();
+    letterSearch(letter,index){
+        this.setState({selectedIndex:index},function(){
+            this.props.letterSearch(letter);
+        });
     }
 
     createLetterPanel(){
@@ -16,9 +21,13 @@ export default class LetterSearchFrame extends React.Component {
             letters.push(letter);
         }
         tempLetters = letters.map((item,index)=>{
-            return <div className="acs-lettersearch-item" onClick={this.letterSearch.bind(this,item)} key={'letter'+index}><span>{item}</span></div>;
+            return <div className={"acs-lettersearch-item" + (index === this.state.selectedIndex?" acs-btnpanel-selected":"")} onClick={this.letterSearch.bind(this,item,index)} key={'letter'+index}><span>{item}</span></div>;
         });
-        return <div className="acs-lettersearch-btnpanel"><div className="acs-lettersearch-all acs-lettersearch-item" onClick={this.letterSearch.bind(this,"ALL")}><span>ALL</span></div><div className="acs-lettersearch-letters">{tempLetters}</div></div>;
+        return <div className="acs-lettersearch-btnpanel">
+            <div className= {"acs-lettersearch-all acs-lettersearch-item" + (this.state.selectedIndex ===-1?" acs-btnpanel-selected":"")} onClick={this.letterSearch.bind(this,"ALL",-1)}>
+                <span>ALL</span>
+            </div>
+        <div className="acs-lettersearch-letters">{tempLetters}</div></div>;
     }
 
 

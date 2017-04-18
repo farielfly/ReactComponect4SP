@@ -48,6 +48,9 @@
                 background-image: url('');
                 background-color:orange;
                 border-radius:9px;
+                text-align: center;
+                color:#fff;
+                line-height: 1.2;
             }
 
             .acs-turnbtn-pre{
@@ -59,9 +62,11 @@
 
             .acs-turnbtn-dispre{
                 background-position: -130px -62px;
+                background-color:#ddd;
             } 
             .acs-turnbtn-disnext{
                 background-position: -182px -62px;
+                background-color:#ddd;
             }
         }
     }
@@ -320,7 +325,7 @@
     }
 
     .acs-lynchead{
-        margin-bottom: 40px;
+        margin-bottom: 35px;
 
         .acs-lynchead-headpicture{
             display: inline-block;
@@ -362,6 +367,8 @@
         .acs-tablebulk-siteitem;
 
          .acs-documentitem-title{
+             display: block;
+             margin-bottom: 5px;
             .acs-documentitem-itemtitle{
                 .acs-tablebulkcommon-itemtitle;
             }
@@ -404,8 +411,9 @@
 
 .acs-lettersearch{
     .acs-lettersearch-btnpanel{
-        padding: 0 40px;
-        width:e('calc(100% - 80px)');
+        padding: 0 10px;
+        width:e('calc(100% - 20px)');
+        
         border-bottom: 1px solid #ddd;
 
         .acs-lettersearch-item{
@@ -425,8 +433,7 @@
 
         .acs-lettersearch-all, .acs-lettersearch-letters{
             display: inline-block;
-            margin-top: 7px;
-            margin-bottom: 6px;
+            margin: 10px 0;
         }
 
         .acs-lettersearch-letters{
@@ -452,7 +459,8 @@
     }
 }
 
-@media (min-width:768px){
+
+@media (min-width:769px){
     .acs-servicerequest-type{
         display: inline-block;
         margin-bottom: 40px;
@@ -557,6 +565,11 @@
     }
 
     .acs-lettersearch{
+        .acs-lettersearch-btnpanel{
+            padding: 0 40px;
+            width:e('calc(100% - 80px)');
+        }
+
         .acs-tablebulk{
             .acs-tablebulk-twolist{
                  width:e('calc(50% - 50px)');
@@ -565,6 +578,26 @@
             .acs-tablebulk-twolist:nth-child(2){
                 margin: 0;
                 margin-top: 25px;
+            }
+        }
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px){
+    .acs-lettersearch{
+        .acs-lettersearch-btnpanel{
+            padding: 0 10px;
+            width:e('calc(100% - 20px)');
+        }
+
+        .acs-tablebulk{
+            .acs-tablebulk-twolist{
+                width:e('calc(50% - 20px)');
+            }
+
+            .acs-tablebulk-twolist:nth-child(1){
+                    margin-left: 10px;
+                    margin-right: 10px;
             }
         }
     }

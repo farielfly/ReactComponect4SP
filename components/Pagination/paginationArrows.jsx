@@ -8,6 +8,20 @@ export default class PaginationArrows extends React.Component {
 
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.currentPage * nextProps.countInPage < nextProps.totalCount){
+             this.state.canNext = true;
+        }
+        else{
+            this.state.canNext = false;
+        }
+        if(nextProps.currentPage !== 1){
+            this.state.canPre = true;
+        }else{
+            this.state.canPre = false;
+        }
+    }
+
     turnLeft(option){
         if(this.props.currentPage !== 1){
             this.props.turnPage(option);
@@ -28,8 +42,8 @@ export default class PaginationArrows extends React.Component {
         return <div className="acs-turningframe-turnpanel">
                     <div className="acs-turnpanel-statistics">{startItem}-{endItem} of {totalCount}</div>
                     <div className="acs-turnpanel-turnbtn">
-                        <span className={this.state.canPre?"acs-turnbtn-pre":"acs-turnbtn-dispre"} onClick={this.turnLeft.bind(this,-1)}>L</span>
-                        <span className={this.state.canNext?"acs-turnbtn-next":"acs-turnbtn-disnext"} onClick={this.turnRight.bind(this,1)}>R</span>
+                        <span className={this.state.canPre?"acs-turnbtn-pre":"acs-turnbtn-dispre"} onClick={this.turnLeft.bind(this,-1)}>&lt;</span>
+                        <span className={this.state.canNext?"acs-turnbtn-next":"acs-turnbtn-disnext"} onClick={this.turnRight.bind(this,1)}>&gt;</span>
                     </div>
                 </div>
     }

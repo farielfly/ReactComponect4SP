@@ -15,7 +15,7 @@ export default class PaginationFrame extends React.Component {
     }
 
     componentWillMount(){
-        let listData = this.props.config.data.slice(0,5);
+        let listData = this.props.config.data.slice(0,this.props.config.pageSize);
         this.setState({
             currentItems:listData,
             tempTotalItems:this.props.config.data
@@ -24,11 +24,11 @@ export default class PaginationFrame extends React.Component {
 
     turnPage(n){
         let pageCount = this.state.nowPage + n;
-        let startCount = (pageCount-1)*5;
-        let endCount = pageCount*5 > this.state.tempTotalItems.length?this.state.tempTotalItems.length:pageCount*5;
+        let startCount = (pageCount-1)*this.props.config.pageSize;
+        let endCount = pageCount*this.props.config.pageSize > this.state.tempTotalItems.length?this.state.tempTotalItems.length:pageCount*this.props.config.pageSize;
         let listData = this.state.tempTotalItems.slice(startCount,endCount);
         this.state.nowPage = pageCount;
-        this.setState({currentItems:listData});
+        this.setState({nowPage:pageCount,currentItems:listData});
         //this.getData();
     }
 
@@ -66,13 +66,29 @@ export default class PaginationFrame extends React.Component {
             }
         }
         this.setState({
-            currentItems:finalResult.slice(0,5),
-            tempTotalItems:finalResult
-        })
+            currentItems:finalResult.slice(0,this.props.config.pageSize),
+            tempTotalItems:finalResult,
+            nowPage:1
+        });
     }
 
     letterFun(letter){
-
+        let tempList = [];
+        if(letter === "ALL"){
+            tempList = this.props.config.data;
+        }
+        else{
+            this.props.config.data.map((item)=>{
+                if(item.Name.indexOf(letter) === 0){
+                    tempList.push(item);
+                }
+            });
+        }
+        this.setState({
+            currentItems:tempList.slice(0,this.props.config.pageSize),
+            tempTotalItems:tempList,
+            nowPage:1
+        })
     }
 
     getData(){
@@ -102,7 +118,7 @@ export default class PaginationFrame extends React.Component {
     }
 
     render() {
-        let {hasTitle,frameTitle,config,hasTurning,hasSearch,hasLetterSearch} = this.props;
+        let {config,hasTitle,hasTurning,hasSearch,hasLetterSearch} = this.props;
         let currentpage = this.state.nowPage;
         let child =  React.cloneElement(this.props.children, {
             listData: this.state.currentItems,
@@ -113,7 +129,7 @@ export default class PaginationFrame extends React.Component {
         child = hasLetterSearch?<LetterSearchFrame letterSearch={this.letterFun.bind(this)}>{child} </LetterSearchFrame>:child;
 
         let turningPanel = hasTurning?<PaginationArrows turnPage={this.turnPage.bind(this)} currentPage={currentpage} countInPage={config.pageSize} totalCount={this.state.tempTotalItems.length}></PaginationArrows>:null;
-        let dataFrame = hasTitle?<PaginationDataFrame frameTitle={frameTitle}>{child}</PaginationDataFrame>:<div>{child}</div>;
+        let dataFrame = hasTitle?<PaginationDataFrame frameTitle={config.frameTitle}>{child}</PaginationDataFrame>:<div>{child}</div>;
         let searchPanel = hasSearch?<PaginationSearch searchFun={this.searchFun.bind(this)}></PaginationSearch>:null;
      
 
