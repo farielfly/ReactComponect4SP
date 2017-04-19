@@ -57,7 +57,7 @@ export default class AccordionComplex extends React.Component {
                 <Accordion data={data} hasPanel={hasPanel} informationEvent={this.handleDataClick.bind(this)}>
                     {children}
                 </Accordion>
-                <InfoPanel infoData={this.state.informationPanel} commonTitle={"Detail of Division"} commonDes={"Go to see Staff Directory information"} hasPanel={hasPanel}>
+                <InfoPanel infoData={this.state.informationPanel} commonTitle={"Detail of Division"} commonDes={"Click for Staff Directory"} hasPanel={hasPanel}>
                      <ChiefUser personData={tempData} photoLink={this.state.informationPanel} ></ChiefUser>
                 </InfoPanel>
             </div>
