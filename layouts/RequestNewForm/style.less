@@ -24,46 +24,21 @@
     #sideNavBox {
       display: none !important;
     }
+  }
 
-    #contentBox {
-      margin-left: 40px;
-      margin-right: 40px;
-
-      #DeltaPlaceHolderMain {
-        .ms-formtable {
-          display: block;
-
-          > tbody {
-            display: block;
-
-            > tr {
-              display: block;
-
-              .ms-formlabel {
-                display: block;
-
-                .ms-standardheader {
-                  text-align: left;
-                  word-break: break-word;
-                  white-space: normal !important;
-                }
-              }
-
-              .ms-formbody {
-                display: block;
-
-                #attachmentsOnClient {
-                  padding-top: 1px;
-                }
-              }
-            }
-          }
-        }
-      }
+  #contentBox {
+    #partAttachment {
+      display: inline-block;
     }
   }
+
 }
-@media(min-width:768px) {
+@media(max-width:768px) {
+  #acs-line {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
   #s4-bodyContainer {
     #s4-titlerow {
       display: none !important;
@@ -75,10 +50,19 @@
       }
 
       #contentBox {
-        margin-right: 20px;
-        margin-left: 220px;
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 370px;
 
         #DeltaPlaceHolderMain {
+          .ms-informationbar {
+            display: none;
+          }
+
+          .ms-longfileinput {
+            width: 100%;
+          }
+
           .ms-formtable {
             display: block;
 
@@ -89,21 +73,37 @@
                 display: block;
 
                 .ms-formlabel {
-                  display: inline-block;
-                  min-width: 229px;
+                  display: block;
+
+                  h3 {
+                    min-width: 370px;
+                  }
 
                   .ms-standardheader {
-                    text-align: right;
+                    text-align: left;
                     word-break: break-word;
                     white-space: normal !important;
                   }
                 }
 
                 .ms-formbody {
-                  display: inline-block;
+                  display: block;
+
+                  .sp-peoplepicker-topLevel {
+                    width: 100%;
+                    padding-right: 0;
+                  }
+
+                  .ms-long {
+                    width: 100%;
+                  }
 
                   #attachmentsOnClient {
                     padding-top: 1px;
+
+                    > span {
+                      display: block;
+                    }
                   }
                 }
               }
