@@ -13,6 +13,7 @@ app.get('/', function (req, res) {
 app.use('/webparts', express.static(__dirname + '/webparts'));
 app.use('/dist', express.static(__dirname + '/dist'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use('/components/img', express.static(__dirname + '/components/img'));
 
 http.listen(1982, function () {
     console.log('listening on *:1982');

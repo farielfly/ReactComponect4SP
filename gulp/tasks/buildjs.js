@@ -14,7 +14,7 @@ import streamify from 'gulp-streamify';
 import gulpif from 'gulp-if';
 
 let debug = false;
-let compress = true;
+let compress = false;
 
 gulp.task('buildjs-dev', function () {
     debug = true;
@@ -22,11 +22,11 @@ gulp.task('buildjs-dev', function () {
 });
 
 gulp.task('buildjs', function () {
+    compress = true;
     build();
 });
 
 gulp.task('buildjs-debug', function () {
-    compress = false;
     build();
 });
 
@@ -94,7 +94,7 @@ gulp.task('copy-jslibrary', function () {
 
 gulp.task('concat-js',['buildjs-wp', 'buildjs-layout', 'buildjs-webglobal', 'copy-jslibrary'],function(){
     if(!debug){
-        for(let concat of config.concats){
+        for(let concat of config.concats.js){
             // let srcs = concat.src.map(function(item){
             //     return path.join(config.rootpath,item);
             // })

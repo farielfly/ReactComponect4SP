@@ -68,7 +68,7 @@ function calendarRender(config) {
     function renderUI(data, param) {
         if (document.getElementById('event-calendar')) {
             render(
-                <WebPartFrame title={param.title} hasMore={false} link={""} hasTopLine={false}>
+                <WebPartFrame title={param.title} hasMore={false} link={param.moreurl} hasTopLine={false}>
                     <EventCalendar items={data.events}></EventCalendar>
                     <Calendar dates={data.dates} onDateRangeChange={handleDateRangeChanged.bind(this)}></Calendar>
                 </WebPartFrame>,

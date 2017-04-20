@@ -34,7 +34,7 @@ function eventRender(config) {
         for (var i = 0, l = param.data.length; i < l; i++) {
             data.push({
                 'title': param.data[i].Title,
-                'href': param.data[i].User,
+                'href': param.data[i].Link,
                 'time': param.data[i].DateTime,
                 'location': param.data[i].User
             })
@@ -45,7 +45,7 @@ function eventRender(config) {
     if (config && !config.debug) {
         param.listurl = config.listurl ? config.listurl : '';
         param.moreurl = config.moreurl ? config.moreurl : '';
-        param.webparttitle = config.webparttitle ? config.webparttitle : '';
+        param.webparttitle = config.webparttitle ? config.webparttitle : 'discussion board';
         param.id = config.id ? config.id : 'discussion';
         param.data = config.data ? config.data: data;
         loadData(param);

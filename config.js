@@ -2,7 +2,7 @@ module.exports = {
     rootpath: __dirname,
     prod_webpartStyleoutput: 'CSS',
     prod_webpartScriptoutput: 'JS',
-    prod_root: '../../../APPS-NTUCIncome/',
+    prod_root: '../NTUCIncome/',
     replacepath: '../../Common/Img/',
     webparts: [
         {
@@ -54,12 +54,12 @@ module.exports = {
             'prod_output_css':''
         },
         {
-            'name': 'ServiceRequest',
+            'name': 'serviceRequest',
             'src': ['webparts/ServiceRequest/index.jsx'],
             'style': ['webparts/ServiceRequest/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js': '',
-            'prod_output_css':''
+            'prod_output_js': 'APPSSP13ServiceRequest/APPSSP13ServiceRequest/Layouts/APPSSP13ServiceRequest/JS',
+            'prod_output_css':'APPSSP13ServiceRequest/APPSSP13ServiceRequest/Layouts/APPSSP13ServiceRequest/CSS'
         },
         {
             'name': 'Panels',
@@ -117,6 +117,14 @@ module.exports = {
             'prod_output_js': 'AvePointSP2013HomePageSuiteBar/ConfigFile/AvePoint/Script',
             'prod_output_css': 'AvePointSP2013HomePageSuiteBar/ConfigFile/AvePoint/CSS'
         },
+        {
+            'name': 'App',
+            'src': ['webparts/App/index.jsx'],
+            'style': ['webparts/App/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js':'',
+            'prod_output_css':''
+        }
     ],
 
     layouts: [
@@ -163,13 +171,18 @@ module.exports = {
             'prod_include': true
         },
     ],
-    concats:[  
-        {
+    concats:{
+        js:[{
             'name': 'CategoryArticles',
-            'src': ['../../../APPS-NTUCIncome/APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/Script/CategoryArticles.js','jslibrary/Commonjs.js'],
+            'src': ['../NTUCIncome/APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/Script/CategoryArticles.js','jslibrary/Commonjs.js'],
             'output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/Script',
-        } 
-    ],
+        }],
+        css:[{
+            'name': 'Navigation',
+            'src': ['../NTUCIncome/AvePointSP2013HomePageSuiteBar/ConfigFile/Avepoint/css/Navigation.css','stylelibrary/CommonStyle.less'],
+            'output': 'AvePointSP2013HomePageSuiteBar/ConfigFile/Avepoint/css',
+        }]
+    },
     images: [
         {
             'src': ['stylelibrary/images/*'],

@@ -18,7 +18,7 @@ function messageRender(config) {
                 <WebPartFrame
                     title={param.title}
                     hasMore={false}
-                    link={""}
+                    link={param.moreurl}
                     hasTopLine={false}>
                     <div className="acs-message">
                         <img src={data.PictureUrl}></img>

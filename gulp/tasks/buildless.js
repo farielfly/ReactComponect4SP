@@ -8,6 +8,9 @@ import config from '../../config.js';
 import concat from 'gulp-concat';
 import del from 'del';
 import replace from 'gulp-replace';
+import es from 'event-stream';
+import gulpconcat from 'gulp-concat';
+import rename from 'gulp-rename';
 
 function handlerError(err) {
     console.log(err.toString());
@@ -26,10 +29,11 @@ gulp.task('buildless', function () {
 });
 
 function build() {
-    gulp.start('buildless-wp', 'buildless-layout', 'buildless-webglobal');
+    gulp.start('buildless-wp', 'buildless-layout', 'buildless-webglobal','concat-css');
 }
 
 gulp.task('buildless-wp', function () {    
+    let streamArr = [];
     for (let webpart of config.webparts) {
         let srcs = new Set();
         if(!debug && !webpart.prod_output_css){
@@ -38,9 +42,11 @@ gulp.task('buildless-wp', function () {
         for (let style of webpart.style) {
             srcs.add(path.join(config.rootpath, style));
         }
-        buildless(Array.from(srcs), webpart.name + '.css',
+        let stream = buildless(Array.from(srcs), webpart.name + '.css',
             debug ? path.join(config.rootpath, webpart.output) : path.join(config.rootpath, config.prod_root, webpart.prod_output_css));
+        streamArr.push(stream);
     }
+    return es.merge(streamArr);
 })
 
 
@@ -80,7 +86,7 @@ function buildless(srcs, name, dest) {
     var cssnano = require('cssnano');
 
     del(path.join(dest, name), { force: true });
-    gulp.src(srcs)
+    return gulp.src(srcs)
         .pipe(concat(name))
         .pipe(less())
         .pipe(replace('../../dist/common/images/', debug? '../../dist/common/images/':config.replacepath))
@@ -88,8 +94,19 @@ function buildless(srcs, name, dest) {
         .pipe(cssmin())
         .on('error', handlerError)
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(dest));    
 }
+
+gulp.task('concat-css',['buildless-wp', 'buildless-layout', 'buildless-webglobal'],function(){
+    if(!debug){
+        for(let concat of config.concats.css){
+            gulp.src(concat.src)
+                .pipe(gulpconcat(path.join(config.rootpath, config.prod_root, config.prod_webpartScriptoutput, concat.name + '.tmp.css')))
+                .pipe(rename(concat.name + '.css'))
+                .pipe(gulp.dest(path.join(config.rootpath, config.prod_root, concat.output),{overwrite:true}));
+        }
+    }
+})
 
 gulp.task('watchless', function () {
     gulp.watch(config.config.src, ['buildless']);

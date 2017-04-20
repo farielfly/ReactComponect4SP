@@ -21,14 +21,28 @@ export default class titleDescriptionPanel extends React.Component {
     render() {
         let {title, description, itemhref, isVideo } = this.props;
         let titleClassName = isVideo?"acs-titledescriptionpanel-wrap play": "acs-titledescriptionpanel-wrap";
-        return (
-            <div className={titleClassName}>
-                <a data-href={itemhref} onClick={this.handleClick.bind(this)} ref='playButton'>
-                    <span className='acs-titledescriptionpanel-title'>{title}</span>
-                    <span className='acs-titledescriptionpanel-description'>{description}</span>
-                    <span className='acs-titledescriptionpanel-play'><div></div></span>
-                </a>
-            </div>
-        );
+        if(isVideo)
+        {
+            return (
+                <div className={titleClassName}>
+                    <a data-href={itemhref} onClick={this.handleClick.bind(this)} ref='playButton'>
+                        <span className='acs-titledescriptionpanel-title'>{title}</span>
+                        <span className='acs-titledescriptionpanel-description'>{description}</span>
+                        <span className='acs-titledescriptionpanel-play'><div></div></span>
+                    </a>
+                </div>
+            );
+        }else{
+            return (
+                <div className={titleClassName}>
+                    <a href={itemhref}>
+                        <span className='acs-titledescriptionpanel-title'>{title}</span>
+                        <span className='acs-titledescriptionpanel-description'>{description}</span>
+                        <span className='acs-titledescriptionpanel-play'><div></div></span>
+                    </a>
+                </div>
+            );
+
+        }
     }
 }
