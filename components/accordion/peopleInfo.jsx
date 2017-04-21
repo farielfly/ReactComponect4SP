@@ -31,11 +31,14 @@ export default class PeopleInfo extends React.Component{
 
                 <div className="acs-personinfo-introduction">
                     {chiefuser.map((item,index)=>{
-                        return (
+                        if(item.key!=='MySite')
+                        {
+                            return (
                             <div key={"props"+index}><span>{item.key}</span><span>{item.value}</span></div>
                         )
+                        }
+                        
                     })}
-                   
                 </div>
             </div>
             )
