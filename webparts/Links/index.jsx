@@ -71,6 +71,7 @@ function linksRender(config) {
             data: {},
             config: param,
             async: false,
+            cache:false,
             success: function(dataInput) {
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {

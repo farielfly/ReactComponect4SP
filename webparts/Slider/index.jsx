@@ -27,7 +27,7 @@ function sliderRender(config) {
                 </SliderFrame>,
                 document.getElementById('slider')
             );
-            AIC.wordLimit('.acs-titledescriptionpanel-description',2);
+            AIC.wordLimit('.acs-titledescriptionpanel-description', 2);
         }
     }
 
@@ -43,6 +43,7 @@ function sliderRender(config) {
             data: {},
             config: param,
             async: false,
+            cache:false,
             success: function (dataInput) {
                 var data = new Array();
                 for (var i = 0, l = dataInput.d.results.length; i < l; i++) {

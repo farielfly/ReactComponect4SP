@@ -54,6 +54,7 @@ function eventRender(config) {
             dataType: "json",
             data: {},
             config: param,
+            cache:false,
             async: false,
             success: function (dataInput) {
                 let month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
