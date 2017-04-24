@@ -97,42 +97,48 @@ var AIC;
     };
 
     function changeStyle() {
-      $('#contentBox').prepend($('#titleAreaRow>div:nth-child(2) .ms-breadcrumb-dropdownBox').prop("outerHTML"));
-      $('#titleAreaRow>div:nth-child(2)').html("").attr('id', 'navigation');
+        $('#contentBox').prepend($('#titleAreaRow>div:nth-child(2) .ms-breadcrumb-dropdownBox').prop("outerHTML"));
+        $('#titleAreaRow>div:nth-child(2)').css('display','none');
+        $('#siteIcon').after('<div id="navigation" class="ms-breadcrumb-box ms-tableCell ms-verticalAlignTop"></div>');
         var config = { url: _spPageContextInfo.siteAbsoluteUrl + "/_layouts/15/APPSAICSolution/NavigationProvider.aspx" }
         window.NavigationRender(config);
 
         $.ajax({
-            type:'GET',
-            url:'/_vti_bin/APPSAICSolution/CommonService.svc/GetFooter',
-            cache:false,
-            success:function (data) {
-            if (data) {
-                addFooter(data.Footer.Links, data.Footer.Search)
-            }
-            else {
-                var footerArray = [{ Name: 'link1', Url: 'http://www.baidu.com' }, { Name: 'link2', Url: 'http://www.baidu.com' },
-                { Name: 'link3', Url: 'http://www.baidu.com' }, { Name: 'link4', Url: 'http://www.baidu.com' }, { Name: 'link5', Url: 'http://www.baidu.com' }];
-                addFooter(footerArray, search);
-            }},
+            type: 'GET',
+            url: '/_vti_bin/APPSAICSolution/CommonService.svc/GetFooter',
+            cache: false,
+            success: function (data) {
+                if (data) {
+                    addFooter(data.Footer.Links, data.Footer.Search);
+                    resizeContentRow();
+                }
+                else {
+                    var footerArray = [{ Name: 'link1', Url: 'http://www.baidu.com' }, { Name: 'link2', Url: 'http://www.baidu.com' },
+                    { Name: 'link3', Url: 'http://www.baidu.com' }, { Name: 'link4', Url: 'http://www.baidu.com' }, { Name: 'link5', Url: 'http://www.baidu.com' }];
+                    addFooter(footerArray, search);
+                    resizeContentRow();
+                }
+            },
             error: function (data) {
             }
         });
         $.ajax({
-            type:'GET',
-            url:'/_vti_bin/APPSAICSolution/CommonService.svc/GetLogoLink',
-            cache:false,
-            success:function (data) {
-            if (data) {
-                $('#DeltaSiteLogo').prepend($('#DeltaSiteLogo').html());
-                $($("a[id$='_onetidProjectPropertyTitleGraphic']")[0]).attr({'id':'acs-logolink','href':data.LogoLinkUrl});
-                $("a[id$='_onetidProjectPropertyTitleGraphic']").css('display','none');
-            }},
+            type: 'GET',
+            url: '/_vti_bin/APPSAICSolution/CommonService.svc/GetLogoLink',
+            cache: false,
+            success: function (data) {
+                if (data) {
+                    $('#DeltaSiteLogo').prepend($('#DeltaSiteLogo').html());
+                    $($("a[id$='_onetidProjectPropertyTitleGraphic']")[0]).attr({ 'id': 'acs-logolink', 'href': data.LogoLinkUrl });
+                    $("a[id$='_onetidProjectPropertyTitleGraphic']").css('display', 'none');
+                }
+            },
             error: function (data) {
             }
         });
         $('#titleAreaRow>div:nth-child(2)').css('display', 'inline-block');
-
+    }
+    function resizeContentRow() {
         $('#contentRow').resize(function () {
             var maxheight = $('#contentRow').height();
             var additionalHeight = 0;
@@ -152,32 +158,28 @@ var AIC;
             }
             else {
                 $('#acs-footer')[0].className = 'acs-footer';
-            }                
+            }
         });
     }
-
     function addFooter(footerArray, search) {
         var footerClass = 'acs-footer';
         var maxheight = $('#contentRow').height();
         var additionalHeight = 0;
         additionalHeight = 229;
-        if($('.ms-srch-siteSearchResults').height() > maxheight)
-        {
-            maxheight = $('.ms-srch-siteSearchResults').height();            
+        if ($('.ms-srch-siteSearchResults').height() > maxheight) {
+            maxheight = $('.ms-srch-siteSearchResults').height();
         }
         if ($('.ms-searchCenter-result-main').height() > maxheight) {
-                maxheight = $('.ms-searchCenter-result-main').height();
+            maxheight = $('.ms-searchCenter-result-main').height();
         }
-        if($('#sideNavBox').height() >maxheight)
-        {
+        if ($('#sideNavBox').height() > maxheight) {
             maxheight = $('#sideNavBox').height();
             additionalHeight = 200;
         }
-        if(maxheight +additionalHeight > $('#s4-workspace').height())
-        {
+        if (maxheight + additionalHeight > $('#s4-workspace').height()) {
             footerClass += ' acs-footer-relative';
-        }        
-        
+        }
+
         var html = '<div id="acs-footer" class="' + footerClass + '"><span class="acs-link">';
         footerArray.map(function (item) {
             html += '<a href="' + item.Url + '" target="_blank">' + item.Name + '</a>';
@@ -195,14 +197,14 @@ var AIC;
         window.location.href = searchUrl + '?k=' + $('.acs-search input').val();
         return false;
     }
-    AIC.enterSearch =function (e) {
-            if (!e) {
-                e = window.event;
-            }
-            if ((e.keyCode || e.which) == 13) {
-                AIC.search('', false);
-            }
+    AIC.enterSearch = function (e) {
+        if (!e) {
+            e = window.event;
         }
+        if ((e.keyCode || e.which) == 13) {
+            AIC.search('', false);
+        }
+    }
 })((AIC || (AIC = {})))
 
 window.onload = AIC.Global;
