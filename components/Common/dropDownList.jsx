@@ -9,7 +9,7 @@ export default class DropDownList extends React.Component{
   selectOption(value){
       this.refs.selectInput.value = value;
       this.setState({droplistOpen:false});
-      this.props.dropListFun(value,this.refs.searchInfo.value);
+      this.props.selectAction(value);
   }
   
   showList(){
@@ -19,25 +19,25 @@ export default class DropDownList extends React.Component{
   createList(data){
       let items=null;
       if(data === null){
-          items = [{value:'Pending'},{value:'Approved'},{value:'Rejected'}]
+          items = [{value:'1'},{value:'2'},{value:'3'}]
       }
       else{
           items = data;
       }
       
       var reactThis = this;
-      var dropList = items.map((item)=>{
-          return <div onClick={this.selectOption.bind(reactThis,item.value)}>
-                      {item.value}
+      var dropList = items.map((item, index)=>{
+          return <div onClick={this.selectOption.bind(reactThis,item.Value)} key={"select"+index}>
+                      {item.Value}
                   </div>
       });
       return dropList;
   }
   
   render() {
-      let {listData, defaultValue}
+      let {listData, defaultValue}=this.props;
      let listItems = this.createList(listData);
-      return <div>
+      return <div className="acs-droplist">
                   <div className="acs-dropdown-selectedvalue"><input ref="selectInput"  placeholder={defaultValue} disabled="disabled"/><span onClick={this.showList.bind(this)}>v</span></div>
                   <div className="acs-dropdown-list" style={{height:this.state.droplistOpen?"auto":"0"}}>
                       {listItems}

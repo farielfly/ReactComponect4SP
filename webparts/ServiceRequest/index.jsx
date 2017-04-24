@@ -2,13 +2,15 @@ import { render } from 'react-dom';
 import PaginationFrame from '../../components/pagination/paginationFrame.jsx';
 import LetterSearchFrame from '../../components/pagination/letterSearchFrame.jsx';
 import TableListFrame from '../../components/table/table.jsx';
-import StringCell from '../../components/table/stringCell.jsx';
-
+import TableWithCheckboxFrame from '../../components/table/tableWithCheckbox.jsx';
 import TableBulk from '../../components/table/tableBulk.jsx';
+
+import StringCell from '../../components/table/stringCell.jsx';
 import ServiceItem from '../../components/table/serviceItem.jsx';
 import LyncItem from '../../components/table/lyncHeadCell.jsx';
 import DocumentItem from '../../components/table/documentItem.jsx';
 import SiteItem from '../../components/table/siteItem.jsx';
+import CheckboxCell from '../../components/table/checkboxCell.jsx';
 
 import $ from 'jquery';
 
@@ -77,28 +79,42 @@ global.serviceRequestTypeRender = serviceRequestTypeRender;
 
 
 function tableListRender(config){
-     const data = [
-         { 'RequestType': 'Projector Request1', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10211' },
-        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Pending', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
-        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10421' },
-        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Closed', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
-        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/5/1021' },
-        { 'RequestType': 'Projector Request', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/1/1021' }];
+    const tempConfig = {
+        pageSize: 5,
+        divId: 'tablelist',
+        tableTitle:'',
+        hasPagination: true,
+        hasSearch: true,
+        hasTitle: false,
+        canChangeSize:true,
+        hasCheckbox:true,
+        data :{
+                Header:[{Key:'RequestType',Value:"Request Type"},{Key:'RequestDate',Value:"Request Date"},{Key:'Status',Value:"Status"},
+                {Key:'ProcessedBy',Value:"Processed By"},{Key:'ProcessedDate',Value:"Processed Date"}],
+                Items:[
+                { 'RequestType': '1', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10211' },
+                { 'RequestType': '2', 'RequestDate': '9/3/1021', 'Status': 'Pending', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
+                { 'RequestType': '3', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10421' },
+                { 'RequestType': '4', 'RequestDate': '9/3/1021', 'Status': 'Closed', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
+                { 'RequestType': '5', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/5/1021' },
+                { 'RequestType': '6', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/1/1021' }]
+            } 
+    }
 
-    const titleData =[{value:'Title',width:20},{value:'Request Date',width:20},{value:'Status',width:20},{value:'Processed By',width:20},{value:'Processed Date',width:20}];
-    let param = {};
-
+    let param = null;
     function renderUI(data) {
-        
-        let titleArrary =data.Header.map((item,index)=>{
+        let cellArrary =data.Header.map((item,index)=>{
             return <StringCell itemData={null} key={"head"+index}></StringCell>
         })
+        let table1 = <TableListFrame hasOrder={config.hasOrder} titleData={data.Header}  listData={data.Items}>{cellArrary}</TableListFrame>;
+        let table2 = <TableWithCheckboxFrame hasOrder={config.hasOrder} titleData={data.Header}  listData={data.Items}><CheckboxCell></CheckboxCell>{cellArrary}</TableWithCheckboxFrame>;
+        let tempTable = config.hasCheckbox?table2:table1;
+
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasTitle={false} hasSearch={config.hasSearch} config={{data:data.Items,pageSize:config.pageSize,frameTitle:''}} hasTurning={config.hasPagination}>
-                    <TableListFrame titleData={data.Header}  listData={data.Items}>
-                        {titleArrary}
-                    </TableListFrame>
+                <PaginationFrame canChangeSize={config.canChangeSize} hasTitle={false} hasSearch={config.hasSearch} 
+                    config={{data:data.Items,pageSize:config.pageSize,frameTitle:config.tableTitle,dropList:config.dropList}} hasTurning={config.hasPagination}>
+                   {tempTable}
                 </PaginationFrame>,
                 document.getElementById(config.divId)
             );
@@ -131,7 +147,7 @@ function tableListRender(config){
         loadData(param);
     }
     else {
-        renderUI(data);
+        renderUI(config.data);
     }
 }
 global.tableListRender = tableListRender;
@@ -148,11 +164,14 @@ function serviceLyncListRender(config) {
 
     let param = { };
 
-    function renderUI(data) {
+    function renderUI() {
+        config.data.map((item,index)=>{
+            item.ItemId = index;
+        })
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasLetterSearch={true} hasTitle={true} hasSearch={false} config={{data:serviceData,pageSize:6,frameTitle:"dfsfs"}} hasTurning={true}>
-                    <TableBulk columnCount={2} listData={serviceData}>
+                <PaginationFrame hasLetterSearch={true} hasTitle={true} hasSearch={false} config={{data:config.data,pageSize:6,frameTitle:config.Title}} hasTurning={true}>
+                    <TableBulk columnCount={2} listData={config.data}>
                         <LyncItem itemData={null}></LyncItem>
                     </TableBulk>   
                 </PaginationFrame>,
@@ -176,7 +195,8 @@ function serviceLyncListRender(config) {
             cache:false,
             async: false,
             success: function (dataInput) {
-                renderUI(dataInput);
+                config.data = dataInput;
+                renderUI();
             },
             error: function (data) {
 
@@ -184,11 +204,11 @@ function serviceLyncListRender(config) {
         });
     }
 
-    if (config && !config.debug) {
+    if (config.loadData && !config.debug) {
         loadData(param);
     }
     else {
-        renderUI(serviceData);
+        renderUI();
     }
 }
 global.serviceLyncListRender = serviceLyncListRender;
@@ -201,12 +221,13 @@ function itemListRender(config) {
 
     let param = { };
 
-    function renderUI(data) {
+    function renderUI() {
         let item = config.itemType === 'site'?<SiteItem></SiteItem>:<DocumentItem></DocumentItem>;
         if (document.getElementById(config.divId)) {
             render(
-               <PaginationFrame hasTitle={true} hasSearch={false} config={{data:data,pageSize:5,frameTitle:config.Title}} hasTurning={true}>
-                    <TableBulk columnCount={1} listData={data}>
+               <PaginationFrame searchInBack={config.searchInBack} hasTitle={true} hasSearch={false} 
+                config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount}} hasTurning={true}>
+                    <TableBulk columnCount={1} listData={config.data}>
                         {item}
                     </TableBulk>
                 </PaginationFrame>,
@@ -229,7 +250,8 @@ function itemListRender(config) {
             config: param,
             async: false,
             success: function (dataInput) {
-                renderUI(dataInput);
+                config.data = dataInput;
+                renderUI();
             },
             error: function (error) {
                 console.log(error);
@@ -237,11 +259,11 @@ function itemListRender(config) {
         });
     }
 
-    if (config && !config.debug) {
+    if (config.loadData && !config.debug) {
         loadData(param);
     }
     else {
-        renderUI(serviceData);
+        renderUI();
     }
 }
 global.itemListRender = itemListRender;

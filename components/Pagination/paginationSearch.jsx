@@ -27,8 +27,8 @@ export default class PaginationSearch extends React.Component {
     createList(){
         var items = [{value:'Pending'},{value:'Approved'},{value:'Rejected'}]
         var reactThis = this;
-        var dropList = items.map((item)=>{
-            return <div onClick={this.selectOption.bind(reactThis,item.value)}>
+        var dropList = items.map((item,index)=>{
+            return <div key={"select"+index} onClick={this.selectOption.bind(reactThis,item.value)}>
                         {item.value}
                     </div>
         })

@@ -10,14 +10,14 @@ export default class SiteItem extends React.Component{
     render(){
         let itemData = this.props.itemData;
         return <div className="acs-tablebulk-siteitem">
-            <a target="_blank" href={itemData.Href} className="acs-siteitem-title">
+            <a target="_blank" href={itemData.ItemUrl} className="acs-siteitem-title">
                 <span className="acs-siteitem-itemicon"></span>
-                <span className="acs-siteitem-itemtitle">{itemData.Value}</span>
+                <span className="acs-siteitem-itemtitle">{itemData.Title}</span>
             </a>
             <div className="acs-siteitem-description">
-                <span>{itemData.Href}</span>
-                <span onClick={this.stopFollowing.bind(this)}>Stop Following</span>
+                <span>{itemData.Description}</span>
             </div>
         </div>
     }
 }
+// <span onClick={this.stopFollowing.bind(this)}>Stop Following</span>
