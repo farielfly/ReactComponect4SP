@@ -329,7 +329,7 @@
     .acs-tablebulkcommon-itemtitle{
         display: inline-block;
         margin-left: 10px;
-        width: 100%;
+        width: e('calc(100% - 30px)');
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -354,11 +354,10 @@
         }
 
         >span:nth-child(1){
-            width: 100%;
+            width: e('calc(100% - 15px)');
             font-family: "Open Sans Semibold","Open Sans";
             font-size: 14px;
-            font-weight: 600;
-            color:#333;
+            color:#888;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
@@ -398,6 +397,10 @@
         .acs-lynchead-personinfo{
             display: inline-block;
             vertical-align: top;
+            >div{
+                font-family:"Open Sans Semibold","Open Sans";
+                color:#333;
+            }
         }
     }
 
@@ -439,7 +442,6 @@
                 display: inline-block;
                 width:18px;
                 height: 18px;
-                background-color: #ddd;
                 vertical-align: middle;
             }
          }
