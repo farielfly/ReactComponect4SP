@@ -122,8 +122,8 @@ module.exports = {
             'src': ['webparts/App/index.jsx'],
             'style': ['webparts/App/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js':'',
-            'prod_output_css':''
+            'prod_output_js':'APPSSP13MeetingRoom/APPSSP13MeetingRoom/Module/JS',
+            'prod_output_css':'APPSSP13MeetingRoom/APPSSP13MeetingRoom/Module/CSS'
         }
     ],
 

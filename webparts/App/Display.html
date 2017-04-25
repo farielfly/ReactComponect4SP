@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../../node_modules/react/dist/react.js"></script>
+    <script src="../../node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <link href="../../dist/webparts/App.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="App" class="display"></div>
+    <script src="../../dist/webparts/App.js"></script>
+    <script type="text/javascript">
+        var params = {type:'display'};
+        window.onload = function(){
+        window.appRender(params);
+    };
+    </script>
+</body>
+</html>

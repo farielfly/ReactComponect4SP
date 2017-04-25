@@ -1,0 +1,141 @@
+#App.display{
+    .acs-appgallery{
+        .acs-app-item{
+            display: inline-block;
+            width: 156px;
+            height: 146px;
+            margin-left: 30px; 
+            margin-top: 20px;  
+            border: transparent 2px solid;
+            border-radius: 6px;   
+            text-decoration: none;
+
+            &:hover{
+                border: #e9e9e9 2px solid;
+            }
+
+            img{
+                width: 56px;
+                height: 56px;
+                margin-top: 25px;
+                margin-bottom: 20px;
+                margin-left: 50px;
+            }
+            span{
+                display: block;
+                text-align: center;    
+                font-size: 14px;
+                color: #888;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .acs-appgallery.display{
+        border-top: 1px solid #ff9c00;
+        width: 100%;
+        min-height: 220px;
+    }
+
+}
+
+#App.edit{
+    .acs-appgallery{
+        height: 360px;
+        border-top: 1px solid #ff9c00;
+        border-left: 1px solid #eee;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+
+        .acs-appgallery-title{
+            width: 100%;
+            height: 60px;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            color:#eee;
+            font-weight: bold; 
+            line-height: 60px;
+        }
+        
+        .acs-app-item{
+            display: inline-block;
+            width: 120px;
+            height: 120px; 
+            text-decoration: none;           
+
+            img{
+                width: 56px;
+                height: 56px;
+                margin-top: 15px;
+                margin-bottom: 10px;
+                margin-left: 32px;
+                display: block;
+            }
+
+            span{
+                display: block;
+                text-align: center;    
+                font-size: 14px;
+                color: #888;
+                font-weight: bold;
+                display: inline-block;
+                margin-left: 40px;
+                margin-right: 20px;
+            }
+
+            .acs-app-action{
+                display: inline-block;
+                margin-left: 5px;
+                width: 18px;
+                height: 18px;
+                background-image: url('../../dist/common/images/image.png');
+                vertical-align:top;
+            }
+
+            .acs-app-action.add{
+                background-position: -144px 0;
+            }
+
+            .acs-app-action.remove{
+                background-position: -126px 0;
+            }
+        }
+    }
+
+    .acs-appgallery.display{
+       display: inline-block;
+       width: e('calc(50% - 24px)');
+       vertical-align:top;
+       .acs-app-item{           
+           span{
+                display: block;
+           }
+       }
+    }
+
+    .acs-appgallery.add{
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .acs-appgallery.remove{
+        display: inline-block;
+        width: e('calc(50% - 24px)');
+        margin-right: 40px;
+        vertical-align:top;
+    }
+
+    .acs-app-saveBtn{
+        cursor: pointer;
+        width: 50px;
+        padding: 7px 10px;
+        border: 1px solid #ABABAB;
+        background-color: #FDFDFD;
+        margin-left: 10px;
+        font-size: 11px;
+        color: #444;
+        vertical-align:middle;
+        height: 16px;
+        line-height: 16px
+    }
+}

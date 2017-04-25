@@ -186,7 +186,8 @@ div[id$="newsslider"] {
                 max-width: 100% !important;
 
                 .acs-titledescriptionpanel-title{
-                    font-size: 16px !important;                    
+                    font-size: 16px !important;  
+                    width: e('calc(100% - 20px)');                  
                 }
 
                 .acs-titledescriptionpanel-description{
@@ -203,6 +204,9 @@ div[id$="newsslider"] {
         .acs-slider-pic-back{            
             left: 0px !important;
             width: 100% !important;
+            img{
+                height: e('calc(100% - 100px)');
+            }
         }
 
         .acs-slider-arrow-wrap{

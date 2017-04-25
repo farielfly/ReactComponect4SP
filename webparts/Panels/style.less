@@ -2,9 +2,10 @@
 
 #panel{
     .acs-panelframe{
-        width: 100%;
-        height: 120px;
-        line-height: 120px;
+        width: e('calc(50% - 2px)');
+        display: inline-block;
+        height: 80px;
+        line-height: 80px;
         border: 1px solid #ff9c00;        
         margin-bottom: 15px;
         background-image: -webkit-linear-gradient(left, rgb(255,247,226), rgb(255,255,255));
@@ -16,7 +17,7 @@
         .acs-panelframe-title{
             font-size: 16px;
             font-weight: bold;
-            font-family: "Open Sans";
+            font-family: @common_font_CE_55_ROMAN;
             color: #333;
             margin-left: 20px;
             float: left;
@@ -35,7 +36,8 @@
             }
         }
 
-        .acs-panelframe-ico{            
+        .acs-panelframe-ico{  
+            display: none;          
             margin-right: 20px;
             float: right;
             margin-top: 27px;

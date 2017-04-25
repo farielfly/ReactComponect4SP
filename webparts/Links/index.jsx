@@ -17,7 +17,7 @@ function linksRender(config) {
     { 'itemhref': 'http://www.baidu.com', 'title': 'LMS', 'src': faker.image.avatar() },
     { 'itemhref': 'http://www.baidu.com', 'title': 'PRM', 'src': faker.image.avatar() },
     { 'itemhref': 'http://www.baidu.com', 'title': 'IRMS', 'src': faker.image.avatar() }];
-    let param = { url: '', listurl: '', webparttitle: 'birthday', moreurl: '', id: 'birthday' };
+    let param = { url: '', listurl: '', webparttitle: 'birthday', moreurl: '', id: 'birthdays' };
 
     function renderUI(data, param) {
         var itemNodes = [];
@@ -52,7 +52,7 @@ function linksRender(config) {
 
     if (config && !config.debug) {     
         param.listurl = config.listurl ? config.listurl : '';
-        param.webparttitle = config.webparttitle ? config.webparttitle : 'birthday';
+        param.webparttitle = config.webparttitle ? config.webparttitle : 'birthdays';
         param.moreurl = config.moreurl ? config.moreurl : '';
         param.id = config.id ? config.id : 'acclinks';
         param.data = config.data? config.data: [];

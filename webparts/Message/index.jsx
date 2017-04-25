@@ -5,7 +5,7 @@ import WebPartFrame from '../../components/common/webPartFrame.jsx'
 function messageRender(config) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let param = { title: 'What You Should Know' };
+    let param = { title: "What's important" };
     let data = { Title: 'townhall 2017', Date: new Date(2017, 2, 28), PictureUrl: '../../components/img/image1.jpg',Content:'Save the Date' };
 
     function formatDate(date) {

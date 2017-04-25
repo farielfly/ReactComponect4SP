@@ -126,7 +126,7 @@ function bundleJs(name, srcs, dest) {
         .bundle()
         .pipe(source(name))
     if (compress) {
-        //stream.pipe(streamify(uglify()));
+        stream.pipe(streamify(uglify()));
     }       
     return stream.pipe(gulp.dest(dest));
 }
