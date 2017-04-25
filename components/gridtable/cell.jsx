@@ -9,6 +9,9 @@ export default class TableCell extends React.Component {
             case 'text':{ 
                 cell=(<span className="acs-cellvalue-style" title={data}>{data}</span>);
                 break;}
+            case 'divsion':{ 
+                cell=(<span className="acs-cellvalue-style" title={data.title}><p className="acs-pvalue-style">{data.division}</p><p className="acs-pvalue-style">{data.department}</p></span>);
+                break;}
             case 'photo':{
                 cell=(<div className="acs-person-headpic">
                             <a href={data.url} target="_blank"><img src={data.photo} alt=""/></a>
