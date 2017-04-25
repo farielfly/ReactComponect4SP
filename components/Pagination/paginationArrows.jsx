@@ -42,8 +42,8 @@ export default class PaginationArrows extends React.Component {
         return <div className="acs-turningframe-turnpanel">
                     <div className="acs-turnpanel-statistics">{startItem}-{endItem} of {totalCount}</div>
                     <div className="acs-turnpanel-turnbtn">
-                        <span className={this.state.canPre?"acs-turnbtn-pre":"acs-turnbtn-dispre"} onClick={this.turnLeft.bind(this,-1)}>&lt;</span>
-                        <span className={this.state.canNext?"acs-turnbtn-next":"acs-turnbtn-disnext"} onClick={this.turnRight.bind(this,1)}>&gt;</span>
+                        <span className={this.state.canPre?"acs-turnbtn-pre":"acs-turnbtn-dispre"} onClick={this.turnLeft.bind(this,-1)}></span>
+                        <span className={this.state.canNext?"acs-turnbtn-next":"acs-turnbtn-disnext"} onClick={this.turnRight.bind(this,1)}></span>
                     </div>
                 </div>
     }
