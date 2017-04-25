@@ -20,7 +20,7 @@ export default class LyncHeadCell extends React.Component{
                     </div>
                     <div className="acs-lynchead-personinfo">
                         <div>{itemData.Name}</div>
-                        <div>Department: {itemData.Department}</div>
+                        <div>Title: {itemData.Title}</div>
                     </div>
                 </div>
     }
