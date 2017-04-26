@@ -18,6 +18,7 @@ export default class PaginationFrame extends React.Component {
 
     changePageSize(size){
         this.state.tempPageSize = parseInt(size);
+        this.state.nowPage = 1;
         this.setState({
             currentItems:this.props.config.data.slice(0,parseInt(size))
         });
@@ -46,7 +47,7 @@ export default class PaginationFrame extends React.Component {
     }
 
     searchFun(cond1,cond2){
-        let tempData = global.allItems;
+        let tempData = global.allItems,header = this.props.config.header;
         let searchResultFirst = [],searchResultSecond = [],finalResult=[];
         if(cond1!==''){
             tempData.map((item)=>{
@@ -56,10 +57,12 @@ export default class PaginationFrame extends React.Component {
             })
             if(cond2!==''){
                 searchResultFirst.map((item)=>{
-                    if(item['RequestType'].indexOf(cond2) !== -1 ||item['RequestDate'].indexOf(cond2) !== -1 ||item['ProcessedDate'].indexOf(cond2) !== -1 ||
-                        item['ProcessedBy'].indexOf(cond2) !== -1){
+                    for(var i = 0;i<header.length;i++){
+                        if(item[header[i]].indexOf(cond2) !== -1){
                             searchResultSecond.push(item);
+                            break;
                         }
+                    }
                 });
                 finalResult = searchResultSecond;
             }
@@ -70,10 +73,12 @@ export default class PaginationFrame extends React.Component {
         else{
             if(cond2!==''){
                  tempData.map((item)=>{
-                    if(item['RequestType'].indexOf(cond2) !== -1 ||item['RequestDate'].indexOf(cond2) !== -1 ||item['ProcessedDate'].indexOf(cond2) !== -1 ||
-                        item['ProcessedBy'].indexOf(cond2) !== -1){
+                     for(var i = 0;i<header.length;i++){
+                        if(item[header[i]].indexOf(cond2) !== -1){
                             searchResultSecond.push(item);
+                            break;
                         }
+                    }
                 });
                 finalResult = searchResultSecond;
             }
@@ -144,7 +149,7 @@ export default class PaginationFrame extends React.Component {
 
         let turningPanel = hasTurning?<PaginationArrows turnPage={this.turnPage.bind(this)} currentPage={currentpage} countInPage={this.state.tempPageSize} totalCount={totalcount}></PaginationArrows>:null;
         let dataFrame = hasTitle?<PaginationDataFrame frameTitle={config.frameTitle}>{child}</PaginationDataFrame>:<div>{child}</div>;
-        let searchPanel = hasSearch?<PaginationSearch searchFun={this.searchFun.bind(this)}></PaginationSearch>:null;
+        let searchPanel = hasSearch.hasSearch?<PaginationSearch hasDrop={hasSearch.hasDrop} searchFun={this.searchFun.bind(this)}></PaginationSearch>:null;
         let pageSizeSelect = canChangeSize?<div style={{float:"left"}}>Show <DropDownList selectAction={this.changePageSize.bind(this)} listData={config.dropList} defaultValue={""}></DropDownList> entries</div>:null;
 
         return <div className="acs-turningframe">

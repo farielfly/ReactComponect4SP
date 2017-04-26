@@ -65,7 +65,7 @@ export default class Table extends React.Component {
         let dataList = this.state.listData.map((dataItem,index)=>{
             return <div key={'listdiv'+index} className="acs-table-row" style={{"backgroundColor":index%2===0?"#f2f4f6":"#fff"}}>
                         { React.Children.map(this.props.children, (item, i) => {
-                            let width = document.body.clientWidth > 768?20:100;
+                            let width = document.body.clientWidth > 768?titleData[i].Width:100;
                             return React.cloneElement(item, {
                                 itemData:dataItem[titleData[i].Key],
                                 itemWidth:width,

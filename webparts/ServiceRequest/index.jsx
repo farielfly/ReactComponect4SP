@@ -28,7 +28,7 @@ function serviceRequestTypeRender(config) {
     function renderUI(data) {
         let serviceType = data.map((item,index)=>{
             return <div className="acs-servicerequest-type" key={"servicetype"+index}>
-                        <PaginationFrame hasTitle={true} hasSearch={false} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
+                        <PaginationFrame hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
                             <TableBulk columnCount={2} listData={item.Items}>
                                 <ServiceItem></ServiceItem>
                             </TableBulk>
@@ -112,8 +112,9 @@ function tableListRender(config){
 
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame canChangeSize={config.canChangeSize} hasTitle={false} hasSearch={config.hasSearch} 
-                    config={{data:data.Items,pageSize:config.pageSize,frameTitle:config.tableTitle,dropList:config.dropList}} hasTurning={config.hasPagination}>
+                <PaginationFrame canChangeSize={config.canChangeSize} hasTitle={false} hasSearch={{hasSearch:config.search.hasSearch,hasDrop:config.search.hasDrop}} 
+                    config={{data:data.Items,pageSize:config.pageSize,frameTitle:config.tableTitle,dropList:config.dropList,header:data.Header}} 
+                    hasTurning={config.hasPagination}>
                    {tempTable}
                 </PaginationFrame>,
                 document.getElementById(config.divId)
@@ -170,7 +171,8 @@ function serviceLyncListRender(config) {
         })
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame hasLetterSearch={true} hasTitle={true} hasSearch={false} config={{data:config.data,pageSize:6,frameTitle:config.Title}} hasTurning={true}>
+                <PaginationFrame hasLetterSearch={true} hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}}
+                 config={{data:config.data,pageSize:6,frameTitle:config.Title}} hasTurning={true}>
                     <TableBulk columnCount={2} listData={config.data}>
                         <LyncItem itemData={null}></LyncItem>
                     </TableBulk>   
@@ -225,7 +227,7 @@ function itemListRender(config) {
         let item = config.itemType === 'site'?<SiteItem></SiteItem>:<DocumentItem></DocumentItem>;
         if (document.getElementById(config.divId)) {
             render(
-               <PaginationFrame searchInBack={config.searchInBack} hasTitle={true} hasSearch={false} 
+               <PaginationFrame searchInBack={config.searchInBack} hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} 
                 config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount}} hasTurning={true}>
                     <TableBulk columnCount={1} listData={config.data}>
                         {item}

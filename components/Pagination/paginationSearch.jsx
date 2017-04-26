@@ -45,16 +45,18 @@ export default class PaginationSearch extends React.Component {
     }
 
     render(){
-        let {dropdown,searchFun} = this.props;
+        let {dropdown,searchFun,hasDrop} = this.props;
+        let searchDrop = hasDrop?<div className="acs-searchpanel-dropdown">
+                                    <div className="acs-dropdown-selectedvalue"><input ref="selectInput"  placeholder="Status" disabled="disabled"/><span onClick={this.showList.bind(this)}>v</span></div>
+                                    <div className="acs-dropdown-list" style={{height:this.state.droplistOpen?"auto":"0"}}>
+                                        {listItems}
+                                    </div>
+                                </div>:null;
         let listItems = this.createList();
+        
         return <div className="acs-searchpanel">
-                    <div className="acs-searchpanel-dropdown">
-                        <div className="acs-dropdown-selectedvalue"><input ref="selectInput"  placeholder="Status" disabled="disabled"/><span onClick={this.showList.bind(this)}>v</span></div>
-                        <div className="acs-dropdown-list" style={{height:this.state.droplistOpen?"auto":"0"}}>
-                            {listItems}
-                        </div>
-                    </div>
-                    <div ref="searchInput" className="acs-searchpanel-div">
+                    {searchDrop}
+                    <div ref="searchInput" className={hasDrop?"acs-searchpanel-div":"acs-searchpanel-divsec"}>
                         <input type="text" ref="searchInfo" onKeyDown={this.enterSearch.bind(this,event)} placeholder="Search"/>
                         <span id="searchinput" className="acs-searchicon" onClick={this.searchClick.bind(this)}  ></span>
                         <span id="clearsearch" className="acs-clearsearchicon" onClick={this.clearSearchClick.bind(this)}>X</span>
