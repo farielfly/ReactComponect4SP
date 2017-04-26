@@ -20,9 +20,7 @@ export default class DivisionDetail extends React.Component {
         AIC.wordLimit(".acs-infohead-description", 5)
         ProcessImn();
     }
-
     render() {
-
         if (this.props.infoData === null) {
             return null;
         }
@@ -33,7 +31,7 @@ export default class DivisionDetail extends React.Component {
                         <div className="acs-infohead-commontitle">{this.props.commonTitle}</div>
                         <div className="acs-infohead-titlecontent">
                             <div className="acs-infohead-title">{this.props.infoData.Title}</div>
-                            <div className="acs-infohead-description" title={this.props.infoData.Description}>{this.props.infoData.Description}</div>
+                            <div className="acs-infohead-description" title={this.props.infoData.Description} dangerouslySetInnerHTML={{__html:this.props.infoData.Description}}></div>
                             <div className="acs-infohead-location">{this.props.infoData.Location}</div>
                         </div>
 
