@@ -115,24 +115,16 @@ export default class PaginationFrame extends React.Component {
             PageNo: pageCount,
             PageSize: tempConfig.pageSize
         };
-         $.ajax({
-            url: tempConfig.url,
-            headers: {
-                "Accept": "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-            },
-            type: "POST",
-            dataType:'json',
-            data: JSON.stringify(filterObj),
-            success:function(data){
-                reactThis.setState(
-                    {currentItems:data[tempConfig.dataResult]}
-                );
-            },
-            error:function(er){
-                console.log(er);
-            }
-        });
+        $.when(AvePointSocialRequest.GetSharedDocument(pageCount, tempConfig.pageSize)).done(function(data){
+            reactThis.setState(
+                {currentItems:data.allItem,
+                nowPage:pageCount}
+            );
+        }).fail(function(){
+            
+
+        })
+        
     }
 
     render() {

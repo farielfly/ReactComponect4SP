@@ -50,8 +50,8 @@ export default class Table extends React.Component {
                             if(hasOrder){
                                 return <div key={"headtitle"+index} style={{width:item.Width+"%"}}><span>{item.Value}</span> 
                                     <div className="acs-sort-btn">
-                                        <p className="acs-ascending-btn" onClick={this.sortName.bind(this,true,"RequestType")}>^</p>
-                                        <p className="acs-descending-btn" onClick={this.sortName.bind(this,false,"RequestType")}>v</p>
+                                        <p className="acs-ascending-btn" onClick={this.sortName.bind(this,true,item.Value)}></p>
+                                        <p className="acs-descending-btn" onClick={this.sortName.bind(this,false,item.Value)}></p>
                                     </div>
                                 </div>
                             }

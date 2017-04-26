@@ -38,7 +38,7 @@ export default class DropDownList extends React.Component{
       let {listData, defaultValue}=this.props;
      let listItems = this.createList(listData);
       return <div className="acs-droplist">
-                  <div className="acs-dropdown-selectedvalue"><input ref="selectInput"  placeholder={defaultValue} disabled="disabled"/><span onClick={this.showList.bind(this)}>v</span></div>
+                  <div className="acs-dropdown-selectedvalue"><input ref="selectInput"  placeholder={defaultValue} disabled="disabled"/><span className="acs-dropdown-icon" onClick={this.showList.bind(this)}></span></div>
                   <div className="acs-dropdown-list" style={{height:this.state.droplistOpen?"auto":"0"}}>
                       {listItems}
                   </div>

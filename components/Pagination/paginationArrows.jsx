@@ -3,9 +3,13 @@ export default class PaginationArrows extends React.Component {
         super(props);
         this.state={
             canPre:false,
-            canNext:true
+            canNext:false
         }
 
+    }
+
+    componentWillMount(){
+        this.state.canNext = this.props.totalCount>this.props.countInPage?true:false;
     }
 
     componentWillReceiveProps(nextProps){
