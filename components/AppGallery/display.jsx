@@ -11,8 +11,8 @@ export default class Display extends React.Component {
 
     render() {
         return (<div>
-            <Gallery children={this.state.myData} type="display"/>
-            <Gallery children={this.state.workingData} type="display"/>
+            <Gallery children={this.state.myData} title="My Favorite Apps" type="display"/>
+            <Gallery children={this.state.workingData} title="My Working Apps" type="display"/>
         </div>);
     }
 }

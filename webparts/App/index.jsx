@@ -24,15 +24,17 @@ function appRender(params) {
     } 
 
     function save(data){
-        debugger;
         var result = data.map(function(item){
             return {LinkUrl:"".href,Title:item.title,IconUrl: "",ID:item.id};
         });    
-        return savedata(result);
+        SP.SOD.loadMultiple(['strings.js', 'sp.ui.dialog.js'], function () {
+            return savedata(result);
+        });
     }
 
-    function savedata(data) {
+    function savedata(data) {        
         var dtd = $.Deferred();
+        var waitDialog = SP.UI.ModalDialog.showWaitScreenWithNoClose("Saving...");
         $.ajax({
             url: _spPageContextInfo.siteAbsoluteUrl + '/_vti_bin/APPSSP13MeetingRoom/MeetingRoomService.svc/UpdateAppInfos',
             headers: {
@@ -44,9 +46,10 @@ function appRender(params) {
             cache: false,
             data: JSON.stringify({ infos: data }),
             success: function (result) {                
-                dtd.resolve(result.GenerateCalendarDataResult);
+                waitDialog.close(SP.UI.DialogResult.OK);
             },
             error: function (data) {
+                waitDialog.close(SP.UI.DialogResult.OK);
                 console.log("Save data failed.");
                 dtd.resolve([]);
             }

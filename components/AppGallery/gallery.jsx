@@ -20,8 +20,8 @@ export default class DisplayGallery extends React.Component {
         event.preventDefault();
         var x1 = event.clientX;
         var y1 = event.clientY;
-        var x2 = $(event.target.closest('.acs-appgallery')).offset().left;
-        var y2 = $(event.target.closest('.acs-appgallery')).offset().top;
+        var x2 = $($(event.target).closest('.acs-appgallery')).offset().left;
+        var y2 = $($(event.target).closest('.acs-appgallery')).offset().top;
         var x = Math.ceil((x1-x2)/140);        
         var y = Math.ceil((y1-y2-85)/120);
         var position = (y-1)*4 + x;
@@ -60,21 +60,24 @@ export default class DisplayGallery extends React.Component {
         if(this.props.type == "display"){    
             className += ' display';          
             return (<div className={className}>
-                <div className="acs-appgallery-title">All Apps</div>
+                <div className="acs-appgallery-header">
+                    <div className="acs-appgallery-icon"></div>
+                    <div className="acs-appgallery-title">{this.props.title}</div>
+                </div>
                 {items}
             </div>);
         }
         else if(this.props.type == "add"){
             className += ' add';
              return (<div className={className} onDragOver={this.dragover.bind(this)} onDragEnter={this.dragenter.bind(this)} onDrop={this.drop.bind(this)}>
-                <div className="acs-appgallery-title">Working Apps</div>
+                <div className="acs-appgallery-title">{this.props.title}</div>
                 {items}
             </div>); 
         }
         else{
             className += ' remove';
             return (<div className={className} onDragOver={this.dragover.bind(this)} onDragEnter={this.dragenter.bind(this)} onDrop={this.drop.bind(this)}>
-                <div className="acs-appgallery-title">My Favourite Apps</div>
+                <div className="acs-appgallery-title">{this.props.title}</div>
                 {items}
             </div>);
         }

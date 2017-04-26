@@ -77,9 +77,11 @@ export default class Display extends React.Component {
 
     render() {
         return (<div>
-            <Gallery children={this.state.myData} type="remove" addcallback={this.addcallback.bind(this)} removecallback={this.removecallback.bind(this)} drop={this.drop.bind(this)} dragstartcallback={this.dragstartcallback.bind(this)} dragendcallback={this.dragendcallback.bind(this)}/>
-            <Gallery children={this.state.workingData} type="display" addcallback={this.addcallback.bind(this)} removecallback={this.removecallback.bind(this)}/>
-            <Gallery children={this.state.allData} type="add" addcallback={this.addcallback.bind(this)} removecallback={this.removecallback.bind(this)} drop={this.drop.bind(this)} dragstartcallback={this.dragstartcallback.bind(this)} dragendcallback={this.dragendcallback.bind(this)}/>
+            <Gallery children={this.state.myData} type="remove" addcallback={this.addcallback.bind(this)} removecallback={this.removecallback.bind(this)} 
+            drop={this.drop.bind(this)} dragstartcallback={this.dragstartcallback.bind(this)} dragendcallback={this.dragendcallback.bind(this)} title="My Favorite Apps"/>
+            <Gallery children={this.state.workingData} type="display" addcallback={this.addcallback.bind(this)} removecallback={this.removecallback.bind(this)} title="My Working Apps"/>
+            <Gallery children={this.state.allData} type="add" addcallback={this.addcallback.bind(this)} removecallback={this.removecallback.bind(this)} 
+            drop={this.drop.bind(this)} dragstartcallback={this.dragstartcallback.bind(this)} dragendcallback={this.dragendcallback.bind(this)} title="All Apps"/>
             <div className='acs-app-saveBtn' onClick={this.saveHandle.bind(this)}>Save</div>
         </div>);
     }
