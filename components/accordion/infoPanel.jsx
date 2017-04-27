@@ -8,7 +8,7 @@ export default class DivisionDetail extends React.Component {
         for (var i = imgs.length - 1; i > -1; i--) {
             imgs[i].setAttribute('sip', imgs[i].getAttribute('data-sip'));
         }
-        AIC.wordLimit(".acs-infohead-description", 5)
+        //AIC.wordLimit(".acs-infohead-description", 5)
         ProcessImn();
     }
 
@@ -17,7 +17,7 @@ export default class DivisionDetail extends React.Component {
         for (var i = imgs.length - 1; i > -1; i--) {
             imgs[i].setAttribute('sip', imgs[i].getAttribute('data-sip'));
         }
-        AIC.wordLimit(".acs-infohead-description", 5)
+        //AIC.wordLimit(".acs-infohead-description", 5)
         ProcessImn();
     }
     render() {
