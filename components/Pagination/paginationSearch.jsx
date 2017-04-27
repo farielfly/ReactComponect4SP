@@ -13,11 +13,13 @@ export default class PaginationSearch extends React.Component {
     }
 
     searchClick(){
-        this.props.searchFun(this.refs.selectInput.value,this.refs.searchInfo.value);
+        let tempValue = this.props.hasDrop?this.refs.selectInput.value:'';
+        this.props.searchFun(tempValue,this.refs.searchInfo.value);
     }
 
     clearSearchClick(){
-        this.props.searchFun(this.refs.selectInput.value,'');
+        let tempValue = this.props.hasDrop?this.refs.selectInput.value:'';
+        this.props.searchFun(tempValue,'');
     }
 
     showList(){

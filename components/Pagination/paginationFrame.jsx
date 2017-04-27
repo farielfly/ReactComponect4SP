@@ -58,7 +58,7 @@ export default class PaginationFrame extends React.Component {
             if(cond2!==''){
                 searchResultFirst.map((item)=>{
                     for(var i = 0;i<header.length;i++){
-                        if(item[header[i]].indexOf(cond2) !== -1){
+                        if(item[header[i].Key].toString().indexOf(cond2) !== -1){
                             searchResultSecond.push(item);
                             break;
                         }
@@ -74,7 +74,7 @@ export default class PaginationFrame extends React.Component {
             if(cond2!==''){
                  tempData.map((item)=>{
                      for(var i = 0;i<header.length;i++){
-                        if(item[header[i]].indexOf(cond2) !== -1){
+                        if(item[header[i].Key].toString().indexOf(cond2) !== -1){
                             searchResultSecond.push(item);
                             break;
                         }
