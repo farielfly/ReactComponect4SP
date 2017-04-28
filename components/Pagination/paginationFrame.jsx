@@ -97,7 +97,7 @@ export default class PaginationFrame extends React.Component {
         }
         else{
             this.props.config.data.map((item)=>{
-                if(item.Name.indexOf(letter) === 0){
+                if(item.Name.toUpperCase().indexOf(letter) === 0){
                     tempList.push(item);
                 }
             });
