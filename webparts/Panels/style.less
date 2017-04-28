@@ -1,49 +1,53 @@
 @import "../../stylelibrary/webpartcommon";
 
 #panel{
+	.acs-panelframe:nth-child(odd){
+		margin-right: 10px;
+	}
     .acs-panelframe{
-        width: e('calc(50% - 2px)');
+        width: e('calc(50% - 5px)');
         display: inline-block;
-        height: 80px;
-        line-height: 80px;
-        border: 1px solid #ff9c00;        
-        margin-bottom: 15px;
-        background-image: -webkit-linear-gradient(left, rgb(255,247,226), rgb(255,255,255));
-        background-image: -ms-linear-gradient(right, rgb(255,247,226), rgb(255,255,255));
-        background-image: -moz-linear-gradient(right, rgb(255,247,226), rgb(255,255,255));
-        background-image: linear-gradient(to right, rgb(255,247,226), rgb(255,255,255)); /* 标准的语法（必须放在最后） */
+        height: 130px;
+        line-height: 30px;
         cursor: pointer;
-
+		overflow: hidden;
+		
         .acs-panelframe-title{
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             font-family: @common_font_CE_55_ROMAN;
             color: #333;
-            margin-left: 20px;
-            float: left;
-
-            .acs-panelframe-alert{
-                margin-left: 10px;
-                width: 30px;
-                height: 30px;
-                line-height: 30px;
-                border-radius: 4px;
-                background-color: #ff4444;
-                color: #fff;
-                display: inline-block;
-                text-align: center;
-                vertical-align: middle;
-            }
-        }
-
-        .acs-panelframe-ico{  
-            display: none;          
-            margin-right: 20px;
-            float: right;
-            margin-top: 27px;
-            width: 66px;
-            height: 66px;
-            background-image: url(../../dist/common/images/image.png);
+		
+			height: 130px;
+			text-align: center;
+			text-transform: Uppercase;
+			.acs-panelframe-ico{
+			    position: relative;
+				margin-top: 27px;
+				margin-bottom: 2px;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center;
+			    width: 66px;
+				height: 66px;
+				background-image: url(../../dist/common/images/image.png);
+				
+				.acs-panelframe-alert{
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					background-color: #ff4444;
+					color: #fff;
+					display: inline-block;
+					text-align: center;
+					vertical-align: middle;
+					border: 2px solid #fff;
+					border-radius:25px;
+					position: absolute;
+					top: -8px;
+					right: -4px;
+				}
+			}
         }
     }
 
