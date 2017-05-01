@@ -7,7 +7,9 @@ function sliderRender(config) {
 
     let data = [{ 'src': '../../components/img/image1.jpg', 'alt': 'image1', 'itemhref': 'www.baidu.com', 'title': 'aaa', 'description': 'aaa description' },
     { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' },
-    { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' }];
+    { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' },
+    { 'src': '../../components/img/image3.jpg', 'alt': 'image3', 'itemhref': 'www.sohu.com', 'title': '', 'description': 'desc2' },
+    { 'src': '../../components/img/image2.jpg', 'alt': 'image2', 'itemhref': 'www.sina.com.cn', 'title': 'bbb', 'description': '' }];
 
     let param = { url: '', speed: 1000, delay: 1, pagecount: 3, pause: true, autoplay: false, dots: false, arrows: true, listurl: '',debug: true,id: 'microslider',webparttitle:"Photo Gallery"};   
     function renderUI(data, param) {
@@ -45,7 +47,8 @@ function sliderRender(config) {
                 'itemhref': param.data[i].LinkUrl,
                 'title': param.data[i].Title,
                 'description': param.data[i].Description,
-                'isVideo': param.data[i].IsVideo
+                'isVideo': param.data[i].IsVideo,
+                'videoUrl':param.data[i].VideoUrl,
             })
         }        
         renderUI(data, param);

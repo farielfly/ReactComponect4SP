@@ -12,10 +12,10 @@ export default class SliderFrame extends React.Component {
     turn(n) {
         var _n = this.state.nowLocal + n;
         if (_n < 0) {
-            _n = _n + this.props.itemCount;
+            _n = _n + this.props.itemCount - (this.props.pagecount - 1) ;
         }
-        if (_n >= this.props.itemCount) {
-            _n = _n - this.props.itemCount;
+        if (_n >= this.props.itemCount - (this.props.pagecount - 1)) {
+            _n = _n - this.props.itemCount + (this.props.pagecount - 1);
         }
         this.setState({ nowLocal: _n });
     }

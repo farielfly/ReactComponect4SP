@@ -8,7 +8,7 @@ export default class titleDescriptionPanel extends React.Component {
         EnsureScriptFunc("SP.UI.Dialog.js", 'SP.UI.ModalDialog.showModalDialog', function () {
             var $option = new SP.UI.DialogOptions();
             $option.showClose = true;
-            $option.allowMaximize = false;
+            $option.allowMaximize = true;
             $option.title = window.income_playurl.substr(window.income_playurl.lastIndexOf('/') + 1);
             $option.url = _spPageContextInfo.siteAbsoluteUrl + "/Pages/IncomePlayer.aspx?params=" + window.income_playurl;
             $option.width = 620;
@@ -19,13 +19,13 @@ export default class titleDescriptionPanel extends React.Component {
     }
 
     render() {
-        let {title, description, itemhref, isVideo } = this.props;
+        let {title, description, itemhref, isVideo, videoUrl } = this.props;
         let titleClassName = isVideo?"acs-titledescriptionpanel-wrap play": "acs-titledescriptionpanel-wrap";
         if(isVideo)
         {
             return (
                 <div className={titleClassName}>
-                    <a data-href={itemhref} onClick={this.handleClick.bind(this)} ref='playButton'>
+                    <a data-href={videoUrl} onClick={this.handleClick.bind(this)} ref='playButton'>
                         <span className='acs-titledescriptionpanel-title'>{title}</span>
                         <span className='acs-titledescriptionpanel-description'>{description}</span>
                         <span className='acs-titledescriptionpanel-play'><div></div></span>

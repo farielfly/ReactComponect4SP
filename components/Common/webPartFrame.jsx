@@ -12,7 +12,7 @@ export default class WPFrame extends React.Component {
                     <span className="acs-header-icon"></span>
                     <span className="acs-header-title">{title} </span>
                     <div className="acs-header-more">
-                        {hasMore?"ViewAll":""}
+                        {hasMore?"View All":""}
                         <span className="acs-header-more-icon"></span>
                     </div>
                 </a>
