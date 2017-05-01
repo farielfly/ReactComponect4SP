@@ -31,9 +31,9 @@ export default class ArticleTitle extends React.Component {
     }
 
     render() {
-        let {hasTitle, title, iconPath, link,width,partUrl} = this.props;
+        let {hasTitle, title, iconPath, link, width, partUrl, ArticleTitleIconUrl} = this.props;
         let lineHead = !hasTitle? null:(<div className={"acs-articleframe-header"} onClick={this.openCollection.bind(this,partUrl)}> 
-                                            <div className={"acs-articleframe-header-icon"}></div>
+											<img src={ArticleTitleIconUrl} className={"acs-articleframe-header-icon"}></img>
                                             <div className={"acs-articleframe-header-title"}>{title}</div>
                                         </div>);
         return (

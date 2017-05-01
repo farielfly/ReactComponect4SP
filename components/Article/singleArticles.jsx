@@ -20,10 +20,8 @@ export default class SingleArticle extends React.Component{
         let intro = hasIntro ? (<ArticleIntro intro={dataItem.Intro}></ArticleIntro>) : null;
         let time = hasTime ? (<ArticleTime time={dataItem.Time}></ArticleTime>) : null;
         let like = hasLike ? (<ArticleLike like={dataItem.Like}></ArticleLike>) : null;
-
-        
         return (
-            <ArticleTitle title={dataItem.Title} width={itemWidth} hasTitle={hasTitle} partUrl={dataItem.colleUrl}> 
+            <ArticleTitle title={dataItem.Title} width={itemWidth} hasTitle={hasTitle} partUrl={dataItem.colleUrl} ArticleTitleIconUrl={dataItem.ArticleTitleIconUrl}> 
                 <div onClick={this.openItem.bind(this,dataItem.ItemUrl)} style={{heigh:"auto"}}>
                     <ArticlePicture picturePath={dataItem.PicturePath}></ArticlePicture>
                     <div className="asc-article-content">
