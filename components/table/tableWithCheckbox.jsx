@@ -41,7 +41,7 @@ export default class TableWithCheckbox extends React.Component {
                     tempCount++;
                 }
             }
-            if(tempCount === 5){
+            if(tempCount === items.length-1){
                 items[0].checked = true;
             }
        }
@@ -66,7 +66,7 @@ export default class TableWithCheckbox extends React.Component {
         let headList = <div className="acs-table-titlehead">
                             <CheckboxCell itemWidth={10} selectFun={this.selectAllAction.bind(this)} itemData={-1}></CheckboxCell>
                             {titleData.map((item)=>{               
-                                return <div style={{width:"20%"}}>{item.Value}</div>
+                                return <div style={{width:item.Width+"%"}}>{item.Value}</div>
                             })}
                         </div>;
                         
@@ -74,11 +74,11 @@ export default class TableWithCheckbox extends React.Component {
             let reactThis = this;
             return <div key={'listdiv'+index} className="acs-table-row" style={{"backgroundColor":index%2===0?"#f2f4f6":"#fff"}}>
                         { React.Children.map(this.props.children, (item, i) => {
-                            let width = document.body.clientWidth > 768?20:100;
+                            let width = document.body.clientWidth > 768?18:100;
                             if(i===0){
                                 return React.cloneElement(item, {
                                     itemData:dataItem["RequestType"],
-                                    itemWidth:width,
+                                    itemWidth:10,
                                     selectFun:reactThis.selectAction.bind(this,index)
                                 });
                             }

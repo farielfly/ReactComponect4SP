@@ -11,7 +11,7 @@ export default class CheckboxCell extends React.Component {
     render() {
         let {itemWidth,itemData} = this.props;
         return (
-          <div style={{width:itemWidth+"%"}}>
+          <div style={{width:itemWidth+"%",display:"inline-block"}}>
                 <input type="checkbox" ref="checkbox" name="checkbox" id={itemData} onChange={this.selectFun.bind(this)}/>
           </div>
         )
