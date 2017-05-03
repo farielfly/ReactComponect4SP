@@ -31,7 +31,6 @@ export default class APP extends React.Component {
     }
 
     renderImg(src, title){
-        debugger;
         if(!src){
             var content = title.substr(0,1);
             var colors = ["#f58220","#007fc8","#d94545","#5b5b5c"];
