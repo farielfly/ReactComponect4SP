@@ -72,7 +72,7 @@ function serviceRequestTypeRender(config) {
         loadData(param);
     }
     else {
-        renderUI(serviceData);
+        renderUI(config.data);
     }
 }
 global.serviceRequestTypeRender = serviceRequestTypeRender;
@@ -179,7 +179,11 @@ function serviceLyncListRender(config) {
                 </PaginationFrame>,
                 document.getElementById(config.divId)
             );
-            setStatus();
+             let imgs = document.getElementsByClassName('ms-spimn-img');
+            for(var i=imgs.length-1;i>-1;i--){
+                imgs[i].setAttribute('sip',imgs[i].getAttribute('data-sip'));
+            }
+            ProcessImn();
         }
     }
 
@@ -224,18 +228,59 @@ function itemListRender(config) {
     let param = { };
 
     function renderUI() {
-        let item = config.itemType === 'site'?<SiteItem></SiteItem>:<DocumentItem></DocumentItem>;
+        if(config.isMultiply){
+             multiplyList();
+        }
+        else{
+            singleList();
+        }
+    }
+
+    function singleList(){
+        let item = selectItemType(config.itemType);
         if (document.getElementById(config.divId)) {
             render(
                <PaginationFrame searchInBack={config.searchInBack} hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} 
                 config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount}} hasTurning={true}>
-                    <TableBulk columnCount={1} listData={config.data}>
+                    <TableBulk columnCount={config.columnCount} listData={config.data}>
                         {item}
                     </TableBulk>
                 </PaginationFrame>,
                 document.getElementById(config.divId)
             );
         }
+    }
+
+    function multiplyList(){
+        let serviceType = data.map((item,index)=>{
+            return <div className="acs-servicerequest-type" key={"servicetype"+index}>
+                        <PaginationFrame hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
+                            <TableBulk columnCount={config.columnCount} listData={item.Items}>
+                                <ServiceItem></ServiceItem>
+                            </TableBulk>
+                        </PaginationFrame>
+                    </div>
+        });
+
+        if (document.getElementById(config.divId)) {
+            render(
+                <div>
+                    {serviceType}
+                </div>,
+                document.getElementById(config.divId)
+            );
+        }
+    }
+
+
+    function selectItemType(type){
+        let itemFrame = null;
+        switch(type){
+            case "Link":itemFrame = <ServiceItem></ServiceItem>;break;
+            case "Site":itemFrame= <SiteItem></SiteItem>; break;
+            case "Document":itemFrame = <DocumentItem></DocumentItem>;break;
+        }
+        return itemFrame;
     }
 
     function loadData(param) {
