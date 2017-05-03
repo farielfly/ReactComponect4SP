@@ -5,8 +5,8 @@ import $ from 'jquery';
 
 function appRender(params) {
     if (!params.data) {
-        params.data = {myData: [{src:'../../components/img/ClockIn.png',title:'Chrome',href:'#',id:'1'},{src:'../../components/img/eBao.png',title:'Youtube',href:'#',id:'2'}],
-        workingData: [{src:'../../components/img/Jira.png',title:'Rss',href:'#',id:'3'},{src:'../../components/img/eBao.png',title:'Blog Spot',href:'#',id:'4'}],
+        params.data = {myData: [{src:'../../components/img/ClockIn.png',title:'Chrome',href:'#',id:'1'},{src:'../../components/img/eBao.png',title:'Youtube',href:'#',id:'2'},{src:'',title:'6324',href:'#',id:'8'}],
+        workingData: [{src:'../../components/img/Jira.png',title:'Rss',href:'#',id:'3'},{src:'../../components/img/eBao.png',title:'Blog Spot',href:'#',id:'4'},{src:'',title:'KAO',href:'#',id:'8'}],
         allData: [{src:'../../components/img/Jira.png',title:'Evernote',href:'#',id:'5'},{src:'../../components/img/Outlook.png',title:'Skype',href:'#',id:'6'},{src:'../../components/img/Salesforce.png',title:'Twitter',href:'#',id:'7'}]};        
         renderUI(params);
     }

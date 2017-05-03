@@ -30,6 +30,18 @@ export default class APP extends React.Component {
         return false;
     }
 
+    renderImg(src, title){
+        debugger;
+        if(!src){
+            var content = title.substr(0,1);
+            var colors = ["#f58220","#007fc8","#d94545","#5b5b5c"];
+            var background = colors[Math.round(Math.random()*3)];
+            return(<div className="acs-char-icon" style={{background:background}}>{content}</div>);
+        }else{
+            return(<img src={src}/>);
+        }
+    }
+
     render() {
         var addition = '';        
         const {src, candrag, title, href, type, id} = this.props;
@@ -41,7 +53,7 @@ export default class APP extends React.Component {
         }
         return (<a className='acs-app-item' draggable={this.candrag} onDragStart={this.dragstart.bind(this, id,type)} 
                      onDragEnd={this.dragend.bind(this, type)} onSelect={this.select.bind(this)} href={href}>
-                <img src={src}/>
+                {this.renderImg(src, title)}
                 <span>{title}</span>   
                 {addition}             
         </a>);
