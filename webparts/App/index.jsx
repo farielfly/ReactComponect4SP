@@ -20,7 +20,8 @@ function appRender(params) {
     }
 
     function assemblydata(item){
-        return {href:item.LinkUrl,title:item.Title,src: _spPageContextInfo.webAbsoluteUrl + '/Style Library/Custom Style/AvePoint Workspace/Image/' + item.IconUrl + '.png',id:item.ID};
+        var imgUrl = item.IconUrl == null? "" : _spPageContextInfo.webAbsoluteUrl + '/Style Library/Custom Style/AvePoint Workspace/Image/' + item.IconUrl + '.png';
+        return {href:item.LinkUrl,title:item.Title,src:imgUrl,id:item.ID};
     } 
 
     function save(data){

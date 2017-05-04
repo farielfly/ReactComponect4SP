@@ -5,7 +5,7 @@ import Calendar from '../../components/Calendar/calendar.jsx';
 import EventCalendar from '../../components/Calendar/eventCalendar.jsx';
 
 function calendarRender(config) {
-    let param = { title: 'Event Calendar' };
+    let param = { title: 'Event Calendar' ,moreurl: config.moreurl};
     let data = {
         events: [{
             Title: 'Morning Event!',
