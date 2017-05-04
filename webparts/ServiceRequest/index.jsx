@@ -237,13 +237,13 @@ function itemListRender(config) {
     }
 
     function singleList(){
-        let item = selectItemType(config.itemType);
+        let templeteItem = selectItemType(config.itemType);
         if (document.getElementById(config.divId)) {
             render(
                <PaginationFrame searchInBack={config.searchInBack} hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} 
                 config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount}} hasTurning={true}>
                     <TableBulk columnCount={config.columnCount} listData={config.data}>
-                        {item}
+                        {templeteItem}
                     </TableBulk>
                 </PaginationFrame>,
                 document.getElementById(config.divId)
@@ -252,11 +252,12 @@ function itemListRender(config) {
     }
 
     function multiplyList(){
-        let serviceType = data.map((item,index)=>{
+        let templeteItem = selectItemType(config.itemType);
+        let serviceType = config.data.map((item,index)=>{
             return <div className="acs-servicerequest-type" key={"servicetype"+index}>
                         <PaginationFrame hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
                             <TableBulk columnCount={config.columnCount} listData={item.Items}>
-                                <ServiceItem></ServiceItem>
+                                {templeteItem}
                             </TableBulk>
                         </PaginationFrame>
                     </div>
