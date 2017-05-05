@@ -14,69 +14,6 @@ import CheckboxCell from '../../components/table/checkboxCell.jsx';
 
 import $ from 'jquery';
 
-function serviceRequestTypeRender(config) {
-    const serviceData=[
-        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData1'},{href:'',value:'itemData1'},{href:'',value:'itemData13'},{href:'',value:'itemData14'},{href:'',value:'itemData15'},{href:'',value:'itemData16'}]},
-        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData1'},{href:'',value:'itemData1'},{href:'',value:'itemData13'},{href:'',value:'itemData14'},{href:'',value:'itemData15'},{href:'',value:'itemData16'}]},
-        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData16'}]},
-        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData1'},{href:'',value:'itemData1'},{href:'',value:'itemData13'},{href:'',value:'itemData14'},{href:'',value:'itemData15'},{href:'',value:'itemData16'}]},
-        {serviceTitle:"test1",serviceList:[{href:'',value:'itemData15'},{href:'',value:'itemData16'}]}
-        ];
-
-    let param = { };
-
-    function renderUI(data) {
-        let serviceType = data.map((item,index)=>{
-            return <div className="acs-servicerequest-type" key={"servicetype"+index}>
-                        <PaginationFrame hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
-                            <TableBulk columnCount={2} listData={item.Items}>
-                                <ServiceItem></ServiceItem>
-                            </TableBulk>
-                        </PaginationFrame>
-                    </div>
-        });
-
-        if (document.getElementById(config.divId)) {
-            render(
-                <div>
-                    {serviceType}
-                </div>,
-                document.getElementById(config.divId)
-            );
-        }
-    }
-
-    function loadData(param) {
-        $.ajax({
-            type: "GET",
-            url: config.url,
-            headers: {
-                "Accept": "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-            },
-            dataType: "json",
-            data: {},
-            cache:false,
-            config: param,
-            async: false,
-            success: function (dataInput) {
-                renderUI(dataInput);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    }
-
-    if (config && !config.debug) {
-        loadData(param);
-    }
-    else {
-        renderUI(config.data);
-    }
-}
-global.serviceRequestTypeRender = serviceRequestTypeRender;
-
 
 function tableListRender(config){
     const tempConfig = {
@@ -113,8 +50,8 @@ function tableListRender(config){
         if (document.getElementById(config.divId)) {
             render(
                 <PaginationFrame canChangeSize={config.canChangeSize} hasTitle={false} hasSearch={{hasSearch:config.search.hasSearch,hasDrop:config.search.hasDrop}} 
-                    config={{data:data.Items,pageSize:config.pageSize,frameTitle:config.tableTitle,dropList:config.dropList,header:data.Header}} 
-                    hasTurning={config.hasPagination}>
+                    config={{data:data.Items,pageSize:config.pageSize,frameTitle:config.tableTitle,dropList:config.dropList,header:data.Header,buttons:config.buttons}} 
+                    hasTurning={config.hasPagination} canOperationTable={config.canOperationTable}>
                    {tempTable}
                 </PaginationFrame>,
                 document.getElementById(config.divId)

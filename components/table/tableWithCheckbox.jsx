@@ -14,6 +14,14 @@ export default class TableWithCheckbox extends React.Component {
         }
     }
 
+    finalSelect(){
+        let itemsString = "";
+        this.state.selectedItems.map((item)=>{
+            itemsString += item.ItemId+";";
+        })
+        this.props.selectItems(itemsString);
+    }
+
     selectAllAction(){
         let items = document.getElementsByName('checkbox');
         if(items[0].checked){
@@ -28,6 +36,7 @@ export default class TableWithCheckbox extends React.Component {
                 items[i].checked = false;
             }
         }
+        this.finalSelect();
     }
 
     selectAction(index){
@@ -58,6 +67,7 @@ export default class TableWithCheckbox extends React.Component {
            }
            this.state.selectedItems = pageItems;
        }
+       this.finalSelect();
     }
 
     render() {

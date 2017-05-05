@@ -3,6 +3,7 @@ import PaginationDataFrame from './paginationDataFrame.jsx';
 import PaginationSearch from './paginationSearch.jsx';
 import LetterSearchFrame from './letterSearchFrame.jsx';
 import DropDownList from './../Common/dropDownList.jsx';
+import ButtonCell from './../table/ajaxButtonCell.jsx';
 
 export default class PaginationFrame extends React.Component {
     constructor(props) {
@@ -12,7 +13,8 @@ export default class PaginationFrame extends React.Component {
             searchInfo:'',
             currentItems:null,
             tempTotalItems:null,
-            tempPageSize:this.props.config.pageSize
+            tempPageSize:this.props.config.pageSize,
+            itemsToDo:''
         };
     }
 
@@ -109,6 +111,41 @@ export default class PaginationFrame extends React.Component {
         })
     }
 
+    getToDoItems(items){
+        this.state.itemsToDo = items;
+    }
+
+    createOperationBtn(buttons){
+      return  buttons.map((item,index)=>{
+            return <ButtonCell itemData={item} tableOperation={this.tableOperation.bind(this)} key={"btn"+index}></ButtonCell>
+        }) ;
+    }
+
+    tableOperation(url,parameter){
+        let data = this.state.itemsToDo;
+        let finalUrl = url+"?"+parameter+"="+data;
+        if(data !==''){
+             $.ajax({
+                type: "GET",
+                url: finalUrl,
+                headers: {
+                    "Accept": "application/json;odata=verbose",
+                    "Content-Type": "application/json;odata=verbose",
+                },
+                dataType: "json",
+                cache:false,
+                async: false,
+                success: function () {
+                    window.location.reload();
+                },
+                error: function (error) {
+                    window.location.reload();
+                    console.log(error);
+                }
+            });
+        }
+    }
+
     getData(pageCount){
         var tempConfig = this.props.config , reactThis = this;
         var filterObj={
@@ -128,10 +165,11 @@ export default class PaginationFrame extends React.Component {
     }
 
     render() {
-        let {config,hasTitle,hasTurning,hasSearch,hasLetterSearch,canChangeSize} = this.props;
+        let {config,hasTitle,hasTurning,hasSearch,hasLetterSearch,canChangeSize,canOperationTable} = this.props;
         let currentpage = this.state.nowPage;
         let child =  React.cloneElement(this.props.children, {
             listData: this.state.currentItems,
+            selectItems:this.getToDoItems.bind(this)
         });
 
         global.allItems =  this.props.config.data;
@@ -142,10 +180,15 @@ export default class PaginationFrame extends React.Component {
         let turningPanel = hasTurning?<PaginationArrows turnPage={this.turnPage.bind(this)} currentPage={currentpage} countInPage={this.state.tempPageSize} totalCount={totalcount}></PaginationArrows>:null;
         let dataFrame = hasTitle?<PaginationDataFrame frameTitle={config.frameTitle}>{child}</PaginationDataFrame>:<div>{child}</div>;
         let searchPanel = hasSearch.hasSearch?<PaginationSearch hasDrop={hasSearch.hasDrop} searchFun={this.searchFun.bind(this)}></PaginationSearch>:null;
-        let pageSizeSelect = canChangeSize?<div style={{float:"left"}}>Show <DropDownList selectAction={this.changePageSize.bind(this)} listData={config.dropList} defaultValue={""}></DropDownList> entries</div>:null;
+        let tableOperation = <div className="acs-turningframe-operation">
+                                {canChangeSize? <div><span>Show</span><DropDownList selectAction={this.changePageSize.bind(this)} listData={config.dropList} defaultValue={""}></DropDownList><span>entries</span></div>:null}
+                                {canOperationTable?<div>{this.createOperationBtn(config.buttons)}</div>:null}
+                             </div>   ;
+        
+        //let pageSizeSelect = canChangeSize?<div style={{float:"left"}}>Show <DropDownList selectAction={this.changePageSize.bind(this)} listData={config.dropList} defaultValue={""}></DropDownList> entries</div>:null;
 
         return <div className="acs-turningframe">
-                    {pageSizeSelect}
+                    {tableOperation}
                     {searchPanel}
                     <div style={{clear:"both"}}></div>
                     {dataFrame}
