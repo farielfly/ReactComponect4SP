@@ -5,26 +5,32 @@ import Calendar from '../../components/Calendar/calendar.jsx';
 import EventCalendar from '../../components/Calendar/eventCalendar.jsx';
 
 function calendarRender(config) {
-    let param = { title: 'Event Calendar' ,moreurl: config.moreurl};
+    let param = { title: 'Event Calendar' ,moreurl: ""};
     let data = {
         events: [{
             Title: 'Morning Event!',
             StartTime: new Date(),
+            Link: '#'
         }, {
             Title: 'Hello World,',
             StartTime: new Date().setHours(10),
+            Link: '#'
         }, {
             Title: 'Hello World 123,',
             StartTime: new Date().setHours(12),
+            Link: '#'
         }, {
             Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
             StartTime: new Date().setHours(14),
+            Link: '#'
         }, {
             Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
             StartTime: new Date().setHours(15),
+            Link: '#'
         }, {
             Title: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
             StartTime: new Date().setHours(21),
+            Link: '#'
         }],
         dates: []
     }

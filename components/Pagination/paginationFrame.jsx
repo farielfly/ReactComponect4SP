@@ -125,28 +125,42 @@ export default class PaginationFrame extends React.Component {
     }
 
     searchInBGCode(condition){
-        let finalUrl = this.config.url + "?condition="+condition;
-        $.ajax({
-            type: "GET",
-            url: finalUrl,
-            headers: {
-                "Accept": "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-            },
-            dataType: "json",
-            cache:false,
-            async: false,
-            success: function (dataInput) {
-                 this.setState({
-                    currentItems:dataInput.slice(0,this.state.tempPageSize),
-                    tempTotalItems:dataInput,
-                    nowPage:1
-                });
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
+        // let finalUrl = this.config.url + "?condition="+condition;
+        // $.ajax({
+        //     type: "GET",
+        //     url: finalUrl,
+        //     headers: {
+        //         "Accept": "application/json;odata=verbose",
+        //         "Content-Type": "application/json;odata=verbose",
+        //     },
+        //     dataType: "json",
+        //     cache:false,
+        //     async: false,
+        //     success: function (dataInput) {
+        //          this.setState({
+        //             currentItems:dataInput.slice(0,this.state.tempPageSize),
+        //             tempTotalItems:dataInput,
+        //             nowPage:1
+        //         });
+        //     },
+        //     error: function (error) {
+        //         console.log(error);
+        //     }
+        // });
+        var tempConfig = this.props.config , reactThis = this;
+        var filterObj={
+            PageNo: pageCount,
+            PageSize: tempConfig.pageSize
+        };
+        $.when(AvePointSocialRequest.GetSharedDocument(pageCount, tempConfig.pageSize, condition)).done(function(data){
+            reactThis.setState(
+                {currentItems:dataInput.slice(0,this.state.tempPageSize),
+                 tempTotalItems:dataInput,   
+                 nowPage:1}
+            );
+        }).fail(function(){
+
+        })
     }
 
     letterFun(letter){

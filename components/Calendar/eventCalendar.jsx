@@ -23,10 +23,10 @@ export default class EventCalendar extends React.Component {
                     <div className="acs-eventline-dot"></div>
                     {idc < this.props.items.length - 1 ? <div className="acs-eventline-line"></div> : null}
                     {/*<div className="acs-eventline-triangle"></div>*/}
-                    <div className="acs-eventline-content">
+                    <a className="acs-eventline-content" href={item.Link}>
                         <div className="acs-eventline-name" title={item.Title}>{item.Title}</div>
                         <div className="acs-eventline-time">{this.formatTime(item.StartTime)}</div>
-                    </div>
+                    </a>
                 </div>
             );
         });
