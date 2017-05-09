@@ -3,6 +3,7 @@ import PaginationFrame from '../../components/pagination/paginationFrame.jsx';
 import LetterSearchFrame from '../../components/pagination/letterSearchFrame.jsx';
 import TableListFrame from '../../components/table/table.jsx';
 import TableWithCheckboxFrame from '../../components/table/tableWithCheckbox.jsx';
+import TableTemplateFrame from '../../components/table/templateTable.jsx';
 import TableBulk from '../../components/table/tableBulk.jsx';
 
 import StringCell from '../../components/table/stringCell.jsx';
@@ -17,41 +18,59 @@ import $ from 'jquery';
 
 function tableListRender(config){
     const tempConfig = {
-        pageSize: 5,
-        divId: 'tablelist',
-        tableTitle:'',
-        hasPagination: true,
-        hasSearch: true,
-        hasTitle: false,
-        canChangeSize:true,
-        hasCheckbox:true,
-        data :{
-                Header:[{Key:'RequestType',Value:"Request Type"},{Key:'RequestDate',Value:"Request Date"},{Key:'Status',Value:"Status"},
-                {Key:'ProcessedBy',Value:"Processed By"},{Key:'ProcessedDate',Value:"Processed Date"}],
+            url: '',
+            debug: true,
+            pageSize: 5,
+            pageCount: 1,
+            divId: config.divId,
+            hasPagination: true,
+            search: { hasSearch: true, hasDrop: true,dropList:[{Value:'Open'},{Value:'Pending'}] },
+            hasCheckbox: true,
+            canChangeSize: true,
+            canOperationTable: true,
+            data: {
+               Header:[{Key:'ItemId',Value:"",Width:10},{Key:'RequestType',Value:"Request Type",Width:18},{Key:'RequestDate',Value:"Request Date",Width:18},{Key:'Status',Value:"Status",Width:18},
+                {Key:'ProcessedBy',Value:"Processed By",Width:18},{Key:'ProcessedDate',Value:"Processed Date",Width:18}],
                 Items:[
-                { 'RequestType': '1', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10211' },
-                { 'RequestType': '2', 'RequestDate': '9/3/1021', 'Status': 'Pending', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
-                { 'RequestType': '3', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10421' },
-                { 'RequestType': '4', 'RequestDate': '9/3/1021', 'Status': 'Closed', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
-                { 'RequestType': '5', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/5/1021' },
-                { 'RequestType': '6', 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/1/1021' }]
-            } 
-    }
+                { 'ItemId':'i0001','RequestType': {Title:"11111",Href:"http://www.baidu.com"}, 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10211' },
+                { 'ItemId':'i0002','RequestType': {Title:"11112",Href:"http://www.baidu.com"}, 'RequestDate': '9/3/1021', 'Status': 'Pending', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/1021' },
+                { 'ItemId':'i0003','RequestType': "ddddd", 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10421' }
+                ]
+            },
+            buttons: [{ Name: "test", Url: "http://bing.com", Parameter: "requestIds" }],
+            dropList: [{ Value: 4 }, { Value: 5 }, { Value: 6 }, { Value: 7 }, { Value: 8 }]
+        }
 
     let param = null;
     function renderUI(data) {
+        
         let cellArrary =data.Header.map((item,index)=>{
-            return <StringCell itemData={null} key={"head"+index}></StringCell>
+            if(index===0 && config.hasCheckbox){
+                return <CheckboxCell selectFun={null}></CheckboxCell>
+            }
+            else{
+                 return <StringCell itemData={null} key={"head"+index}></StringCell>
+            }
+        });
+
+        let tempTable = <TableTemplateFrame hasOrder={config.hasOrder} titleData={data.Header}  listData={data.Items} hasCheckBox={config.hasCheckbox} divModule={config.divId}>
+                        {cellArrary}
+                </TableTemplateFrame>;
+        /*
+        let cellArrary =data.Header.map((item,index)=>{
+            return <StringCell itemData={null} key={"head"+index}></StringCell>;
         })
         let table1 = <TableListFrame hasOrder={config.hasOrder} titleData={data.Header}  listData={data.Items}>{cellArrary}</TableListFrame>;
-        let table2 = <TableWithCheckboxFrame hasOrder={config.hasOrder} titleData={data.Header}  listData={data.Items}><CheckboxCell></CheckboxCell>{cellArrary}</TableWithCheckboxFrame>;
-        let tempTable = config.hasCheckbox?table2:table1;
+        let table2 = <TableWithCheckboxFrame hasOrder={config.hasOrder} titleData={data.Header}  listData={data.Items} hasCheckBox={config.hasCheckbox} divModule={config.divId}>
+                            <CheckboxCell selectFun={null}></CheckboxCell>{cellArrary}
+                    </TableWithCheckboxFrame>;
+        let tempTable = config.hasCheckbox?table2:table1;*/
 
         if (document.getElementById(config.divId)) {
             render(
-                <PaginationFrame canChangeSize={config.canChangeSize} hasTitle={false} hasSearch={{hasSearch:config.search.hasSearch,hasDrop:config.search.hasDrop}} 
+                <PaginationFrame canChangeSize={config.canChangeSize} hasTitle={false} hasSearch={{hasSearch:config.search.hasSearch,hasDrop:config.search.hasDrop,dropList:config.search.dropList}} 
                     config={{data:data.Items,pageSize:config.pageSize,frameTitle:config.tableTitle,dropList:config.dropList,header:data.Header,buttons:config.buttons}} 
-                    hasTurning={config.hasPagination} canOperationTable={config.canOperationTable}>
+                    hasTurning={config.hasPagination} canOperationTable={config.canOperationTable} searchInBack={config.searchInBack} dataInBack={config.dataInBack}>
                    {tempTable}
                 </PaginationFrame>,
                 document.getElementById(config.divId)
@@ -81,24 +100,33 @@ function tableListRender(config){
         });
     }
 
-    if (config && !config.debug) {
-        loadData(param);
+    if(config.isBogusData){
+        config = tempConfig;
     }
-    else {
-        renderUI(config.data);
-    }
+    renderUI(config.data);
 }
 global.tableListRender = tableListRender;
 
 
 function serviceLyncListRender(config) {
-    const serviceData=[
-        {Email:"test1",ItemId:1,Photo:'Ddd',Name:'Sdds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
+     const tempConfig = {
+                url: '',
+                debug: true,
+                divId: config.divId,
+                itemType: 'Site',
+                Title: 'Site I am Following',
+                pageSize: 5,
+                searchInBack: false,
+                loadData: false,
+                isMultiply: false,
+                columnCount:1,
+                data:[{Email:"test1",ItemId:1,Photo:'Ddd',Name:'Sdds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
         {Email:"test1",ItemId:1,Photo:'Fdd',Name:'Ddds',Department:'Acss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'ddds',Department:'ccss'},
         {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},
         {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},
         {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},
-        {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'}];
+        {Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'},{Email:"test1",ItemId:1,Photo:'ddd',Name:'Adds',Department:'ccss'}]
+            }; 
 
     let param = { };
 
@@ -147,20 +175,32 @@ function serviceLyncListRender(config) {
         });
     }
 
-    if (config.loadData && !config.debug) {
-        loadData(param);
+    if (config.isBogusData) {
+        config = tempConfig;
     }
-    else {
-        renderUI();
-    }
+    renderUI();
 }
 global.serviceLyncListRender = serviceLyncListRender;
 
 
 function itemListRender(config) {
-    const serviceData=[{Href:'http://www.baidu.com',Value:'itemData1'},{Href:'http://www.baidu.com',Value:'itemData1'},
-    {Href:'http://www.baidu.com',Value:'itemData13'},{Href:'http://www.baidu.com',Value:'itemData14'},
-    {Href:'http://www.baidu.com',Value:'itemData15'},{Href:'http://www.baidu.com',Value:'itemData16'}];
+    const tempConfig = {
+                url: '',
+                debug: true,
+                divId: config.divId,
+                itemType: 'Site',
+                Title: 'Site I am Following',
+                pageSize: 5,
+                searchInBack: false,
+                loadData: false,
+                isMultiply: false,
+                columnCount:1,
+                search: { hasSearch: false, hasDrop: false,dropList:[{Value:'Open'},{Value:'Pending'}] },
+                data:[{Href:'http://www.baidu.com',Value:'itemData1'},{Href:'http://www.baidu.com',Value:'itemData1'},
+                        {Href:'http://www.baidu.com',Value:'itemData13'},{Href:'http://www.baidu.com',Value:'itemData14'},
+                        {Href:'http://www.baidu.com',Value:'itemData15'},{Href:'http://www.baidu.com',Value:'itemData16'}]
+            }; 
+    
 
     let param = { };
 
@@ -177,9 +217,9 @@ function itemListRender(config) {
         let templeteItem = selectItemType(config.itemType);
         if (document.getElementById(config.divId)) {
             render(
-               <PaginationFrame searchInBack={config.searchInBack} hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} 
+               <PaginationFrame searchInBack={config.searchInBack} dataInBack={config.dataInBack} hasTitle={true} hasSearch={{hasSearch:config.search.hasSearch,hasDrop:false,dropList:config.search.dropList}} 
                 config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount}} hasTurning={true}>
-                    <TableBulk columnCount={config.columnCount} listData={config.data}>
+                    <TableBulk columnCount={config.columnCount} listData={config.data} >
                         {templeteItem}
                     </TableBulk>
                 </PaginationFrame>,
@@ -193,7 +233,7 @@ function itemListRender(config) {
         let serviceType = config.data.map((item,index)=>{
             return <div className="acs-servicerequest-type" key={"servicetype"+index}>
                         <PaginationFrame hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
-                            <TableBulk columnCount={config.columnCount} listData={item.Items}>
+                            <TableBulk columnCount={config.columnCount}>
                                 {templeteItem}
                             </TableBulk>
                         </PaginationFrame>
@@ -244,12 +284,10 @@ function itemListRender(config) {
         });
     }
 
-    if (config.loadData && !config.debug) {
-        loadData(param);
+    if(config.isBogusData){
+        config = tempConfig;
     }
-    else {
-        renderUI();
-    }
+    renderUI();
 }
 global.itemListRender = itemListRender;
 

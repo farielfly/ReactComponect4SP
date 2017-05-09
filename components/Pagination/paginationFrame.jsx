@@ -36,7 +36,7 @@ export default class PaginationFrame extends React.Component {
 
     turnPage(n){
         let pageCount = this.state.nowPage + n;
-        if(this.props.searchInBack){
+        if(this.props.dataInBack){
             this.getData(pageCount);
         }
         else{
@@ -49,46 +49,103 @@ export default class PaginationFrame extends React.Component {
     }
 
     searchFun(cond1,cond2){
-        let tempData = global.allItems,header = this.props.config.header;
-        let searchResultFirst = [],searchResultSecond = [],finalResult=[];
         if(cond1!==''){
-            tempData.map((item)=>{
-                if(item['Status'] === cond1){
-                    searchResultFirst.push(item);
-                }
-            })
-            if(cond2!==''){
-                searchResultFirst.map((item)=>{
-                    for(var i = 0;i<header.length;i++){
-                        if(item[header[i].Key].toString().indexOf(cond2) !== -1){
-                            searchResultSecond.push(item);
-                            break;
-                        }
-                    }
-                });
-                finalResult = searchResultSecond;
+            this.hasDropSearch(cond1,cond2);
+        }
+        else{
+            this.noDropSearch(cond2);
+        }
+    }
+
+    hasDropSearch(cond1,cond2){
+        let tempData = this.props.config.data;
+        let searchResultFirst = [],searchResultSecond = [],finalResult=[];
+        tempData.map((item)=>{
+            if(item['Status'] === cond1){
+                searchResultFirst.push(item);
+            }
+        })
+        if(cond2!==''){
+            if(!this.props.searchInBack){
+                finalResult = this.searchInFFCode(searchResultFirst,cond2);
             }
             else{
-                finalResult = searchResultFirst;
+                this.searchInBGCode(cond2);
+                return;
             }
         }
         else{
-            if(cond2!==''){
-                 tempData.map((item)=>{
-                     for(var i = 0;i<header.length;i++){
-                        if(item[header[i].Key].toString().indexOf(cond2) !== -1){
-                            searchResultSecond.push(item);
-                            break;
-                        }
-                    }
-                });
-                finalResult = searchResultSecond;
+            finalResult = searchResultFirst;
+        }
+        this.setState({
+            currentItems:finalResult.slice(0,this.state.tempPageSize),
+            tempTotalItems:finalResult,
+            nowPage:1
+        });
+    }
+
+    noDropSearch(cond2){
+        let tempData = this.props.config.data,header = this.props.config.header;
+        let searchResultFirst = [],searchResultSecond = [],finalResult=[];
+        if(cond2 === ''){
+            finalResult = tempData;
+        }
+        else{
+            if(!this.props.searchInBack){
+                finalResult = this.searchInFFCode(tempData,cond2);
+            }
+            else{
+                this.searchInBGCode(cond2);
+                return;
             }
         }
         this.setState({
             currentItems:finalResult.slice(0,this.state.tempPageSize),
             tempTotalItems:finalResult,
             nowPage:1
+        });
+    }
+
+    searchInFFCode(listData,condition){
+        let tempList = [];
+        let header = this.props.config.header;
+        if(header === null || header.length === 0){
+            header = ["Title","Description"];
+        }
+        listData.map((item)=>{
+            for(var i = 0;i<header.length;i++){
+                var tempItem = typeof item[header[i].Key] === "object"?item[header[i].Key].Title:item[header[i].Key];
+                if(tempItem.toString().indexOf(condition) !== -1){
+                    tempList.push(item);
+                    break;
+                }
+            }
+        });
+        return tempList;
+    }
+
+    searchInBGCode(condition){
+        let finalUrl = this.config.url + "?condition="+condition;
+        $.ajax({
+            type: "GET",
+            url: finalUrl,
+            headers: {
+                "Accept": "application/json;odata=verbose",
+                "Content-Type": "application/json;odata=verbose",
+            },
+            dataType: "json",
+            cache:false,
+            async: false,
+            success: function (dataInput) {
+                 this.setState({
+                    currentItems:dataInput.slice(0,this.state.tempPageSize),
+                    tempTotalItems:dataInput,
+                    nowPage:1
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }
         });
     }
 
@@ -158,7 +215,6 @@ export default class PaginationFrame extends React.Component {
                 nowPage:pageCount}
             );
         }).fail(function(){
-            
 
         })
         
@@ -172,14 +228,12 @@ export default class PaginationFrame extends React.Component {
             selectItems:this.getToDoItems.bind(this)
         });
 
-        global.allItems =  this.props.config.data;
-
-        let totalcount = this.props.searchInBack?this.props.config.totalCount:this.state.tempTotalItems.length;
+        let totalcount = this.props.dataInBack?this.props.config.totalCount:this.state.tempTotalItems.length;
         child = hasLetterSearch?<LetterSearchFrame letterSearch={this.letterFun.bind(this)}>{child} </LetterSearchFrame>:child;
 
         let turningPanel = hasTurning?<PaginationArrows turnPage={this.turnPage.bind(this)} currentPage={currentpage} countInPage={this.state.tempPageSize} totalCount={totalcount}></PaginationArrows>:null;
         let dataFrame = hasTitle?<PaginationDataFrame frameTitle={config.frameTitle}>{child}</PaginationDataFrame>:<div>{child}</div>;
-        let searchPanel = hasSearch.hasSearch?<PaginationSearch hasDrop={hasSearch.hasDrop} searchFun={this.searchFun.bind(this)}></PaginationSearch>:null;
+        let searchPanel = hasSearch.hasSearch?<PaginationSearch hasDrop={hasSearch.hasDrop} searchFun={this.searchFun.bind(this)} dropList={hasSearch.dropList}></PaginationSearch>:null;
         let tableOperation = <div className="acs-turningframe-operation">
                                 {canChangeSize? <div><span>Show</span><DropDownList selectAction={this.changePageSize.bind(this)} listData={config.dropList} defaultValue={""}></DropDownList><span>entries</span></div>:null}
                                 {canOperationTable?<div>{this.createOperationBtn(config.buttons)}</div>:null}

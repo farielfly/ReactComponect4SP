@@ -58,6 +58,8 @@
         float: left;
         
         .acs-turningframe-operationbtn{
+            display:inline-block;
+            margin-right: 10px;
             padding: 5px 10px;
             background-color: #f2f2f2;
             cursor: pointer;
@@ -342,6 +344,14 @@
             span:nth-child(1){
                 display: inline-block;
             }
+
+            >a{
+                color:#333;
+            }
+
+            >a:visited{
+                color:#333;
+            }
         }
 
         .acs-table-stringcell:nth-child(2){
@@ -349,10 +359,6 @@
             font-size: 14px;
             // font-weight: 600;
             color:#333;
-
-            >a{
-                color:#333;
-            }
 
             > span:nth-child(1){
                 display: none;

@@ -12,7 +12,7 @@ export default class CheckboxCell extends React.Component {
         let {itemWidth,itemData} = this.props;
         return (
           <div style={{width:itemWidth+"%",display:"inline-block"}}>
-                <input type="checkbox" ref="checkbox" name="checkbox" id={itemData} onChange={this.selectFun.bind(this)}/>
+                <input className="acs-checkbox" type="checkbox" name="checkbox" id={itemData} onChange={this.selectFun.bind(this)}/>
           </div>
         )
     }
