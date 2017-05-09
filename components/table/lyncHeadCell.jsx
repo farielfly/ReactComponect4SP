@@ -3,6 +3,9 @@ export default class LyncHeadCell extends React.Component{
         super(props);
     }
 
+    clickPicture(url){
+        window.open(url);
+    }
 
     render(){
         let itemData = this.props.itemData;
@@ -15,7 +18,7 @@ export default class LyncHeadCell extends React.Component{
                             </span>
                         </a>
                     </span>
-                    <div className="acs-lynchead-headpicture">
+                    <div className="acs-lynchead-headpicture" onClick={this.clickPicture.bind(this,itemData.Href)}>
                         <img src={itemData.Photo} alt=""/>
                     </div>
                     <div className="acs-lynchead-personinfo">
