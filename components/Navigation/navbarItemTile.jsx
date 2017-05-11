@@ -56,7 +56,7 @@ export default class NavbarItemTile extends React.Component {
             })}
         </ul>);
         secondMenu = hasGrandChild ? secondMenu : secondMenuC;
-        secondMenu = menuData.HasChild?secondMenu:null;
+        secondMenu = menuData.HasChild ? secondMenu : null;
         
 
         return (

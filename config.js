@@ -124,6 +124,14 @@ module.exports = {
             'output': 'dist/webparts',
             'prod_output_js':'APPSSP13MeetingRoom/APPSSP13MeetingRoom/Module/JS',
             'prod_output_css':'APPSSP13MeetingRoom/APPSSP13MeetingRoom/Module/CSS'
+        },
+		{
+            'name': 'ItemInformation',
+            'src': ['webparts/ServiceRequest/index.jsx'],
+            'style': ['webparts/ServiceRequest/style.less'],
+            'output': 'dist/webparts',
+            'prod_output_js': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/ItemInformation/Script',
+            'prod_output_css': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/ItemInformation/CSS'
         }
     ],
 

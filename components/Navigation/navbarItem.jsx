@@ -59,20 +59,20 @@ export default class NavbarItem extends React.Component {
 
 
         let secondMenu = (<ul onMouseOver={this.menushow.bind(this, false)} onMouseOut={this.menuhidden.bind(this, false)} className="acs-navbaritem-second"
-         style={{ display: this.state.open ? "block" : "none", top: this.state.open ? "65px" : "60px",width:this.state.ulWidth}}>
-            {this.props.menuData.Items.map((els, index) => {
-                if (typeof els.Items === 'object') {
-                    if (els.Items.length === 0) {
-                        return (<a href={els.ItemHref} className="acs-secondnav-item" key={index} >{els.Title}</a>)
-                    }
-                    else {
-                        return (<SecondItem key={index} menuData={els} menushow={this.menushow.bind(this,true)} menuhidden={this.menuhidden.bind(this,true)}/>)
-                    }
-                }
-                else {
-                    return (<a href={els.ItemHref} className="acs-itemlink" style={{ float: (index > 7) ? "right" : "none" }} key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
-                }
-            })}
+			style={{ display: this.state.open ? "block" : "none", top: this.state.open ? "65px" : "60px",width:this.state.ulWidth}}>
+				{this.props.menuData.Items.map((els, index) => {
+					if (typeof els.Items === 'object') {
+						if (els.Items.length === 0) {
+							return (<a href={els.ItemHref} className="acs-secondnav-item" key={index} >{els.Title}</a>)
+						}
+						else {
+							return (<SecondItem key={index} menuData={els} menushow={this.menushow.bind(this,true)} menuhidden={this.menuhidden.bind(this,true)}/>)
+						}
+					}
+					else {
+						return (<a href={els.ItemHref} className="acs-itemlink" style={{ float: (index > 7) ? "right" : "none" }} key={index}><span className="acs-itemlink-icon"></span>{els.Title}</a>)
+					}
+				})}
         </ul>);
         secondMenu = this.props.hasGrandChild ? secondMenu : secondMenuC;
         secondMenu = this.props.menuData.hasChild ? secondMenu : null;
@@ -80,8 +80,9 @@ export default class NavbarItem extends React.Component {
         return (
             <div className="acs-navbar-item" onMouseOver={this.menushow.bind(this, false)} onMouseOut={this.menuhidden.bind(this, false)}>
                 <NavTitleBtn classname={"acs-navbaritem-titlebtn"} isSecond={false} name={this.props.menuData.Title} open={this.state.open} hasChild={this.props.menuData.hasChild} ItemHref={this.props.menuData.ItemHref} />
-                {secondMenu}
-            </div>)
+				{secondMenu}
+            </div>
+		)
     }
 }
 

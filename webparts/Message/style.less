@@ -1,49 +1,57 @@
 @import "../../stylelibrary/webpartcommon";
 
 #message{
-    .acs-header-icon{
-        width: 26px;
-        height: 26px;
-        background-position: -26px -36px;
-    }
-    .acs-header-title{
-        cursor: default;
-    }
+	.acs-webpartframe-header{
+		cursor: pointer;
+		
+		.acs-header-icon{
+			width: 26px;
+			height: 26px;
+			background-position: -26px -36px;
+		}
+		.acs-header-title{
+		}
+	}
+	
+	.acs-message{
+		margin-top: 10px;
+		background-color: #f2f4f6;
+		text-align: center;
+		padding: 15px 0;
+		width: 100%;
+		cursor: default;
 
-    .acs-message{
-        margin-top: 10px;
-        background-color: #f2f4f6;
-        text-align: center;
-        padding: 15px 0;
-        width: 100%;
-        cursor: default;
+		img {
+			width: e('calc(100% - 100px)');
+			height: 112.5px;
+		}
+		
+		a {
+			cursor: pointer;
+			text-decoration: none;
+		}
+		
+		.acs-message-title{
+			margin-top: 10px;
+			font-size: 14px;
+			font-weight: bold;
+			color: #333;
+		}
 
-        img{
-            width: e('calc(100% - 100px)');
-            height: 112.5px;
-        }
+		.acs-message-date{
+			color: #666;
+			margin: 10px 0;
+		}
 
-        .acs-message-title{
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
-        }
+		.acs-message-content{
+			color: #333;
+			text-transform: uppercase;
+		}
+	}
 
-        .acs-message-date{
-            color: #666;
-            margin: 10px 0;
-        }
-
-        .acs-message-content{
-            color: #333;
-            text-transform: uppercase;
-        }
-    }
-
-    @media(max-width:768px) {
-        .acs-message{
-            width: 100%;
-        }
-    }
+	@media(max-width:768px) {
+		.acs-message{
+			width: 100%;
+		}
+	}
 }
