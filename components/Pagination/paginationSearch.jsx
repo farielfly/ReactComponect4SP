@@ -27,10 +27,11 @@ export default class PaginationSearch extends React.Component {
     }
 
     createList(){
-        var items =this.props.dropList|| [{Value:'Pending'},{Value:'Approved'},{Value:'Rejected'}];
+        var items =this.props.dropList|| [{Value:'All'},{Value:'Pending'},{Value:'Acknowledged'},{Value:'Approved'},{Value:'Rejected'},{Value:'Closed'}];
         var reactThis = this;
         var dropList = items.map((item,index)=>{
-            return <div key={"select"+index} onClick={this.selectOption.bind(reactThis,item.Value)}>
+            var itemDiv = item.Value === 'All'? '': item.Value;
+            return <div key={"select"+index} onClick={this.selectOption.bind(reactThis,itemDiv)}>
                         {item.Value}
                     </div>
         })
