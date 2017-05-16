@@ -76,7 +76,7 @@ export default class ArticlesSearchFrame extends React.Component{
         let tempConfig = this.props.config;
          let filterObj={
              filter:{
-                CategoryName: "ACSArticleHightLightCategory",
+                CategoryName: "ACSArticleCategories",
                 CategoryValue: this.props.category,
                 OrderBy: global.articleType,
                 Ascending: false,
