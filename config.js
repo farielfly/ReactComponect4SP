@@ -58,8 +58,8 @@ module.exports = {
             'src': ['webparts/ServiceRequest/index.jsx'],
             'style': ['webparts/ServiceRequest/style.less'],
             'output': 'dist/webparts',
-            'prod_output_js': 'APPSSP13ServiceRequest/APPSSP13ServiceRequest/Layouts/APPSSP13ServiceRequest/JS',
-            'prod_output_css':'APPSSP13ServiceRequest/APPSSP13ServiceRequest/Layouts/APPSSP13ServiceRequest/CSS'
+            'prod_output_js': 'APPSSP13ServiceRequest/APPSSP13ServiceRequest/Module/Script',
+            'prod_output_css':'APPSSP13ServiceRequest/APPSSP13ServiceRequest/Module/CSS'
         },
         {
             'name': 'Panels',
@@ -137,11 +137,12 @@ module.exports = {
 
     layouts: [
         {
-            'name': 'flexlayout',
-            'src': ['layouts/flexlayout/script.jsx'],
-            'style': ['layouts/flexlayout/style.less'],
+            'name': 'ArticleWithRecommendedPageLayout',
+            'src': ['layouts/ArticleWithRecommended/script.js'],
+            'style': ['layouts/ArticleWithRecommended/style.less'],
             'output': 'dist/layouts',
-            'prod_include': false
+            'prod_output_css': 'AvePointSP2013HomePageLayout/AvePointSP2013HomePageLayout/Style Library/css',
+            'prod_include': true
         }
     ],
 
@@ -184,6 +185,10 @@ module.exports = {
             'name': 'CategoryArticles',
             'src': ['../NTUCIncome/APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/Script/CategoryArticles.js','jslibrary/Commonjs.js'],
             'output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/BusinessArticle/Script',
+        },{
+            'name': 'Slider',
+            'src': ['../NTUCIncome/APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/Script/Slider.js','jslibrary/Commonjs.js'],
+            'output': 'APPSSP13IncomeWebparts/APPSSP13IncomeWebparts/Asset/NewsSlider/Script',
         }],
         css:[{
             'name': 'Navigation',

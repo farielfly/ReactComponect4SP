@@ -26,7 +26,7 @@ function sliderRender(config) {
                     <SliderPics items={data} />
                 </SliderFrame>,
                 document.getElementById(param.id)
-            );   
+            );
             window.bannerId = param.id;         
         }
     }

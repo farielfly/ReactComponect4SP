@@ -2,6 +2,10 @@
 (function (Income) {
     "use strict";
     Income.wordLimit = function(query,rowCount){
+        var $ = $;
+        if(!$){
+            $ = minejquery;
+        }
      $(query).each(function () {
         var fontSize = parseInt($(this).css('font-size').replace('px',''));
         while ($(this).height() > fontSize * rowCount * 1.4) {

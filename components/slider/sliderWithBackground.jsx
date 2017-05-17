@@ -4,6 +4,10 @@ export default class SliderPicsWithBackground extends React.Component {
         super(props);
     }
 
+    redirect(url){
+        window.open(url);
+    }
+
     render() {
         let {items, left, speed, nowLocal, pagecount } = this.props;
         let count = items.length;
@@ -15,7 +19,7 @@ export default class SliderPicsWithBackground extends React.Component {
                 panel = <TitleDescriptionPanel title={item.title} description={item.description} itemhref={item.itemhref} />
             }
             return <li key={'pic' + idx} className="acs-slider-pic" style={{ width: width }}>
-                <div href={item.itemhref}>
+                <div href={item.itemhref} onClick={this.redirect.bind(this, item.itemhref)}>
                     <div className="acs-slider-pic-front">
                         <img src={item.bgsrc} />                        
                         {panel}

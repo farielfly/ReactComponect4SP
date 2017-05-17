@@ -60,7 +60,7 @@ gulp.task('buildless-layout', function () {
             srcs.add(path.join(config.rootpath, style));
         }
         buildless(Array.from(srcs), layout.name + '.css',
-            debug ? path.join(config.rootpath, layout.output) : path.join(config.rootpath, config.prod_root, config.prod_webpartStyleoutput));
+            debug ? path.join(config.rootpath, layout.output) : path.join(config.rootpath, config.prod_root, layout.prod_output_css));
     }
 
 })
