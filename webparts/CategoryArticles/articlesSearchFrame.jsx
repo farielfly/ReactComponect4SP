@@ -67,8 +67,9 @@ export default class ArticlesSearchFrame extends React.Component{
         var loadmore = this.state.articlePageCount +1;
         this.setState({
             articlePageCount:loadmore
+        },function(){
+            this.loadDataCommon(false);
         });
-        this.loadDataCommon(false);
     }
 
     loadDataCommon(clearData){
