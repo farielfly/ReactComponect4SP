@@ -37,7 +37,7 @@ function tableListRender(config){
                 { 'ItemId':'i0003','RequestType': "ddddd", 'RequestDate': '9/3/1021', 'Status': 'Open', 'ProcessedBy': 'Bill','ProcessedDate':'9/3/10421' }
                 ]
             },
-            buttons: [{ Name: "test", Url: "http://bing.com", Parameter: "requestIds" }],
+            buttons: [{Type:"ajax",Options:{ Name: "test", Url: "http://bing.com", Parameter: "requestIds" }},{Type:"js",Options:{ Name: "test", Action:test}}],
             dropList: [{ Value: 4 }, { Value: 5 }, { Value: 6 }, { Value: 7 }, { Value: 8 }]
         }
 
@@ -196,6 +196,7 @@ function itemListRender(config) {
                 isMultiply: false,
                 columnCount:1,
                 search: { hasSearch: false, hasDrop: false,dropList:[{Value:'Open'},{Value:'Pending'}] },
+                tableDesc:{hasTableDesc:true,content:"dlfjsifj dijfsdld sijsdidjfs sijflsdijfs isdjfid josjof osdji dj dsifjs osdjfo "},
                 data:[{Href:'http://www.baidu.com',Value:'itemData1'},{Href:'http://www.baidu.com',Value:'itemData1'},
                         {Href:'http://www.baidu.com',Value:'itemData13'},{Href:'http://www.baidu.com',Value:'itemData14'},
                         {Href:'http://www.baidu.com',Value:'itemData15'},{Href:'http://www.baidu.com',Value:'itemData16'}]
@@ -219,7 +220,7 @@ function itemListRender(config) {
             render(
                <PaginationFrame searchInBack={config.searchInBack} dataInBack={config.dataInBack} hasTitle={true} hasSearch={{hasSearch:config.search.hasSearch,hasDrop:false,dropList:config.search.dropList}} 
                 config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount}} hasTurning={true}>
-                    <TableBulk columnCount={config.columnCount} listData={config.data} >
+                    <TableBulk columnCount={config.columnCount} listData={config.data} tableDesc={{hasTableDesc:config.tableDesc.hasTableDesc,content:config.tableDesc.content}}>
                         {templeteItem}
                     </TableBulk>
                 </PaginationFrame>,
@@ -233,7 +234,7 @@ function itemListRender(config) {
         let serviceType = config.data.map((item,index)=>{
             return <div className="acs-servicerequest-type" key={"servicetype"+index}>
                         <PaginationFrame hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
-                            <TableBulk columnCount={config.columnCount}>
+                            <TableBulk columnCount={config.columnCount} tableDesc={{hasTableDesc:config.tableDesc.hasTableDesc,content:item.Description}}>
                                 {templeteItem}
                             </TableBulk>
                         </PaginationFrame>

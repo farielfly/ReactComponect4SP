@@ -12,7 +12,7 @@ export default class AjaxButtonCell extends React.Component {
         let {itemData} = this.props;
         return (
           <div className="acs-turningframe-operationbtn" onClick={this.buttonAction.bind(this)}>
-                {itemData.Name}
+                {this.props.itemData.Name}
           </div>
         )
     }

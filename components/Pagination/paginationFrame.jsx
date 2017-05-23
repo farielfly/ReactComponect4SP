@@ -3,7 +3,8 @@ import PaginationDataFrame from './paginationDataFrame.jsx';
 import PaginationSearch from './paginationSearch.jsx';
 import LetterSearchFrame from './letterSearchFrame.jsx';
 import DropDownList from './../Common/dropDownList.jsx';
-import ButtonCell from './../table/ajaxButtonCell.jsx';
+import AjaxButtonCell from './../table/ajaxButtonCell.jsx';
+import JsButtonCell from './../table/jsActionButtonCell.jsx';
 
 export default class PaginationFrame extends React.Component {
     constructor(props) {
@@ -188,7 +189,13 @@ export default class PaginationFrame extends React.Component {
 
     createOperationBtn(buttons){
       return  buttons.map((item,index)=>{
-            return <ButtonCell itemData={item} tableOperation={this.tableOperation.bind(this)} key={"btn"+index}></ButtonCell>
+            if(item.Type === "js"){
+                return <JsButtonCell itemData={item.Options} key={"btn"+index}></JsButtonCell>
+                
+            }
+            else{
+                return <AjaxButtonCell itemData={item.Options} tableOperation={this.tableOperation.bind(this)} key={"btn"+index}></AjaxButtonCell>
+            }
         }) ;
     }
 
