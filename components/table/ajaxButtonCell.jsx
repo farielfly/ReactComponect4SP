@@ -11,9 +11,9 @@ export default class AjaxButtonCell extends React.Component {
     render() {
         let {itemData} = this.props;
         return (
-          <div className="acs-turningframe-operationbtn" onClick={this.buttonAction.bind(this)}>
+          <button type="button" className="acs-turningframe-operationbtn" onClick={this.buttonAction.bind(this)}>
                 {this.props.itemData.Name}
-          </div>
+          </button>
         )
     }
 }

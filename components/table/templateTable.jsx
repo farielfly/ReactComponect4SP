@@ -24,8 +24,9 @@ export default class TemplateTable extends React.Component {
         let itemsString = "";
         this.state.selectedItems.map((item)=>{
             itemsString += item.ItemId+";";
-        })
-        this.props.selectItems(itemsString);
+        });
+        let tempJudg = this.state.selectedItems.length===1?true:false;
+        this.props.selectItems(itemsString,tempJudg);
     }
 
     selectAllAction(){

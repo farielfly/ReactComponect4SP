@@ -299,3 +299,8 @@ function setStatus(){
     }
     ProcessImn();
 }
+
+
+function test(){
+    alert('dddd');
+}

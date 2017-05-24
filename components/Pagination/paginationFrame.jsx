@@ -19,20 +19,24 @@ export default class PaginationFrame extends React.Component {
         };
     }
 
-    changePageSize(size){
-        this.state.tempPageSize = parseInt(size);
-        this.state.nowPage = 1;
-        this.setState({
-            currentItems:this.props.config.data.slice(0,parseInt(size))
-        });
-    }
-
     componentWillMount(){
         let listData = this.props.config.data.slice(0,this.state.tempPageSize);
         this.setState({
             currentItems:listData,
             tempTotalItems:this.props.config.data
         })
+    }
+
+    componentDidMount(){
+        this.refs.jsButton.disabled = true;
+    }
+
+    changePageSize(size){
+        this.state.tempPageSize = parseInt(size);
+        this.state.nowPage = 1;
+        this.setState({
+            currentItems:this.props.config.data.slice(0,parseInt(size))
+        });
     }
 
     turnPage(n){
@@ -183,20 +187,31 @@ export default class PaginationFrame extends React.Component {
         })
     }
 
-    getToDoItems(items){
+    getToDoItems(items,canAction){
         this.state.itemsToDo = items;
+        if(canAction){
+            this.refs.jsButton.disabled = false;            
+        }
+        else{
+            this.refs.jsButton.disabled = true;
+        }
     }
 
     createOperationBtn(buttons){
       return  buttons.map((item,index)=>{
             if(item.Type === "js"){
-                return <JsButtonCell itemData={item.Options} key={"btn"+index}></JsButtonCell>
-                
+                return <button type="button" className="acs-turningframe-operationbtn" onClick={this.executeJsFun.bind(this,item.Options.Action)} ref="jsButton">
+                            {item.Options.Name}
+                        </button>
             }
             else{
                 return <AjaxButtonCell itemData={item.Options} tableOperation={this.tableOperation.bind(this)} key={"btn"+index}></AjaxButtonCell>
             }
         }) ;
+    }
+
+    executeJsFun(funName){
+        funName();
     }
 
     tableOperation(url,parameter){
@@ -259,8 +274,7 @@ export default class PaginationFrame extends React.Component {
                                 {canChangeSize? <div><span>Show</span><DropDownList selectAction={this.changePageSize.bind(this)} listData={config.dropList} defaultValue={""}></DropDownList><span>entries</span></div>:null}
                                 {canOperationTable?<div>{this.createOperationBtn(config.buttons)}</div>:null}
                              </div>   ;
-        
-        //let pageSizeSelect = canChangeSize?<div style={{float:"left"}}>Show <DropDownList selectAction={this.changePageSize.bind(this)} listData={config.dropList} defaultValue={""}></DropDownList> entries</div>:null;
+
 
         return <div className="acs-turningframe">
                     {tableOperation}
