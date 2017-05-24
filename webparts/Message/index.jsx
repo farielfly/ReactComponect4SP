@@ -5,7 +5,7 @@ import WebPartFrame from '../../components/common/webPartFrame.jsx'
 function messageRender(config) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let param = { title: config.title };
+    let param = { title: config.title, link: config.moreurl  };
     let data = { Title: 'townhall 2017', Date: new Date(2017, 2, 28), PictureUrl: '../../components/img/image1.jpg', Content:'Save the Date'};
 
     function formatDate(date) {
@@ -18,7 +18,7 @@ function messageRender(config) {
                 <WebPartFrame
                     title={param.title}
                     hasMore={false}
-                    link={data.LinkUrl}
+                    link={param.link}
                     hasTopLine={false}>
                     <div className="acs-message">
                         <a href={data.LinkUrl}><img src={data.PictureUrl}></img></a>
