@@ -65,16 +65,22 @@ export default class TemplateTable extends React.Component {
        }
        else{
             let pageItems = this.state.selectedItems;
+            let tempItems = [];
            for(var i=0;i<pageItems.length;i++){
                if(items[num].id === pageItems[i][this.props.titleData[0].Key]){
                    items[0].checked = false;
                    var tempa = pageItems.slice(0,i);
                    var tempb = pageItems.slice(i+1,pageItems.length);
-                   pageItems.push(tempa,tempb);
+                   if(tempa.length!==0){
+                       tempItems=tempItems.concat(tempa);
+                   }
+                   if(tempb.length!==0){
+                        tempItems=tempItems.concat(tempb);
+                   }
                    break;
                }
            }
-           this.state.selectedItems = pageItems;
+           this.state.selectedItems = tempItems;
        }
        this.finalSelect();
     }
@@ -83,10 +89,10 @@ export default class TemplateTable extends React.Component {
         var ascArr = null,descArr = null;
         if(isAscending){
             ascArr = this.state.listData.sort((a, b)=>{
-                    if(a[name].toLowerCase() < b[name].toLowerCase()){
+                    if(a[name].toString().toLowerCase() < b[name].toString().toLowerCase()){
                         return -1;
                     }
-                    if(a[name].toLowerCase() > b[name].toLowerCase()){
+                    if(a[name].toString().toLowerCase() > b[name].toString().toLowerCase()){
                         return 1;
                     }
                     return 0;
@@ -97,10 +103,10 @@ export default class TemplateTable extends React.Component {
         }
         else{
             descArr =this.state.listData.sort((a,b)=>{
-                    if(a[name].toLowerCase() < b[name].toLowerCase()){
+                    if(a[name].toString().toLowerCase() < b[name].toString().toLowerCase()){
                         return 1;
                     }
-                    if(a[name].toLowerCase() > b[name].toLowerCase()){
+                    if(a[name].toString().toLowerCase() > b[name].toString().toLowerCase()){
                         return -1;
                     }
                     return 0;
@@ -122,8 +128,8 @@ export default class TemplateTable extends React.Component {
                                 if(hasOrder){
                                     return <div key={"headtitle"+index} style={{width:item.Width+"%"}}><span>{item.Value}</span> 
                                         <div className="acs-sort-btn">
-                                            <p className="acs-ascending-btn" onClick={this.sortName.bind(this,true,item.Value)}></p>
-                                            <p className="acs-descending-btn" onClick={this.sortName.bind(this,false,item.Value)}></p>
+                                            <p className="acs-ascending-btn" onClick={this.sortName.bind(this,true,item.Key)}></p>
+                                            <p className="acs-descending-btn" onClick={this.sortName.bind(this,false,item.Key)}></p>
                                         </div>
                                     </div>
                                 }
