@@ -28,7 +28,9 @@ export default class PaginationFrame extends React.Component {
     }
 
     componentDidMount(){
-        this.refs.jsButton.disabled = true;
+        if(this.refs.jsButton){
+            this.refs.jsButton.disabled = true;
+        }
     }
 
     changePageSize(size){
