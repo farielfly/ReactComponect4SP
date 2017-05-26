@@ -270,7 +270,7 @@ export default class PaginationFrame extends React.Component {
         child = hasLetterSearch?<LetterSearchFrame letterSearch={this.letterFun.bind(this)}>{child} </LetterSearchFrame>:child;
 
         let turningPanel = hasTurning?<PaginationArrows turnPage={this.turnPage.bind(this)} currentPage={currentpage} countInPage={this.state.tempPageSize} totalCount={totalcount}></PaginationArrows>:null;
-        let dataFrame = hasTitle?<PaginationDataFrame frameTitle={config.frameTitle}>{child}</PaginationDataFrame>:<div>{child}</div>;
+        let dataFrame = hasTitle?<PaginationDataFrame frameTitle={config.frameTitle} frameDesc={config.frameDesc}>{child}</PaginationDataFrame>:<div>{child}</div>;
         let searchPanel = hasSearch.hasSearch?<PaginationSearch hasDrop={hasSearch.hasDrop} searchFun={this.searchFun.bind(this)} dropList={hasSearch.dropList}></PaginationSearch>:null;
         let tableOperation = <div className="acs-turningframe-operation">
                                 {canChangeSize? <div><span>Show</span><DropDownList selectAction={this.changePageSize.bind(this)} listData={config.dropList} defaultValue={""}></DropDownList><span>entries</span></div>:null}

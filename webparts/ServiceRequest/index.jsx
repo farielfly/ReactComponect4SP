@@ -26,7 +26,6 @@ function tableListRender(config){
             hasPagination: true,
             search: { hasSearch: true, hasDrop: true,dropList:[{Value:'Open'},{Value:'Pending'}] },
             hasCheckbox: true,
-            canChangeSize: true,
             canOperationTable: true,
             data: {
                Header:[{Key:'ItemId',Value:"",Width:10},{Key:'RequestType',Value:"Request Type",Width:18},{Key:'RequestDate',Value:"Request Date",Width:18},{Key:'Status',Value:"Status",Width:18},
@@ -219,8 +218,8 @@ function itemListRender(config) {
         if (document.getElementById(config.divId)) {
             render(
                <PaginationFrame searchInBack={config.searchInBack} dataInBack={config.dataInBack} hasTitle={true} hasSearch={{hasSearch:config.search.hasSearch,hasDrop:false,dropList:config.search.dropList}} 
-                config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount}} hasTurning={true}>
-                    <TableBulk columnCount={config.columnCount} listData={config.data} tableDesc={{hasTableDesc:config.tableDesc.hasTableDesc,content:config.tableDesc.content}}>
+                config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount,frameDesc:"null"}} hasTurning={true}>
+                    <TableBulk columnCount={config.columnCount} listData={config.data}>
                         {templeteItem}
                     </TableBulk>
                 </PaginationFrame>,
@@ -233,8 +232,8 @@ function itemListRender(config) {
         let templeteItem = selectItemType(config.itemType);
         let serviceType = config.data.map((item,index)=>{
             return <div className="acs-servicerequest-type" key={"servicetype"+index}>
-                        <PaginationFrame hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} config={{data:item.Items,pageSize:5,frameTitle:item.Title}} hasTurning={false}>
-                            <TableBulk columnCount={config.columnCount} tableDesc={{hasTableDesc:config.tableDesc.hasTableDesc,content:item.Description}}>
+                        <PaginationFrame hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}} config={{data:item.Items,pageSize:5,frameTitle:item.Title,frameDesc:item.Description}} hasTurning={false}>
+                            <TableBulk columnCount={config.columnCount} >
                                 {templeteItem}
                             </TableBulk>
                         </PaginationFrame>
