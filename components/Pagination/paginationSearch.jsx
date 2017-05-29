@@ -60,7 +60,7 @@ export default class PaginationSearch extends React.Component {
         return <div className="acs-searchpanel">
                     {searchDrop}
                     <div ref="searchInput" className={hasDrop?"acs-searchpanel-div":"acs-searchpanel-divsec"}>
-                        <input type="text" ref="searchInfo" onKeyDown={this.enterSearch.bind(this,event)} placeholder="Search"/>
+                        <input type="text" ref="searchInfo" onKeyDown={this.enterSearch.bind(this,window.event)} placeholder="Search"/>
                         <span id="searchinput" className="acs-searchicon" onClick={this.searchClick.bind(this)}  ></span>
                         <span id="clearsearch" className="acs-clearsearchicon" onClick={this.clearSearchClick.bind(this)}>X</span>
                     </div>

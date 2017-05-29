@@ -121,6 +121,9 @@ export default class PaginationFrame extends React.Component {
         }
         listData.map((item)=>{
             for(var i = 0;i<header.length;i++){
+                if(item[header[i].Key] === null){
+                    continue;
+                }
                 var tempItem = typeof item[header[i].Key] === "object"?item[header[i].Key].Title:item[header[i].Key];
                 if(tempItem.toString().indexOf(condition) !== -1){
                     tempList.push(item);
