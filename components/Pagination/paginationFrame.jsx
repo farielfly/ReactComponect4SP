@@ -216,7 +216,7 @@ export default class PaginationFrame extends React.Component {
     }
 
     executeJsFun(funName){
-        funName();
+        funName(this.state.itemsToDo);
     }
 
     tableOperation(url,parameter){
