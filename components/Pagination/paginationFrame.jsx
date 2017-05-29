@@ -222,24 +222,30 @@ export default class PaginationFrame extends React.Component {
     tableOperation(url,parameter){
         let data = this.state.itemsToDo;
         let finalUrl = url+"?"+parameter+"="+data;
+        let waitDialog = null;
         if(data !==''){
-             $.ajax({
-                type: "GET",
-                url: finalUrl,
-                headers: {
-                    "Accept": "application/json;odata=verbose",
-                    "Content-Type": "application/json;odata=verbose",
-                },
-                dataType: "json",
-                cache:false,
-                async: false,
-                success: function () {
-                    window.location.reload();
-                },
-                error: function (error) {
-                    window.location.reload();
-                    console.log(error);
-                }
+            EnsureScriptFunc("SP.UI.Dialog.js", "SP.UI.ModalDialog.showModalDialog", function () {
+                waitDialog = SP.UI.ModalDialog.showWaitScreenWithNoClose("Loading...");
+                $.ajax({
+                    type: "GET",
+                    url: finalUrl,
+                    headers: {
+                        "Accept": "application/json;odata=verbose",
+                        "Content-Type": "application/json;odata=verbose",
+                    },
+                    dataType: "json",
+                    cache:false,
+                    async: false,
+                    success: function () {
+                        waitDialog.close(SP.UI.DialogResult.OK);
+                        window.location.reload();
+                    },
+                    error: function (error) {
+                        waitDialog.close(SP.UI.DialogResult.OK);
+                        window.location.reload();
+                        console.log(error);
+                    }
+                });
             });
         }
     }
