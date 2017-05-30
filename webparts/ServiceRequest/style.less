@@ -239,7 +239,7 @@
     .acs-searchpanel-div, .acs-searchpanel-divsec{
             display: flex;
             align-items: center;
-            float:right;
+            float:none;
             margin-right: 10px;
             height:30px;
             background-color: #fff;
@@ -249,7 +249,6 @@
                 float:left;
                 margin-left: 10px;
                 padding:0;
-                padding-left: 10px;
                 height:28px;
                 border: none;
             }
@@ -278,10 +277,10 @@
     }
 
     .acs-searchpanel-div{
-        width:200px;
+        width:170px;
 
         input{
-            width:175px;
+            width:125px;
         }
     }
 
@@ -681,6 +680,15 @@ div[id$="ItemInformation"] {
     .acs-searchpanel{
         margin: 0;
         width: 322px;
+
+        .acs-searchpanel-div{
+            float: right;
+            width:200px;
+
+            input{
+                width:175px;
+            }
+        }
     }
 
     .acs-table{

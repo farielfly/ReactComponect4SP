@@ -26,6 +26,14 @@ export default class PaginationSearch extends React.Component {
         this.setState({droplistOpen:!this.state.droplistOpen});
     }
 
+    listOpen(){
+        this.setState({droplistOpen:true});
+    }
+
+    listClose(){
+        this.setState({droplistOpen:false});
+    }
+
     createList(){
         var items =this.props.dropList|| [{Value:'All'},{Value:'Pending'},{Value:'Acknowledged'},{Value:'Approved'},{Value:'Rejected'},{Value:'Closed'}];
         var reactThis = this;
@@ -52,7 +60,7 @@ export default class PaginationSearch extends React.Component {
         let listItems = this.createList();
         let searchDrop = hasDrop?<div className="acs-searchpanel-dropdown">
                                     <div className="acs-dropdown-selectedvalue"><input ref="selectInput"  placeholder="Status" disabled="disabled"/><span className="acs-dropdown-icon" onClick={this.showList.bind(this)}></span></div>
-                                    <div className="acs-dropdown-list" style={{height:this.state.droplistOpen?"auto":"0"}}>
+                                    <div className="acs-dropdown-list" style={{height:this.state.droplistOpen?"auto":"0"}} onMouseOver={this.listOpen.bind(this)} onMouseOut={this.listClose.bind(this)}>
                                         {listItems}
                                     </div>
                                 </div>:null;
