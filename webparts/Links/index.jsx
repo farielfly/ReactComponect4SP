@@ -44,7 +44,8 @@ function linksRender(config) {
             data.push({
                 'itemhref': param.data[i].PersonSite,
                 'title': param.data[i].DisplayName,
-                'src': param.data[i].PictureUrl
+                'src': param.data[i].PictureUrl,
+				'birth': param.data[i].BirthForDisplay
             })
         }  
         renderUI(data, param);        

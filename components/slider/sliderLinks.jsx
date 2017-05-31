@@ -12,7 +12,10 @@ export default class SliderLinks extends React.Component {
             let itemNodes = items.map((item, idn) => {
                 return <a key={'link' + idn} href={item.itemhref} className="acs-link-bgcolor" target="_blank" title={item.title}>
                     <img className="acs-linkitem-img" src={item.src} />
-                    <span className="acs-linkitem-title">{item.title}</span>
+					<div className="acs-linkitem-label">
+						 <span className="acs-linkitem-title">{item.title}</span>
+						 <span className="acs-linkitem-birth">{item.birth}</span>
+					</div>
                 </a>
             });
             return (<li key={'coll' + idc} style={{ width: width }}>{itemNodes}</li>);
