@@ -96,12 +96,12 @@
 
     @media(max-width:768px) {
         .acs-app-item{ 
-            width: 140px;
-            height: 126px;
-            margin-left: 0px; 
-            margin-top: 0px;  
+            width: 140px !important;
+            height: 126px !important;
+            margin-left: 0px !important; 
+            margin-top: 0px !important;  
             img{
-                margin-bottom: 0px;
+                margin-bottom: 0px !important;
             }
         }
     }
@@ -241,8 +241,25 @@
 
     @media(max-width:768px) {
         .acs-appgallery.display,.acs-appgallery.remove, { 
-            width: 100%;
-            margin: 0;
+            width: 100% !important;
+            margin: 0 !important;
+        }
+
+        .acs-appgallery {
+            .acs-app-item{
+                width: 110px !important;
+                span{
+                    width: 80px !important;
+                }
+            }            
+        }
+
+        .acs-appgallery.display{
+            .acs-app-item{
+                span{
+                    width: 110px !important;
+                }
+            }
         }
     }
 }

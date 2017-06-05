@@ -5,7 +5,10 @@ export default class WPFrame extends React.Component {
 
     render() {
         let {title,hasMore,link,hasTopLine} = this.props;
-
+        if(!link){
+            link = "javascript:void();"
+        }
+       
         return (
             <div className={"acs-webpartframe" + (hasTopLine?" acs-webpartframe-topline":"")}>
                 <a className="acs-webpartframe-header" href={link}>
