@@ -81,12 +81,15 @@
 						background: -ms-linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.6) 90%);
 						background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.6) 90%);
 						.acs-linkitem-title, .acs-linkitem-birth  {
-							display: block;
-							color: #fff;
-							white-space: normal;
+						    display: block;
+							color: #fff;							
 							font-family: @common_font_CE_55_ROMAN;      
 							line-height: 26px;
-							height:26px;    
+							height:26px;
+							width: 100%;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+							overflow: hidden;							
 						}
 					}
 					.acs-linkitem-label:hover {
