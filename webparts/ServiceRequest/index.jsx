@@ -24,7 +24,7 @@ function tableListRender(config){
             pageCount: 1,
             divId: config.divId,
             hasPagination: true,
-            search: { hasSearch: true, hasDrop: true,dropList:[{Value:'Open'},{Value:'Pending'}] },
+            search: { hasSearch: true, hasDrop: true,dropList:[{Value:'All'},{Value:'Open'},{Value:'Pending'}] },
             hasCheckbox: true,
             canOperationTable: true,
             data: {
@@ -192,10 +192,10 @@ function itemListRender(config) {
                 pageSize: 5,
                 searchInBack: false,
                 loadData: false,
-                isMultiply: false,
+                isMultiply: true,
                 columnCount:1,
                 search: { hasSearch: false, hasDrop: false,dropList:[{Value:'Open'},{Value:'Pending'}] },
-                tableDesc:{hasTableDesc:true,content:"dlfjsifj dijfsdld sijsdidjfs sijflsdijfs isdjfid josjof osdji dj dsifjs osdjfo "},
+                tableDesc:{hasTableDesc:false,content:"dlfjsifj dijfsdld sijsdidjfs sijflsdijfs isdjfid josjof osdji dj dsifjs osdjfo "},
                 data:[{Href:'http://www.baidu.com',Value:'itemData1'},{Href:'http://www.baidu.com',Value:'itemData1'},
                         {Href:'http://www.baidu.com',Value:'itemData13'},{Href:'http://www.baidu.com',Value:'itemData14'},
                         {Href:'http://www.baidu.com',Value:'itemData15'},{Href:'http://www.baidu.com',Value:'itemData16'}]
@@ -218,7 +218,7 @@ function itemListRender(config) {
         if (document.getElementById(config.divId)) {
             render(
                <PaginationFrame searchInBack={config.searchInBack} dataInBack={config.dataInBack} hasTitle={true} hasSearch={{hasSearch:config.search.hasSearch,hasDrop:false,dropList:config.search.dropList}} 
-                config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount,frameDesc:"null"}} hasTurning={true}>
+                config={{data:config.data,pageSize:config.pageSize,frameTitle:config.Title,totalCount:config.totalCount,frameDesc:null}} hasTurning={true}>
                     <TableBulk columnCount={config.columnCount} listData={config.data}>
                         {templeteItem}
                     </TableBulk>

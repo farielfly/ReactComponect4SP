@@ -235,7 +235,7 @@ export default class PaginationFrame extends React.Component {
                     },
                     dataType: "json",
                     cache:false,
-                    async: false,
+                    async: true,
                     success: function () {
                         waitDialog.close(SP.UI.DialogResult.OK);
                         window.location.reload();

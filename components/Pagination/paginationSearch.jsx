@@ -7,9 +7,10 @@ export default class PaginationSearch extends React.Component {
     }
 
     selectOption(value){
+        let searchValue = value==="All"?"":value;
         this.refs.selectInput.value = value;
         this.setState({droplistOpen:false});
-        this.props.searchFun(value,this.refs.searchInfo.value);
+        this.props.searchFun(searchValue,this.refs.searchInfo.value);
     }
 
     searchClick(){
@@ -38,8 +39,8 @@ export default class PaginationSearch extends React.Component {
         var items =this.props.dropList|| [{Value:'All'},{Value:'Pending'},{Value:'Acknowledged'},{Value:'Approved'},{Value:'Rejected'},{Value:'Closed'}];
         var reactThis = this;
         var dropList = items.map((item,index)=>{
-            var itemDiv = item.Value === 'All'? '': item.Value;
-            return <div key={"select"+index} onClick={this.selectOption.bind(reactThis,itemDiv)}>
+            //var itemDiv = item.Value === 'All'? '': item.Value;
+            return <div key={"select"+index} onClick={this.selectOption.bind(reactThis,item.Value)}>
                         {item.Value}
                     </div>
         })
