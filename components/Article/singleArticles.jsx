@@ -17,7 +17,7 @@ export default class SingleArticle extends React.Component{
 
     render(){
         let {hasTitle,hasIntro,hasTime,hasLike,dataItem,itemWidth,color} = this.props;
-        let intro = hasIntro ? (<ArticleIntro intro={dataItem.Intro}></ArticleIntro>) : null;
+        let intro = hasIntro && dataItem.intro != null ? (<ArticleIntro intro={dataItem.Intro}></ArticleIntro>) : null;
         let time = hasTime ? (<ArticleTime time={dataItem.Time}></ArticleTime>) : null;
         let like = hasLike ? (<ArticleLike like={dataItem.Like}></ArticleLike>) : null;
         return (
