@@ -5,7 +5,7 @@ export default class titleDescriptionPanel extends React.Component {
     
     handleClick(){
         window.income_playurl = minejquery(this.refs.playButton).data('href');
-        if(window.income_playurl.indexOf('<') > 0){
+        if(window.income_playurl.indexOf('<') >= 0){
             window.income_playtitle = minejquery(this.refs.playButton).data('title')
         }else{
             window.income_playtitle= window.income_playurl.substr(window.income_playurl.lastIndexOf('/') + 1);
