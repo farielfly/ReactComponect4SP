@@ -107,32 +107,34 @@ function NavigationRender(config) {
         }
     ];
 
-    function renderUI(data) {
+    function renderUI(config) {
+        var data = config.data;
         var minWidth = data.length * 130;
-        var elementDiv = document.getElementById('navigation');
+        var elementDiv = document.getElementById(config.Id);
         if (elementDiv) {
             elementDiv.style.minWidth = minWidth+'px';
             render(
                 <MenuList data={data} menuStyle={1}>
                 </MenuList>,
-                document.getElementById('navigation')
+                document.getElementById(config.Id)
             );
         }
-        var mobileDiv =  document.getElementById('mobilenav');
+        var mobileDiv =  document.getElementById(config.mobileId);
         if (mobileDiv) {
             render(
                 <MenuMobileList data={data}>
                 </MenuMobileList>,
-                document.getElementById('mobilenav')
+                document.getElementById(config.mobileId)
             );
         }
     }
 
     if (!config.debug) {
-        renderUI(config.data);
+        renderUI(config);
     }
     else {
-        renderUI(datatest);
+        config.data = datatest;
+        renderUI(config);
     }
 
 }
