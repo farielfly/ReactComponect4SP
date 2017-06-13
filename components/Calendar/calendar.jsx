@@ -149,7 +149,7 @@ const Calendar = React.createClass({
                         <tr className="acs-calendar-week">
                             <td>Sun</td>
                             <td>Mon</td>
-                            <td>Tus</td>
+                            <td>Tue</td>
                             <td>Wed</td>
                             <td>Thu</td>
                             <td>Fri</td>
