@@ -188,7 +188,7 @@ export default class ArticlesSearchFrame extends React.Component{
                             <div></div>
                         </div>
                         <div ref="searchInput" className="acs-searchpanel-div">
-                            <input type="text" ref="searchInfo" onKeyDown={this.enterSearch.bind(this,event)} placeholder="Search for articales"/>
+                            <input type="text" ref="searchInfo" onKeyDown={this.enterSearch.bind(this,event)} placeholder="Search for articles"/>
                             <span id="searchinput" className="acs-searchicon" onClick={this.searchArticles.bind(this)}  ></span>
                             <span id="clearsearch" className="acs-clearsearchicon" onClick={this.clearSearchArticles.bind(this)}>X</span>
                         </div>

@@ -1,3 +1,5 @@
+import $ from 'jquery';
+``
 export default class PaginationSearch extends React.Component {
     constructor(props){
         super(props);
@@ -23,7 +25,8 @@ export default class PaginationSearch extends React.Component {
         this.props.searchFun(tempValue,'');
     }
 
-    showList(){
+    showList(event){
+        event.stopPropagation();
         this.setState({droplistOpen:!this.state.droplistOpen});
     }
 
@@ -56,11 +59,15 @@ export default class PaginationSearch extends React.Component {
         }
     }
 
+    componentDidMount() {  
+        $(window).click(this.listClose.bind(this));
+    }
+
     render(){
         let {dropdown,searchFun,hasDrop} = this.props;
         let listItems = this.createList();
         let searchDrop = hasDrop?<div className="acs-searchpanel-dropdown">
-                                    <div className="acs-dropdown-selectedvalue"><input ref="selectInput"  placeholder="Status" disabled="disabled"/><span className="acs-dropdown-icon" onClick={this.showList.bind(this)}></span></div>
+                                    <div className="acs-dropdown-selectedvalue" onClick={this.showList.bind(this)}><input ref="selectInput"  placeholder="Status" disabled="disabled"/><span className="acs-dropdown-icon"></span></div>
                                     <div className="acs-dropdown-list" style={{height:this.state.droplistOpen?"auto":"0"}} onMouseOver={this.listOpen.bind(this)} onMouseOut={this.listClose.bind(this)}>
                                         {listItems}
                                     </div>

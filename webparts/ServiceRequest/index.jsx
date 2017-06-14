@@ -136,7 +136,7 @@ function serviceLyncListRender(config) {
         if (document.getElementById(config.divId)) {
             render(
                 <PaginationFrame hasLetterSearch={true} hasTitle={true} hasSearch={{hasSearch:false,hasDrop:false}}
-                 config={{data:config.data,pageSize:6,frameTitle:config.Title}} hasTurning={true}>
+                 config={{data:config.data,pageSize:6,frameTitle:config.Title,frameDesc:null}} hasTurning={true}>
                     <TableBulk columnCount={2} listData={config.data}>
                         <LyncItem itemData={null}></LyncItem>
                     </TableBulk>   

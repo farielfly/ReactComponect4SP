@@ -125,7 +125,7 @@ export default class PaginationFrame extends React.Component {
                     continue;
                 }
                 var tempItem = typeof item[header[i].Key] === "object"?item[header[i].Key].Title:item[header[i].Key];
-                if(tempItem.toString().indexOf(condition) !== -1){
+                if(tempItem.toString().toLowerCase().indexOf(condition.toLowerCase()) !== -1){
                     tempList.push(item);
                     break;
                 }
