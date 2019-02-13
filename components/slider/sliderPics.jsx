@@ -7,6 +7,7 @@ export default class SliderPics extends React.Component {
     render() {
         let { items, left, speed, nowLocal } = this.props;
         let count = items.length;
+		let count1 = items.length;
         let width = 100 / count + '%';
 
         let itemNodes = this.props.items.map((item, idx) => {
